@@ -12,18 +12,22 @@ import AVFoundation
 
 class VideoListViewController: UITableViewController {
     
-    var videos = [NSURL]()
+    var videos = [Video]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var objects = [String]()
-        objects.append("http://devstreaming.apple.com/videos/wwdc/2015/106z3yjwpfymnauri96m/106/hls_vod_mvp.m3u8")
-        objects.append("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8")
+        let url = NSURL(string: "http://api.projectjamjar.com/videos/")
+        let data = NSData(contentsOfURL: url!)
+        let videoList: [NSDictionary] = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [NSDictionary]
         
-        for object in objects {
-            videos.append(NSURL(string: object)!)
+        for video in videoList {
+            let videoId = video["id"] as! Int
+            let videoName = video["name"] as! String
+            
+            videos.append(Video(id: videoId, name: videoName)!)
         }
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -42,8 +46,8 @@ class VideoListViewController: UITableViewController {
         if segue.identifier == "showVideo" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let avplayerController = segue.destinationViewController as! AVPlayerViewController
-                
-                avplayerController.player = AVPlayer(URL: videos[indexPath.row])
+                let url = NSURL(string: "http://api.projectjamjar.com/videos/stream/" + String(videos[indexPath.row].id))
+                avplayerController.player = AVPlayer(URL: url!)
             }
         }
     }
@@ -62,7 +66,7 @@ class VideoListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
         let video = videos[indexPath.row]
-        cell.textLabel!.text = video.absoluteString
+        cell.textLabel!.text = video.name
         return cell
     }
 

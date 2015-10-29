@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
 		AAEB3E681BE0478900601B14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E671BE0478900601B14 /* ViewController.swift */; };
 		AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E691BE0478900601B14 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEB3E651BE0478900601B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAEB3E671BE0478900601B14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				AAEB3E6C1BE0478900601B14 /* Assets.xcassets */,
 				AAEB3E6E1BE0478900601B14 /* LaunchScreen.storyboard */,
 				AAEB3E711BE0478900601B14 /* Info.plist */,
+				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 			);
 			path = JamJar;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEB3E681BE0478900601B14 /* ViewController.swift in Sources */,
+				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
 				AAEB3E781BE0694000601B14 /* VideoListViewController.swift in Sources */,
 			);
