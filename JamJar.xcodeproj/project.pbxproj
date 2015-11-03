@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
+		AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
-		AAEB3E681BE0478900601B14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E671BE0478900601B14 /* ViewController.swift */; };
+		AAEB3E681BE0478900601B14 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */; };
 		AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E691BE0478900601B14 /* Main.storyboard */; };
 		AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E6C1BE0478900601B14 /* Assets.xcassets */; };
 		AAEB3E701BE0478900601B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E6E1BE0478900601B14 /* LaunchScreen.storyboard */; };
@@ -18,9 +19,10 @@
 
 /* Begin PBXFileReference section */
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEB3E651BE0478900601B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AAEB3E671BE0478900601B14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		AAEB3E6A1BE0478900601B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAEB3E6C1BE0478900601B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAEB3E6F1BE0478900601B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,12 +62,13 @@
 			children = (
 				AAEB3E771BE0694000601B14 /* VideoListViewController.swift */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
-				AAEB3E671BE0478900601B14 /* ViewController.swift */,
+				AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */,
+				AA558CCF1BE1D94000D591A8 /* Video.swift */,
+				AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */,
 				AAEB3E691BE0478900601B14 /* Main.storyboard */,
 				AAEB3E6C1BE0478900601B14 /* Assets.xcassets */,
 				AAEB3E6E1BE0478900601B14 /* LaunchScreen.storyboard */,
 				AAEB3E711BE0478900601B14 /* Info.plist */,
-				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 			);
 			path = JamJar;
 			sourceTree = "<group>";
@@ -142,7 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEB3E681BE0478900601B14 /* ViewController.swift in Sources */,
+				AAEB3E681BE0478900601B14 /* VideoPlayerViewController.swift in Sources */,
+				AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
 				AAEB3E781BE0694000601B14 /* VideoListViewController.swift in Sources */,

@@ -9,20 +9,20 @@
 import UIKit
 import AVKit
 import AVFoundation
-import MobileCoreServices
 
-class VideoListViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class VideoListViewController: UITableViewController {
     
     var videos = [Video]()
     private var player: AVPlayer!
+    
     @IBOutlet weak var addVideoButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.refreshControl?.addTarget(self, action: "reloadVideoList:", forControlEvents: UIControlEvents.ValueChanged)
-        
         let url = NSURL(string: "http://api.projectjamjar.com/videos/")
+        //let url = NSURL(string: "http://192.168.2.34:5002/videos/")
         let data = NSData(contentsOfURL: url!)
         let videoList: [NSDictionary] = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [NSDictionary]
         
@@ -50,6 +50,8 @@ class VideoListViewController: UITableViewController, UIImagePickerControllerDel
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let avplayerController = segue.destinationViewController as! AVPlayerViewController
                 let url = NSURL(string: "http://api.projectjamjar.com/videos/stream/" + String(videos[indexPath.row].id))
+                //let url = NSURL(string: "http://192.168.2.34:5002/videos/stream/" + String(videos[indexPath.row].id))
+                //let url = NSURL(string: "http://projectjamjar.com/video.mp4")
                 //let url = NSURL(string: "http://www.ebookfrenzy.com/ios_book/movie/movie.mov")
                 print(url)
                 self.player = AVPlayer(URL: url!)
@@ -87,26 +89,6 @@ class VideoListViewController: UITableViewController, UIImagePickerControllerDel
         //call loadVideos function (need to implement this method)
         self.tableView.reloadData()
         refreshControl.endRefreshing()
-    }
-    
-    @IBAction func selectVideo(sender: UIBarButtonItem) {
-        let videoPicker = UIImagePickerController()
-        videoPicker.delegate = self
-        videoPicker.allowsEditing = false
-        videoPicker.sourceType = .PhotoLibrary
-        videoPicker.mediaTypes = [kUTTypeMovie as String]
-        
-        presentViewController(videoPicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print("Store Video")
-        print(info)
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

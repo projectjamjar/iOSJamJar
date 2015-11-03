@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lsd-q5-gd9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lsd-q5-gd9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -44,6 +44,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VTC-6g-qmb">
                             <connections>
                                 <action selector="selectVideo:" destination="K29-MX-qij" id="8go-cB-nCi"/>
+                                <segue destination="bf2-eZ-MU2" kind="showDetail" id="fTF-OD-yg7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -58,13 +59,76 @@
             </objects>
             <point key="canvasLocation" x="858" y="-283"/>
         </scene>
+        <!--Add Edit New Video View Controller-->
+        <scene sceneID="tV1-bT-2cp">
+            <objects>
+                <viewController id="bf2-eZ-MU2" customClass="AddEditNewVideoViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7MP-Fb-0h8"/>
+                        <viewControllerLayoutGuide type="bottom" id="KDt-mx-B4J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8v6-XX-AU6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Video Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjd-RH-bQI">
+                                <rect key="frame" x="20" y="106" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Upload Video:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykQ-k4-E5G">
+                                <rect key="frame" x="10" y="289" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTk-oW-PLL">
+                                <rect key="frame" x="133" y="102" width="217" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gd-ls-kvB">
+                                <rect key="frame" x="133" y="285" width="217" height="30"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadButtonPressed:" destination="bf2-eZ-MU2" eventType="touchUpInside" id="g1Q-5g-4Sp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-hD-88d">
+                                <rect key="frame" x="133" y="433" width="217" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="bf2-eZ-MU2" eventType="touchUpInside" id="pkG-dC-FvQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hgd-hD-88d" firstAttribute="centerX" secondItem="8v6-XX-AU6" secondAttribute="centerX" id="2mk-XO-ADB"/>
+                            <constraint firstItem="6gd-ls-kvB" firstAttribute="centerX" secondItem="8v6-XX-AU6" secondAttribute="centerX" id="Q7h-qk-MjT"/>
+                            <constraint firstItem="CTk-oW-PLL" firstAttribute="leading" secondItem="bjd-RH-bQI" secondAttribute="trailing" constant="15" id="Ugb-u1-p6s"/>
+                            <constraint firstItem="6gd-ls-kvB" firstAttribute="leading" secondItem="ykQ-k4-E5G" secondAttribute="trailing" constant="15" id="qFL-JA-UcR"/>
+                            <constraint firstItem="CTk-oW-PLL" firstAttribute="centerX" secondItem="8v6-XX-AU6" secondAttribute="centerX" id="tNn-0m-ITY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="hgd-hD-88d" id="Wxx-0B-ebw"/>
+                        <outlet property="uploadButton" destination="6gd-ls-kvB" id="w2D-IW-jDQ"/>
+                        <outlet property="videoNameTextVield" destination="CTk-oW-PLL" id="mMO-AH-WT5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jH-6M-b2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="-283"/>
+        </scene>
         <!--AV Player View Controller-->
         <scene sceneID="Cua-aB-NqV">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="Vho-ig-jG9" sceneMemberID="viewController"/>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="Vho-ig-jG9" customClass="VideoPlayerViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OoH-93-qCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="491"/>
+            <point key="canvasLocation" x="858" y="539"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eKa-nf-pGJ">

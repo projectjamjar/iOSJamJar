@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VideoPlayerViewController.swift
 //  JamJar
 //
 //  Created by Ethan Riback on 10/27/15.
@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
-class ViewController: UIViewController {
+class VideoPlayerViewController: AVPlayerViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
