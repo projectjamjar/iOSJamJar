@@ -67,42 +67,89 @@ class AddEditNewVideoViewController: UIViewController, UITextFieldDelegate, UIIm
         let videoToUpload = info["UIImagePickerControllerMediaURL"] as! NSURL
         let url = NSURL(string: "http://api.projectjamjar.com/videos/")
         
-        print(videoToUpload.path)
+        print("Beginning upload now")
         
-        var path = NSBundle.mainBundle().pathForResource(videoToUpload.path, ofType: "mp4")
-        var data1 = NSData()
-        //var videodata: NSData? = NSData.dataWithContentsOfMappedFile(path!) as? NSData
-        var request = NSMutableURLRequest(URL: url!)
-        
-        //var session = NSURLSession.sharedSession()
-        
-        request.HTTPMethod = "POST"
-
-        /*
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
-        let postString = "name=" + videoNameTextVield.text! + "&src=" + videoToUpload.path!
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        let param = [
+            "name" : videoNameTextVield.text!
+        ]
+        
+        let boundary = generateBoundaryString()
+        
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        request.HTTPBody = createBodyWithParameters(param, filePathKey: "src", filePathURL: videoToUpload, boundary: boundary)
+        
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
             if error != nil {
                 print("error=\(error)")
                 return
-            } else {
-                print("response = \(response!)")
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-                print("responseString = \(responseString)")
             }
+            
+            // You can print out response object
+            print("******* response = \(response)")
+            
+            // Print out reponse body
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("****** response data = \(responseString!)")
+            
         }
         
         task.resume()
-        */
+        
+        print("Ending upload now")
         
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, filePathURL: NSURL, boundary: String) -> NSData {
+        let body = NSMutableData();
+        
+        if parameters != nil {
+            for (key, value) in parameters! {
+                body.appendData(NSString(string: "--\(boundary)\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+                body.appendData(NSString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+                body.appendData(NSString(string: "\(value)\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+            }
+        }
+        
+        let filename = filePathURL.lastPathComponent
+        print(filename)
+        let mimetype = mimeTypeForPath(filePathURL)
+        print(mimetype)
+        let videoData = NSData(contentsOfURL: filePathURL)
+        
+        body.appendData(NSString(string: "--\(boundary)\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+        body.appendData(NSString(string: "Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+        body.appendData(NSString(string: "Content-Type: \(mimetype)\r\n\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+        body.appendData(videoData!)
+        body.appendData(NSString(string: "\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+        
+        body.appendData(NSString(string: "--\(boundary)--\r\n").dataUsingEncoding(NSUTF16StringEncoding)!)
+        
+        return body
+    }
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
+    }
+    
+    func mimeTypeForPath(path: NSURL) -> String {
+        let pathExtension = path.pathExtension
+        
+        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension! as NSString, nil)?.takeRetainedValue() {
+            if let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
+                return mimetype as String
+            }
+        }
+        return "application/octet-stream";
     }
 }
