@@ -22,15 +22,15 @@ class VideoListViewController: UITableViewController {
         
         self.refreshControl?.addTarget(self, action: "reloadVideoList:", forControlEvents: UIControlEvents.ValueChanged)
         let url = NSURL(string: "http://api.projectjamjar.com/videos/")
-        //let url = NSURL(string: "http://192.168.2.34:5002/videos/")
         let data = NSData(contentsOfURL: url!)
         let videoList: [NSDictionary] = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [NSDictionary]
         
         for video in videoList {
             let videoId = video["id"] as! Int
             let videoName = video["name"] as! String
+            let videoSrc = video["hls_src"] as! String
             
-            videos.append(Video(id: videoId, name: videoName)!)
+            videos.append(Video(id: videoId, name: videoName, hls_src: videoSrc)!)
         }        
     }
 
@@ -49,10 +49,7 @@ class VideoListViewController: UITableViewController {
         if segue.identifier == "showVideo" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let avplayerController = segue.destinationViewController as! AVPlayerViewController
-                let url = NSURL(string: "http://api.projectjamjar.com/videos/stream/" + String(videos[indexPath.row].id))
-                //let url = NSURL(string: "http://192.168.2.34:5002/videos/stream/" + String(videos[indexPath.row].id))
-                //let url = NSURL(string: "http://projectjamjar.com/video.mp4")
-                //let url = NSURL(string: "http://www.ebookfrenzy.com/ios_book/movie/movie.mov")
+                let url = NSURL(string: videos[indexPath.row].hls_src)
                 print(url)
                 self.player = AVPlayer(URL: url!)
                 avplayerController.player = self.player
