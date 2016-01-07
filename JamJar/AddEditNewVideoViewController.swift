@@ -20,12 +20,17 @@ class AddEditNewVideoViewController: UIViewController, UITextFieldDelegate, UIIm
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var concertDateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.videoNameTextVield.delegate = self;
+        
+        //set concert date text field to receive selected date
+        let datePickerView:UIDatePicker = UIDatePicker()
+        concertDateTextField.inputView = datePickerView
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
