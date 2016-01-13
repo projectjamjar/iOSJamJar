@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
+		AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05269D1C46EE9500894DC7 /* LoginViewController.swift */; };
+		AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A11C46F65500894DC7 /* SignUpViewController.swift */; };
+		AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */; };
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
 		AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		3BCCB9BF3B032F8AE04B9306 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FA380DFC6FFB8F40D408774 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA05269D1C46EE9500894DC7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AA0526A11C46F65500894DC7 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +60,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA0526A51C46F7D200894DC7 /* LoginControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */,
+				AA05269D1C46EE9500894DC7 /* LoginViewController.swift */,
+				AA0526A11C46F65500894DC7 /* SignUpViewController.swift */,
+			);
+			name = LoginControllers;
+			sourceTree = "<group>";
+		};
 		AAEB3E591BE0478900601B14 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +91,7 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
+				AA0526A51C46F7D200894DC7 /* LoginControllers */,
 				AAEB3E771BE0694000601B14 /* VideoListViewController.swift */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
 				AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */,
@@ -220,10 +237,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */,
+				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
 				AAEB3E681BE0478900601B14 /* VideoPlayerViewController.swift in Sources */,
 				AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
+				AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */,
 				AAEB3E781BE0694000601B14 /* VideoListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
