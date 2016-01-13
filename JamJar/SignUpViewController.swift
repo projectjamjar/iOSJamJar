@@ -38,6 +38,11 @@ class SignUpViewController: UIViewController{
     }
     
     @IBAction func returnToLoginButtonPressed(sender: UIButton) {
+        //FOR TESTING: Remove this later
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.removeObjectForKey("username")
+        prefs.removeObjectForKey("password")
+        prefs.synchronize()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

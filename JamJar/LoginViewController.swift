@@ -38,4 +38,23 @@ class LoginViewController: UIViewController{
         self.view.endEditing(true)
         return false
     }
+    
+    @IBAction func signInButtonPressed(sender: UIButton) {
+        print("Sign In Pressed")
+        
+        let username = usernameTextField.text
+        let password = passwordTextField.text
+        
+        print("Username: " + username!)
+        print("Password: " + password!)
+        
+        if !(username?.characters.count < 1 || password?.characters.count < 1) {
+            print("Logging In...")
+            let prefs = NSUserDefaults.standardUserDefaults()
+            prefs.setValue(username, forKey: "username")
+            prefs.setValue(password, forKey: "password")
+            prefs.synchronize()
+        }
+    }
+    
 }

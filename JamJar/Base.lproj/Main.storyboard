@@ -314,6 +314,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInButtonPressed:" destination="GWw-DP-FAn" eventType="touchUpInside" id="rOJ-5O-4Yg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRo-k9-czz">
                                 <rect key="frame" x="100" y="526" width="177" height="38"/>
