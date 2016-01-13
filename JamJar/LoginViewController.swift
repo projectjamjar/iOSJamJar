@@ -28,6 +28,20 @@ class LoginViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //Checks if the user has saved login information
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let username = prefs.stringForKey("username")
+        let password = prefs.stringForKey("password")
+        
+        if !(username == nil || password == nil) {
+            //performs the segue to the home screen
+            self.performSegueWithIdentifier("goto_home", sender: self)
+        }
+    }
+    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -54,6 +68,9 @@ class LoginViewController: UIViewController{
             prefs.setValue(username, forKey: "username")
             prefs.setValue(password, forKey: "password")
             prefs.synchronize()
+            
+            //performs the segue to the home screen
+            self.performSegueWithIdentifier("goto_home", sender: self)
         }
     }
     

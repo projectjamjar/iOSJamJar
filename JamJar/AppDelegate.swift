@@ -31,18 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        print("Entering Foreground...")
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("Becoming Active...")
+        
         //Checks if the user has saved login information
         let prefs = NSUserDefaults.standardUserDefaults()
+        let username = prefs.stringForKey("username")
+        let password = prefs.stringForKey("password")
+        
         print("Username Saved:")
-        print(prefs.stringForKey("username"))
+        print(username)
         print("Password Saved:")
-        print(prefs.stringForKey("password"))
+        print(password)
+        
+        if (username == nil || password == nil) {
+            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

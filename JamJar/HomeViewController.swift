@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  HomeViewController.swift
 //  JamJar
 //
 //  Created by Ethan Riback on 1/13/16.
@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
 import Alamofire
 
-class SignUpViewController: UIViewController{
-
+class HomeViewController: UIViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,7 +36,11 @@ class SignUpViewController: UIViewController{
         return false
     }
     
-    @IBAction func returnToLoginButtonPressed(sender: UIButton) {
+    @IBAction func logoutButtonPressed(sender: UIButton) {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.removeObjectForKey("username")
+        prefs.removeObjectForKey("password")
+        prefs.synchronize()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
