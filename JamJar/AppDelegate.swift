@@ -39,14 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Checks if the user has saved login information
         let prefs = NSUserDefaults.standardUserDefaults()
         let username = prefs.stringForKey("username")
-        let password = prefs.stringForKey("password")
         
-        print("Username Saved:")
-        print(username)
-        print("Password Saved:")
-        print(password)
-        
-        if (username == nil || password == nil) {
+        if username == nil {
             self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
         }
     }

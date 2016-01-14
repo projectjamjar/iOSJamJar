@@ -35,9 +35,8 @@ class LoginViewController: UIViewController{
         //Checks if the user has saved login information
         let prefs = NSUserDefaults.standardUserDefaults()
         let username = prefs.stringForKey("username")
-        let password = prefs.stringForKey("password")
         
-        if !(username == nil || password == nil) {
+        if username != nil {
             //performs the segue to the home screen
             self.performSegueWithIdentifier("goto_home", sender: self)
         }
@@ -55,37 +54,40 @@ class LoginViewController: UIViewController{
     }
     
     @IBAction func signInButtonPressed(sender: UIButton) {
-        print("Sign In Pressed")
-        
         let username = usernameTextField.text
         let password = passwordTextField.text
         
-        print("Username: " + username!)
-        print("Password: " + password!)
-        
         if !(username?.characters.count < 1 || password?.characters.count < 1) {
             print("Logging In...")
-            let prefs = NSUserDefaults.standardUserDefaults()
-            prefs.setValue(username, forKey: "username")
-            prefs.setValue(password, forKey: "password")
-            prefs.synchronize()
             
-            /*
+            let parameters = [
+                "username": username!,
+                "password" : password!
+            ]
+            
+            Alamofire.request(
+                .POST,
+                "http://api.projectjamjar.com/auth/login/",
+                parameters: parameters,
+                encoding: .JSON).response{request, response, data, error in
+                    print(response)
+                    let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+                    print(loginData)
+            }
+            
             let user = User(username: username!, password: password!)
             do {
                 try user.createInSecureStore()
+                let prefs = NSUserDefaults.standardUserDefaults()
+                prefs.setValue(username, forKey: "username")
+                prefs.synchronize()
+                
+                //performs the segue to the home screen
+                self.performSegueWithIdentifier("goto_home", sender: self)
             } catch {
                 //TODO: implement code for actual error
                 print("There was an error")
             }
-            
-            let temp = User(username: username!, password: "")
-            let result = temp.readFromSecureStore()
-            print(result)
-            */
-            
-            //performs the segue to the home screen
-            self.performSegueWithIdentifier("goto_home", sender: self)
         }
     }
     

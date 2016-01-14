@@ -39,18 +39,16 @@ class HomeViewController: UIViewController{
     
     @IBAction func logoutButtonPressed(sender: UIButton) {
         let prefs = NSUserDefaults.standardUserDefaults()
-        prefs.removeObjectForKey("username")
-        prefs.removeObjectForKey("password")
-        prefs.synchronize()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let user = User(username: prefs.stringForKey("username")!, password: "")
         
-        /*
         do {
-            try Locksmith.deleteDataForUserAccount("myUserAccount")
+            try user.deleteFromSecureStore()
+            prefs.removeObjectForKey("username")
+            prefs.synchronize()
+            self.dismissViewControllerAnimated(true, completion: nil)
         } catch {
             //TODO: implement code for actual error
-            print("There was an error")
+            print("There was an error when trying to delete user information")
         }
-        */
     }
 }
