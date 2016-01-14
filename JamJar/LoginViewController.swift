@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Locksmith
 
 class LoginViewController: UIViewController{
     
@@ -68,6 +69,20 @@ class LoginViewController: UIViewController{
             prefs.setValue(username, forKey: "username")
             prefs.setValue(password, forKey: "password")
             prefs.synchronize()
+            
+            /*
+            let user = User(username: username!, password: password!)
+            do {
+                try user.createInSecureStore()
+            } catch {
+                //TODO: implement code for actual error
+                print("There was an error")
+            }
+            
+            let temp = User(username: username!, password: "")
+            let result = temp.readFromSecureStore()
+            print(result)
+            */
             
             //performs the segue to the home screen
             self.performSegueWithIdentifier("goto_home", sender: self)

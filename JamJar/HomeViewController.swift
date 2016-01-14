@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Locksmith
 
 class HomeViewController: UIViewController{
     
@@ -42,5 +43,14 @@ class HomeViewController: UIViewController{
         prefs.removeObjectForKey("password")
         prefs.synchronize()
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+        /*
+        do {
+            try Locksmith.deleteDataForUserAccount("myUserAccount")
+        } catch {
+            //TODO: implement code for actual error
+            print("There was an error")
+        }
+        */
     }
 }
