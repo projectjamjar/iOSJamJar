@@ -71,8 +71,8 @@ class LoginViewController: UIViewController{
                 parameters: parameters,
                 encoding: .JSON).response{request, response, data, error in
                     print(response)
-                    let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-                    print(loginData)
+                    //let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+                    //print(loginData)
             }
             
             let user = User(username: username!, password: password!)

@@ -5,6 +5,18 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Comfortaa-Regular.ttf">
+            <string>Comfortaa-Regular</string>
+        </mutableArray>
+        <mutableArray key="Muli-Light.ttf">
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Video List-->
         <scene sceneID="GhA-fW-r7d">
@@ -274,42 +286,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="JamJar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REo-AS-gmf">
-                                <rect key="frame" x="160" y="20" width="56" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Relive the Concert Experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8d-RX-Arx">
-                                <rect key="frame" x="73" y="49" width="231" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNP-Vy-AtA">
-                                <rect key="frame" x="16" y="315" width="343" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="v2l-oL-rk7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="concert_bg" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Ue-QGd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNP-Vy-AtA">
+                                <rect key="frame" x="89" y="270" width="196" height="37"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VX1-m7-fWq">
-                                <rect key="frame" x="16" y="385" width="343" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="nv4-jR-BOo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VX1-m7-fWq">
+                                <rect key="frame" x="89" y="315" width="196" height="38"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xb-qt-24z">
-                                <rect key="frame" x="16" y="456" width="343" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="sSc-bp-HNX"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xb-qt-24z">
+                                <rect key="frame" x="89" y="361" width="196" height="37"/>
+                                <color key="backgroundColor" red="0.43156002900866836" green="0.67254577020202022" blue="0.36935284032205451" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Sign In"/>
+                                <state key="normal" title="SIGN IN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -319,47 +316,40 @@
                                     <action selector="signInButtonPressed:" destination="GWw-DP-FAn" eventType="touchUpInside" id="rOJ-5O-4Yg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRo-k9-czz">
-                                <rect key="frame" x="100" y="526" width="177" height="38"/>
-                                <state key="normal" title="Sign Up for JamJar"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRo-k9-czz">
+                                <rect key="frame" x="99" y="406" width="177" height="38"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
+                                <state key="normal" title="SIGN UP">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="mZN-cy-O3J" kind="presentation" id="1Rc-e2-vsG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
-                                <rect key="frame" x="100" y="597" width="177" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="z2Y-c1-gyQ"/>
-                                </constraints>
-                                <state key="normal" title="Forget Password?"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
+                                <rect key="frame" x="99" y="452" width="177" height="37"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
+                                <state key="normal" title="FORGET PASSWORD?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="4gd-Ev-FMy" kind="presentation" id="fbV-9k-bGL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RELIVE THE CONCERT EXPERIENCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM4-vx-DLT">
+                                <rect key="frame" x="0.0" y="167" width="375" height="21"/>
+                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jamjar_logo_transparent_250x250" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-17-fxx">
+                                <rect key="frame" x="112" y="497" width="150" height="150"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jamjar_text_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="MIk-dn-c95">
+                                <rect key="frame" x="43" y="57" width="288" height="102"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gNP-Vy-AtA" firstAttribute="leading" secondItem="VX1-m7-fWq" secondAttribute="leading" id="1hC-nO-6rZ"/>
-                            <constraint firstItem="REo-AS-gmf" firstAttribute="centerX" secondItem="gNP-Vy-AtA" secondAttribute="centerX" id="2RV-hJ-1y2"/>
-                            <constraint firstItem="VX1-m7-fWq" firstAttribute="leading" secondItem="9xb-qt-24z" secondAttribute="leading" id="7i4-jo-GRC"/>
-                            <constraint firstItem="2FV-4X-2Y5" firstAttribute="top" secondItem="DRo-k9-czz" secondAttribute="bottom" constant="33" id="GqE-k0-kM6"/>
-                            <constraint firstItem="gNP-Vy-AtA" firstAttribute="centerY" secondItem="qzy-ck-Rso" secondAttribute="centerY" id="Jas-C0-mCQ"/>
-                            <constraint firstItem="V8d-RX-Arx" firstAttribute="top" secondItem="REo-AS-gmf" secondAttribute="bottom" constant="8" symbolic="YES" id="Js5-jk-D0S"/>
-                            <constraint firstItem="VX1-m7-fWq" firstAttribute="top" secondItem="gNP-Vy-AtA" secondAttribute="bottom" constant="33" id="KQT-Af-DGZ"/>
-                            <constraint firstItem="DRo-k9-czz" firstAttribute="top" secondItem="9xb-qt-24z" secondAttribute="bottom" constant="33" id="Rkf-op-oDx"/>
-                            <constraint firstItem="V8d-RX-Arx" firstAttribute="centerX" secondItem="DRo-k9-czz" secondAttribute="centerX" id="VtU-2W-9aK"/>
-                            <constraint firstItem="9xb-qt-24z" firstAttribute="top" secondItem="VX1-m7-fWq" secondAttribute="bottom" constant="33" id="Y8D-Oc-nlz"/>
-                            <constraint firstItem="DRo-k9-czz" firstAttribute="leading" secondItem="2FV-4X-2Y5" secondAttribute="leading" id="bWj-9f-kGw"/>
-                            <constraint firstItem="DRo-k9-czz" firstAttribute="trailing" secondItem="2FV-4X-2Y5" secondAttribute="trailing" id="equ-up-TOP"/>
-                            <constraint firstItem="gNP-Vy-AtA" firstAttribute="trailing" secondItem="VX1-m7-fWq" secondAttribute="trailing" id="gxI-Bk-Ann"/>
-                            <constraint firstItem="UTS-u5-sPt" firstAttribute="top" secondItem="2FV-4X-2Y5" secondAttribute="bottom" constant="33" id="lmg-1s-IOo"/>
-                            <constraint firstItem="REo-AS-gmf" firstAttribute="centerX" secondItem="V8d-RX-Arx" secondAttribute="centerX" id="lwk-Bl-811"/>
-                            <constraint firstItem="9xb-qt-24z" firstAttribute="trailing" secondItem="VX1-m7-fWq" secondAttribute="trailing" id="lxS-Mh-d3C"/>
-                            <constraint firstItem="DRo-k9-czz" firstAttribute="leading" secondItem="qzy-ck-Rso" secondAttribute="leadingMargin" constant="84" id="n1b-VB-hMr"/>
-                            <constraint firstItem="VX1-m7-fWq" firstAttribute="trailing" secondItem="qzy-ck-Rso" secondAttribute="trailingMargin" id="qbn-Pb-Orm"/>
-                            <constraint firstItem="gNP-Vy-AtA" firstAttribute="leading" secondItem="qzy-ck-Rso" secondAttribute="leadingMargin" id="tgP-hQ-D9x"/>
-                            <constraint firstItem="REo-AS-gmf" firstAttribute="top" secondItem="9zm-Ue-ZRJ" secondAttribute="bottom" id="ywI-54-kCa"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rKq-or-B21"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -373,7 +363,7 @@
             </objects>
             <point key="canvasLocation" x="-1257.5" y="-283.5"/>
         </scene>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="BkP-ZB-Gso">
             <objects>
                 <viewController id="Rnk-Os-y0s" sceneMemberID="viewController">
@@ -394,13 +384,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Md3-6k-KI7"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="Md3-6k-KI7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mT2-BY-xwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-8.5" y="538.5"/>
         </scene>
-        <!--Item 1-->
+        <!--Home View Controller-->
         <scene sceneID="Eg5-Eu-MrY">
             <objects>
                 <viewController id="df1-rf-8Fe" customClass="HomeViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
@@ -428,7 +418,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="cse-ku-hWD"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="cse-ku-hWD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbt-qm-GOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,4 +443,9 @@
             <point key="canvasLocation" x="-592.5" y="-283.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="concert_bg" width="375" height="667"/>
+        <image name="jamjar_logo_transparent_250x250" width="250" height="250"/>
+        <image name="jamjar_text_transparent" width="300" height="116"/>
+    </resources>
 </document>

@@ -31,6 +31,13 @@
 		AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		AA0526A61C470F4D00894DC7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AA0526A81C47187600894DC7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		AA0F20501C5190720099665E /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
+		AA0F20511C5190720099665E /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
+		AA0F20521C5190720099665E /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
+		AA0F20531C5190720099665E /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +81,20 @@
 			name = LoginControllers;
 			sourceTree = "<group>";
 		};
+		AA0F204C1C51905C0099665E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */,
+				AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */,
+				AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */,
+				AA0F20501C5190720099665E /* Muli-Italic.ttf */,
+				AA0F20511C5190720099665E /* Muli-Light.ttf */,
+				AA0F20521C5190720099665E /* Muli-LightItalic.ttf */,
+				AA0F20531C5190720099665E /* Muli-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		AAEB3E591BE0478900601B14 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +116,7 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
+				AA0F204C1C51905C0099665E /* Fonts */,
 				AA0526A51C46F7D200894DC7 /* LoginControllers */,
 				AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
