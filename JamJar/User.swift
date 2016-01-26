@@ -11,6 +11,7 @@ import Locksmith
 struct User: ReadableSecureStorable, CreateableSecureStorable, DeleteableSecureStorable, GenericPasswordSecureStorable {
     let username: String
     let password: String
+    let authToken: String
     
     // Required by GenericPasswordSecureStorable
     let service = "JamJar"
@@ -18,6 +19,7 @@ struct User: ReadableSecureStorable, CreateableSecureStorable, DeleteableSecureS
     
     // Required by CreateableSecureStorable
     var data: [String: AnyObject] {
-        return ["password": password]
+        return ["password" : password,
+            "authToken" : authToken]
     }
 }

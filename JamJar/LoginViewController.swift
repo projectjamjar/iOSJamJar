@@ -70,23 +70,28 @@ class LoginViewController: UIViewController{
                 "http://api.projectjamjar.com/auth/login/",
                 parameters: parameters,
                 encoding: .JSON).response{request, response, data, error in
-                    print(response)
-                    //let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+                    let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                     //print(loginData)
-            }
-            
-            let user = User(username: username!, password: password!)
-            do {
-                try user.createInSecureStore()
-                let prefs = NSUserDefaults.standardUserDefaults()
-                prefs.setValue(username, forKey: "username")
-                prefs.synchronize()
-                
-                //performs the segue to the home screen
-                self.performSegueWithIdentifier("goto_home", sender: self)
-            } catch {
-                //TODO: implement code for actual error
-                print("There was an error")
+                    
+                    // TODO: error message if login fails
+                    
+                    if let userData = loginData as? NSDictionary{
+                        if let token = userData["token"] as? NSDictionary{
+                            let user = User(username: username!, password: password!, authToken: token["key"] as! String)
+                            do {
+                                try user.createInSecureStore()
+                                let prefs = NSUserDefaults.standardUserDefaults()
+                                prefs.setValue(username, forKey: "username")
+                                prefs.synchronize()
+                                
+                                //performs the segue to the home screen
+                                self.performSegueWithIdentifier("goto_home", sender: self)
+                            } catch {
+                                //TODO: implement code for actual error
+                                print("There was an error")
+                            }
+                        }
+                    }
             }
         }
     }

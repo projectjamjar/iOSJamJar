@@ -39,7 +39,7 @@ class HomeViewController: UIViewController{
     
     @IBAction func logoutButtonPressed(sender: UIButton) {
         let prefs = NSUserDefaults.standardUserDefaults()
-        let user = User(username: prefs.stringForKey("username")!, password: "")
+        let user = User(username: prefs.stringForKey("username")!, password: "", authToken: "")
         
         do {
             try user.deleteFromSecureStore()
