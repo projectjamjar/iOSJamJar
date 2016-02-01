@@ -73,8 +73,6 @@ class LoginViewController: UIViewController{
                     let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                     //print(loginData)
                     
-                    // TODO: error message if login fails
-                    
                     if let userData = loginData as? NSDictionary{
                         if let token = userData["token"] as? NSDictionary{
                             let user = User(username: username!, password: password!, authToken: token["key"] as! String)
@@ -90,6 +88,14 @@ class LoginViewController: UIViewController{
                                 //TODO: implement code for actual error
                                 print("There was an error")
                             }
+                        }
+                        else if let loginError = userData["error"] as? NSDictionary{
+                            print(loginError)
+                            
+                            //TODO: Give a different error message based on response
+                            let alert = UIAlertController(title: "Login Failed", message: "Username or Password was incorrect", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
                         }
                     }
             }
