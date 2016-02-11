@@ -14,7 +14,9 @@
 		AA0526A71C470F4D00894DC7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A61C470F4D00894DC7 /* HomeViewController.swift */; };
 		AA0526A91C47187600894DC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A81C47187600894DC7 /* User.swift */; };
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
+		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */; };
+		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
 		AAEB3E681BE0478900601B14 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */; };
 		AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E691BE0478900601B14 /* Main.storyboard */; };
@@ -39,7 +41,9 @@
 		AA0F20521C5190720099665E /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
 		AA0F20531C5190720099665E /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
+		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEB3E651BE0478900601B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 		AA0526A51C46F7D200894DC7 /* LoginControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAEB3E691BE0478900601B14 /* Main.storyboard */,
 				AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */,
 				AA05269D1C46EE9500894DC7 /* LoginViewController.swift */,
 				AA0526A11C46F65500894DC7 /* SignUpViewController.swift */,
@@ -93,6 +98,31 @@
 				AA0F20531C5190720099665E /* Muli-Regular.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		AA6DE9601C6D084E007A64B7 /* SearchControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA6DE9611C6D086E007A64B7 /* Search.storyboard */,
+			);
+			name = SearchControllers;
+			sourceTree = "<group>";
+		};
+		AA6DE9631C6D0B68007A64B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA0526A81C47187600894DC7 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AABBF92A1C6D057F00EB3EC4 /* DiscoverControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA0526A61C470F4D00894DC7 /* HomeViewController.swift */,
+				AABBF9281C6D057800EB3EC4 /* Discover.storyboard */,
+			);
+			name = DiscoverControllers;
 			sourceTree = "<group>";
 		};
 		AAEB3E591BE0478900601B14 = {
@@ -117,15 +147,15 @@
 			isa = PBXGroup;
 			children = (
 				AA0F204C1C51905C0099665E /* Fonts */,
+				AABBF92A1C6D057F00EB3EC4 /* DiscoverControllers */,
 				AA0526A51C46F7D200894DC7 /* LoginControllers */,
+				AA6DE9631C6D0B68007A64B7 /* Models */,
+				AA6DE9601C6D084E007A64B7 /* SearchControllers */,
 				AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
-				AA0526A61C470F4D00894DC7 /* HomeViewController.swift */,
-				AA0526A81C47187600894DC7 /* User.swift */,
 				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 				AAEB3E771BE0694000601B14 /* VideoListViewController.swift */,
 				AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */,
-				AAEB3E691BE0478900601B14 /* Main.storyboard */,
 				AAEB3E6C1BE0478900601B14 /* Assets.xcassets */,
 				AAEB3E6E1BE0478900601B14 /* LaunchScreen.storyboard */,
 				AAEB3E711BE0478900601B14 /* Info.plist */,
@@ -205,8 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEB3E701BE0478900601B14 /* LaunchScreen.storyboard in Resources */,
+				AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */,
 				AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */,
 				AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */,
+				AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
