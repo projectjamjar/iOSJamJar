@@ -6,11 +6,10 @@
 //  Copyright © 2016 JamJar. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import Locksmith
 
-class LoginViewController: UIViewController{
+class LoginViewController: BaseViewController{
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -18,10 +17,6 @@ class LoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,17 +35,6 @@ class LoginViewController: UIViewController{
             //performs the segue to the home screen
             self.performSegueWithIdentifier("goto_home", sender: self)
         }
-    }
-    
-    //Calls this function when the tap is recognized.
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
     }
     
     @IBAction func signInButtonPressed(sender: UIButton) {
