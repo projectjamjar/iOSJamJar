@@ -6,8 +6,7 @@
 //  Copyright © 2016 JamJar. All rights reserved.
 //
 
-import Alamofire
-import Locksmith
+import UIKit
 
 class LoginViewController: BaseViewController{
     
@@ -38,28 +37,24 @@ class LoginViewController: BaseViewController{
     }
     
     @IBAction func signInButtonPressed(sender: UIButton) {
-        let username = usernameTextField.text
-        let password = passwordTextField.text
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
         
-        if !(username?.characters.count < 1 || password?.characters.count < 1) {
+        if !(username.characters.count < 1 || password.characters.count < 1) {
             
-            UserService.login(username!, password: password!).response{request, response, data, error in
+            UserService.login(username, password: password).response{request, response, data, error in
                     let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                     
                     if let userData = loginData as? NSDictionary{
                         if let token = userData["token"] as? NSDictionary{
-                            let user = User(username: username!, password: password!, authToken: token["key"] as! String)
-                            do {
-                                try user.createInSecureStore()
-                                let prefs = NSUserDefaults.standardUserDefaults()
-                                prefs.setValue(username, forKey: "username")
-                                prefs.synchronize()
-                                
+                            if(UserService.saveUserInfo(username, password: password, token: token["key"] as! String)) {
                                 //performs the segue to the home screen
                                 self.performSegueWithIdentifier("goto_home", sender: self)
-                            } catch {
-                                //TODO: implement code for actual error
-                                print("There was an error")
+                            } else {
+                                //API is not working, warn the user
+                                let alert = UIAlertController(title: "Server Error", message: "The server is down at the moment", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                                self.presentViewController(alert, animated: true, completion: nil)
                             }
                         }
                         else if let loginError = userData["error"] as? NSDictionary{

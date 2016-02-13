@@ -11,6 +11,7 @@ import Locksmith
 
 class UserService: APIService {
     
+    //Log the user in with the provided username and password
     static func login(username: String, password: String) -> Request {
         print("Logging In...")
         
@@ -20,6 +21,34 @@ class UserService: APIService {
         ]
         
         return self.post(self.buildURL("auth/login/"),parameters: parameters)
+    }
+    
+    //check if the user is already logged in
+    static func isUserLoggedIn() -> Bool {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let username = prefs.stringForKey("username")
+        
+        if username == nil {
+            return true
+        }
+        
+        return false
+    }
+    
+    static func saveUserInfo(username: String, password: String, token: String) -> Bool {
+        do {
+            let user = User(username: username, password: password, authToken: token)
+            try user.createInSecureStore()
+            let prefs = NSUserDefaults.standardUserDefaults()
+            prefs.setValue(username, forKey: "username")
+            prefs.synchronize()
+            
+            //username successfully stored, return true
+            return true
+        } catch {
+            //something went wrong, return false
+            return false
+        }
     }
     
     static func logout() -> Bool {
