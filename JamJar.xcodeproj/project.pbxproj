@@ -120,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				AA0526A81C47187600894DC7 /* User.swift */,
+				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -181,7 +182,6 @@
 				AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
 				AA6DE96E1C6FAFFB007A64B7 /* BaseViewController.swift */,
-				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 				AAEB3E771BE0694000601B14 /* VideoListViewController.swift */,
 				AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */,
 				AAEB3E6C1BE0478900601B14 /* Assets.xcassets */,

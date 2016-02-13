@@ -6,9 +6,21 @@
 //  Copyright © 2016 JamJar. All rights reserved.
 //
 
+import Alamofire
 import Locksmith
 
 class UserService: APIService {
+    
+    static func login(username: String, password: String) -> Request {
+        print("Logging In...")
+        
+        let parameters = [
+            "username": username,
+            "password" : password
+        ]
+        
+        return self.post(self.buildURL("auth/login/"),parameters: parameters)
+    }
     
     static func logout() -> Bool {
         let prefs = NSUserDefaults.standardUserDefaults()

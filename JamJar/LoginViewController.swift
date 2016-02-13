@@ -42,20 +42,9 @@ class LoginViewController: BaseViewController{
         let password = passwordTextField.text
         
         if !(username?.characters.count < 1 || password?.characters.count < 1) {
-            print("Logging In...")
             
-            let parameters = [
-                "username": username!,
-                "password" : password!
-            ]
-            
-            Alamofire.request(
-                .POST,
-                "http://api.projectjamjar.com/auth/login/",
-                parameters: parameters,
-                encoding: .JSON).response{request, response, data, error in
+            UserService.login(username!, password: password!).response{request, response, data, error in
                     let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-                    //print(loginData)
                     
                     if let userData = loginData as? NSDictionary{
                         if let token = userData["token"] as? NSDictionary{
@@ -82,6 +71,7 @@ class LoginViewController: BaseViewController{
                             self.presentViewController(alert, animated: true, completion: nil)
                         }
                     }
+
             }
         }
     }

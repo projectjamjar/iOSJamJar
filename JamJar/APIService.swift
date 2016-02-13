@@ -33,6 +33,7 @@ class APIService {
     }
     */
     
+    //TODO: set Token be automatic?
     static func setToken(token: String) {
         self.token = token
     }
