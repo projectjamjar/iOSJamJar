@@ -11,10 +11,13 @@
 		AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05269D1C46EE9500894DC7 /* LoginViewController.swift */; };
 		AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A11C46F65500894DC7 /* SignUpViewController.swift */; };
 		AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */; };
-		AA0526A71C470F4D00894DC7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A61C470F4D00894DC7 /* HomeViewController.swift */; };
 		AA0526A91C47187600894DC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A81C47187600894DC7 /* User.swift */; };
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
+		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
+		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
+		AA6DE96B1C6FAB5D007A64B7 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */; };
+		AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE96C1C6FADF9007A64B7 /* SettingsViewController.swift */; };
 		AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */; };
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
@@ -31,7 +34,6 @@
 		AA05269D1C46EE9500894DC7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AA0526A11C46F65500894DC7 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
-		AA0526A61C470F4D00894DC7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AA0526A81C47187600894DC7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
@@ -42,6 +44,10 @@
 		AA0F20531C5190720099665E /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		AA6DE96C1C6FADF9007A64B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,12 +106,12 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		AA6DE9601C6D084E007A64B7 /* SearchControllers */ = {
+		AA6DE9601C6D084E007A64B7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				AA6DE9611C6D086E007A64B7 /* Search.storyboard */,
 			);
-			name = SearchControllers;
+			name = Search;
 			sourceTree = "<group>";
 		};
 		AA6DE9631C6D0B68007A64B7 /* Models */ = {
@@ -116,13 +122,30 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		AABBF92A1C6D057F00EB3EC4 /* DiscoverControllers */ = {
+		AA6DE9641C6D0DA7007A64B7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AA0526A61C470F4D00894DC7 /* HomeViewController.swift */,
+				AA6DE9651C6FA09C007A64B7 /* APIService.swift */,
+				AA6DE9671C6FA34C007A64B7 /* UserService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		AA6DE9691C6FAAF6007A64B7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */,
+				AA6DE96C1C6FADF9007A64B7 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		AABBF92A1C6D057F00EB3EC4 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
 				AABBF9281C6D057800EB3EC4 /* Discover.storyboard */,
 			);
-			name = DiscoverControllers;
+			name = Discover;
 			sourceTree = "<group>";
 		};
 		AAEB3E591BE0478900601B14 = {
@@ -147,10 +170,12 @@
 			isa = PBXGroup;
 			children = (
 				AA0F204C1C51905C0099665E /* Fonts */,
-				AABBF92A1C6D057F00EB3EC4 /* DiscoverControllers */,
+				AABBF92A1C6D057F00EB3EC4 /* Discover */,
 				AA0526A51C46F7D200894DC7 /* LoginControllers */,
 				AA6DE9631C6D0B68007A64B7 /* Models */,
-				AA6DE9601C6D084E007A64B7 /* SearchControllers */,
+				AA6DE9601C6D084E007A64B7 /* Search */,
+				AA6DE9641C6D0DA7007A64B7 /* Services */,
+				AA6DE9691C6FAAF6007A64B7 /* Settings */,
 				AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
 				AA558CCF1BE1D94000D591A8 /* Video.swift */,
@@ -237,6 +262,7 @@
 				AAEB3E701BE0478900601B14 /* LaunchScreen.storyboard in Resources */,
 				AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */,
 				AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */,
+				AA6DE96B1C6FAB5D007A64B7 /* Settings.storyboard in Resources */,
 				AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */,
 				AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */,
 			);
@@ -301,10 +327,12 @@
 				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
 				AAEB3E681BE0478900601B14 /* VideoPlayerViewController.swift in Sources */,
 				AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */,
+				AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
-				AA0526A71C470F4D00894DC7 /* HomeViewController.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
+				AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */,
 				AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */,
+				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
 				AAEB3E781BE0694000601B14 /* VideoListViewController.swift in Sources */,
 			);
