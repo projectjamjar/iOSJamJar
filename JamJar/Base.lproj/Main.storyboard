@@ -235,7 +235,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkn-fE-Jh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-237.5" y="-613"/>
+            <point key="canvasLocation" x="-237.5" y="-283"/>
         </scene>
         <!--Search-->
         <scene sceneID="a6r-p3-x8o">
@@ -245,7 +245,27 @@
                     <tabBarItem key="tabBarItem" title="Item" id="jKp-Po-JuH"/>
                 </viewControllerPlaceholder>
             </objects>
-            <point key="canvasLocation" x="-232.5" y="-495"/>
+            <point key="canvasLocation" x="-242.5" y="-517"/>
+        </scene>
+        <!--UploadVideo-->
+        <scene sceneID="UXi-1Y-D3b">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UploadVideo" id="PYT-Ex-VsU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="KRw-Rf-OyR"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IF7-v3-O1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-225" y="-390"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="ILZ-s3-62n">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="qN3-sE-ffy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mlF-vK-fWh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKq-Lc-U4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-244" y="-192"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Tqd-Fs-ZHT">
@@ -255,7 +275,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQt-Ze-doF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-238.5" y="-39"/>
+            <point key="canvasLocation" x="-238.5" y="-81"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JWN-Xt-Fg0">
@@ -266,10 +286,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="ZLc-ov-2BV" kind="relationship" relationship="viewControllers" id="MKd-b3-83n"/>
                         <segue destination="RQt-u5-KKk" kind="relationship" relationship="viewControllers" id="2a2-4y-0W6"/>
-                        <segue destination="0mm-t8-QbF" kind="relationship" relationship="viewControllers" id="gdr-bX-uxJ"/>
+                        <segue destination="PYT-Ex-VsU" kind="relationship" relationship="viewControllers" id="6Jw-eM-E5K"/>
+                        <segue destination="ZLc-ov-2BV" kind="relationship" relationship="viewControllers" id="gXQ-OO-uQz"/>
+                        <segue destination="qN3-sE-ffy" kind="relationship" relationship="viewControllers" id="mCl-BC-7Iy"/>
+                        <segue destination="0mm-t8-QbF" kind="relationship" relationship="viewControllers" id="D8w-u6-VcF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wA-4g-0zr" userLabel="First Responder" sceneMemberID="firstResponder"/>

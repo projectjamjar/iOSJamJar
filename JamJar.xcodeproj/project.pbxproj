@@ -19,6 +19,8 @@
 		AA6DE96B1C6FAB5D007A64B7 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */; };
 		AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE96C1C6FADF9007A64B7 /* SettingsViewController.swift */; };
 		AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE96E1C6FAFFB007A64B7 /* BaseViewController.swift */; };
+		AA6DE9731C6FD1C4007A64B7 /* UploadVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9721C6FD1C4007A64B7 /* UploadVideo.storyboard */; };
+		AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */; };
 		AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */; };
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
@@ -50,6 +52,8 @@
 		AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AA6DE96C1C6FADF9007A64B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA6DE96E1C6FAFFB007A64B7 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AA6DE9721C6FD1C4007A64B7 /* UploadVideo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadVideo.storyboard; sourceTree = "<group>"; };
+		AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,22 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		AA6DE9701C6FD17B007A64B7 /* UploadVideo */ = {
+			isa = PBXGroup;
+			children = (
+				AA6DE9721C6FD1C4007A64B7 /* UploadVideo.storyboard */,
+			);
+			name = UploadVideo;
+			sourceTree = "<group>";
+		};
+		AA6DE9711C6FD1A5007A64B7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		AABBF92A1C6D057F00EB3EC4 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +192,8 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
+				AA6DE9711C6FD1A5007A64B7 /* Profile */,
+				AA6DE9701C6FD17B007A64B7 /* UploadVideo */,
 				AA0F204C1C51905C0099665E /* Fonts */,
 				AABBF92A1C6D057F00EB3EC4 /* Discover */,
 				AA0526A51C46F7D200894DC7 /* Login */,
@@ -263,6 +285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEB3E701BE0478900601B14 /* LaunchScreen.storyboard in Resources */,
+				AA6DE9731C6FD1C4007A64B7 /* UploadVideo.storyboard in Resources */,
+				AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */,
 				AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */,
 				AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */,
 				AA6DE96B1C6FAB5D007A64B7 /* Settings.storyboard in Resources */,
