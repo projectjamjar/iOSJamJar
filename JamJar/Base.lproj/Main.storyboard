@@ -240,10 +240,10 @@
         <!--Search-->
         <scene sceneID="a6r-p3-x8o">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="75u-sT-DqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Search" id="RQt-u5-KKk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="jKp-Po-JuH"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75u-sT-DqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-242.5" y="-517"/>
         </scene>
