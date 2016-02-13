@@ -281,10 +281,11 @@
         <scene sceneID="JWN-Xt-Fg0">
             <objects>
                 <tabBarController id="LDm-U9-tAL" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="uOM-vm-R7A">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="uOM-vm-R7A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </tabBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
