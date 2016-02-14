@@ -29,10 +29,16 @@ class UserService: APIService {
         let username = prefs.stringForKey("username")
         
         if username == nil {
-            return true
+            return false
         }
         
-        return false
+        //user is logged in, make sure auth token is recorded properly
+        let user = currentUser()
+        let data = user.readFromSecureStore()?.data
+        let token = data!["authToken"] as! String
+        self.setToken(token)
+        
+        return true
     }
     
     static func saveUserInfo(username: String, password: String, token: String) -> Bool {
@@ -42,6 +48,9 @@ class UserService: APIService {
             let prefs = NSUserDefaults.standardUserDefaults()
             prefs.setValue(username, forKey: "username")
             prefs.synchronize()
+            
+            //Save token in Service
+            self.setToken(token)
             
             //username successfully stored, return true
             return true
@@ -59,6 +68,8 @@ class UserService: APIService {
             try user.deleteFromSecureStore()
             prefs.removeObjectForKey("username")
             prefs.synchronize()
+            //reset token
+            self.setToken("")
             return true
         } catch {
             //TODO: implement code for actual error
@@ -70,9 +81,6 @@ class UserService: APIService {
     static func currentUser() -> User {
         let prefs = NSUserDefaults.standardUserDefaults()
         let user = User(username: prefs.stringForKey("username")!, password: "", authToken: "")
-        
-        user.readFromSecureStore()
-        print(user);
         
         return user;
     }

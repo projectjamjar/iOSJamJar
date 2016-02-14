@@ -27,10 +27,7 @@ class LoginViewController: BaseViewController{
         super.viewDidAppear(true)
         
         //Checks if the user has saved login information
-        let prefs = NSUserDefaults.standardUserDefaults()
-        let username = prefs.stringForKey("username")
-        
-        if username != nil {
+        if UserService.isUserLoggedIn() {
             //performs the segue to the home screen
             self.performSegueWithIdentifier("goto_home", sender: self)
         }

@@ -10,7 +10,7 @@ import Locksmith
 
 struct User: ReadableSecureStorable, CreateableSecureStorable, DeleteableSecureStorable, GenericPasswordSecureStorable {
     let username: String
-    let password: String
+    var password: String
     let authToken: String
     
     // Required by GenericPasswordSecureStorable
