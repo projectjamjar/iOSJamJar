@@ -16,31 +16,48 @@ class UploadVideoViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //Define attributes for artistsTextField
+        //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.onTextChange = {[weak self] text in
             // your code goes here
-            print(self?.artistsTextField.text);
-            APIService.get(APIService.buildURL("artists/search/" + (self?.artistsTextField.text)!)).response{request, response, data, error in
-                
-                let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-                
-                //Variable to store results
-                //TODO: Store more than names and have the results display names
-                var artistResults = [String]()
-                
-                //print(artistsData)
-                
-                if let artists = artistsData as? NSArray{
-                    for artist in artists {
-                        print(artist["name"])
-                        artistResults.append(artist["name"] as! String)
-                    }
-                    //print(artists[0])
-                    //print("artists worked")
-                    self?.artistsTextField.autoCompleteStrings = artistResults
+            if(!text.isEmpty) {
+                self!.artistsTextFieldChange(text)
+            } else {
+                self!.artistsTextField.autoCompleteStrings = nil
+            }
+        }
+        artistsTextField.onSelect = {[weak self] text, indexpath in
+            // your code goes here
+            print("selection made")
+            print(text)
+            print(indexpath)
+        }
+    }
+    
+    //artistsTextFieldChange takes the input string and updates the search results
+    //TODO: FIX BUG: Crashes if a space " " is in the search string
+    private func artistsTextFieldChange(inputString: String) {
+        //print(inputString);
+        APIService.get(APIService.buildURL("artists/search/" + inputString)).response{request, response, data, error in
+            
+            let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            
+            //Variable to store results
+            //TODO: Store more than names and have the results display names
+            var artistResults = [String]()
+            
+            //print(artistsData)
+            
+            if let artists = artistsData as? NSArray{
+                for artist in artists {
+                    //print(artist["name"])
+                    artistResults.append(artist["name"] as! String)
                 }
-                else {
-                    self?.artistsTextField.autoCompleteStrings = nil
-                }
+                //print(artists[0])
+                //print("artists worked")
+                self.artistsTextField.autoCompleteStrings = artistResults
+            } else {
+                self.artistsTextField.autoCompleteStrings = nil
             }
         }
     }

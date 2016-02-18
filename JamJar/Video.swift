@@ -10,9 +10,9 @@ import Foundation
 
 class Video {
     
-    var id : Int!;
-    var name : String!;
-    var hls_src: String!;
+    var id : Int!
+    var name : String!
+    var hls_src: String!
     //private var src : String!;
     
     init?(id: Int, name: String, hls_src: String) {
