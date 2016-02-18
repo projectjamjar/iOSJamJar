@@ -5,6 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Muli-Italic.ttf">
+            <string>Muli-Italic</string>
+        </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
             <string>Muli</string>
             <string>Muli</string>
@@ -40,6 +43,11 @@
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="2Aw-ky-xow"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artists" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-K6-4yb" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="101" width="335" height="30"/>
+                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -50,6 +58,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="artistsTextField" destination="Zml-K6-4yb" id="vvJ-E3-d1Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrb-5m-Hzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,7 @@
 		AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A11C46F65500894DC7 /* SignUpViewController.swift */; };
 		AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A31C46F7A300894DC7 /* ForgetPasswordViewController.swift */; };
 		AA0526A91C47187600894DC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0526A81C47187600894DC7 /* User.swift */; };
+		AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */; };
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
@@ -47,6 +48,7 @@
 		AA0F20511C5190720099665E /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
 		AA0F20521C5190720099665E /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
 		AA0F20531C5190720099665E /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
+		AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 				AA0F20531C5190720099665E /* Muli-Regular.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		AA130FFA1C7641B600851AD4 /* AutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */,
+			);
+			path = AutoCompleteTextField;
 			sourceTree = "<group>";
 		};
 		AA6DE9601C6D084E007A64B7 /* Search */ = {
@@ -198,6 +208,7 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
+				AA130FFA1C7641B600851AD4 /* AutoCompleteTextField */,
 				AA6DE9711C6FD1A5007A64B7 /* Profile */,
 				AA6DE9701C6FD17B007A64B7 /* UploadVideo */,
 				AA0F204C1C51905C0099665E /* Fonts */,
@@ -357,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */,
+				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,
 				AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */,
 				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
