@@ -10,7 +10,9 @@ import UIKit
 
 class UploadVideoViewController: BaseViewController {
     
+    var selectedArtists = [Artist]()
     @IBOutlet var artistsTextField: AutoCompleteTextField!
+    @IBOutlet var venueTextField: AutoCompleteTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,8 @@ class UploadVideoViewController: BaseViewController {
         //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.onTextChange = {[weak self] text in
             // your code goes here
+            //reset the stored autoCompleteAttributes
+            self!.artistsTextField.autoCompleteAttributes?.removeAll()
             if(!text.isEmpty) {
                 self!.artistsTextFieldChange(text)
             } else {
@@ -28,9 +32,8 @@ class UploadVideoViewController: BaseViewController {
         }
         artistsTextField.onSelect = {[weak self] text, indexpath in
             // your code goes here
-            print("selection made")
-            print(text)
-            print(indexpath)
+            let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
+            self!.selectedArtists.append(selectedArtist)
         }
     }
     
@@ -43,7 +46,7 @@ class UploadVideoViewController: BaseViewController {
             let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
             
             //Variable to store results
-            //TODO: Store more than names and have the results display names
+            //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
             var artistResults = [String]()
             
             //print(artistsData)
@@ -52,9 +55,12 @@ class UploadVideoViewController: BaseViewController {
                 for artist in artists {
                     //print(artist["name"])
                     artistResults.append(artist["name"] as! String)
+                    //artistResults[artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+                    self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
                 }
                 //print(artists[0])
                 //print("artists worked")
+                
                 self.artistsTextField.autoCompleteStrings = artistResults
             } else {
                 self.artistsTextField.autoCompleteStrings = nil
