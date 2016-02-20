@@ -14,10 +14,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Upload - Find or Create Concert-->
+        <!--Upload - Set Concert Information-->
         <scene sceneID="Ll3-9V-Uog">
             <objects>
-                <viewController id="730-y5-e2R" customClass="UploadVideoViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="730-y5-e2R" customClass="EnterConcertInformationViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CXZ-KU-8ax"/>
                         <viewControllerLayoutGuide type="bottom" id="UP7-am-aUb"/>
@@ -65,19 +65,38 @@
                     <tabBarItem key="tabBarItem" title="Upload" image="jamjar_logo_transparent_40x40" id="9FU-dB-tuk">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Upload - Find or Create Concert" id="Kvx-cR-8vi"/>
+                    <navigationItem key="navigationItem" title="Upload - Set Concert Information" id="Kvx-cR-8vi"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="artistsTextField" destination="Zml-K6-4yb" id="vvJ-E3-d1Y"/>
+                        <outlet property="artistsTextField" destination="Zml-K6-4yb" id="pHK-SR-ZlY"/>
                         <outlet property="concertDatePicker" destination="aPi-wc-OH9" id="M96-l4-pVX"/>
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
+                        <segue destination="XPg-sG-R38" kind="show" identifier="uploadVideo" id="i8K-kX-BIB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrb-5m-Hzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="191.5" y="-297.5"/>
+        </scene>
+        <!--Upload Video View Controller-->
+        <scene sceneID="CxU-Gt-hz8">
+            <objects>
+                <viewController id="XPg-sG-R38" customClass="UploadVideoViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZBT-VG-3Wz"/>
+                        <viewControllerLayoutGuide type="bottom" id="o0A-Eg-1cd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="okr-e8-1IL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tpk-MR-0VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697.5" y="-297.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qhu-tv-HTB">

@@ -1,5 +1,5 @@
 //
-//  UploadVideoController.swift
+//  EnterConcertInformationViewController.swift
 //  JamJar
 //
 //  Created by Ethan Riback on 2/13/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UploadVideoViewController: BaseViewController {
+class EnterConcertInformationViewController: BaseViewController {
     
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
@@ -94,7 +94,7 @@ class UploadVideoViewController: BaseViewController {
             //Variable to store results
             //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
             var venueResults = [String]()
-        
+            
             if let status = venueData["status"] as? String {
                 if status == "OK" {
                     if let predictions = venueData["predictions"] as? NSArray {
@@ -112,11 +112,11 @@ class UploadVideoViewController: BaseViewController {
             }
             /*
             if let venue = venueData as? NSArray{
-                artistResults.append(artist["name"] as! String)
-                self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
-                self.artistsTextField.autoCompleteStrings = artistResults
+            artistResults.append(artist["name"] as! String)
+            self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+            self.artistsTextField.autoCompleteStrings = artistResults
             } else {
-                self.artistsTextField.autoCompleteStrings = nil
+            self.artistsTextField.autoCompleteStrings = nil
             }
             */
         }
@@ -125,19 +125,12 @@ class UploadVideoViewController: BaseViewController {
     @IBAction func continueButtonPressed(sender: UIButton) {
         print("Pick video to upload");
         
-        //Testing Stuff
-        APIService.get(APIService.buildURL("concerts/")).response{request, response, data, error in
-            
-            let concertData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            
-            print("Request")
-            print(request)
-            print("Response")
-            print(response)
-            print("Data")
-            print(concertData)
-            print("Error")
-            print(error)
+        performSegueWithIdentifier("uploadVideo", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "uploadVideo") {
+            print("Videos will be uploaded, pass information")
         }
     }
 }
