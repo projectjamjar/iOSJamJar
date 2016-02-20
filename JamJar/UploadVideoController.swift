@@ -13,11 +13,13 @@ class UploadVideoViewController: BaseViewController {
     var selectedArtists = [Artist]()
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
+    @IBOutlet var concertDatePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //TODO: Create method to set up UI Attributes
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.onTextChange = {[weak self] text in
@@ -35,6 +37,8 @@ class UploadVideoViewController: BaseViewController {
             let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
             self!.selectedArtists.append(selectedArtist)
         }
+        
+        concertDatePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
     }
     
     //artistsTextFieldChange takes the input string and updates the search results

@@ -54,7 +54,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-wc-OH9">
-                                <rect key="frame" x="0.0" y="177" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="344" width="375" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="477542065.02807403">
                                     <!--2016-02-19 02:34:25 +0000-->
                                 </date>
@@ -71,6 +71,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="artistsTextField" destination="Zml-K6-4yb" id="vvJ-E3-d1Y"/>
+                        <outlet property="concertDatePicker" destination="aPi-wc-OH9" id="M96-l4-pVX"/>
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
                     </connections>
                 </viewController>
