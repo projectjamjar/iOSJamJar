@@ -11,6 +11,7 @@ import UIKit
 class UploadVideoViewController: BaseViewController {
     
     var selectedArtists = [Artist]()
+    var selectedVenue: Venue!
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var concertDatePicker: UIDatePicker!
@@ -38,6 +39,7 @@ class UploadVideoViewController: BaseViewController {
         
         venueTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
+            self!.selectedVenue = nil
             self!.venueTextField.autoCompleteAttributes?.removeAll()
             if(!text.isEmpty) {
                 self!.venueTextFieldChange(text)
@@ -46,9 +48,7 @@ class UploadVideoViewController: BaseViewController {
             }
         }
         venueTextField.onSelect = {[weak self] text, indexpath in
-            print("Selected: " + text)
-            //let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
-            //self!.selectedArtists.append(selectedArtist)
+            self!.selectedVenue = self!.venueTextField.autoCompleteAttributes![text] as! Venue
         }
         
         concertDatePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
@@ -100,7 +100,7 @@ class UploadVideoViewController: BaseViewController {
                     if let predictions = venueData["predictions"] as? NSArray {
                         for location in predictions as! [NSDictionary]{
                             venueResults.append(location["description"] as! String)
-                            self.venueTextField.autoCompleteAttributes![location["description"] as! String] = location["place_id"]
+                            self.venueTextField.autoCompleteAttributes![location["description"] as! String] = Venue(place_id: location["place_id"] as! String, description: location["description"] as! String)
                             self.venueTextField.autoCompleteStrings = venueResults
                         }
                     }

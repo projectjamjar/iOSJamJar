@@ -21,8 +21,4 @@ class Artist {
         self.id = id
         self.name = name
     }
-    
-    func toString() -> String {
-        return "test"
-    }
 }
