@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+import MobileCoreServices
 
-class EnterConcertInformationViewController: BaseViewController {
+class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
+    var videoToUpload: [String:AnyObject]?
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var concertDatePicker: UIDatePicker!
@@ -110,27 +114,51 @@ class EnterConcertInformationViewController: BaseViewController {
             } else {
                 self.venueTextField.autoCompleteStrings = nil
             }
-            /*
-            if let venue = venueData as? NSArray{
-            artistResults.append(artist["name"] as! String)
-            self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
-            self.artistsTextField.autoCompleteStrings = artistResults
-            } else {
-            self.artistsTextField.autoCompleteStrings = nil
-            }
-            */
         }
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
         print("Pick video to upload");
+        if(self.selectedVenue == nil || self.selectedArtists.isEmpty) {
+            let alert = UIAlertController(title: "Incomplete Fields", message: "Please select artists and a venue", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            let videoPicker = UIImagePickerController()
+            videoPicker.delegate = self
+            videoPicker.allowsEditing = false
+            videoPicker.sourceType = .PhotoLibrary
+            videoPicker.mediaTypes = [kUTTypeMovie as String]
+            
+            presentViewController(videoPicker, animated: true, completion: nil)
+            
+            //performSegueWithIdentifier("uploadVideo", sender: nil)
+        }
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        print("Picked Video")
+        self.videoToUpload = info
         
         performSegueWithIdentifier("uploadVideo", sender: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "uploadVideo") {
             print("Videos will be uploaded, pass information")
+            
+            let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
+            
+            uploadVideoViewController.selectedVenue = self.selectedVenue
+            uploadVideoViewController.selectedArtists = self.selectedArtists
+            uploadVideoViewController.videoToUpload = self.videoToUpload
         }
     }
 }
