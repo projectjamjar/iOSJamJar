@@ -15,18 +15,27 @@ class UploadVideoViewController: BaseViewController{
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
     var videoToUpload: [String:AnyObject]?
+    @IBOutlet var videoNameTextField: UITextField!
+    @IBOutlet var publicPrivateSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        print(selectedVenue.description)
+        //print(selectedVenue.description)
         //print(self.videoToUpload)
+        
+        //removes the white background from the corners to make the UI look better
+        self.publicPrivateSegmentedControl.layer.cornerRadius = 5.0;
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func uploadVideos(sender: UIButton) {
+        print("Upload the Videos!")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
