@@ -6,6 +6,7 @@ pod 'Alamofire', '~> 3.0'
 pod 'Locksmith'
 pod 'GoogleMaps'
 pod 'SCLAlertView'
+pod 'ObjectMapper'
 
 workspace 'JamJar'
 

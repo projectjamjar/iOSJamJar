@@ -35,11 +35,21 @@ class SignUpViewController: BaseViewController{
     
     @IBAction func signUpButtonPressed(sender: UIButton) {
         let username = usernameTextField.text!
+        let email = emailTextField.text!
+        let firstName = firstNameTextField.text!
+        let lastName = lastNameTextField.text!
         let password = passwordTextField.text!
+        let confirm = confirmTextField.text!
         
-        //Make sure that both the email and password field are filled in
-        if(username == "" || password == "") {
-            SCLAlertView().showError("Unable to log in", subTitle: "Username and Password are required", closeButtonTitle: "Got it")
+        //Make sure that all fields are filled in
+        if([username, email, firstName,lastName,password,confirm].contains("")) {
+            SCLAlertView().showError("Unable to sign up", subTitle: "All fields are required", closeButtonTitle: "Got it")
+            return
+        }
+        
+        //Make sure that password and confirm match
+        if( password != confirm) {
+            SCLAlertView().showError("Unable to sign up", subTitle: "Passwords do not match", closeButtonTitle: "Got it")
             return
         }
         
