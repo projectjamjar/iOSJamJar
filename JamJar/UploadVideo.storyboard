@@ -5,10 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Muli-Italic.ttf">
-            <string>Muli-Italic</string>
-        </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
+            <string>Muli</string>
+            <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
@@ -45,9 +44,10 @@
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="2Aw-ky-xow"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artists" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-K6-4yb" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="20" y="101" width="335" height="30"/>
-                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Artists" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-K6-4yb" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="101" width="335" height="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-wc-OH9">
@@ -56,15 +56,16 @@
                                     <!--2016-02-19 02:34:25 +0000-->
                                 </date>
                             </datePicker>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Venue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="20" y="306" width="335" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="149" width="335" height="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upload" image="jamjar_logo_transparent_40x40" id="9FU-dB-tuk">
+                    <tabBarItem key="tabBarItem" title="Upload" id="9FU-dB-tuk">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Upload - Set Concert Information" id="Kvx-cR-8vi"/>
@@ -173,7 +174,4 @@
             <point key="canvasLocation" x="-322.5" y="-297.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="jamjar_logo_transparent_40x40" width="40" height="40"/>
-    </resources>
 </document>

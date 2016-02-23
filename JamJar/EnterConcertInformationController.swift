@@ -27,6 +27,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //TODO: Create method to set up UI Attributes
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
+        artistsTextField.attributedPlaceholder = NSAttributedString(string:"Artists",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         artistsTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.artistsTextField.autoCompleteAttributes?.removeAll()
@@ -41,6 +43,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             self!.selectedArtists.append(selectedArtist)
         }
         
+        //Define attributes for venueTextField
+        venueTextField.attributedPlaceholder = NSAttributedString(string:"Venue",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         venueTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.selectedVenue = nil

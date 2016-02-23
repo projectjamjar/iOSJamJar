@@ -125,11 +125,12 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		AA130FFA1C7641B600851AD4 /* AutoCompleteTextField */ = {
+		AA130FFA1C7641B600851AD4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */,
 			);
+			name = Views;
 			path = AutoCompleteTextField;
 			sourceTree = "<group>";
 		};
@@ -218,7 +219,7 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
-				AA130FFA1C7641B600851AD4 /* AutoCompleteTextField */,
+				AA130FFA1C7641B600851AD4 /* Views */,
 				AA6DE9711C6FD1A5007A64B7 /* Profile */,
 				AA6DE9701C6FD17B007A64B7 /* UploadVideo */,
 				AA0F204C1C51905C0099665E /* Fonts */,
