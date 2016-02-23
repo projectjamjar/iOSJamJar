@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableViewDelegate{
+public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, UITableViewDelegate{
     /// Manages the instance of tableview
     private var autoCompleteTableView:UITableView?
     /// Holds the collection of attributed strings
@@ -166,10 +166,6 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
         autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
         self.clearButtonMode = .Always
         self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
-        let startY = self.frame.height - 2
-        let lineView = UIView(frame: CGRectMake(0,startY,self.frame.width,2.0))
-        lineView.backgroundColor = UIColor.whiteColor()
-        self.addSubview(lineView)
     }
     
     private func setupAutocompleteTable(view:UIView){

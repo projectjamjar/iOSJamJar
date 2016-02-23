@@ -12,6 +12,7 @@
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
+            <string>Muli</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -50,17 +51,20 @@
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-wc-OH9">
-                                <rect key="frame" x="0.0" y="344" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="477542065.02807403">
-                                    <!--2016-02-19 02:34:25 +0000-->
-                                </date>
-                            </datePicker>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
                                 <rect key="frame" x="20" y="149" width="335" height="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-QC-TMv" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="197" width="335" height="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="dateTextFieldClicked:" destination="730-y5-e2R" eventType="editingDidEnd" id="FQ7-Xw-R2e"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -74,7 +78,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="artistsTextField" destination="Zml-K6-4yb" id="pHK-SR-ZlY"/>
-                        <outlet property="concertDatePicker" destination="aPi-wc-OH9" id="M96-l4-pVX"/>
+                        <outlet property="dateTextField" destination="YoL-QC-TMv" id="DHU-IB-K5U"/>
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
                         <segue destination="XPg-sG-R38" kind="show" identifier="uploadVideo" id="i8K-kX-BIB"/>
                     </connections>

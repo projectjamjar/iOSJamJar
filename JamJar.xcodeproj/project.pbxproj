@@ -28,6 +28,7 @@
 		AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */; };
 		AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */; };
 		AAA010F31BE863D800A6C0D9 /* AddEditNewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */; };
+		AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */; };
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
 		AAEB3E681BE0478900601B14 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E671BE0478900601B14 /* VideoPlayerViewController.swift */; };
@@ -68,6 +69,7 @@
 		AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AAA010F21BE863D800A6C0D9 /* AddEditNewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditNewVideoViewController.swift; sourceTree = "<group>"; };
+		AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEB3E651BE0478900601B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */,
+				AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */,
 			);
 			name = Views;
 			path = AutoCompleteTextField;
@@ -393,6 +396,7 @@
 				AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */,
 				AA1310051C78F86500851AD4 /* Venue.swift in Sources */,
 				AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */,
+				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,

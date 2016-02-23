@@ -18,7 +18,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     var videoToUpload: [String:AnyObject]?
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
-    @IBOutlet var concertDatePicker: UIDatePicker!
+    @IBOutlet var dateTextField: UnderlinedTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             self!.selectedVenue = self!.venueTextField.autoCompleteAttributes![text] as! Venue
         }
         
-        concertDatePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
+        //Define attributes for dateTextField
+        dateTextField.attributedPlaceholder = NSAttributedString(string:"Date",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
@@ -120,6 +122,10 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 self.venueTextField.autoCompleteStrings = nil
             }
         }
+    }
+    
+    @IBAction func dateTextFieldClicked(sender: UITextField) {
+        print("Bring up Date Picker Subview");
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
