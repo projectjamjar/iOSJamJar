@@ -135,13 +135,6 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRo-k9-czz">
-                                <rect key="frame" x="157" y="372" width="62" height="31"/>
-                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
-                                <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-text-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="MIk-dn-c95">
                                 <rect key="frame" x="38" y="30" width="300" height="110"/>
                                 <constraints>
@@ -173,9 +166,9 @@
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
-                                <rect key="frame" x="114" y="460" width="147" height="37"/>
+                                <rect key="frame" x="114" y="462" width="147" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="UZj-Pu-hDm"/>
+                                    <constraint firstAttribute="height" constant="35" id="UZj-Pu-hDm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                 <state key="normal" title="FORGET PASSWORD?">
@@ -185,24 +178,37 @@
                                     <segue destination="4gd-Ev-FMy" kind="presentation" id="fbV-9k-bGL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvs-Jz-0YU">
+                                <rect key="frame" x="156" y="377" width="62" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="zrw-nj-SQJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
+                                <state key="normal" title="SIGN UP">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="h6W-ge-p0t" kind="presentation" id="mRT-h1-sg1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="SrF-YR-D8r" secondAttribute="trailing" constant="30" id="6oS-UR-hOE"/>
                             <constraint firstItem="SrF-YR-D8r" firstAttribute="centerX" secondItem="eM4-vx-DLT" secondAttribute="centerX" id="7nN-ft-qMU"/>
                             <constraint firstItem="SrF-YR-D8r" firstAttribute="top" secondItem="eM4-vx-DLT" secondAttribute="bottom" constant="50" id="ERA-4q-hns"/>
+                            <constraint firstItem="2FV-4X-2Y5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vvs-Jz-0YU" secondAttribute="bottom" constant="25" id="Fju-5X-oWp"/>
                             <constraint firstItem="UTS-u5-sPt" firstAttribute="top" secondItem="nvc-17-fxx" secondAttribute="bottom" constant="20" id="Knx-pk-f78"/>
                             <constraint firstItem="nvc-17-fxx" firstAttribute="top" secondItem="2FV-4X-2Y5" secondAttribute="bottom" id="Kvm-3v-xHK"/>
-                            <constraint firstItem="2FV-4X-2Y5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DRo-k9-czz" secondAttribute="bottom" constant="25" id="MKz-dj-NJB"/>
+                            <constraint firstItem="Vvs-Jz-0YU" firstAttribute="centerX" secondItem="SrF-YR-D8r" secondAttribute="centerX" id="NYZ-nx-tGE"/>
                             <constraint firstItem="eM4-vx-DLT" firstAttribute="centerX" secondItem="MIk-dn-c95" secondAttribute="centerX" id="Pgh-nt-i8X"/>
                             <constraint firstItem="nvc-17-fxx" firstAttribute="centerX" secondItem="2FV-4X-2Y5" secondAttribute="centerX" id="QxB-6l-zfI"/>
                             <constraint firstAttribute="bottom" secondItem="XEj-Ue-QGd" secondAttribute="bottom" id="USg-5o-NDk"/>
+                            <constraint firstItem="Vvs-Jz-0YU" firstAttribute="top" secondItem="SrF-YR-D8r" secondAttribute="bottom" constant="25" id="VSR-n2-QEC"/>
                             <constraint firstItem="MIk-dn-c95" firstAttribute="centerX" secondItem="qzy-ck-Rso" secondAttribute="centerX" id="XCp-kk-lpa"/>
                             <constraint firstItem="nvc-17-fxx" firstAttribute="centerX" secondItem="qzy-ck-Rso" secondAttribute="centerX" id="aML-iI-lTV"/>
                             <constraint firstItem="XEj-Ue-QGd" firstAttribute="top" secondItem="qzy-ck-Rso" secondAttribute="top" id="alN-cZ-19J"/>
                             <constraint firstAttribute="trailing" secondItem="XEj-Ue-QGd" secondAttribute="trailing" id="ap2-R3-MLN"/>
-                            <constraint firstItem="DRo-k9-czz" firstAttribute="centerX" secondItem="SrF-YR-D8r" secondAttribute="centerX" id="fdj-uf-uQm"/>
-                            <constraint firstItem="DRo-k9-czz" firstAttribute="top" secondItem="SrF-YR-D8r" secondAttribute="bottom" constant="20" id="fhC-dY-7t4"/>
                             <constraint firstItem="SrF-YR-D8r" firstAttribute="leading" secondItem="qzy-ck-Rso" secondAttribute="leadingMargin" constant="30" id="gGC-qn-egB"/>
                             <constraint firstItem="MIk-dn-c95" firstAttribute="top" secondItem="9zm-Ue-ZRJ" secondAttribute="bottom" constant="10" id="kQv-dw-WeZ"/>
                             <constraint firstItem="eM4-vx-DLT" firstAttribute="top" secondItem="MIk-dn-c95" secondAttribute="bottom" constant="10" id="xOg-WQ-OtE"/>
@@ -216,7 +222,6 @@
                         <outlet property="passwordTextField" destination="VX1-m7-fWq" id="mqY-Wo-YYt"/>
                         <outlet property="usernameTextField" destination="gNP-Vy-AtA" id="0Vm-Wb-NSj"/>
                         <segue destination="LDm-U9-tAL" kind="showDetail" identifier="goto_home" action="showViewController:sender:" id="h5X-a3-L9T"/>
-                        <segue destination="h6W-ge-p0t" kind="showDetail" id="6Ai-tU-HsA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEw-yJ-b6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,10 +321,34 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oSY-mt-7SU">
-                                <rect key="frame" x="46" y="191" width="283" height="319"/>
+                                <rect key="frame" x="46" y="191" width="283" height="272"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yy2-en-fpk">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pm-yn-F0m">
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FIRST NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-NZ-iWb">
+                                                <rect key="frame" x="0.0" y="0.0" width="142" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="37" id="Xbj-lA-5un"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LAST NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-RI-jDO">
+                                                <rect key="frame" x="142" y="0.0" width="141" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="37" id="shT-hd-TKU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cUH-RI-jDO" firstAttribute="width" secondItem="9zy-NZ-iWb" secondAttribute="width" id="eie-M5-6s7"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yy2-en-fpk">
+                                        <rect key="frame" x="0.0" y="47" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="8oC-tw-HrG"/>
                                         </constraints>
@@ -327,31 +356,15 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oxm-7p-IgR">
-                                        <rect key="frame" x="0.0" y="47" width="283" height="37"/>
+                                        <rect key="frame" x="0.0" y="94" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Hkq-ig-Txs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FIRST NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-NZ-iWb">
-                                        <rect key="frame" x="0.0" y="94" width="283" height="37"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="Xbj-lA-5un"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LAST NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-RI-jDO">
-                                        <rect key="frame" x="0.0" y="141" width="283" height="37"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="shT-hd-TKU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
-                                    </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-l1-QoS">
-                                        <rect key="frame" x="0.0" y="188" width="283" height="37"/>
+                                        <rect key="frame" x="0.0" y="141" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Rqa-VV-G3S"/>
                                         </constraints>
@@ -359,7 +372,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CONFIRM PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yp1-Ah-Hwp">
-                                        <rect key="frame" x="0.0" y="235" width="283" height="37"/>
+                                        <rect key="frame" x="0.0" y="188" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Btv-Qc-TgJ"/>
                                         </constraints>
@@ -367,7 +380,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npO-xH-KDj">
-                                        <rect key="frame" x="0.0" y="282" width="283" height="37"/>
+                                        <rect key="frame" x="0.0" y="235" width="283" height="37"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s8-lj-AmB">
                                                 <rect key="frame" x="15" y="0.0" width="253" height="37"/>
@@ -378,7 +391,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="SIGN IN">
+                                                <state key="normal" title="SIGN UP">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -392,7 +405,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="signInButtonPressed:" destination="h6W-ge-p0t" eventType="touchUpInside" id="NuY-oN-vpX"/>
+                                                    <action selector="signUpButtonPressed:" destination="h6W-ge-p0t" eventType="touchUpInside" id="auq-Qm-b3q"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -407,11 +420,17 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMs-Mg-XYz">
-                                <rect key="frame" x="157" y="530" width="62" height="0.0"/>
+                                <rect key="frame" x="159" y="483" width="57" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="2Ik-lO-uFP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
-                                <state key="normal" title="SIGN UP">
+                                <state key="normal" title="SIGN IN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="returnToLoginButtonPressed:" destination="h6W-ge-p0t" eventType="touchUpInside" id="fR3-Ud-Dbe"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-text-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Rwv-Rq-3Kv">
                                 <rect key="frame" x="38" y="30" width="300" height="110"/>
@@ -429,7 +448,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="613-DE-ZPS">
-                                <rect key="frame" x="134" y="540" width="107" height="107"/>
+                                <rect key="frame" x="128" y="528" width="119" height="119"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="0of-kP-IL7"/>
                                     <constraint firstAttribute="height" constant="150" id="2d3-Uk-Dig"/>
@@ -469,13 +488,17 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="confirmTextField" destination="yp1-Ah-Hwp" id="433-LO-wJu"/>
+                        <outlet property="emailTextField" destination="yy2-en-fpk" id="F60-OR-VsY"/>
+                        <outlet property="firstNameTextField" destination="9zy-NZ-iWb" id="v6U-AA-omY"/>
+                        <outlet property="lastNameTextField" destination="cUH-RI-jDO" id="qIL-XG-QG7"/>
                         <outlet property="passwordTextField" destination="fmD-l1-QoS" id="txN-OO-KvO"/>
-                        <outlet property="usernameTextField" destination="yy2-en-fpk" id="iQ3-ds-4od"/>
+                        <outlet property="usernameTextField" destination="Oxm-7p-IgR" id="Tgz-qb-IWk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZX-Kv-ihM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1235.5" y="636.5"/>
+            <point key="canvasLocation" x="-1235.5" y="634.5"/>
         </scene>
     </scenes>
     <resources>

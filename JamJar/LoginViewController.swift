@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class LoginViewController: BaseViewController{
     
@@ -36,6 +37,12 @@ class LoginViewController: BaseViewController{
     @IBAction func signInButtonPressed(sender: UIButton) {
         let username = usernameTextField.text!
         let password = passwordTextField.text!
+        
+        //Make sure that both the email and password field are filled in
+        if(username == "" || password == "") {
+            SCLAlertView().showError("Unable to log in", subTitle: "Username and Password are required", closeButtonTitle: "Got it")
+            return
+        }
         
         if !(username.characters.count < 1 || password.characters.count < 1) {
             
