@@ -63,6 +63,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //Define attributes for dateTextField
         dateTextField.attributedPlaceholder = NSAttributedString(string:"Date",
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        let datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.addTarget(self, action: Selector("dataPickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        dateTextField.inputView = datePickerView
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
@@ -124,8 +129,14 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
     }
     
-    @IBAction func dateTextFieldClicked(sender: UITextField) {
-        print("Bring up Date Picker Subview");
+    func dataPickerChanged(sender:UIDatePicker) {
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        //dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        let strDate = dateFormatter.stringFromDate(sender.date)
+        dateTextField.text = strDate
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {

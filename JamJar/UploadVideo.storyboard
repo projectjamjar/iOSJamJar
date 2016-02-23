@@ -62,9 +62,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="dateTextFieldClicked:" destination="730-y5-e2R" eventType="editingDidEnd" id="FQ7-Xw-R2e"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
