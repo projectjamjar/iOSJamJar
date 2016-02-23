@@ -159,7 +159,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRo-k9-czz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRo-k9-czz">
                                 <rect key="frame" x="157" y="372" width="62" height="31"/>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
                                 <state key="normal" title="SIGN UP">
@@ -184,10 +184,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-17-fxx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-17-fxx">
                                 <rect key="frame" x="112" y="497" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="2g3-Rh-7cE"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="Fey-y3-Oh0"/>
                                     <constraint firstAttribute="width" secondItem="nvc-17-fxx" secondAttribute="height" multiplier="1:1" id="LiN-UA-dkA"/>
                                     <constraint firstAttribute="width" secondItem="nvc-17-fxx" secondAttribute="height" multiplier="1:1" id="v1z-Ma-3yQ"/>
                                 </constraints>
@@ -198,8 +199,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
-                                <rect key="frame" x="114" y="452" width="147" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
+                                <rect key="frame" x="114" y="460" width="147" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="UZj-Pu-hDm"/>
                                 </constraints>
