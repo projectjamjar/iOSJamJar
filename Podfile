@@ -4,6 +4,10 @@ use_frameworks!
 
 pod 'Alamofire', '~> 3.0'
 pod 'Locksmith'
+pod 'GoogleMaps'
+pod 'SCLAlertView'
+pod 'ObjectMapper'
+pod 'SwiftyJSON'
 
 workspace 'JamJar'
 

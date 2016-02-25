@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,14 +15,63 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="2o0-tX-bSy">
+                                <rect key="frame" x="112" y="229" width="150" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2o0-tX-bSy" secondAttribute="height" multiplier="211:377" id="5Kw-vg-563"/>
+                                    <constraint firstAttribute="width" secondItem="2o0-tX-bSy" secondAttribute="height" multiplier="1:1" id="B6L-cn-DQA"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="oPa-9B-m8T"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5Kw-vg-563"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-text-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="yO2-rQ-mO4">
+                                <rect key="frame" x="112" y="354" width="150" height="116"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="11C-YL-U43"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="2o0-tX-bSy" secondAttribute="bottom" id="5vR-kT-Yw1"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="7ww-Vl-HZg"/>
+                            <constraint firstAttribute="trailing" secondItem="2o0-tX-bSy" secondAttribute="trailing" id="CYA-Ef-vZs"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="DIZ-s9-SQb"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="top" secondItem="yO2-rQ-mO4" secondAttribute="bottom" id="GyW-qk-Vfh"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="70" id="WdA-C6-EIc"/>
+                            <constraint firstItem="yO2-rQ-mO4" firstAttribute="top" secondItem="2o0-tX-bSy" secondAttribute="bottom" constant="-25" id="aOl-dd-Iv0"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="trailing" secondItem="yO2-rQ-mO4" secondAttribute="trailing" id="d0R-3Z-vHp"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="kZA-Lh-ncW"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="leading" secondItem="yO2-rQ-mO4" secondAttribute="leading" id="qEp-mK-KSE"/>
+                            <constraint firstItem="2o0-tX-bSy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="zjV-co-eMJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7ww-Vl-HZg"/>
+                                <exclude reference="CYA-Ef-vZs"/>
+                                <exclude reference="GyW-qk-Vfh"/>
+                                <exclude reference="WdA-C6-EIc"/>
+                                <exclude reference="kZA-Lh-ncW"/>
+                                <exclude reference="zjV-co-eMJ"/>
+                                <exclude reference="5vR-kT-Yw1"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="350.5" y="386.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo-text-transparent" width="300" height="116"/>
+        <image name="logo-transparent" width="250" height="250"/>
+    </resources>
 </document>
