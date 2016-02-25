@@ -11,11 +11,11 @@ import AVKit
 import AVFoundation
 import MobileCoreServices
 
-class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, ELCImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
-    var videoToUpload: [String:AnyObject]?
+    var videosToUpload: [AnyObject]?
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
@@ -140,47 +140,47 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
-        print("Pick video to upload");
         if(self.selectedVenue == nil || self.selectedArtists.isEmpty) {
             let alert = UIAlertController(title: "Incomplete Fields", message: "Please select artists and a venue", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-            let videoPicker = UIImagePickerController()
-            videoPicker.delegate = self
-            videoPicker.allowsEditing = false
-            videoPicker.sourceType = .PhotoLibrary
-            videoPicker.mediaTypes = [kUTTypeMovie as String]
+            let videoPicker = ELCImagePickerController(imagePicker: ())
+            videoPicker.maximumImagesCount = 3
+            videoPicker.returnsOriginalImage = false; //Only return the fullScreenImage, not the fullResolutionImage
+            videoPicker.returnsImage = true; //Return UIimage if YES. If NO, only return asset location information
+            videoPicker.onOrder = true; //For multiple image selection, display and return selected order of images
+            videoPicker.mediaTypes = [kUTTypeMovie as String] //Makes sure that only videos can be selected
+            videoPicker.imagePickerDelegate = self
             
             presentViewController(videoPicker, animated: true, completion: nil)
-            
-            //performSegueWithIdentifier("uploadVideo", sender: nil)
         }
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        
-        print("Picked Video")
-        self.videoToUpload = info
-        
-        performSegueWithIdentifier("uploadVideo", sender: nil)
+    func elcImagePickerController(picker: ELCImagePickerController!, didFinishPickingMediaWithInfo info: [AnyObject]!) {
+        if(info.count > 0) {
+            print(info)
+            
+            self.videosToUpload = info
+            
+            picker.dismissViewControllerAnimated(true, completion: nil)
+            
+            performSegueWithIdentifier("uploadVideo", sender: nil)
+        }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func elcImagePickerControllerDidCancel(picker: ELCImagePickerController!) {
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "uploadVideo") {
-            print("Videos will be uploaded, pass information")
-            
             let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
             
             uploadVideoViewController.selectedVenue = self.selectedVenue
             uploadVideoViewController.selectedArtists = self.selectedArtists
-            uploadVideoViewController.videoToUpload = self.videoToUpload
+            uploadVideoViewController.videosToUpload = self.videosToUpload
         }
     }
 }

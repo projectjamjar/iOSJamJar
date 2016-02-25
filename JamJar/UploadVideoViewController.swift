@@ -14,7 +14,7 @@ class UploadVideoViewController: BaseViewController{
     
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
-    var videoToUpload: [String:AnyObject]?
+    var videosToUpload: [AnyObject]?
     @IBOutlet var videoNameTextField: UITextField!
     @IBOutlet var publicPrivateSegmentedControl: UISegmentedControl!
     
@@ -41,15 +41,15 @@ class UploadVideoViewController: BaseViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
             print("play video")
-            print(self.videoToUpload)
+            print(self.videosToUpload)
             let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
             
-            let videoPath = self.videoToUpload!["UIImagePickerControllerMediaURL"]
+            let videoPath = self.videosToUpload![0]["UIImagePickerControllerReferenceURL"]
             print(videoPath)
             //let videoURL = NSURL(fileURLWithPath: videoPath)
             //print(videoURL)
             
-            embeddedVideoViewController.player = AVPlayer(URL: self.videoToUpload!["UIImagePickerControllerMediaURL"] as! NSURL)
+            embeddedVideoViewController.player = AVPlayer(URL: videoPath as! NSURL)
         }
     }
 }
