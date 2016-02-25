@@ -88,6 +88,28 @@ class UserService: APIService {
         }
     }
     
+    //Log the user in with the provided username and password
+    static func forgot(email: String, completion: (success: Bool, error: String?) -> Void) {
+        let url = self.buildURL("auth/reset/")
+        let parameters = [
+            "email": email
+        ]
+        
+        self.post(url, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, error: errorString)
+                return
+            case .Success:
+                // We got a success response code, reset was successful
+                completion(success: true, error: nil)
+                return
+            }
+        }
+    }
+    
     static func logout() {
         UserService.currentUser(nil)
         do {
