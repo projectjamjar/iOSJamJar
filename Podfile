@@ -7,6 +7,7 @@ pod 'Locksmith'
 pod 'GoogleMaps'
 pod 'SCLAlertView'
 pod 'ObjectMapper'
+pod 'SwiftyJSON'
 
 workspace 'JamJar'
 

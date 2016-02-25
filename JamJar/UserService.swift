@@ -9,8 +9,19 @@
 import Alamofire
 import Locksmith
 import ObjectMapper
+import SwiftyJSON
 
 class UserService: APIService {
+    
+    static private var user: User?
+    
+    static func currentUser() -> User? {
+        return user
+    }
+    
+    static func currentUser(u: User?) {
+        user = u
+    }
     
     //Log the user in with the provided username and password
     static func login(username: String, password: String, completion: (success: Bool, result: String?) -> Void) {
@@ -38,70 +49,30 @@ class UserService: APIService {
                 // Get a User object from the json
                 let user = Mapper<User>().map(user_json.rawString())
                 
-                self.saveUserInfo(username, password: password, token: token)
+                // Set our data in Locksmith
+                AuthService.SetTokenAndUser(token, user: user!)
+                
+                // Now set our singletons with that data!
+                AuthService.AttemptAuth()
+                
+                completion(success: true, result: nil)
+                return
             }
         }
     }
     
-    //check if the user is already logged in
-    static func isUserLoggedIn() -> Bool {
-        let prefs = NSUserDefaults.standardUserDefaults()
-        let username = prefs.stringForKey("username")
-        
-        if username == nil {
-            return false
-        }
-        
-        //user is logged in, make sure auth token is recorded properly
-        let user = currentUser()
-        let data = user.readFromSecureStore()?.data
-        let token = data!["authToken"] as! String
-        self.setToken(token)
-        
-        return true
-    }
-    
-    static func saveUserInfo(username: String, password: String, token: String) -> Bool {
+    static func logout() {
+        UserService.currentUser(nil)
         do {
-            let user = User(username: username, password: password, authToken: token)
-            try user.createInSecureStore()
-            let prefs = NSUserDefaults.standardUserDefaults()
-            prefs.setValue(username, forKey: "username")
-            prefs.synchronize()
-            
-            //Save token in Service
-            self.setToken(token)
-            
-            //username successfully stored, return true
-            return true
-        } catch {
-            //something went wrong, return false
-            return false
+            try Locksmith.deleteDataForUserAccount(AuthService.userAccount)
         }
+        catch _ {
+            print("Couldn't delete user data")
+        }
+        
+        // Set up the login storyboard again
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.setupLoginStoryboard()
     }
     
-    static func logout() -> Bool {
-        let prefs = NSUserDefaults.standardUserDefaults()
-        let user = User(username: prefs.stringForKey("username")!, password: "", authToken: "")
-        
-        do {
-            try user.deleteFromSecureStore()
-            prefs.removeObjectForKey("username")
-            prefs.synchronize()
-            //reset token
-            self.setToken("")
-            return true
-        } catch {
-            //TODO: implement code for actual error
-            print("There was an error when trying to delete user information")
-            return false
-        }
-    }
-    
-    static func currentUser() -> User {
-        let prefs = NSUserDefaults.standardUserDefaults()
-        let user = User(username: prefs.stringForKey("username")!, password: "", authToken: "")
-        
-        return user;
-    }
 }
