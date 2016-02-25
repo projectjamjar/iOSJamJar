@@ -64,7 +64,7 @@
         <!--Login View Controller-->
         <scene sceneID="h9q-uw-oM9">
             <objects>
-                <viewController id="GWw-DP-FAn" customClass="LoginViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="GWw-DP-FAn" customClass="LoginViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9zm-Ue-ZRJ"/>
                         <viewControllerLayoutGuide type="bottom" id="UTS-u5-sPt"/>
@@ -281,7 +281,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JWN-Xt-Fg0">
             <objects>
-                <tabBarController id="LDm-U9-tAL" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" id="LDm-U9-tAL" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="uOM-vm-R7A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

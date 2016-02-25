@@ -21,8 +21,7 @@ class SettingsViewController: BaseViewController{
     }
     
     @IBAction func logoutButtonPressed(sender: UIButton) {
-        if(UserService.logout()) {
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
+        UserService.logout()
+//        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
