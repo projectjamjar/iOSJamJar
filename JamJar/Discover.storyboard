@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
+        <!--View Controller-->
         <scene sceneID="BrV-CO-n5t">
             <objects>
                 <viewController id="FPi-De-S2M" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Discover" id="min-Cu-GGn"/>
+                    <tabBarItem key="tabBarItem" title="" image="navbtn_discover" selectedImage="navbtn_discover" id="min-Cu-GGn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -36,4 +36,7 @@
             <point key="canvasLocation" x="191.5" y="-297.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="navbtn_discover" width="22" height="22"/>
+    </resources>
 </document>

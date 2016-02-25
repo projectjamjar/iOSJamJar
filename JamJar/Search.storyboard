@@ -9,7 +9,7 @@
         <scene sceneID="Yoh-o7-ozu">
             <objects>
                 <navigationController id="gew-VL-NOo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="Avm-nG-aDB"/>
+                    <tabBarItem key="tabBarItem" image="navbtn_search" selectedImage="navbtn_search" id="Avm-nG-aDB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -79,4 +79,7 @@
             <point key="canvasLocation" x="-477.5" y="395.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="navbtn_search" width="22" height="22"/>
+    </resources>
 </document>

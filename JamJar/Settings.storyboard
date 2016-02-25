@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="b0O-b9-TsJ">
             <objects>
                 <viewController id="WSL-na-ydf" customClass="SettingsViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="oaS-8D-k1U"/>
+                    <tabBarItem key="tabBarItem" title="" image="navbtn_settings" selectedImage="navbtn_settings" id="oaS-8D-k1U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -43,4 +43,7 @@
             <point key="canvasLocation" x="-8.5" y="538.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="navbtn_settings" width="22" height="22"/>
+    </resources>
 </document>
