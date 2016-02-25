@@ -107,6 +107,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="videoNameTextFieldEdited:" destination="XPg-sG-R38" eventType="editingDidEnd" id="MUX-4A-GTc"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5">
                                 <rect key="frame" x="0.0" y="568" width="375" height="50"/>
@@ -117,7 +120,7 @@
                                 </state>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="Nnr-yr-Pae"/>
-                                    <action selector="uploadVideos:" destination="XPg-sG-R38" eventType="touchUpInside" id="2Aj-mc-cxh"/>
+                                    <action selector="finishAndUploadButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="11b-6k-bGX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">

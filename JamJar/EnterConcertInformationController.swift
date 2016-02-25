@@ -132,10 +132,12 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func dataPickerChanged(sender:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        //dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         //dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
         let strDate = dateFormatter.stringFromDate(sender.date)
+        
         dateTextField.text = strDate
     }
     

@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import Alamofire //TODO: remove this and have services working
 
 class UploadVideoViewController: BaseViewController{
     
@@ -49,8 +50,6 @@ class UploadVideoViewController: BaseViewController{
     }
     
     func changeVideo(newIndex: Int) {
-        print("Change Video")
-        
         //Update video
         let embeddedVideoViewController = self.childViewControllers[0] as! AVPlayerViewController
         let videoPath = self.videosToUpload![currentVideoSelected]["UIImagePickerControllerReferenceURL"]
@@ -79,12 +78,82 @@ class UploadVideoViewController: BaseViewController{
         changeVideo(currentVideoSelected)
     }
     
+    @IBAction func videoNameTextFieldEdited(sender: UnderlinedTextField) {
+        self.namesOfVideos[currentVideoSelected] = sender.text!
+    }
+    
     @IBAction func publicPrivateSelected(sender: UISegmentedControl) {
         self.publicPrivateStatusOfVideos[currentVideoSelected] = sender.selectedSegmentIndex
     }
     
-    @IBAction func uploadVideos(sender: UIButton) {
-        print("Upload the Videos!")
+    
+    @IBAction func finishAndUploadButtonPressed(sender: UIButton) {
+        // Post Concert
+        let concertParameters = [
+            "venue_place_id": self.selectedVenue.place_id,
+            "date": self.selectedDate
+        ]
+        
+        APIService.post(APIService.buildURL("concerts"),parameters: concertParameters).response{request, response, data, error in
+            
+            let concertData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            
+            if let concert = concertData as? NSDictionary{
+                if let concert_id = concert["id"] as? Int {
+                    self.uploadVideos(concert_id)
+                }
+            }
+        }
+        
+        print("finishAndUploadButtonPressed completed")
+    }
+    
+    func uploadVideos(concert_id: Int) {
+        print("Upload Videos!")
+        //begin for loop through videos
+        for index in 0...(self.videosToUpload?.count)! - 1 {
+            print(index)
+            
+            let parameters = [
+                "name": self.namesOfVideos[index],
+                //"is_private": (self.publicPrivateStatusOfVideos[index] == 1),
+                "concert": String(concert_id),
+                "artists": selectedArtists[0].id
+            ]
+            
+            /*
+            // Add all artists to upload parameter
+            for artist in selectedArtists {
+                parameters
+            }
+            */
+            
+            print(parameters)
+            
+            print(self.videosToUpload)
+            
+            Alamofire.upload(
+                .POST,
+                APIService.buildURL("videos"),
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(fileURL: self.videosToUpload![index]["UIImagePickerControllerReferenceURL"] as! NSURL, name: "file")
+                    
+                    for (key, value) in parameters {
+                        multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+                    }
+                },
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
+                            debugPrint(response)
+                        }
+                    case .Failure(let encodingError):
+                        print(encodingError)
+                    }
+                }
+            )
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -96,8 +165,6 @@ class UploadVideoViewController: BaseViewController{
             
             let videoPath = self.videosToUpload![currentVideoSelected]["UIImagePickerControllerReferenceURL"]
             print(videoPath)
-            //let videoURL = NSURL(fileURLWithPath: videoPath)
-            //print(videoURL)
             
             embeddedVideoViewController.player = AVPlayer(URL: videoPath as! NSURL)
         }
