@@ -24,13 +24,12 @@ class SignUpViewController: BaseViewController{
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func returnToLogin() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func returnToLoginButtonPressed(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.returnToLogin()
     }
     
     @IBAction func signUpButtonPressed(sender: UIButton) {
@@ -53,34 +52,23 @@ class SignUpViewController: BaseViewController{
             return
         }
         
-//        if !(username.characters.count < 1 || password.characters.count < 1) {
-//            
-//            UserService.login(username, password: password).response{request, response, data, error in
-//                let loginData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-//                
-//                if let userData = loginData as? NSDictionary{
-//                    if let token = userData["token"] as? NSDictionary{
-//                        if(UserService.saveUserInfo(username, password: password, token: token["key"] as! String)) {
-//                            //performs the segue to the home screen
-//                            self.performSegueWithIdentifier("goto_home", sender: self)
-//                        } else {
-//                            //API is not working, warn the user
-//                            let alert = UIAlertController(title: "Server Error", message: "The server is down at the moment", preferredStyle: UIAlertControllerStyle.Alert)
-//                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-//                            self.presentViewController(alert, animated: true, completion: nil)
-//                        }
-//                    }
-//                    else if let loginError = userData["error"] as? NSDictionary{
-//                        print(loginError)
-//                        
-//                        //TODO: Give a different error message based on response
-//                        let alert = UIAlertController(title: "Login Failed", message: "Username or Password was incorrect", preferredStyle: UIAlertControllerStyle.Alert)
-//                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-//                        self.presentViewController(alert, animated: true, completion: nil)
-//                    }
-//                }
-//                
-//            }
-//        }
+        UserService.signup(email, username: username, firstName: firstName, lastName: lastName, password: password, confirm: confirm) {
+            (success: Bool, error: String?) in
+            if !success {
+                // Error - show the user
+                let errorTitle = "Signup failed!"
+                if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+            }
+            else {
+                // Signup was successful, tell them to check their email
+                let alertView = SCLAlertView()
+                alertView.addButton("Got it!") {
+                    self.returnToLogin()
+                }
+                alertView.showCloseButton = false
+                alertView.showSuccess("Signup Successful!", subTitle: "An activation email has been sent to \(email).  Please activate your account in order to login.")
+            }
+        }
     }
 }
