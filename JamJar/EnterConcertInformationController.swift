@@ -140,8 +140,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
-        if(self.selectedVenue == nil || self.selectedArtists.isEmpty) {
-            let alert = UIAlertController(title: "Incomplete Fields", message: "Please select artists and a venue", preferredStyle: UIAlertControllerStyle.Alert)
+        if(self.selectedVenue == nil || self.selectedArtists.isEmpty || self.dateTextField.text == "") {
+            let alert = UIAlertController(title: "Incomplete Fields", message: "Please select artists, a venue, and a date", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
@@ -180,6 +180,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             
             uploadVideoViewController.selectedVenue = self.selectedVenue
             uploadVideoViewController.selectedArtists = self.selectedArtists
+            uploadVideoViewController.selectedDate = self.dateTextField.text
             uploadVideoViewController.videosToUpload = self.videosToUpload
         }
     }
