@@ -134,10 +134,15 @@ class UploadVideoViewController: BaseViewController{
                     let asset = asset as? AVURLAsset
                     print(asset?.URL)
                     let videoData = NSData(contentsOfURL: asset!.URL)
+                    let headers = [
+                        "Content-Type": "multipart/form-data",
+                        "Authorization": "Token \(AuthService.GetToken()!)"
+                    ]
                     
                     Alamofire.upload(
                         .POST,
                         APIService.buildURL("videos"),
+                        headers: headers,
                         multipartFormData: { multipartFormData in
                             multipartFormData.appendBodyPart(data: videoData!, name: "file")
                             //multipartFormData.appendBodyPart(fileURL: self.videosToUpload![index]["UIImagePickerControllerMediaURL"] as! NSURL, name: "file")
