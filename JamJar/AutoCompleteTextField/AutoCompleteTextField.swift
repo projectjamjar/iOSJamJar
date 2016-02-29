@@ -74,7 +74,9 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     public override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+        if let superView = newSuperview {
+            setupAutocompleteTable(superView)
+        }
     }
     
     public override func resignFirstResponder() -> Bool {
