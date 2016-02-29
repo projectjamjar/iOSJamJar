@@ -66,7 +66,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upload" image="navbtn_upload" selectedImage="navbtn_upload" id="9FU-dB-tuk"/>
+                    <tabBarItem key="tabBarItem" title="Upload" image="navbtn_upload" selectedImage="navbtn-upload" id="9FU-dB-tuk"/>
                     <navigationItem key="navigationItem" title="Upload - Set Concert Information" id="Kvx-cR-8vi"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -194,6 +194,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="navbtn-upload" width="22" height="22"/>
         <image name="navbtn_upload" width="22" height="22"/>
     </resources>
 </document>
