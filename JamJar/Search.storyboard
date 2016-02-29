@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-994" y="396"/>
         </scene>
-        <!--Search Under Construction-->
+        <!--Search-->
         <scene sceneID="CO7-k0-faw">
             <objects>
                 <tableViewController id="CIj-wk-FY0" customClass="SearchViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,11 +56,11 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="CIj-wk-FY0" id="jdD-R8-t3A"/>
-                            <outlet property="delegate" destination="CIj-wk-FY0" id="Ion-Wh-MF3"/>
+                            <outlet property="dataSource" destination="CIj-wk-FY0" id="byc-TV-GD2"/>
+                            <outlet property="delegate" destination="CIj-wk-FY0" id="rGt-Lo-Q1y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Under Construction" id="r38-zc-csW"/>
+                    <navigationItem key="navigationItem" title="Search" id="r38-zc-csW"/>
                     <connections>
                         <outlet property="searchBar" destination="MSF-KT-OjQ" id="YdI-Uw-vgD"/>
                         <outlet property="searchDisplayController" destination="BSA-P3-5Sc" id="0V5-MX-EYX"/>

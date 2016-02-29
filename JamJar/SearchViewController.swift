@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
+class SearchViewController: BaseTableViewController {
 
     // MARK: - Properties
     @IBOutlet var searchBar: UISearchBar!

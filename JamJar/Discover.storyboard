@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Muli-Light.ttf">
+            <string>Muli-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Discover-->
         <scene sceneID="BrV-CO-n5t">
@@ -17,14 +22,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover Under Construction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTP-p1-3C2">
-                                <rect key="frame" x="76" y="298" width="222" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There doesn't seem to be anything here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlT-qd-fAd">
+                                <rect key="frame" x="35" y="348" width="305" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTP-p1-3C2">
+                                <rect key="frame" x="167" y="251" width="40" height="87"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="70"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kTP-p1-3C2" firstAttribute="centerY" secondItem="wFd-Nb-O7R" secondAttribute="centerY" constant="-15" id="Ito-ur-vnO"/>
+                            <constraint firstItem="kTP-p1-3C2" firstAttribute="centerX" secondItem="wFd-Nb-O7R" secondAttribute="centerX" id="fI1-8W-oQQ"/>
+                            <constraint firstItem="IlT-qd-fAd" firstAttribute="top" secondItem="kTP-p1-3C2" secondAttribute="bottom" constant="10" id="uO4-rI-qj0"/>
+                            <constraint firstItem="IlT-qd-fAd" firstAttribute="centerX" secondItem="wFd-Nb-O7R" secondAttribute="centerX" id="yUm-Uu-zp4"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" image="navbtn_discover" selectedImage="navbtn_discover" id="min-Cu-GGn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
