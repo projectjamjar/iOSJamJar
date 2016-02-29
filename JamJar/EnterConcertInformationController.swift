@@ -27,8 +27,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //TODO: Create method to set up UI Attributes
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
-        artistsTextField.attributedPlaceholder = NSAttributedString(string:"Artists",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        artistsTextField.setColoredPlaceholder("Search Artists...")
         artistsTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.artistsTextField.autoCompleteAttributes?.removeAll()
@@ -44,8 +43,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
         
         //Define attributes for venueTextField
-        venueTextField.attributedPlaceholder = NSAttributedString(string:"Venue",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        venueTextField.setColoredPlaceholder("Search Venues...")
         venueTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.selectedVenue = nil
@@ -61,8 +59,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
         
         //Define attributes for dateTextField
-        dateTextField.attributedPlaceholder = NSAttributedString(string:"Date",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        dateTextField.setColoredPlaceholder("Enter Concert Date...")
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
@@ -132,7 +129,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func dataPickerChanged(sender:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "MMMM d, yyyy"
         //dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         //dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         

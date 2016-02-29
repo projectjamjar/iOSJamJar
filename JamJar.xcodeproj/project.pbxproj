@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
+		30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DE1C85091F00CD05F2 /* UITextField.swift */; };
 		30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */; };
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
 		AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05269D1C46EE9500894DC7 /* LoginViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
+		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		3BCCB9BF3B032F8AE04B9306 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FA380DFC6FFB8F40D408774 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,14 @@
 				AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		30AA73DD1C85090E00CD05F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30AA73DE1C85091F00CD05F2 /* UITextField.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		6A3A1807DF2B9AF8E2CBF4D2 /* Frameworks */ = {
@@ -306,6 +316,7 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
+				30AA73DD1C85090E00CD05F2 /* Extensions */,
 				30AA73DA1C84DFF100CD05F2 /* Storyboards */,
 				AA130FFA1C7641B600851AD4 /* Views */,
 				AA6DE9711C6FD1A5007A64B7 /* Profile */,
@@ -483,6 +494,7 @@
 				AA1037E41C7E76ED00DCB0B5 /* ELCImagePickerController.m in Sources */,
 				AA1037DF1C7E76ED00DCB0B5 /* ELCAlbumPickerController.m in Sources */,
 				AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */,
+				30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */,
 				AA1037E21C7E76ED00DCB0B5 /* ELCAssetTablePicker.m in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
