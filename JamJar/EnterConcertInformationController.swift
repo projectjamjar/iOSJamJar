@@ -84,18 +84,21 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.selectedArtists.append(artist)
         
         let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,30))
-        artistChip.setup()
-        let artistLabel = UILabel()
-        artistLabel.text = artist.name
-        artistLabel.sizeToFit()
-        artistChip.addSubview(artistLabel)
-        artistChip.heightAnchor.constraintEqualToConstant(30).active = true
-        
+        artistChip.setup(artist, deleteTarget: self, deleteAction: Selector("removeArtistTapped:"))
         self.artistsStackView.addArrangedSubview(artistChip)
     }
     
-    func removeArtist(artist: Artist) {
+    func removeArtistTapped(sender: UIButton) {
+        let artistChip = sender.superview as! ArtistChipView
+        let artist = artistChip.artist
+        self.artistsStackView.removeArrangedSubview(artistChip)
         
+        // Remove the artist from the selectedArtists list
+        // TODO: Change this to filter by spotify_id once we make the a
+        let artistIndex = self.selectedArtists.indexOf { $0.name == artist.name }
+        self.selectedArtists.removeAtIndex(artistIndex!)
+        
+         self.artistsStackView.removeArrangedSubview(artistChip)
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
