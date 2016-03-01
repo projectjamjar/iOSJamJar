@@ -35,9 +35,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK">
-                                <rect key="frame" x="0.0" y="0.0" width="94" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK">
+                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.37254901960784315" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Q8n-pW-Z29"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,7 +50,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Artists" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-K6-4yb" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="123" width="343" height="45"/>
+                                <rect key="frame" x="16" y="133" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="cJl-FK-yZ8"/>
                                 </constraints>
@@ -55,8 +58,14 @@
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q9p-dH-gZz">
+                                <rect key="frame" x="16" y="123" width="343" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Zid-c4-MEk"/>
+                                </constraints>
+                            </stackView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="188" width="343" height="45"/>
+                                <rect key="frame" x="16" y="198" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
                                 </constraints>
@@ -65,7 +74,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-QC-TMv" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="253" width="343" height="45"/>
+                                <rect key="frame" x="16" y="263" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="y3V-go-67E"/>
                                 </constraints>
@@ -76,11 +85,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gOg-pZ-ukK" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" id="0nC-hO-kIB"/>
+                            <constraint firstAttribute="trailing" secondItem="gOg-pZ-ukK" secondAttribute="trailing" id="1z7-Bp-M7d"/>
                             <constraint firstItem="v4F-fM-cij" firstAttribute="centerX" secondItem="nUF-Fg-yph" secondAttribute="centerX" id="2Dr-kx-BQT"/>
+                            <constraint firstItem="q9p-dH-gZz" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="4Wf-FU-jmm"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="5kn-6R-4ff"/>
+                            <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="q9p-dH-gZz" secondAttribute="bottom" constant="10" id="A70-4P-CHY"/>
+                            <constraint firstItem="UP7-am-aUb" firstAttribute="top" secondItem="gOg-pZ-ukK" secondAttribute="bottom" id="Bkr-6k-WGc"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="trailing" secondItem="nUF-Fg-yph" secondAttribute="trailingMargin" id="GDB-28-z3d"/>
+                            <constraint firstItem="q9p-dH-gZz" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="Gae-yo-j0v"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="Oee-9S-zIb"/>
                             <constraint firstItem="I66-hi-QZq" firstAttribute="top" secondItem="Zml-K6-4yb" secondAttribute="bottom" constant="20" id="gAp-xV-Zfv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q9p-dH-gZz" secondAttribute="trailing" id="gaT-Q6-tYw"/>
                             <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="I66-hi-QZq" secondAttribute="bottom" constant="20" id="gr7-c8-jhF"/>
                             <constraint firstItem="I66-hi-QZq" firstAttribute="trailing" secondItem="nUF-Fg-yph" secondAttribute="trailingMargin" id="j2I-Nr-Dh6"/>
                             <constraint firstItem="YoL-QC-TMv" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="j3r-Fq-Yr7"/>
@@ -88,6 +104,11 @@
                             <constraint firstItem="YoL-QC-TMv" firstAttribute="trailing" secondItem="nUF-Fg-yph" secondAttribute="trailingMargin" id="p3N-Wi-euu"/>
                             <constraint firstItem="v4F-fM-cij" firstAttribute="top" secondItem="CXZ-KU-8ax" secondAttribute="bottom" constant="15" id="zsQ-u4-oEQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5kn-6R-4ff"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="navbtn-upload" selectedImage="navbtn-upload" id="9FU-dB-tuk"/>
                     <navigationItem key="navigationItem" title="Upload Videos" id="Kvx-cR-8vi"/>
@@ -95,6 +116,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="artistStackViewHeightConstraint" destination="Zid-c4-MEk" id="e5f-Vf-PXv"/>
+                        <outlet property="artistsStackView" destination="q9p-dH-gZz" id="QvQ-qC-WWD"/>
                         <outlet property="artistsTextField" destination="Zml-K6-4yb" id="pHK-SR-ZlY"/>
                         <outlet property="dateTextField" destination="YoL-QC-TMv" id="DHU-IB-K5U"/>
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>

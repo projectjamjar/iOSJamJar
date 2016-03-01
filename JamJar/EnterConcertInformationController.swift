@@ -20,6 +20,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
     
+    @IBOutlet weak var artistsStackView: UIStackView!
+    @IBOutlet weak var artistStackViewHeightConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,7 +42,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
         artistsTextField.onSelect = {[weak self] text, indexpath in
             let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
-            self!.selectedArtists.append(selectedArtist)
+            
+            self!.addArtist(selectedArtist)
+            
+            self!.artistsTextField.text = nil
+            self!.artistsTextField.setColoredPlaceholder("Add Another Artist...")
         }
         
         //Define attributes for venueTextField
@@ -65,6 +72,30 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         datePickerView.datePickerMode = UIDatePickerMode.Date
         datePickerView.addTarget(self, action: Selector("dataPickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
+    }
+    
+    func addArtist(artist: Artist) {
+        // If this is the first artist we're adding, remove stackview constraint
+        if self.selectedArtists.count == 0 {
+            self.artistStackViewHeightConstraint.active = false
+        }
+        
+        // Add artist to the selected artist list
+        self.selectedArtists.append(artist)
+        
+        let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,30))
+        artistChip.setup()
+        let artistLabel = UILabel()
+        artistLabel.text = artist.name
+        artistLabel.sizeToFit()
+        artistChip.addSubview(artistLabel)
+        artistChip.heightAnchor.constraintEqualToConstant(30).active = true
+        
+        self.artistsStackView.addArrangedSubview(artistChip)
+    }
+    
+    func removeArtist(artist: Artist) {
+        
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
