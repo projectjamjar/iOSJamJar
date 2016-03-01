@@ -39,7 +39,7 @@ class ArtistChipView: UIView {
         // Add the artist name
         nameLabel.text = artist.name
         nameLabel.sizeToFit()
-        nameLabel.addSubview(nameLabel)
+        self.addSubview(nameLabel)
         
         // Add a "Delete" button
         let delete = UIButton(frame: CGRectMake(self.frame.width - 45, 5.0, 35, 35))

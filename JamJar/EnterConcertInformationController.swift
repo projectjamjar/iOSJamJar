@@ -98,30 +98,38 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         let artistIndex = self.selectedArtists.indexOf { $0.name == artist.name }
         self.selectedArtists.removeAtIndex(artistIndex!)
         
-         self.artistsStackView.removeArrangedSubview(artistChip)
+        self.artistsStackView.removeArrangedSubview(artistChip)
+        
+        if self.selectedArtists.count == 0 {
+            self.artistStackViewHeightConstraint.active = true
+        }
+        
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
     private func artistsTextFieldChange(inputString: String) {
         
         APIService.get(APIService.buildURL("artists/search/" + inputString)).response{request, response, data, error in
-            
-            let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            
-            //Variable to store results
-            //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
-            var artistResults = [String]()
-            
-            //print(artistsData)
-            
-            if let artists = artistsData as? NSArray{
-                for artist in artists {
-                    artistResults.append(artist["name"] as! String)
-                    self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+            do {
+                let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+                //Variable to store results
+                //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
+                var artistResults = [String]()
+                
+                //print(artistsData)
+                
+                if let artists = artistsData as? NSArray{
+                    for artist in artists {
+                        artistResults.append(artist["name"] as! String)
+                        self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+                    }
+                    self.artistsTextField.autoCompleteStrings = artistResults
+                } else {
+                    self.artistsTextField.autoCompleteStrings = nil
                 }
-                self.artistsTextField.autoCompleteStrings = artistResults
-            } else {
-                self.artistsTextField.autoCompleteStrings = nil
+            }
+            catch {
+                print("Unable to search artists!")
             }
         }
     }
