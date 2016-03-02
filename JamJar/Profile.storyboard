@@ -43,7 +43,7 @@
                             <constraint firstItem="doZ-P6-EQ5" firstAttribute="top" secondItem="7cH-RB-kLD" secondAttribute="bottom" constant="10" id="onb-Yp-8kw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="navbtn_profile" selectedImage="navbtn_profile" id="6YN-3f-KbF"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="navbtn-profile" selectedImage="navbtn-profile" id="6YN-3f-KbF"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -54,6 +54,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="navbtn_profile" width="22" height="22"/>
+        <image name="navbtn-profile" width="22" height="22"/>
     </resources>
 </document>

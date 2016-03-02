@@ -55,7 +55,7 @@
                             <constraint firstItem="rIn-Ok-O9S" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="w4R-U4-Wy0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="navbtn_settings" selectedImage="navbtn_settings" id="oaS-8D-k1U"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="navbtn-settings" selectedImage="navbtn-settings" id="oaS-8D-k1U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -67,6 +67,6 @@
     </scenes>
     <resources>
         <image name="menu-logout" width="216" height="216"/>
-        <image name="navbtn_settings" width="22" height="22"/>
+        <image name="navbtn-settings" width="22" height="22"/>
     </resources>
 </document>

@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="-238.5" y="-81"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Jam Jar Tab Bar Controller-->
         <scene sceneID="JWN-Xt-Fg0">
             <objects>
-                <tabBarController storyboardIdentifier="Home" id="LDm-U9-tAL" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" id="LDm-U9-tAL" customClass="JamJarTabBarController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="uOM-vm-R7A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

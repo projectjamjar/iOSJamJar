@@ -20,6 +20,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
     
+    @IBOutlet weak var artistsStackView: UIStackView!
+    @IBOutlet weak var artistStackViewHeightConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,8 +30,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //TODO: Create method to set up UI Attributes
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
-        artistsTextField.attributedPlaceholder = NSAttributedString(string:"Artists",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        artistsTextField.setColoredPlaceholder("Search Artists...")
         artistsTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.artistsTextField.autoCompleteAttributes?.removeAll()
@@ -40,12 +42,15 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
         artistsTextField.onSelect = {[weak self] text, indexpath in
             let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
-            self!.selectedArtists.append(selectedArtist)
+            
+            self!.addArtist(selectedArtist)
+            
+            self!.artistsTextField.text = nil
+            self!.artistsTextField.setColoredPlaceholder("Add Another Artist...")
         }
         
         //Define attributes for venueTextField
-        venueTextField.attributedPlaceholder = NSAttributedString(string:"Venue",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        venueTextField.setColoredPlaceholder("Search Venues...")
         venueTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.selectedVenue = nil
@@ -61,8 +66,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
         
         //Define attributes for dateTextField
-        dateTextField.attributedPlaceholder = NSAttributedString(string:"Date",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        dateTextField.setColoredPlaceholder("Enter Concert Date...")
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
@@ -70,27 +74,62 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         dateTextField.inputView = datePickerView
     }
     
+    func addArtist(artist: Artist) {
+        // If this is the first artist we're adding, remove stackview constraint
+        if self.selectedArtists.count == 0 {
+            self.artistStackViewHeightConstraint.active = false
+        }
+        
+        // Add artist to the selected artist list
+        self.selectedArtists.append(artist)
+        
+        let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,30))
+        artistChip.setup(artist, deleteTarget: self, deleteAction: Selector("removeArtistTapped:"))
+        self.artistsStackView.addArrangedSubview(artistChip)
+    }
+    
+    func removeArtistTapped(sender: UIButton) {
+        let artistChip = sender.superview as! ArtistChipView
+        let artist = artistChip.artist
+        self.artistsStackView.removeArrangedSubview(artistChip)
+        
+        // Remove the artist from the selectedArtists list
+        // TODO: Change this to filter by spotify_id once we make the a
+        let artistIndex = self.selectedArtists.indexOf { $0.name == artist.name }
+        self.selectedArtists.removeAtIndex(artistIndex!)
+        
+        self.artistsStackView.removeArrangedSubview(artistChip)
+        
+        if self.selectedArtists.count == 0 {
+            self.artistStackViewHeightConstraint.active = true
+        }
+        
+    }
+    
     //artistsTextFieldChange takes the input string and updates the search results
     private func artistsTextFieldChange(inputString: String) {
         
         APIService.get(APIService.buildURL("artists/search/" + inputString)).response{request, response, data, error in
-            
-            let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            
-            //Variable to store results
-            //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
-            var artistResults = [String]()
-            
-            //print(artistsData)
-            
-            if let artists = artistsData as? NSArray{
-                for artist in artists {
-                    artistResults.append(artist["name"] as! String)
-                    self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+            do {
+                let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+                //Variable to store results
+                //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
+                var artistResults = [String]()
+                
+                //print(artistsData)
+                
+                if let artists = artistsData as? NSArray{
+                    for artist in artists {
+                        artistResults.append(artist["name"] as! String)
+                        self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+                    }
+                    self.artistsTextField.autoCompleteStrings = artistResults
+                } else {
+                    self.artistsTextField.autoCompleteStrings = nil
                 }
-                self.artistsTextField.autoCompleteStrings = artistResults
-            } else {
-                self.artistsTextField.autoCompleteStrings = nil
+            }
+            catch {
+                print("Unable to search artists!")
             }
         }
     }
@@ -132,7 +171,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func dataPickerChanged(sender:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "MMMM d, yyyy"
         //dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         //dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
