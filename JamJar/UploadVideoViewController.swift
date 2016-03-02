@@ -133,7 +133,7 @@ class UploadVideoViewController: BaseViewController{
                 dispatch_async(dispatch_get_main_queue(), {
                     let asset = asset as? AVURLAsset
                     print(asset?.URL)
-                    let videoData = NSData(contentsOfURL: asset!.URL)
+                    //let videoData = NSData(contentsOfURL: asset!.URL)
                     let headers = [
                         "Content-Type": "multipart/form-data",
                         "Authorization": "Token \(AuthService.GetToken()!)"
@@ -144,8 +144,7 @@ class UploadVideoViewController: BaseViewController{
                         APIService.buildURL("videos"),
                         headers: headers,
                         multipartFormData: { multipartFormData in
-                            multipartFormData.appendBodyPart(data: videoData!, name: "file")
-                            //multipartFormData.appendBodyPart(fileURL: self.videosToUpload![index]["UIImagePickerControllerMediaURL"] as! NSURL, name: "file")
+                            multipartFormData.appendBodyPart(fileURL: asset!.URL, name: "file")
                             
                             for (key, value) in parameters {
                                 multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
@@ -166,57 +165,6 @@ class UploadVideoViewController: BaseViewController{
                     )
                 })
             })
-            
-            /*
-            // Add all artists to upload parameter
-            for artist in selectedArtists {
-                parameters
-            }
-            */
-            
-            /*
-            Alamofire.upload(
-                .POST,
-                APIService.buildURL("videos"),
-                multipartFormData: { multipartFormData in
-                    let videoData = NSData(contentsOfURL: self.videosToUpload![index]["UIImagePickerControllerMediaURL"] as! NSURL)
-                    let videoURL = self.videosToUpload![index]["UIImagePickerControllerReferenceURL"] as! NSURL
-                    
-                    let assets = PHAsset.fetchAssetsWithALAssetURLs([videoURL], options: nil)
-                    let firstAsset = assets.firstObject as! PHAsset
-                    print(firstAsset)
-                    PHCachingImageManager().requestAVAssetForVideo(firstAsset, options: nil, resultHandler: { (asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
-                        print("About to dispatch some muthafukkin shit!")
-                        dispatch_async(dispatch_get_main_queue(), {
-                            let asset = asset as? AVURLAsset
-                            print(asset?.URL)
-                            print("Butt")
-                            
-                        })
-                    })
-                    print("Test")
-                    
-                    multipartFormData.appendBodyPart(data: videoData!, name: "file")
-                    //multipartFormData.appendBodyPart(fileURL: self.videosToUpload![index]["UIImagePickerControllerMediaURL"] as! NSURL, name: "file")
-                    
-                    for (key, value) in parameters {
-                        multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
-                    }
-                },
-                encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .Success(let upload, _, _):
-                        upload.responseJSON { response in
-                            print("Sucess!")
-                            debugPrint(response)
-                        }
-                    case .Failure(let encodingError):
-                        print("Failure :(")
-                        print(encodingError)
-                    }
-                }
-            )
-            */
         }
     }
     
