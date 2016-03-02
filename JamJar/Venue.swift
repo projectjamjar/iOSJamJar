@@ -6,19 +6,28 @@
 //  Copyright © 2016 JamJar. All rights reserved.
 //
 
-import Foundation
+import ObjectMapper
 
-class Venue {
+class Venue: Mappable {
     
+    // Venue Attributes
+    // Note: Based off of Google Maps
     var description: String!
     var place_id: String!
     
-    init?(place_id: String) {
-        self.place_id = place_id
-    }
+    /**
+     The constructor required by ObjectMapper
+     */
+    required init?(_ map: Map) {}
     
-    init?(place_id: String, description: String) {
-        self.place_id = place_id
-        self.description = description
+    /**
+     The mapping function for ObjectMapper.  This function relates model
+     properties to fields in a JSON Response.
+     
+     - parameter map: The map of the JSON response
+     */
+    func mapping(map: Map) {
+        description <- map["description"]
+        place_id <- map["place_id"]
     }
 }

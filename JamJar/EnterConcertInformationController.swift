@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 import MobileCoreServices
+import ObjectMapper
 
 class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, ELCImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -116,12 +117,10 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
                 var artistResults = [String]()
                 
-                //print(artistsData)
-                
                 if let artists = artistsData as? NSArray{
                     for artist in artists {
                         artistResults.append(artist["name"] as! String)
-                        self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Artist(id: artist["id"] as! String, name: artist["name"] as! String)
+                        self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Mapper<Artist>().map(artist)
                     }
                     self.artistsTextField.autoCompleteStrings = artistResults
                 } else {
@@ -155,7 +154,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                     if let predictions = venueData["predictions"] as? NSArray {
                         for location in predictions as! [NSDictionary]{
                             venueResults.append(location["description"] as! String)
-                            self.venueTextField.autoCompleteAttributes![location["description"] as! String] = Venue(place_id: location["place_id"] as! String, description: location["description"] as! String)
+                            self.venueTextField.autoCompleteAttributes![location["description"] as! String] = Mapper<Venue>().map(location)
                             self.venueTextField.autoCompleteStrings = venueResults
                         }
                     }
@@ -171,10 +170,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func dataPickerChanged(sender:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.dateFormat = "MMMM d, yyyy"
-        //dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        //dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
         let strDate = dateFormatter.stringFromDate(sender.date)
         

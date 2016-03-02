@@ -8,38 +8,42 @@
 
 import ObjectMapper
 
-class Video {
+class Video: Mappable {
     
+    // Video Attributes
     var id : Int?
     var name : String!
     var hls_src: String!
-    //private var src : String!;
+    var concert: Int! // Should this be an Int or a Concert?
+    var is_private: Bool!
+    var length: Float!
+    var thumb_src: String!
+    var user: User!
+    var views: Int!
+    var artists: [Artist]!
     
-    init?(id: Int, name: String, hls_src: String) {
-        self.id = id
-        self.name = name
-        self.hls_src = hls_src
+    /**
+     The constructor required by ObjectMapper
+     */
+    required init?(_ map: Map) {}
+    
+    /**
+     The mapping function for ObjectMapper.  This function relates model
+     properties to fields in a JSON Response.
+     
+     - parameter map: The map of the JSON response
+     */
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        hls_src <- map["hls_src"]
+        concert <- map["concert"]
+        is_private <- map["is_private"]
+        length <- map["length"]
+        thumb_src <- map["thumb_src"]
+        user <- map["user"]
+        views <- map["views"]
+        artists <- map["artists"]
     }
-    
-//    /**
-//     The constructor required by ObjectMapper
-//     */
-//    required init?(_ map: Map) {}
-//    
-//    /**
-//     The mapping function for ObjectMapper.  This function relates model
-//     properties to fields in a JSON Response.
-//     
-//     - parameter map: The map of the JSON response
-//     */
-//    func mapping(map: Map) {
-//        id <- map["id"]
-//        email <- map["email"]
-//        firstName <- map["first_name"]
-//        lastName <- map["last_name"]
-//        fullName <- map["full_name"]
-//        photo <- map["photo"]
-//        title <- map["title"]
-//    }
     
 }
