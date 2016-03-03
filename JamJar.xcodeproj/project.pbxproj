@@ -28,6 +28,7 @@
 		AA1037E81C7E76ED00DCB0B5 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1037DC1C7E76ED00DCB0B5 /* ELCAssetTablePicker.xib */; };
 		AA1037E91C7E76ED00DCB0B5 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1037DD1C7E76ED00DCB0B5 /* Overlay.png */; };
 		AA1037EA1C7E76ED00DCB0B5 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1037DE1C7E76ED00DCB0B5 /* Overlay@2x.png */; };
+		AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1037ED1C87AC4E00DCB0B5 /* VenueService.swift */; };
 		AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */; };
 		AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA130FFD1C765B5100851AD4 /* Artist.swift */; };
 		AA1310051C78F86500851AD4 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1310041C78F86500851AD4 /* Venue.swift */; };
@@ -91,6 +92,7 @@
 		AA1037DC1C7E76ED00DCB0B5 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ELCAssetTablePicker.xib; path = Resources/ELCAssetTablePicker.xib; sourceTree = "<group>"; };
 		AA1037DD1C7E76ED00DCB0B5 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Overlay.png; path = Resources/Overlay.png; sourceTree = "<group>"; };
 		AA1037DE1C7E76ED00DCB0B5 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Overlay@2x.png"; path = "Resources/Overlay@2x.png"; sourceTree = "<group>"; };
+		AA1037ED1C87AC4E00DCB0B5 /* VenueService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueService.swift; sourceTree = "<group>"; };
 		AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		AA130FFD1C765B5100851AD4 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		AA130FFF1C78EAA800851AD4 /* JamJar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JamJar-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				AA6DE9651C6FA09C007A64B7 /* APIService.swift */,
 				AA6DE9671C6FA34C007A64B7 /* UserService.swift */,
 				30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */,
+				AA1037ED1C87AC4E00DCB0B5 /* VenueService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				AA1037E31C7E76ED00DCB0B5 /* ELCConsole.m in Sources */,
 				30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
+				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				AA1037E11C7E76ED00DCB0B5 /* ELCAssetCell.m in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,

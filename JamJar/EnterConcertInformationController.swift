@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 import MobileCoreServices
 import ObjectMapper
+import SCLAlertView
 
 class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, ELCImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -135,34 +136,24 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     
     //artistsTextFieldChange takes the input string and updates the search results
     private func venueTextFieldChange(inputString: String) {
-        //TODO: Make service for Venue with all of this
-        let googleMapsKey = "AIzaSyBXPftf0XBdnSQhHzUuXihnABCRfnl3OiI"
-        let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
-        let urlString = "\(baseURLString)?key=\(googleMapsKey)&input=\(inputString)"
-        let url = NSURL(string: (urlString as NSString).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!.absoluteString
         
-        APIService.get(url).response{request, response, data, error in
-            
-            let venueData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            
-            //Variable to store results
-            //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
-            var venueResults = [String]()
-            
-            if let status = venueData["status"] as? String {
-                if status == "OK" {
-                    if let predictions = venueData["predictions"] as? NSArray {
-                        for location in predictions as! [NSDictionary]{
-                            venueResults.append(location["description"] as! String)
-                            self.venueTextField.autoCompleteAttributes![location["description"] as! String] = Mapper<Venue>().map(location)
-                            self.venueTextField.autoCompleteStrings = venueResults
-                        }
-                    }
-                } else {
-                    print("Failed to get venue results")
-                }
-            } else {
+        VenueService.search(inputString) {
+            (success: Bool, venues: [Venue]?, message: String?) in
+            if !success {
+                // Error - show the user and clear previous search info
+                let errorTitle = "Search failed!"
+                if let error = message { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
                 self.venueTextField.autoCompleteStrings = nil
+            }
+            else {
+                // Our search was successful, display search results
+                var venueResults = [String]()
+                for venue in venues! {
+                    venueResults.append(venue.description)
+                    self.venueTextField.autoCompleteAttributes![venue.description] = venue
+                }
+                self.venueTextField.autoCompleteStrings = venueResults
             }
         }
     }
@@ -184,7 +175,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             let videoPicker = ELCImagePickerController(imagePicker: ())
-            videoPicker.maximumImagesCount = 3
+            videoPicker.maximumImagesCount = 10
             videoPicker.returnsOriginalImage = false; //Only return the fullScreenImage, not the fullResolutionImage
             videoPicker.returnsImage = true; //Return UIimage if YES. If NO, only return asset location information
             videoPicker.onOrder = true; //For multiple image selection, display and return selected order of images
