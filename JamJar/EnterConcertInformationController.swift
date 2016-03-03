@@ -111,25 +111,24 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     //artistsTextFieldChange takes the input string and updates the search results
     private func artistsTextFieldChange(inputString: String) {
         
-        APIService.get(APIService.buildURL("artists/search/" + inputString)).response{request, response, data, error in
-            do {
-                let artistsData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-                //Variable to store results
-                //We do not use the autoCompleteAttributes keys as this array will store values by importance, not alphabetical order
-                var artistResults = [String]()
-                
-                if let artists = artistsData as? NSArray{
-                    for artist in artists {
-                        artistResults.append(artist["name"] as! String)
-                        self.artistsTextField.autoCompleteAttributes![artist["name"] as! String] = Mapper<Artist>().map(artist)
-                    }
-                    self.artistsTextField.autoCompleteStrings = artistResults
-                } else {
-                    self.artistsTextField.autoCompleteStrings = nil
-                }
+        ArtistService.search(inputString) {
+            (success: Bool, artists: [Artist]?, message: String?) in
+            if !success {
+                // Error - show the user and clear previous search info
+                let errorTitle = "Search failed!"
+                if let error = message { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+                self.artistsTextField.autoCompleteStrings = nil
             }
-            catch {
-                print("Unable to search artists!")
+            else {
+                print("Success")
+                // Our search was successful, display search results
+                var artistResults = [String]()
+                for artist in artists! {
+                    artistResults.append(artist.name)
+                    self.artistsTextField.autoCompleteAttributes![artist.name] = artist
+                }
+                self.artistsTextField.autoCompleteStrings = artistResults
             }
         }
     }
@@ -170,9 +169,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     
     @IBAction func continueButtonPressed(sender: UIButton) {
         if(self.selectedVenue == nil || self.selectedArtists.isEmpty || self.dateTextField.text == "") {
-            let alert = UIAlertController(title: "Incomplete Fields", message: "Please select artists, a venue, and a date", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            SCLAlertView().showError("Incomplete Fields", subTitle: "Please select artists, a venue, and a date", closeButtonTitle: "Got it")
         } else {
             let videoPicker = ELCImagePickerController(imagePicker: ())
             videoPicker.maximumImagesCount = 10
