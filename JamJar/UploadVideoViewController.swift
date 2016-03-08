@@ -21,7 +21,7 @@ class UploadVideoViewController: BaseViewController{
     
     //Information to maintain information on all videos
     var currentVideoSelected = 0
-    var videosToUpload: [AnyObject]?
+    var videosToUpload: [NSURL] = []
     var namesOfVideos: [String]!
     var publicPrivateStatusOfVideos: [Int]!
     
@@ -41,8 +41,8 @@ class UploadVideoViewController: BaseViewController{
         self.publicPrivateSegmentedControl.layer.cornerRadius = 5.0;
         
         //set default information for namesOfVideos and publicPrivateStatusOfVideos
-        self.namesOfVideos = [String](count:self.videosToUpload!.count, repeatedValue: "")
-        self.publicPrivateStatusOfVideos = [Int](count:self.videosToUpload!.count, repeatedValue: 0)
+        self.namesOfVideos = [String](count:self.videosToUpload.count, repeatedValue: "")
+        self.publicPrivateStatusOfVideos = [Int](count:self.videosToUpload.count, repeatedValue: 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,8 +53,8 @@ class UploadVideoViewController: BaseViewController{
     func changeVideo(newIndex: Int) {
         //Update video
         let embeddedVideoViewController = self.childViewControllers[0] as! AVPlayerViewController
-        let videoPath = self.videosToUpload![currentVideoSelected]["UIImagePickerControllerReferenceURL"]
-        embeddedVideoViewController.player = AVPlayer(URL: videoPath as! NSURL)
+        let videoPath = self.videosToUpload[currentVideoSelected]
+        embeddedVideoViewController.player = AVPlayer(URL: videoPath)
         
         //update videoNameTextField
         self.videoNameTextField.text = self.namesOfVideos[newIndex]
@@ -66,14 +66,14 @@ class UploadVideoViewController: BaseViewController{
     @IBAction func leftButtonPressed(sender: UIButton) {
         currentVideoSelected--
         if(currentVideoSelected < 0) {
-            currentVideoSelected = (videosToUpload?.count)! - 1
+            currentVideoSelected = (videosToUpload.count) - 1
         }
         changeVideo(currentVideoSelected)
     }
     
     @IBAction func rightButtonPressed(sender: UIButton) {
         currentVideoSelected++
-        if(currentVideoSelected >= videosToUpload?.count) {
+        if(currentVideoSelected >= videosToUpload.count) {
             currentVideoSelected = 0
         }
         changeVideo(currentVideoSelected)
@@ -112,7 +112,7 @@ class UploadVideoViewController: BaseViewController{
     func uploadVideos(concert_id: Int) {
         print("Upload Videos!")
         //begin for loop through videos
-        for index in 0...(self.videosToUpload?.count)! - 1 {
+        for index in 0...(self.videosToUpload.count) - 1 {
             print(index)
             
             let parameters = [
@@ -122,7 +122,7 @@ class UploadVideoViewController: BaseViewController{
                 "artists": selectedArtists[0].id
             ]
             
-            let videoURL = self.videosToUpload![index]["UIImagePickerControllerReferenceURL"] as! NSURL
+            let videoURL = self.videosToUpload[index]
             
             let assets = PHAsset.fetchAssetsWithALAssetURLs([videoURL], options: nil)
             let firstAsset = assets.firstObject as! PHAsset
@@ -175,10 +175,10 @@ class UploadVideoViewController: BaseViewController{
             
             let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
             
-            let videoPath = self.videosToUpload![currentVideoSelected]["UIImagePickerControllerReferenceURL"]
+            let videoPath = self.videosToUpload[currentVideoSelected]
             print(videoPath)
             
-            embeddedVideoViewController.player = AVPlayer(URL: videoPath as! NSURL)
+            embeddedVideoViewController.player = AVPlayer(URL: videoPath)
         }
     }
 }

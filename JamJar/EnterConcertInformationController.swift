@@ -12,12 +12,15 @@ import AVFoundation
 import MobileCoreServices
 import ObjectMapper
 import SCLAlertView
+import DKImagePickerController
 
-class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, ELCImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
-    var videosToUpload: [AnyObject]?
+    var videosToUpload: [NSURL] = []
+    // queue is used to keep track of assets being saved so that segue can be called after the video URLs have been properly stored in videosToUpload
+    var queue: Int = 0
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
@@ -26,8 +29,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var artistsAutoCompleteTableHeight: NSLayoutConstraint!
     @IBOutlet var venuesAutoCompleteTable: UITableView!
     @IBOutlet var venuesAutoCompleteTableHeight: NSLayoutConstraint!
-
-
     
     @IBOutlet weak var artistsStackView: UIStackView!
     
@@ -174,33 +175,47 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         if(self.selectedVenue == nil || self.selectedArtists.isEmpty || self.dateTextField.text == "") {
             SCLAlertView().showError("Incomplete Fields", subTitle: "Please select artists, a venue, and a date", closeButtonTitle: "Got it")
         } else {
-            let videoPicker = ELCImagePickerController(imagePicker: ())
-            videoPicker.maximumImagesCount = 10
-            videoPicker.returnsOriginalImage = false; //Only return the fullScreenImage, not the fullResolutionImage
-            videoPicker.returnsImage = true; //Return UIimage if YES. If NO, only return asset location information
-            videoPicker.onOrder = true; //For multiple image selection, display and return selected order of images
-            videoPicker.mediaTypes = [kUTTypeMovie as String] //Makes sure that only videos can be selected
-            videoPicker.imagePickerDelegate = self
+            // Instantiate DKImagePickerController and set it to only show videos
+            let pickerController = DKImagePickerController()
+            pickerController.sourceType = [.Photo]
+            pickerController.assetType = .AllVideos
+            // Cancel button action for DKImagePickerController
+            pickerController.didCancel = {
+                pickerController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            pickerController.showsCancelButton = true
             
-            presentViewController(videoPicker, animated: true, completion: nil)
+            // Action for DKImagePickerController after videos were selected
+            pickerController.didSelectAssets = { (assets: [DKAsset]) in
+                
+                // Don't let the user move on until they have selected videos
+                if(assets.count == 0) {
+                    SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
+                    return
+                }
+                self.queue = assets.count
+                // Store all of the URLs for the selected videos
+                for asset in assets {
+                    asset.fetchAVAsset(nil, completeBlock: { info in
+                        self.videosToUpload.append((info?.URL)!)
+                        self.callback()
+                    })
+                }
+            }
+            
+            self.presentViewController(pickerController, animated: true) {}
         }
         
     }
     
-    func elcImagePickerController(picker: ELCImagePickerController!, didFinishPickingMediaWithInfo info: [AnyObject]!) {
-        if(info.count > 0) {
-            print(info)
-            
-            self.videosToUpload = info
-            
-            picker.dismissViewControllerAnimated(true, completion: nil)
-            
-            performSegueWithIdentifier("uploadVideo", sender: nil)
+    // Keep track of video URLs being stored
+    func callback()
+    {
+        self.queue--
+        // Execute final callback when queue is empty
+        if self.queue == 0 {
+            self.performSegueWithIdentifier("uploadVideo", sender: nil)
         }
-    }
-    
-    func elcImagePickerControllerDidCancel(picker: ELCImagePickerController!) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -211,6 +226,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             uploadVideoViewController.selectedArtists = self.selectedArtists
             uploadVideoViewController.selectedDate = self.dateTextField.text
             uploadVideoViewController.videosToUpload = self.videosToUpload
+            
+            
         }
     }
 }
