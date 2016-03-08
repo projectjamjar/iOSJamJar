@@ -195,7 +195,7 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
 //            tableView.hidden = hidesWhenEmpty ?? true
             view.addSubview(tableView)
             autoCompleteTableView = tableView
-            autoCompleteTableHeight = 100.0
+            autoCompleteTableHeight = 200.0
         }
     }
     
