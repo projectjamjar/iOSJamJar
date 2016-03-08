@@ -98,7 +98,8 @@ class UploadVideoViewController: BaseViewController{
         APIService.post(APIService.buildURL("concerts"),parameters: concertParameters).response{request, response, data, error in
             
             let concertData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            
+            print(concertData)
+            //TODO: Update with concert model
             if let concert = concertData as? NSDictionary{
                 if let concert_id = concert["id"] as? Int {
                     self.uploadVideos(concert_id)
@@ -111,6 +112,12 @@ class UploadVideoViewController: BaseViewController{
     
     func uploadVideos(concert_id: Int) {
         print("Upload Videos!")
+        
+        let headers = [
+            "Content-Type": "multipart/form-data",
+            "Authorization": "Token \(AuthService.GetToken()!)"
+        ]
+        
         //begin for loop through videos
         for index in 0...(self.videosToUpload.count) - 1 {
             print(index)
@@ -123,7 +130,34 @@ class UploadVideoViewController: BaseViewController{
             ]
             
             let videoURL = self.videosToUpload[index]
+            print(videoURL)
             
+            Alamofire.upload(
+                .POST,
+                APIService.buildURL("videos"),
+                headers: headers,
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(fileURL: videoURL, name: "file")
+                    
+                    for (key, value) in parameters {
+                        multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+                    }
+                },
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
+                            print("Sucess!")
+                            debugPrint(response)
+                        }
+                    case .Failure(let encodingError):
+                        print("Failure :(")
+                        print(encodingError)
+                    }
+                }
+            )
+            
+            /*
             let assets = PHAsset.fetchAssetsWithALAssetURLs([videoURL], options: nil)
             let firstAsset = assets.firstObject as! PHAsset
             print(firstAsset)
@@ -164,7 +198,7 @@ class UploadVideoViewController: BaseViewController{
                         }
                     )
                 })
-            })
+            }) */
         }
     }
     

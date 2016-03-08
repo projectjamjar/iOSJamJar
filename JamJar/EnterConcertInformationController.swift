@@ -19,6 +19,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     var selectedArtists = [Artist]()
     var selectedVenue: Venue!
     var videosToUpload: [NSURL] = []
+    // Seperate from textField to save the correct date format
+    var savedDate: String!
     // queue is used to keep track of assets being saved so that segue can be called after the video URLs have been properly stored in videosToUpload
     var queue: Int = 0
     @IBOutlet var artistsTextField: AutoCompleteTextField!
@@ -166,6 +168,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         let strDate = dateFormatter.stringFromDate(sender.date)
         
         dateTextField.text = strDate
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.savedDate = dateFormatter.stringFromDate(sender.date)
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
@@ -221,7 +226,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             
             uploadVideoViewController.selectedVenue = self.selectedVenue
             uploadVideoViewController.selectedArtists = self.selectedArtists
-            uploadVideoViewController.selectedDate = self.dateTextField.text
+            uploadVideoViewController.selectedDate = self.savedDate
             uploadVideoViewController.videosToUpload = self.videosToUpload
             
             
