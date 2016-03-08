@@ -15,7 +15,6 @@ class ArtistService: APIService {
     // search venues
     static func search(searchString: String, completion: (success: Bool, artists: [Artist]?, result: String?) -> Void) {
         self.get(APIService.buildURL("artists/search/" + searchString)).responseJSON { response in
-            print(response)
             switch response.result {
                 case .Failure(_):
                     // We got an error response code
@@ -28,5 +27,4 @@ class ArtistService: APIService {
             }
         }
     }
-    
 }

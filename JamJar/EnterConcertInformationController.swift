@@ -36,6 +36,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.setColoredPlaceholder("Search Artists...")
+        artistsTextField.setTableView(artistsAutoCompleteTable)
+        artistsTextField.autoCompleteTableHeight = 0
         artistsTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.artistsTextField.autoCompleteAttributes?.removeAll()
@@ -51,7 +53,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             self!.addArtist(selectedArtist)
             
             self!.artistsTextField.text = nil
-            self!.artistsTextField.setColoredPlaceholder("Add Another Artist...")
         }
         
         //Define attributes for venueTextField
@@ -86,6 +87,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,40))
         artistChip.setup(artist, deleteTarget: self, deleteAction: Selector("removeArtistTapped:"))
         self.artistsStackView.addArrangedSubview(artistChip)
+        
+        self.artistsTextField.setColoredPlaceholder("Add Another Artist...")
     }
     
     func removeArtistTapped(sender: UIButton) {
@@ -99,6 +102,10 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.selectedArtists.removeAtIndex(artistIndex!)
         
         self.artistsStackView.removeArrangedSubview(artistChip)
+        
+        if self.selectedArtists.count == 0 {
+            self.artistsTextField.setColoredPlaceholder("Search Artists...")
+        }
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
@@ -114,7 +121,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 self.artistsTextField.autoCompleteStrings = nil
             }
             else {
-                print("Success")
                 // Our search was successful, display search results
                 var artistResults = [String]()
                 for artist in artists! {

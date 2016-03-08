@@ -71,14 +71,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-ng-9Tl">
-                                <rect key="frame" x="16" y="183" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="183" width="343" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="FJ6-e8-Esu"/>
+                                    <constraint firstAttribute="height" constant="50" id="FJ6-e8-Esu"/>
                                 </constraints>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="188" width="343" height="45"/>
+                                <rect key="frame" x="16" y="238" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
                                 </constraints>
@@ -87,14 +87,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="03Y-2b-oAI">
-                                <rect key="frame" x="16" y="238" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="288" width="343" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="pvg-v3-S0U"/>
                                 </constraints>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-QC-TMv" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="243" width="343" height="45"/>
+                                <rect key="frame" x="16" y="293" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="y3V-go-67E"/>
                                 </constraints>

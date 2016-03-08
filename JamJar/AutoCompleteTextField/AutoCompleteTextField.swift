@@ -20,13 +20,13 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     public var onTextChange:(String)->() = {_ in}
     
     /// Font for the text suggestions
-    public var autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12)
+    public var autoCompleteTextFont = UIFont(name: "Muli-Regular", size: 14.0)
     /// Color of the text suggestions
     public var autoCompleteTextColor = UIColor.blackColor()
     /// Used to set the height of cell for each suggestions
-    public var autoCompleteCellHeight:CGFloat = 44.0
+    public var autoCompleteCellHeight:CGFloat = 45.0
     /// The maximum visible suggestion
-    public var maximumAutoCompleteCount = 3
+    public var maximumAutoCompleteCount = 5
     /// Used to set your own preferred separator inset
     public var autoCompleteSeparatorInset = UIEdgeInsetsZero
     /// Shows autocomplete text with formatting
@@ -39,7 +39,9 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     public var hidesWhenEmpty:Bool?{
         didSet{
             assert(hidesWhenEmpty != nil, "hideWhenEmpty cannot be set to nil")
-            autoCompleteTableView?.hidden = hidesWhenEmpty!
+//            autoCompleteTableView?.hidden = hidesWhenEmpty!
+//            autoCompleteTableView?.heightAnchor
+            self.autoCompleteTableHeight = (hidesWhenEmpty! ? 0 : 200.0)
         }
     }
     /// The table view height
@@ -80,9 +82,15 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     }
     
     public override func resignFirstResponder() -> Bool {
-        self.autoCompleteTableView?.hidden = true
+//        self.autoCompleteTableView?.hidden = true
+        self.autoCompleteTableHeight = 0
         
         return super.resignFirstResponder()
+    }
+    
+    public func setTableView(tableView: UITableView) {
+        self.autoCompleteTableView = tableView
+        setupAutocompleteTable(superview!)
     }
     
     //MARK: - UITableViewDataSource
@@ -119,7 +127,8 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
         onSelect(selectedText, indexPath)
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            tableView.hidden = self.hidesWhenSelected
+//            tableView.hidden = self.hidesWhenSelected
+            self.autoCompleteTableHeight = 0
         })
     }
     
@@ -165,22 +174,29 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     private func commonInit(){
         hidesWhenEmpty = true
         autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
-        autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
+        autoCompleteAttributes![NSFontAttributeName] = autoCompleteTextFont
         self.clearButtonMode = .Always
         self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
     }
     
     private func setupAutocompleteTable(view:UIView){
-        let screenSize = UIScreen.mainScreen().bounds.size
-        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), 30.0))
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = autoCompleteCellHeight
-        tableView.hidden = hidesWhenEmpty ?? true
-        view.addSubview(tableView)
-        autoCompleteTableView = tableView
-        
-        autoCompleteTableHeight = 100.0
+        if let tableView = autoCompleteTableView {
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.rowHeight = autoCompleteCellHeight
+//            tableView.hidden = hidesWhenEmpty ?? true
+        }
+        else {
+            let screenSize = UIScreen.mainScreen().bounds.size
+            let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), 30.0))
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.rowHeight = autoCompleteCellHeight
+//            tableView.hidden = hidesWhenEmpty ?? true
+            view.addSubview(tableView)
+            autoCompleteTableView = tableView
+            autoCompleteTableHeight = 100.0
+        }
     }
     
     private func redrawTable(){
@@ -196,7 +212,8 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
         onTextChange(text!)
         if text!.isEmpty{ autoCompleteStrings = nil }
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.autoCompleteTableView?.hidden =  self.hidesWhenEmpty! ? self.text!.isEmpty : false
+//            self.autoCompleteTableView?.hidden =  self.hidesWhenEmpty! ? self.text!.isEmpty : false
+            self.autoCompleteTableHeight = (self.hidesWhenEmpty! && self.text!.isEmpty ? 0.0 : 200.0)
         })
     }
 }

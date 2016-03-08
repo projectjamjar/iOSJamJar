@@ -40,7 +40,7 @@ class Artist: NSObject, Mappable {
         images <- map["images"]
     }
     
-    func getImage(forSize: Int = 0) -> UIImage? {
+    func getImage() -> UIImage? {
         if var images = self.images where self.images!.count > 0 {
             if let downloadedPhoto = self.downloadedPhoto {
                 return downloadedPhoto
