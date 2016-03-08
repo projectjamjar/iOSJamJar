@@ -8,6 +8,7 @@ pod 'GoogleMaps'
 pod 'SCLAlertView'
 pod 'ObjectMapper'
 pod 'SwiftyJSON'
+pod 'DKImagePickerController'
 
 workspace 'JamJar'
 
