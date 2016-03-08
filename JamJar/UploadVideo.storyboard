@@ -70,38 +70,38 @@
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-ng-9Tl">
-                                <rect key="frame" x="16" y="183" width="343" height="200"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="I" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-ng-9Tl">
+                                <rect key="frame" x="16" y="183" width="343" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="FJ6-e8-Esu"/>
+                                    <constraint firstAttribute="height" id="FJ6-e8-Esu"/>
                                 </constraints>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="388" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="03Y-2b-oAI">
-                                <rect key="frame" x="16" y="438" width="343" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="238" width="343" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="pvg-v3-S0U"/>
                                 </constraints>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-QC-TMv" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="443" width="343" height="45"/>
+                                <rect key="frame" x="16" y="243" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="y3V-go-67E"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="190" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -151,11 +151,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="artistsAutoCompleteTable" destination="A8E-ng-9Tl" id="mtd-Cg-7qK"/>
+                        <outlet property="artistsAutoCompleteTableHeight" destination="FJ6-e8-Esu" id="Z09-ch-rzM"/>
                         <outlet property="artistsStackView" destination="q9p-dH-gZz" id="QvQ-qC-WWD"/>
                         <outlet property="artistsTextField" destination="Zml-K6-4yb" id="pHK-SR-ZlY"/>
                         <outlet property="dateTextField" destination="YoL-QC-TMv" id="DHU-IB-K5U"/>
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
                         <outlet property="venuesAutoCompleteTable" destination="03Y-2b-oAI" id="515-sW-fr0"/>
+                        <outlet property="venuesAutoCompleteTableHeight" destination="pvg-v3-S0U" id="omU-NG-JE2"/>
                         <segue destination="XPg-sG-R38" kind="show" identifier="uploadVideo" id="i8K-kX-BIB"/>
                     </connections>
                 </viewController>
@@ -277,4 +279,5 @@
     <resources>
         <image name="navbtn-upload" width="22" height="22"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

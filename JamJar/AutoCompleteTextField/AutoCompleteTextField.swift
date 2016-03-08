@@ -12,6 +12,8 @@ import UIKit
 public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, UITableViewDelegate{
     /// Manages the instance of tableview
     private var autoCompleteTableView:UITableView?
+    // The autolayout constraint for the tableview height
+    private var autoCompleteTableViewHeightConstraint: NSLayoutConstraint?
     /// Holds the collection of attributed strings
     private var attributedAutoCompleteStrings:[NSAttributedString]?
     /// Handles user selection action on autocomplete table view
@@ -22,7 +24,7 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     /// Font for the text suggestions
     public var autoCompleteTextFont = UIFont(name: "Muli-Regular", size: 14.0)
     /// Color of the text suggestions
-    public var autoCompleteTextColor = UIColor.blackColor()
+    public var autoCompleteTextColor = UIColor.whiteColor()
     /// Used to set the height of cell for each suggestions
     public var autoCompleteCellHeight:CGFloat = 45.0
     /// The maximum visible suggestion
@@ -30,7 +32,7 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     /// Used to set your own preferred separator inset
     public var autoCompleteSeparatorInset = UIEdgeInsetsZero
     /// Shows autocomplete text with formatting
-    public var enableAttributedText = false
+    public var enableAttributedText = true
     /// User Defined Attributes
     public var autoCompleteAttributes:[String:AnyObject]?
     // Hides autocomplete tableview after selecting a suggestion
@@ -60,7 +62,7 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        setupAutocompleteTable(superview!)
+//        setupAutocompleteTable(superview!)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -70,15 +72,15 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     public override func awakeFromNib() {
         super.awakeFromNib()
         commonInit()
-        setupAutocompleteTable(superview!)
+//        setupAutocompleteTable(superview!)
     }
     
     public override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
         commonInit()
-        if let superView = newSuperview {
-            setupAutocompleteTable(superView)
-        }
+//        if let superView = newSuperview {
+//            setupAutocompleteTable(superView)
+//        }
     }
     
     public override func resignFirstResponder() -> Bool {
@@ -88,8 +90,9 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
         return super.resignFirstResponder()
     }
     
-    public func setTableView(tableView: UITableView) {
+    public func setTableView(tableView: UITableView, tableViewHeighContstraint: NSLayoutConstraint) {
         self.autoCompleteTableView = tableView
+        self.autoCompleteTableViewHeightConstraint = tableViewHeighContstraint
         setupAutocompleteTable(superview!)
     }
     
@@ -113,6 +116,8 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
             cell?.textLabel?.textColor = autoCompleteTextColor
             cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
         }
+        
+        cell?.backgroundColor = UIColor.clearColor()
         
         return cell!
     }
@@ -148,7 +153,7 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     //MARK: - Private Interface
     private func reload(){
         if enableAttributedText{
-            let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(12.0)]
+            let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(15.0)]
             if attributedAutoCompleteStrings == nil{
                 attributedAutoCompleteStrings = [NSAttributedString]()
             }
@@ -201,9 +206,15 @@ public class AutoCompleteTextField:UnderlinedTextField, UITableViewDataSource, U
     
     private func redrawTable(){
         if autoCompleteTableView != nil{
-            var newFrame = autoCompleteTableView!.frame
-            newFrame.size.height = autoCompleteTableHeight!
-            autoCompleteTableView!.frame = newFrame
+//            var newFrame = autoCompleteTableView!.frame
+//            newFrame.size.height = autoCompleteTableHeight!
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                if let heightConstraint = self.autoCompleteTableViewHeightConstraint {
+                    heightConstraint.constant = self.autoCompleteTableHeight!
+                    self.superview!.layoutIfNeeded()
+                }
+            })
+//            autoCompleteTableView!.frame = newFrame
         }
     }
     

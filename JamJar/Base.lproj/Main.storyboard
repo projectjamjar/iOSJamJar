@@ -620,4 +620,5 @@
         <image name="logo-text-transparent" width="300" height="116"/>
         <image name="logo-transparent" width="250" height="250"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
