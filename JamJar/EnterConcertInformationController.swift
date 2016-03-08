@@ -28,7 +28,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var dateTextField: UnderlinedTextField!
     
     @IBOutlet var artistsAutoCompleteTable: UITableView!
+    @IBOutlet var artistsAutoCompleteTableHeight: NSLayoutConstraint!
     @IBOutlet var venuesAutoCompleteTable: UITableView!
+    @IBOutlet var venuesAutoCompleteTableHeight: NSLayoutConstraint!
     
     @IBOutlet weak var artistsStackView: UIStackView!
     
@@ -40,7 +42,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.setColoredPlaceholder("Search Artists...")
-        artistsTextField.setTableView(artistsAutoCompleteTable)
+        artistsTextField.setTableView(artistsAutoCompleteTable, tableViewHeighContstraint: artistsAutoCompleteTableHeight)
         artistsTextField.autoCompleteTableHeight = 0
         artistsTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
@@ -61,6 +63,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         
         //Define attributes for venueTextField
         venueTextField.setColoredPlaceholder("Search Venues...")
+        venueTextField.setTableView(venuesAutoCompleteTable, tableViewHeighContstraint: venuesAutoCompleteTableHeight)
         venueTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
             self!.selectedVenue = nil

@@ -56,4 +56,5 @@
     <resources>
         <image name="navbtn-discover" width="22" height="22"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
