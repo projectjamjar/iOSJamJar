@@ -10,6 +10,7 @@
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
 		30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DE1C85091F00CD05F2 /* UITextField.swift */; };
 		30AA73EA1C8613F900CD05F2 /* ArtistChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */; };
+		30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8E6B71C8E187400A65D99 /* UIImageView.swift */; };
 		30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */; };
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
 		AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05269D1C46EE9500894DC7 /* LoginViewController.swift */; };
@@ -57,6 +58,7 @@
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
 		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistChipView.swift; sourceTree = "<group>"; };
+		30F8E6B71C8E187400A65D99 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		3BCCB9BF3B032F8AE04B9306 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FA380DFC6FFB8F40D408774 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				30AA73DE1C85091F00CD05F2 /* UITextField.swift */,
+				30F8E6B71C8E187400A65D99 /* UIImageView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				AA1037E21C7E76ED00DCB0B5 /* ELCAssetTablePicker.m in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
+				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,
 				AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */,
 				AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */,
 				AA1037E51C7E76ED00DCB0B5 /* ELCOverlayImageView.m in Sources */,

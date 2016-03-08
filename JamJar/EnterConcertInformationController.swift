@@ -22,8 +22,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
     
+    @IBOutlet var artistsAutoCompleteTable: UITableView!
+    @IBOutlet var venuesAutoCompleteTable: UITableView!
+
+    
     @IBOutlet weak var artistsStackView: UIStackView!
-    @IBOutlet weak var artistStackViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,15 +80,10 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     func addArtist(artist: Artist) {
-        // If this is the first artist we're adding, remove stackview constraint
-        if self.selectedArtists.count == 0 {
-            self.artistStackViewHeightConstraint.active = false
-        }
-        
         // Add artist to the selected artist list
         self.selectedArtists.append(artist)
         
-        let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,30))
+        let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,40))
         artistChip.setup(artist, deleteTarget: self, deleteAction: Selector("removeArtistTapped:"))
         self.artistsStackView.addArrangedSubview(artistChip)
     }
@@ -101,11 +99,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.selectedArtists.removeAtIndex(artistIndex!)
         
         self.artistsStackView.removeArrangedSubview(artistChip)
-        
-        if self.selectedArtists.count == 0 {
-            self.artistStackViewHeightConstraint.active = true
-        }
-        
     }
     
     //artistsTextFieldChange takes the input string and updates the search results
