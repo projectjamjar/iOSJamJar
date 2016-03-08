@@ -10,13 +10,13 @@
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
 		30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DE1C85091F00CD05F2 /* UITextField.swift */; };
 		30AA73EA1C8613F900CD05F2 /* ArtistChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */; };
-		30EE79FD1C8F315500293685 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */; };
-		30EE79FE1C8F315500293685 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */; };
-		30EE79FF1C8F315500293685 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */; };
-		30EE7A001C8F315500293685 /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20501C5190720099665E /* Muli-Italic.ttf */; };
-		30EE7A011C8F315500293685 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20511C5190720099665E /* Muli-Light.ttf */; };
-		30EE7A021C8F315500293685 /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20521C5190720099665E /* Muli-LightItalic.ttf */; };
-		30EE7A031C8F315500293685 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20531C5190720099665E /* Muli-Regular.ttf */; };
+		30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */; };
+		30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */; };
+		30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */; };
+		30EE7A071C8F4B5B00293685 /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20501C5190720099665E /* Muli-Italic.ttf */; };
+		30EE7A081C8F4B5B00293685 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20511C5190720099665E /* Muli-Light.ttf */; };
+		30EE7A091C8F4B5B00293685 /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20521C5190720099665E /* Muli-LightItalic.ttf */; };
+		30EE7A0A1C8F4B5B00293685 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20531C5190720099665E /* Muli-Regular.ttf */; };
 		30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8E6B71C8E187400A65D99 /* UIImageView.swift */; };
 		30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */; };
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
@@ -350,6 +350,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */,
+				30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */,
+				30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */,
+				30EE7A071C8F4B5B00293685 /* Muli-Italic.ttf in Resources */,
+				30EE7A081C8F4B5B00293685 /* Muli-Light.ttf in Resources */,
+				30EE7A091C8F4B5B00293685 /* Muli-LightItalic.ttf in Resources */,
+				30EE7A0A1C8F4B5B00293685 /* Muli-Regular.ttf in Resources */,
 				AAEB3E701BE0478900601B14 /* LaunchScreen.storyboard in Resources */,
 				AA6DE9731C6FD1C4007A64B7 /* UploadVideo.storyboard in Resources */,
 				AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */,
