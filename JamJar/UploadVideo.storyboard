@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7A7-EO-k0X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7A7-EO-k0X">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -204,16 +204,16 @@
                                     <action selector="finishAndUploadButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="11b-6k-bGX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">
-                                <rect key="frame" x="315" y="157" width="46" height="30"/>
-                                <state key="normal" title="&gt;"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">
+                                <rect key="frame" x="322" y="155" width="33" height="33"/>
+                                <state key="normal" image="right-arrow"/>
                                 <connections>
                                     <action selector="rightButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="BGv-yO-MIP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-VK-xJ4">
-                                <rect key="frame" x="13" y="157" width="46" height="30"/>
-                                <state key="normal" title="&lt;"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-VK-xJ4">
+                                <rect key="frame" x="20" y="155" width="33" height="33"/>
+                                <state key="normal" image="left-arrow"/>
                                 <connections>
                                     <action selector="leftButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="EJ9-GG-1Ml"/>
                                 </connections>
@@ -277,7 +277,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="left-arrow" width="33" height="33"/>
         <image name="navbtn-upload" width="22" height="22"/>
+        <image name="right-arrow" width="33" height="33"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

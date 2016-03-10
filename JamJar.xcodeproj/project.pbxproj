@@ -45,6 +45,9 @@
 		AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */; };
 		AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */; };
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
+		AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */; };
+		AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4891C912B56007A1DB6 /* Concert.swift */; };
+		AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E48B1C913694007A1DB6 /* VideoService.swift */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
 		AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E691BE0478900601B14 /* Main.storyboard */; };
 		AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E6C1BE0478900601B14 /* Assets.xcassets */; };
@@ -92,6 +95,9 @@
 		AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertService.swift; sourceTree = "<group>"; };
+		AAD1E4891C912B56007A1DB6 /* Concert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
+		AAD1E48B1C913694007A1DB6 /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEB3E651BE0478900601B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAEB3E6A1BE0478900601B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 				AA130FFD1C765B5100851AD4 /* Artist.swift */,
 				AA1310041C78F86500851AD4 /* Venue.swift */,
+				AAD1E4891C912B56007A1DB6 /* Concert.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -214,6 +221,8 @@
 				30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */,
 				AA1037ED1C87AC4E00DCB0B5 /* VenueService.swift */,
 				AA1037EF1C87E12C00DCB0B5 /* ArtistService.swift */,
+				AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */,
+				AAD1E48B1C913694007A1DB6 /* VideoService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -448,6 +457,7 @@
 				AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */,
 				30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
+				AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
 				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,
 				AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */,
@@ -456,11 +466,13 @@
 				AA1310051C78F86500851AD4 /* Venue.swift in Sources */,
 				AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */,
 				30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */,
+				AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
+				AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */,
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
 				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,
 			);

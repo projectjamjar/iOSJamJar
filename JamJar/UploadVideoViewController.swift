@@ -9,8 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
-import Alamofire //TODO: remove this and have services working
-import Photos
+import SCLAlertView
 
 class UploadVideoViewController: BaseViewController{
     
@@ -90,127 +89,43 @@ class UploadVideoViewController: BaseViewController{
     
     @IBAction func finishAndUploadButtonPressed(sender: UIButton) {
         // Post Concert
-        let concertParameters = [
-            "venue_place_id": self.selectedVenue.place_id,
-            "date": self.selectedDate
-        ]
-        
-        APIService.post(APIService.buildURL("concerts"),parameters: concertParameters).response{request, response, data, error in
-            
-            let concertData = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            print(concertData)
-            //TODO: Update with concert model
-            if let concert = concertData as? NSDictionary{
-                if let concert_id = concert["id"] as? Int {
-                    self.uploadVideos(concert_id)
-                }
+        ConcertService.create(self.selectedVenue.place_id, date: self.selectedDate) {
+            (success: Bool, concert: Concert?, message: String?) in
+            if !success {
+                // Error - show the user and clear previous search info
+                SCLAlertView().showError("Concert Error!", subTitle: message!, closeButtonTitle: "Got it")
+            } else {
+                self.uploadVideos((concert?.id)!)
             }
         }
-        
-        print("finishAndUploadButtonPressed completed")
     }
     
     func uploadVideos(concert_id: Int) {
-        print("Upload Videos!")
-        
-        let headers = [
-            "Content-Type": "multipart/form-data",
-            "Authorization": "Token \(AuthService.GetToken()!)"
-        ]
-        
         //begin for loop through videos
         for index in 0...(self.videosToUpload.count) - 1 {
             print(index)
             
-            let parameters = [
-                "name": self.namesOfVideos[index],
-                //"is_private": (self.publicPrivateStatusOfVideos[index] == 1),
-                "concert": String(concert_id),
-                "artists": selectedArtists[0].id
-            ]
-            
-            let videoURL = self.videosToUpload[index]
-            print(videoURL)
-            
-            Alamofire.upload(
-                .POST,
-                APIService.buildURL("videos"),
-                headers: headers,
-                multipartFormData: { multipartFormData in
-                    multipartFormData.appendBodyPart(fileURL: videoURL, name: "file")
-                    
-                    for (key, value) in parameters {
-                        multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
-                    }
-                },
-                encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .Success(let upload, _, _):
-                        upload.responseJSON { response in
-                            print("Sucess!")
-                            debugPrint(response)
-                        }
-                    case .Failure(let encodingError):
-                        print("Failure :(")
-                        print(encodingError)
-                    }
+            VideoService.upload(self.videosToUpload[index], name: self.namesOfVideos[index], is_private: self.publicPrivateStatusOfVideos[index], concert_id: concert_id, artists: self.selectedArtists) { (success: Bool, message: String?) in
+                if !success {
+                    // Error - show the user and clear previous search info
+                    SCLAlertView().showError("Upload Error!", subTitle: message!, closeButtonTitle: "Got it")
+                } else {
+                    self.resetUploadControllers()
                 }
-            )
+            }
             
-            /*
-            let assets = PHAsset.fetchAssetsWithALAssetURLs([videoURL], options: nil)
-            let firstAsset = assets.firstObject as! PHAsset
-            print(firstAsset)
-            
-            PHCachingImageManager().requestAVAssetForVideo(firstAsset, options: nil, resultHandler: { (asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
-                print("About to dispatch some muthafukkin shit!")
-                dispatch_async(dispatch_get_main_queue(), {
-                    let asset = asset as? AVURLAsset
-                    print(asset?.URL)
-                    //let videoData = NSData(contentsOfURL: asset!.URL)
-                    let headers = [
-                        "Content-Type": "multipart/form-data",
-                        "Authorization": "Token \(AuthService.GetToken()!)"
-                    ]
-                    
-                    Alamofire.upload(
-                        .POST,
-                        APIService.buildURL("videos"),
-                        headers: headers,
-                        multipartFormData: { multipartFormData in
-                            multipartFormData.appendBodyPart(fileURL: asset!.URL, name: "file")
-                            
-                            for (key, value) in parameters {
-                                multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
-                            }
-                        },
-                        encodingCompletion: { encodingResult in
-                            switch encodingResult {
-                            case .Success(let upload, _, _):
-                                upload.responseJSON { response in
-                                    print("Sucess!")
-                                    debugPrint(response)
-                                }
-                            case .Failure(let encodingError):
-                                print("Failure :(")
-                                print(encodingError)
-                            }
-                        }
-                    )
-                })
-            }) */
         }
+    }
+    
+    func resetUploadControllers() {
+        print("Delete all stored information and return to the previous view")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
-            print("play video")
-            print(self.videosToUpload)
-            
             let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
             
             let videoPath = self.videosToUpload[currentVideoSelected]
-            print(videoPath)
             
             embeddedVideoViewController.player = AVPlayer(URL: videoPath)
         }
