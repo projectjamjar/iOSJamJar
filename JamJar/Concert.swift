@@ -29,7 +29,7 @@ class Concert: NSObject, Mappable {
      */
     func mapping(map: Map) {
         id <- map["id"]
-        date <- (map["date"], DateTransform())
+        date <- (map["date"], ObjectMapper.CustomDateFormatTransform(formatString: "yyyy-MM-dd"))
         venue <- map["venue"]
         videos <- map["videos"]
     }

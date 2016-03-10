@@ -34,7 +34,6 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
             else {
                 // Our login was successful, goto Home!
                 self.concerts = result!
-                print 
                 self.tableView.reloadData()
             }
         }

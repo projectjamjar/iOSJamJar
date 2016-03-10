@@ -20,6 +20,8 @@
 		30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */; };
 		30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A0E1C913D6900293685 /* ConcertCell.swift */; };
 		30EE7A111C914A5400293685 /* Transforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A101C914A5400293685 /* Transforms.swift */; };
+		30EE7A131C91554E00293685 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A121C91554E00293685 /* Date.swift */; };
+		30EE7A151C91606D00293685 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A141C91606D00293685 /* Colors.swift */; };
 		30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8E6B71C8E187400A65D99 /* UIImageView.swift */; };
 		30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */; };
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
@@ -62,6 +64,8 @@
 		30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		30EE7A0E1C913D6900293685 /* ConcertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertCell.swift; sourceTree = "<group>"; };
 		30EE7A101C914A5400293685 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
+		30EE7A121C91554E00293685 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		30EE7A141C91606D00293685 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		30F8E6B71C8E187400A65D99 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		3BCCB9BF3B032F8AE04B9306 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				30AA73DE1C85091F00CD05F2 /* UITextField.swift */,
 				30F8E6B71C8E187400A65D99 /* UIImageView.swift */,
 				30EE7A101C914A5400293685 /* Transforms.swift */,
+				30EE7A121C91554E00293685 /* Date.swift */,
+				30EE7A141C91606D00293685 /* Colors.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -474,8 +480,10 @@
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
+				30EE7A151C91606D00293685 /* Colors.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
+				30EE7A131C91554E00293685 /* Date.swift in Sources */,
 				AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */,
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
 				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,
