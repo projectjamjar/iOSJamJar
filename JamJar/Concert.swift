@@ -12,7 +12,7 @@ class Concert: NSObject, Mappable {
 
     // Concert Attributes
     var id: Int!
-    var date: String!
+    var date: NSDate!
     var venue: Venue!
     var videos: [Video]!
     
@@ -29,8 +29,22 @@ class Concert: NSObject, Mappable {
      */
     func mapping(map: Map) {
         id <- map["id"]
-        date <- map["date"]
+        date <- (map["date"], DateTransform())
         venue <- map["venue"]
         videos <- map["videos"]
+    }
+    
+    func getArtists() -> [Artist] {
+        var artistIds = [Int]()
+        var artists = [Artist]()
+        videos.forEach { video in
+            video.artists.forEach({ (artist) -> () in
+                if !artistIds.contains(artist.id) {
+                    artists.append(artist)
+                    artistIds.append(artist.id)
+                }
+            })
+        }
+        return artists
     }
 }

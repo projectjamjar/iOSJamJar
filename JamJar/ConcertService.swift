@@ -12,6 +12,24 @@ import SwiftyJSON
 
 class ConcertService: APIService {
     
+    // get all concerts
+    static func getConcerts(completion: (success: Bool, concert: [Concert]?, result: String?) -> Void) {
+        let url = self.buildURL("concerts")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, concert: nil, result: "Cannot Get Concerts")
+                return
+            case .Success:
+                let concerts = Mapper<Concert>().mapArray(response.result.value!)
+                completion(success: true, concert: concerts, result: nil)
+                return
+            }
+        }
+    }
+    
     // create concert
     static func create(venue_place_id: String, date: String, completion: (success: Bool, concert: Concert?, result: String?) -> Void) {
         let url = self.buildURL("concerts")

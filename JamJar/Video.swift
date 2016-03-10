@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class Video: Mappable {
+class Video: NSObject, Mappable {
     
     // Video Attributes
     var id : Int?
