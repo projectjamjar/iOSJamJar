@@ -18,6 +18,7 @@
 		30EE7A091C8F4B5B00293685 /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20521C5190720099665E /* Muli-LightItalic.ttf */; };
 		30EE7A0A1C8F4B5B00293685 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20531C5190720099665E /* Muli-Regular.ttf */; };
 		30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */; };
+		30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A0E1C913D6900293685 /* ConcertCell.swift */; };
 		30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8E6B71C8E187400A65D99 /* UIImageView.swift */; };
 		30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */; };
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
@@ -55,6 +56,7 @@
 		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistChipView.swift; sourceTree = "<group>"; };
 		30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		30EE7A0E1C913D6900293685 /* ConcertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertCell.swift; sourceTree = "<group>"; };
 		30F8E6B71C8E187400A65D99 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		3BCCB9BF3B032F8AE04B9306 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		30EE7A0D1C913D5100293685 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				30EE7A0E1C913D6900293685 /* ConcertCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
 		6A3A1807DF2B9AF8E2CBF4D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		AA130FFA1C7641B600851AD4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30EE7A0D1C913D5100293685 /* TableViewCells */,
 				AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */,
 				AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */,
 				30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */,
@@ -430,6 +441,7 @@
 				AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */,
 				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,
+				30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */,
 				AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */,
 				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
 				AA1037F01C87E12C00DCB0B5 /* ArtistService.swift in Sources */,

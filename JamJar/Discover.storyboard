@@ -4,10 +4,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Muli-Italic.ttf">
+            <string>Muli-Italic</string>
+            <string>Muli-Italic</string>
+        </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
-            <string>Muli</string>
             <string>Muli</string>
         </mutableArray>
     </customFonts>
@@ -55,18 +59,24 @@
                                                         <constraint firstAttribute="width" secondItem="1XZ-8o-F9i" secondAttribute="height" multiplier="1.5:1" id="bBn-oZ-FLR"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YA1-vX-bxQ">
-                                                    <rect key="frame" x="140" y="15" width="168" height="42"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YA1-vX-bxQ">
+                                                    <rect key="frame" x="140" y="25" width="211" height="58"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lil Khalifa, Wiz Wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zR-Mx-EaG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="168" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lil' Khalifa, Wiz Wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zR-Mx-EaG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="21"/>
                                                             <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Lil Khalifa, Wiz Wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3A-rj-cO0">
-                                                            <rect key="frame" x="0.0" y="21" width="168" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2-10-2016 @ Brexel Nightclub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h3A-rj-cO0">
+                                                            <rect key="frame" x="0.0" y="21" width="211" height="19"/>
+                                                            <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="63 videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27Q-JN-snY">
+                                                            <rect key="frame" x="0.0" y="40" width="211" height="18"/>
+                                                            <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -75,13 +85,19 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1XZ-8o-F9i" firstAttribute="top" secondItem="kU0-3O-WM4" secondAttribute="top" constant="15" id="90I-cv-u0L"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="YA1-vX-bxQ" secondAttribute="trailing" constant="10" id="SVY-PN-SNL"/>
                                                 <constraint firstAttribute="bottom" secondItem="1XZ-8o-F9i" secondAttribute="bottom" constant="15" id="YCJ-E3-8bh"/>
+                                                <constraint firstItem="YA1-vX-bxQ" firstAttribute="leading" secondItem="1XZ-8o-F9i" secondAttribute="trailing" constant="8" id="a9N-zn-V98"/>
+                                                <constraint firstItem="YA1-vX-bxQ" firstAttribute="centerY" secondItem="1XZ-8o-F9i" secondAttribute="centerY" id="adB-BT-hMU"/>
                                                 <constraint firstItem="1XZ-8o-F9i" firstAttribute="leading" secondItem="kU0-3O-WM4" secondAttribute="leading" constant="15" id="uXF-9k-kEb"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="artistLabel" destination="9zR-Mx-EaG" id="maw-tr-wXd"/>
+                                            <outlet property="dateVenueLabel" destination="h3A-rj-cO0" id="t0d-uQ-Sbc"/>
                                             <outlet property="thumbnailImageView" destination="1XZ-8o-F9i" id="lrI-gJ-SKe"/>
+                                            <outlet property="videoCountLabel" destination="27Q-JN-snY" id="4fy-bb-eot"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
