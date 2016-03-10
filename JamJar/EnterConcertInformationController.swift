@@ -39,7 +39,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //TODO: Create method to set up UI Attributes
         //Define attributes for artistsTextField
         //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.setColoredPlaceholder("Search Artists...")
@@ -203,32 +202,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 // Store all of the URLs for the selected videos
                 
                 for asset in assets {
-                    print(asset.originalAsset)
-                    //Maybe pass these?
-                    
-                    /*
-                    PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: { (asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
-                        print("About to dispatch some muthafukkin shit!")
-                        dispatch_async(dispatch_get_main_queue(), {
-                            let asset = asset as? AVURLAsset
-                            print(asset?.URL)
-                            //First "asset" variable is an AVAsset
-                            //Second "asset" variable is an AVURLAsset
-                            //asset?.URL is an NSURL
-                            //file:///var/mobile/Media/DCIM/102APPLE/IMG_2899.MOV
-                            
-                            self.videosToUpload.append(asset!.URL)
-                            self.callback()
-                        })
-                    })*/
-                    
                     asset.fetchAVAsset(nil, completeBlock: { info in
-                        //print("Compare:")
-                        //print(info)
-                        //print(info!.URL)
-                        //self.videosToUpload.append(info!.URL)
-                        //file:///var/mobile/Media/DCIM/102APPLE/IMG_2899.MOV
-                        
                         //copy file into local "Documents" Directory
                         let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info!.URL.lastPathComponent!
                         let phManager = PHImageManager.defaultManager()
@@ -236,13 +210,14 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                         phManager.requestImageDataForAsset(asset.originalAsset!, options: options)
                             {   imageData,dataUTI,orientation,info in
                                 
-                                if let newData:NSData = imageData
-                                {
-                                    print("Writing Video")
+                                if let newData:NSData = imageData {
+                                    // Saves the video in another location so it can then be used for upload
                                     try! newData.writeToFile(targetVideoURL, atomically: true)
-                                    print("Wrote Video")
+                                    // Saved URL is stored for future use
                                     self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
                                     self.callback()
+                                } else {
+                                    print("Error: Video could not be processed")
                                 }
                         }
                     })
