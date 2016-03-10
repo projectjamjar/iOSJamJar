@@ -44,6 +44,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         //artistsTextField.maximumAutoCompleteCount = 4
         artistsTextField.setColoredPlaceholder("Search Artists...")
         artistsTextField.setTableView(artistsAutoCompleteTable, tableViewHeighContstraint: artistsAutoCompleteTableHeight)
+        self.view.bringSubviewToFront(artistsAutoCompleteTable)
         artistsTextField.autoCompleteTableHeight = 0
         artistsTextField.onTextChange = {[weak self] text in
             //reset the stored autoCompleteAttributes
