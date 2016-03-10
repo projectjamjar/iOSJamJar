@@ -103,8 +103,6 @@ class UploadVideoViewController: BaseViewController{
     func uploadVideos(concert_id: Int) {
         //begin for loop through videos
         for index in 0...(self.videosToUpload.count) - 1 {
-            print(index)
-            
             VideoService.upload(self.videosToUpload[index], name: self.namesOfVideos[index], is_private: self.publicPrivateStatusOfVideos[index], concert_id: concert_id, artists: self.selectedArtists) { (success: Bool, message: String?) in
                 if !success {
                     // Error - show the user and clear previous search info
@@ -119,6 +117,11 @@ class UploadVideoViewController: BaseViewController{
     
     func resetUploadControllers() {
         print("Delete all stored information and return to the previous view")
+        let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
+        
+        concertViewController.clearViewForm()
+        
+        navigationController?.popViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

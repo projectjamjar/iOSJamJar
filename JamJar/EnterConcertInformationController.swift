@@ -239,6 +239,19 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
     }
     
+    // Method to clear the form
+    func clearViewForm() {
+        self.selectedArtists = []
+        self.selectedVenue = nil
+        self.savedDate = nil
+        self.queue = 0
+        self.artistsTextField.text = ""
+        self.venueTextField.text = ""
+        self.dateTextField.text = ""
+        self.artistsStackView.subviews.forEach({ $0.removeFromSuperview() })
+        self.artistsTextField.setColoredPlaceholder("Search Artists...")
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "uploadVideo") {
             let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
@@ -248,6 +261,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             uploadVideoViewController.selectedDate = self.savedDate
             uploadVideoViewController.videosToUpload = self.videosToUpload
             
+            //Clear video list to avoid conflicts
+            self.videosToUpload = []
         }
     }
 }
