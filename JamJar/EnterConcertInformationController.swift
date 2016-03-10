@@ -13,6 +13,7 @@ import MobileCoreServices
 import ObjectMapper
 import SCLAlertView
 import DKImagePickerController
+import Photos
 
 class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
@@ -200,10 +201,50 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 }
                 self.queue = assets.count
                 // Store all of the URLs for the selected videos
+                
                 for asset in assets {
+                    print(asset.originalAsset)
+                    //Maybe pass these?
+                    
+                    /*
+                    PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: { (asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
+                        print("About to dispatch some muthafukkin shit!")
+                        dispatch_async(dispatch_get_main_queue(), {
+                            let asset = asset as? AVURLAsset
+                            print(asset?.URL)
+                            //First "asset" variable is an AVAsset
+                            //Second "asset" variable is an AVURLAsset
+                            //asset?.URL is an NSURL
+                            //file:///var/mobile/Media/DCIM/102APPLE/IMG_2899.MOV
+                            
+                            self.videosToUpload.append(asset!.URL)
+                            self.callback()
+                        })
+                    })*/
+                    
                     asset.fetchAVAsset(nil, completeBlock: { info in
-                        self.videosToUpload.append((info?.URL)!)
-                        self.callback()
+                        //print("Compare:")
+                        //print(info)
+                        //print(info!.URL)
+                        //self.videosToUpload.append(info!.URL)
+                        //file:///var/mobile/Media/DCIM/102APPLE/IMG_2899.MOV
+                        
+                        //copy file into local "Documents" Directory
+                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info!.URL.lastPathComponent!
+                        let phManager = PHImageManager.defaultManager()
+                        let options = PHImageRequestOptions()
+                        phManager.requestImageDataForAsset(asset.originalAsset!, options: options)
+                            {   imageData,dataUTI,orientation,info in
+                                
+                                if let newData:NSData = imageData
+                                {
+                                    print("Writing Video")
+                                    try! newData.writeToFile(targetVideoURL, atomically: true)
+                                    print("Wrote Video")
+                                    self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
+                                    self.callback()
+                                }
+                        }
                     })
                 }
             }
@@ -231,7 +272,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             uploadVideoViewController.selectedArtists = self.selectedArtists
             uploadVideoViewController.selectedDate = self.savedDate
             uploadVideoViewController.videosToUpload = self.videosToUpload
-            
             
         }
     }
