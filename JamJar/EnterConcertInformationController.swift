@@ -14,6 +14,7 @@ import ObjectMapper
 import SCLAlertView
 import DKImagePickerController
 import Photos
+import PKHUD
 
 class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
@@ -198,9 +199,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                     SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
                     return
                 }
-                self.queue = assets.count
-                // Store all of the URLs for the selected videos
                 
+                HUD.show(.Progress)
+                self.queue = assets.count
+                
+                // Store all of the URLs for the selected videos
                 for asset in assets {
                     asset.fetchAVAsset(nil, completeBlock: { info in
                         //copy file into local "Documents" Directory
@@ -218,6 +221,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                                     self.callback()
                                 } else {
                                     print("Error: Video could not be processed")
+                                    HUD.flash(.Error, delay: 1.0)
                                 }
                         }
                     })
@@ -235,6 +239,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.queue--
         // Execute final callback when queue is empty
         if self.queue == 0 {
+            HUD.flash(.Success, delay: 1.0)
             self.performSegueWithIdentifier("uploadVideo", sender: nil)
         }
     }
