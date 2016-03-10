@@ -45,6 +45,7 @@
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */; };
 		AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4891C912B56007A1DB6 /* Concert.swift */; };
+		AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E48B1C913694007A1DB6 /* VideoService.swift */; };
 		AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB3E651BE0478900601B14 /* AppDelegate.swift */; };
 		AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E691BE0478900601B14 /* Main.storyboard */; };
 		AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEB3E6C1BE0478900601B14 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertService.swift; sourceTree = "<group>"; };
 		AAD1E4891C912B56007A1DB6 /* Concert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
+		AAD1E48B1C913694007A1DB6 /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		AAEB3E621BE0478900601B14 /* JamJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEB3E651BE0478900601B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAEB3E6A1BE0478900601B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				AA1037ED1C87AC4E00DCB0B5 /* VenueService.swift */,
 				AA1037EF1C87E12C00DCB0B5 /* ArtistService.swift */,
 				AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */,
+				AAD1E48B1C913694007A1DB6 /* VideoService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				AA1310051C78F86500851AD4 /* Venue.swift in Sources */,
 				AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */,
 				30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */,
+				AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,

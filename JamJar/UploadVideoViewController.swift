@@ -9,8 +9,6 @@
 import UIKit
 import AVKit
 import AVFoundation
-import Alamofire //TODO: remove this and have services working
-import Photos
 import SCLAlertView
 
 class UploadVideoViewController: BaseViewController{
@@ -103,55 +101,24 @@ class UploadVideoViewController: BaseViewController{
     }
     
     func uploadVideos(concert_id: Int) {
-        print("Upload Videos!")
-        
-        let headers = [
-            "Content-Type": "multipart/form-data",
-            "Authorization": "Token \(AuthService.GetToken()!)"
-        ]
-        
         //begin for loop through videos
         for index in 0...(self.videosToUpload.count) - 1 {
             print(index)
             
-            let parameters = [
-                "name": self.namesOfVideos[index],
-                "is_private": String((self.publicPrivateStatusOfVideos[index] == 1)),
-                "concert": String(concert_id)
-            ]
-            
-            let videoURL = self.videosToUpload[index]
-            print(videoURL)
-            
-            Alamofire.upload(
-                .POST,
-                APIService.buildURL("videos"),
-                headers: headers,
-                multipartFormData: { multipartFormData in
-                    multipartFormData.appendBodyPart(fileURL: videoURL, name: "file")
-                    
-                    for (key, value) in parameters {
-                        multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
-                    }
-                    
-                    for artist in self.selectedArtists {
-                        multipartFormData.appendBodyPart(data: String(artist.id).dataUsingEncoding(NSUTF8StringEncoding)!, name: "artists")
-                    }
-                },
-                encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .Success(let upload, _, _):
-                        upload.responseJSON { response in
-                            print("Sucess!")
-                            debugPrint(response)
-                        }
-                    case .Failure(let encodingError):
-                        print("Failure :(")
-                        print(encodingError)
-                    }
+            VideoService.upload(self.videosToUpload[index], name: self.namesOfVideos[index], is_private: self.publicPrivateStatusOfVideos[index], concert_id: concert_id, artists: self.selectedArtists) { (success: Bool, message: String?) in
+                if !success {
+                    // Error - show the user and clear previous search info
+                    SCLAlertView().showError("Upload Error!", subTitle: message!, closeButtonTitle: "Got it")
+                } else {
+                    self.resetUploadControllers()
                 }
-            )
+            }
+            
         }
+    }
+    
+    func resetUploadControllers() {
+        print("Delete all stored information and return to the previous view")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
