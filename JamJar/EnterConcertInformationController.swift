@@ -14,7 +14,6 @@ import ObjectMapper
 import SCLAlertView
 import DKImagePickerController
 import Photos
-import PKHUD
 
 class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
@@ -200,7 +199,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                     return
                 }
                 
-                HUD.show(.Progress)
+                showProgressView()
                 self.queue = assets.count
                 
                 // Store all of the URLs for the selected videos
@@ -221,7 +220,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                                     self.callback()
                                 } else {
                                     print("Error: Video could not be processed")
-                                    HUD.flash(.Error, delay: 1.0)
+                                    showErrorView()
                                 }
                         }
                     })
@@ -239,7 +238,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.queue--
         // Execute final callback when queue is empty
         if self.queue == 0 {
-            HUD.flash(.Success, delay: 1.0)
+            showSuccessView()
             self.performSegueWithIdentifier("uploadVideo", sender: nil)
         }
     }

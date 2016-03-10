@@ -10,7 +10,6 @@ import UIKit
 import AVKit
 import AVFoundation
 import SCLAlertView
-import PKHUD
 
 class UploadVideoViewController: BaseViewController{
     
@@ -106,14 +105,14 @@ class UploadVideoViewController: BaseViewController{
     
     func uploadVideos(concert_id: Int) {
         //begin for loop through videos
-        HUD.show(.Progress)
+        showProgressView()
         self.queue = self.videosToUpload.count
         
         for index in 0...(self.videosToUpload.count) - 1 {
             VideoService.upload(self.videosToUpload[index], name: self.namesOfVideos[index], is_private: self.publicPrivateStatusOfVideos[index], concert_id: concert_id, artists: self.selectedArtists) { (success: Bool, message: String?) in
                 if !success {
                     // Error - show the user and clear previous search info
-                    HUD.flash(.Error, delay: 1.0)
+                    showErrorView()
                     SCLAlertView().showError("Upload Error!", subTitle: message!, closeButtonTitle: "Got it")
                 } else {
                     self.callback()
@@ -129,7 +128,7 @@ class UploadVideoViewController: BaseViewController{
         self.queue--
         // Execute final callback when queue is empty
         if self.queue == 0 {
-            HUD.flash(.Success, delay: 1.0)
+            showSuccessView()
             self.resetUploadControllers()
         }
     }
