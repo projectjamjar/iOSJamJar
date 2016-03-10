@@ -17,6 +17,7 @@
 		30EE7A081C8F4B5B00293685 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20511C5190720099665E /* Muli-Light.ttf */; };
 		30EE7A091C8F4B5B00293685 /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20521C5190720099665E /* Muli-LightItalic.ttf */; };
 		30EE7A0A1C8F4B5B00293685 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F20531C5190720099665E /* Muli-Regular.ttf */; };
+		30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */; };
 		30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F8E6B71C8E187400A65D99 /* UIImageView.swift */; };
 		30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */; };
 		A4A8E652FD43D88B1DE38D3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA380DFC6FFB8F40D408774 /* Pods.framework */; };
@@ -53,6 +54,7 @@
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
 		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistChipView.swift; sourceTree = "<group>"; };
+		30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		30F8E6B71C8E187400A65D99 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		30F929AF1C7CD7CE00B3DF2C /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		3BCCB9BF3B032F8AE04B9306 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		AABBF92A1C6D057F00EB3EC4 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
+				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
