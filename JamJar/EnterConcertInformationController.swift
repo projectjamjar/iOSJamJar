@@ -76,6 +76,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
         venueTextField.onSelect = {[weak self] text, indexpath in
             self!.selectedVenue = self!.venueTextField.autoCompleteAttributes![text] as! Venue
+            self!.view.endEditing(true)
         }
         
         //Define attributes for dateTextField
@@ -254,6 +255,14 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.dateTextField.text = ""
         self.artistsStackView.subviews.forEach({ $0.removeFromSuperview() })
         self.artistsTextField.setColoredPlaceholder("Search Artists...")
+    }
+    
+    override func dismissKeyboard(sender: UITapGestureRecognizer) {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        let touch = sender.locationInView(sender.view)
+        if(!CGRectContainsPoint(artistsAutoCompleteTable.frame, touch) && !CGRectContainsPoint(venuesAutoCompleteTable.frame, touch)) {
+            self.view.endEditing(true)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

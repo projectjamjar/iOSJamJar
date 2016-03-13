@@ -15,7 +15,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -26,9 +26,9 @@ class BaseViewController: UIViewController {
     }
     
     //Calls this function when the tap is recognized.
-    func dismissKeyboard() {
+    func dismissKeyboard(sender: UITapGestureRecognizer) {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -43,7 +43,7 @@ class BaseTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -54,9 +54,9 @@ class BaseTableViewController: UITableViewController {
     }
     
     //Calls this function when the tap is recognized.
-    func dismissKeyboard() {
+    func dismissKeyboard(sender: UITapGestureRecognizer) {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
