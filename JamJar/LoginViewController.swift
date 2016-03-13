@@ -17,6 +17,11 @@ class LoginViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let lastUser = userDefaults.stringForKey("previousUsername") {
+            usernameTextField.text = lastUser
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,7 +48,10 @@ class LoginViewController: BaseViewController{
                 else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
             }
             else {
-                // Our login was successful, goto Home!
+                // Our login was successful, save username and goto Home!
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setValue(username, forKey: "previousUsername")
+                
                 self.performSegueWithIdentifier("goto_home", sender: self)
             }
         }

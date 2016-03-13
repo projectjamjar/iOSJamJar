@@ -44,13 +44,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="concert-bg" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Ue-QGd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SrF-YR-D8r">
                                 <rect key="frame" x="46" y="221" width="283" height="131"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNP-Vy-AtA">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gNP-Vy-AtA">
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="eXV-j8-Go8"/>
@@ -58,7 +55,7 @@
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VX1-m7-fWq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VX1-m7-fWq">
                                         <rect key="frame" x="0.0" y="47" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="e8e-iT-q0p"/>
@@ -78,7 +75,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="SIGN IN">
+                                                <state key="normal" title="Sign In">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -136,32 +133,35 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-4X-2Y5">
                                 <rect key="frame" x="114" y="462" width="147" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="UZj-Pu-hDm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
-                                <state key="normal" title="FORGET PASSWORD?">
+                                <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="zsk-VV-HPk" kind="presentation" id="RKR-ui-IOg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvs-Jz-0YU">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvs-Jz-0YU">
                                 <rect key="frame" x="156" y="377" width="62" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="zrw-nj-SQJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
-                                <state key="normal" title="SIGN UP">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="h6W-ge-p0t" kind="presentation" id="mRT-h1-sg1"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="concert-bg" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Ue-QGd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -298,7 +298,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pm-yn-F0m">
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FIRST NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-NZ-iWb">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-NZ-iWb">
                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="37" id="Xbj-lA-5un"/>
@@ -306,7 +306,7 @@
                                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LAST NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-RI-jDO">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-RI-jDO">
                                                 <rect key="frame" x="142" y="0.0" width="141" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="37" id="shT-hd-TKU"/>
@@ -319,7 +319,7 @@
                                             <constraint firstItem="cUH-RI-jDO" firstAttribute="width" secondItem="9zy-NZ-iWb" secondAttribute="width" id="eie-M5-6s7"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yy2-en-fpk">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yy2-en-fpk">
                                         <rect key="frame" x="0.0" y="47" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="8oC-tw-HrG"/>
@@ -327,7 +327,7 @@
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oxm-7p-IgR">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Oxm-7p-IgR">
                                         <rect key="frame" x="0.0" y="94" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Hkq-ig-Txs"/>
@@ -335,7 +335,7 @@
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-l1-QoS">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-l1-QoS">
                                         <rect key="frame" x="0.0" y="141" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Rqa-VV-G3S"/>
@@ -343,7 +343,7 @@
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CONFIRM PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yp1-Ah-Hwp">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yp1-Ah-Hwp">
                                         <rect key="frame" x="0.0" y="188" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Btv-Qc-TgJ"/>
@@ -363,7 +363,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="SIGN UP">
+                                                <state key="normal" title="Sign Up">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -391,13 +391,13 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMs-Mg-XYz">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMs-Mg-XYz">
                                 <rect key="frame" x="159" y="483" width="57" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="2Ik-lO-uFP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
-                                <state key="normal" title="SIGN IN">
+                                <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -490,7 +490,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FHw-0r-8rX">
                                 <rect key="frame" x="46" y="221" width="283" height="84"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yjC-zD-hzN">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yjC-zD-hzN">
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="xD1-RO-A5v"/>
@@ -510,7 +510,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="SEND RESET EMAIL">
+                                                <state key="normal" title="Send Reset Email">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -568,13 +568,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sei-ct-qEZ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sei-ct-qEZ">
                                 <rect key="frame" x="126" y="462" width="123" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="RtJ-wg-CGi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
-                                <state key="normal" title="REMEMBERED IT?">
+                                <state key="normal" title="Remembered It?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
