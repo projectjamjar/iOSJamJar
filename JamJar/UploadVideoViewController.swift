@@ -30,6 +30,8 @@ class UploadVideoViewController: BaseViewController{
     //UI Outlets
     @IBOutlet var videoNameTextField: UITextField!
     @IBOutlet var publicPrivateSegmentedControl: UISegmentedControl!
+    @IBOutlet var leftButton: UIButton!
+    @IBOutlet var rightButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,13 @@ class UploadVideoViewController: BaseViewController{
         //set default information for namesOfVideos and publicPrivateStatusOfVideos
         self.namesOfVideos = [String](count:self.videosToUpload.count, repeatedValue: "")
         self.publicPrivateStatusOfVideos = [Int](count:self.videosToUpload.count, repeatedValue: 0)
+        
+        if(self.videosToUpload.count < 2) {
+            self.leftButton.hidden = true
+            self.leftButton.enabled = false
+            self.rightButton.hidden = true
+            self.rightButton.enabled = false
+        }
     }
     
     override func didReceiveMemoryWarning() {

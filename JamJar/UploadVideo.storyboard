@@ -268,7 +268,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Upload - Add Video Details" id="kvn-uc-JYg"/>
                     <connections>
+                        <outlet property="leftButton" destination="1rG-VK-xJ4" id="BY0-4r-4YV"/>
                         <outlet property="publicPrivateSegmentedControl" destination="VBu-fR-JCB" id="fdP-7D-lcf"/>
+                        <outlet property="rightButton" destination="tBj-DW-nVa" id="uAI-sN-Ddy"/>
                         <outlet property="videoNameTextField" destination="Z6j-50-d1h" id="MR6-KG-pYF"/>
                     </connections>
                 </viewController>
