@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Muli-Regular.ttf">
+            <string>Muli</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Settings-->
         <scene sceneID="b0O-b9-TsJ">
@@ -17,23 +22,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings Under Construction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0z7-uu-WQ1">
-                                <rect key="frame" x="78" y="298" width="219" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru7-Ri-05d">
-                                <rect key="frame" x="163" y="327" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutButtonPressed:" destination="WSL-na-ydf" eventType="touchUpInside" id="dWU-c5-6fF"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rIn-Ok-O9S">
+                                <rect key="frame" x="137" y="563" width="102" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjl-fn-Mnd">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Vgu-XL-9Os"/>
+                                            <constraint firstAttribute="width" constant="35" id="ZwS-oM-gm4"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="menu-logout"/>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="WSL-na-ydf" eventType="touchUpInside" id="JIn-1v-sFd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru7-Ri-05d">
+                                        <rect key="frame" x="45" y="0.0" width="57" height="35"/>
+                                        <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="17"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="WSL-na-ydf" eventType="touchUpInside" id="dWU-c5-6fF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zlG-NR-chO" firstAttribute="top" secondItem="rIn-Ok-O9S" secondAttribute="bottom" constant="20" id="BZe-gD-Vn2"/>
+                            <constraint firstItem="rIn-Ok-O9S" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="w4R-U4-Wy0"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="oaS-8D-k1U"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="navbtn-settings" selectedImage="navbtn-settings" id="oaS-8D-k1U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -43,4 +65,9 @@
             <point key="canvasLocation" x="-8.5" y="538.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu-logout" width="216" height="216"/>
+        <image name="navbtn-settings" width="22" height="22"/>
+    </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

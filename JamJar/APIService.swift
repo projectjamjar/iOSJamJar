@@ -20,7 +20,8 @@ class APIService {
         return path
     }
     
-    static func buildURL(path: String) -> String {
+    static func buildURL(var path: String) -> String {
+        path = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         return NSURL(string: self.appendSlash(path), relativeToURL: url)!.absoluteString
     }
     
@@ -34,7 +35,7 @@ class APIService {
     */
     
     //TODO: set Token be automatic?
-    static func setToken(token: String) {
+    static func setToken(token: String?) {
         self.token = token
     }
     
