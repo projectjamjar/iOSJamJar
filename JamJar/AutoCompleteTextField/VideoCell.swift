@@ -21,6 +21,8 @@ class VideoCell: UITableViewCell {
     func setup(video: Video) {
         self.video = video
         
+        videoNameLabel.text = self.video.name
+        
         // Set the thumbnail to the first video with the target thumbnail size
         if let thumbImage = self.video.thumbnailForSize(256) {
             thumbnailImageView.image = thumbImage
@@ -40,6 +42,9 @@ class VideoCell: UITableViewCell {
 //        let dateString = self.video.concert.string("MM-d-YYYY")
 //        let venueString = self.concert.venue.name
 //        dateVenueLabel.text = "\(dateString) | \(venueString)"
+        
+        // Uploader label (we need to make clicking this do something tapgesturerecognizer)
+        self.uploaderLabel.text = "@\(self.video.user.username)"
         
         // Number of videos
         let numViews = self.video.views

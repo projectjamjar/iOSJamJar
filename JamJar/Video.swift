@@ -64,4 +64,10 @@ class Video: NSObject, Mappable {
         }
     }
     
+    func getArtistsString() -> String {
+        let artistNames: [String] = self.artists.map({return $0.name})
+        let artistsString = artistNames.joinWithSeparator(", ")
+        return artistsString
+    }
+    
 }

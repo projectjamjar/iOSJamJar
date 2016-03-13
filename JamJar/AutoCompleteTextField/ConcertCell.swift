@@ -30,9 +30,7 @@ class ConcertCell: UITableViewCell {
         }
         
         // Join all artist names and set the artist label
-        let artistNames: [String] = self.concert.getArtists().map({return $0.name})
-        let artistsString = artistNames.joinWithSeparator(", ")
-        artistLabel.text = artistsString
+        artistLabel.text = concert.getArtistsString()
         
         // Get and format the date and venue
         let dateString = self.concert.date.string("MM-d-YYYY")

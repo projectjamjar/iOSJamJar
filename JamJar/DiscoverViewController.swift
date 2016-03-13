@@ -16,6 +16,8 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     var concerts: [Concert] = [Concert]()
     
+    var selectedConcert: Concert? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +56,19 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Concert selected: \(indexPath.row)")
+        let concertCell = tableView.cellForRowAtIndexPath(indexPath) as! ConcertCell
+        selectedConcert = concertCell.concert
+        
+        self.performSegueWithIdentifier("ToVideoList", sender: nil)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: self)
+        
+        if segue.identifier == "ToVideoList" {
+            let vc = segue.destinationViewController as! VideoListViewController
+            vc.videos = self.selectedConcert!.videos
+            vc.concert = self.selectedConcert!
+        }
     }
 }

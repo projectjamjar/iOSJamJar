@@ -48,6 +48,12 @@ class Concert: NSObject, Mappable {
         return artists
     }
     
+    func getArtistsString() -> String {
+        let artistNames: [String] = self.getArtists().map({return $0.name})
+        let artistsString = artistNames.joinWithSeparator(", ")
+        return artistsString
+    }
+    
     func thumbnailForSize(size: Int) -> UIImage? {
         if let firstVideo = self.videos.filter({$0.thumb_src != nil}).first,
                thumbImage = firstVideo.thumbnailForSize(size) {

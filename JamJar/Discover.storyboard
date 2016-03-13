@@ -131,11 +131,20 @@
                     <connections>
                         <outlet property="sectionPicker" destination="jn0-8h-fFp" id="9Tc-Vt-92i"/>
                         <outlet property="tableView" destination="HRl-UI-KMZ" id="amP-74-cXm"/>
+                        <segue destination="fEg-Vr-e2h" kind="show" identifier="ToVideoList" id="aYg-3S-4a0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JA1-Tl-UT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1003.5" y="-297.5"/>
+        </scene>
+        <!--VideoList-->
+        <scene sceneID="Zje-VI-Nom">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Video" referencedIdentifier="VideoList" id="fEg-Vr-e2h" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="drN-UR-aSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1417" y="-543"/>
         </scene>
         <!--Discover-->
         <scene sceneID="QwN-hr-dLA">

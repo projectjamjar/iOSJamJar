@@ -86,7 +86,7 @@
                     <constraint firstAttribute="bottom" secondItem="Rdd-Hj-1MN" secondAttribute="bottom" constant="8" id="uNP-eg-UQL"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="artistLabel" destination="56w-R4-ffd" id="fD5-7r-Y41"/>
                 <outlet property="dateVenueLabel" destination="9td-g3-TZk" id="Cof-hP-F8y"/>
