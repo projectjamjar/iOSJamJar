@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Muli-Italic.ttf">
+            <string>Muli-Italic</string>
+            <string>Muli-Italic</string>
+            <string>Muli-Italic</string>
+            <string>Muli-Italic</string>
+        </mutableArray>
+        <mutableArray key="Muli-Regular.ttf">
+            <string>Muli</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="107" id="tCf-df-H7m" customClass="VideoCell" customModule="JamJar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="446" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCf-df-H7m" id="spv-d8-TT9">
+                <rect key="frame" x="0.0" y="0.0" width="446" height="106"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="chW-VX-dpp">
+                        <rect key="frame" x="130" y="10" width="200" height="86"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Video Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wae-SE-nIa">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="31"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lil Khalifa, Wiz Wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="56w-R4-ffd">
+                                <rect key="frame" x="0.0" y="31" width="200" height="19"/>
+                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2-29-2016 @ Draxel University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9td-g3-TZk">
+                                <rect key="frame" x="0.0" y="50" width="200" height="18"/>
+                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@efan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afB-4Z-CXL">
+                                <rect key="frame" x="0.0" y="68" width="200" height="18"/>
+                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
+                                <color key="textColor" red="0.23026315789473673" green="0.52631578947368385" blue="0.99342105263157898" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YBs-AY-okI">
+                        <rect key="frame" x="15" y="18" width="107" height="71"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="YBs-AY-okI" secondAttribute="height" multiplier="1.5:1" id="wAi-Cd-Tzc"/>
+                            <constraint firstAttribute="width" secondItem="YBs-AY-okI" secondAttribute="height" multiplier="3:2" id="xTc-vK-R12"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wAi-Cd-Tzc"/>
+                                <exclude reference="xTc-vK-R12"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="254 views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-Hj-1MN">
+                        <rect key="frame" x="372" y="80" width="66" height="18"/>
+                        <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="chW-VX-dpp" firstAttribute="leading" secondItem="YBs-AY-okI" secondAttribute="trailing" constant="8" id="F3Q-EL-Hw6"/>
+                    <constraint firstItem="YBs-AY-okI" firstAttribute="leading" secondItem="spv-d8-TT9" secondAttribute="leading" constant="15" id="KZF-QR-oiu"/>
+                    <constraint firstAttribute="bottom" secondItem="chW-VX-dpp" secondAttribute="bottom" constant="10" id="Mvq-0A-hxo"/>
+                    <constraint firstItem="chW-VX-dpp" firstAttribute="centerY" secondItem="YBs-AY-okI" secondAttribute="centerY" id="cf0-Ca-MnF"/>
+                    <constraint firstItem="chW-VX-dpp" firstAttribute="top" secondItem="spv-d8-TT9" secondAttribute="top" constant="10" id="fdg-IY-7dg"/>
+                    <constraint firstAttribute="trailing" secondItem="Rdd-Hj-1MN" secondAttribute="trailing" constant="8" id="jhy-wi-XWp"/>
+                    <constraint firstItem="YBs-AY-okI" firstAttribute="width" secondItem="YBs-AY-okI" secondAttribute="height" multiplier="1.5:1" id="mii-5F-nI3"/>
+                    <constraint firstAttribute="bottom" secondItem="YBs-AY-okI" secondAttribute="bottom" constant="10" id="ncf-aw-pJO"/>
+                    <constraint firstAttribute="bottom" secondItem="Rdd-Hj-1MN" secondAttribute="bottom" constant="8" id="uNP-eg-UQL"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="chW-VX-dpp" secondAttribute="trailing" constant="10" id="vGV-fy-zji"/>
+                    <constraint firstItem="chW-VX-dpp" firstAttribute="height" secondItem="YBs-AY-okI" secondAttribute="height" constant="15" id="vcb-dB-EfW"/>
+                    <constraint firstItem="chW-VX-dpp" firstAttribute="centerY" secondItem="spv-d8-TT9" secondAttribute="centerY" id="wrV-0O-BeF"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="ncf-aw-pJO"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="artistLabel" destination="56w-R4-ffd" id="fD5-7r-Y41"/>
+                <outlet property="dateVenueLabel" destination="9td-g3-TZk" id="Cof-hP-F8y"/>
+                <outlet property="thumbnailImageView" destination="YBs-AY-okI" id="rPD-q7-fTZ"/>
+                <outlet property="uploaderLabel" destination="afB-4Z-CXL" id="D4c-oM-AQ9"/>
+                <outlet property="videoNameLabel" destination="wae-SE-nIa" id="I30-gs-iJw"/>
+                <outlet property="viewCountLabel" destination="Rdd-Hj-1MN" id="sKy-Vx-c5i"/>
+            </connections>
+            <point key="canvasLocation" x="270" y="-69.5"/>
+        </tableViewCell>
+    </objects>
+</document>

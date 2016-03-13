@@ -15,10 +15,13 @@ class VideoService: APIService {
     // Upload Video
     static func upload(videoURL: NSURL, name: String, is_private: Int, concert_id: Int, artists: [Artist], completion: (success: Bool, result: String?) -> Void) {
         let url = self.buildURL("videos")
-        let headers = [
-            "Content-Type": "multipart/form-data",
-            "Authorization": "Token \(AuthService.GetToken()!)"
+        var headers = [
+            "Content-Type": "multipart/form-data"
         ]
+        if let token = AuthService.getToken() {
+            headers["Authorization"] = "Token \(token)"
+        }
+        
         let parameters = [
             "name": name,
             "is_private": String((is_private == 1)),

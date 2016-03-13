@@ -12,7 +12,7 @@ class Concert: NSObject, Mappable {
 
     // Concert Attributes
     var id: Int!
-    var date: String!
+    var date: NSDate!
     var venue: Venue!
     var videos: [Video]!
     
@@ -29,8 +29,38 @@ class Concert: NSObject, Mappable {
      */
     func mapping(map: Map) {
         id <- map["id"]
-        date <- map["date"]
+        date <- (map["date"], ObjectMapper.CustomDateFormatTransform(formatString: "yyyy-MM-dd"))
         venue <- map["venue"]
         videos <- map["videos"]
+    }
+    
+    func getArtists() -> [Artist] {
+        var artistIds = [Int]()
+        var artists = [Artist]()
+        videos.forEach { video in
+            video.artists.forEach({ (artist) -> () in
+                if !artistIds.contains(artist.id) {
+                    artists.append(artist)
+                    artistIds.append(artist.id)
+                }
+            })
+        }
+        return artists
+    }
+    
+    func getArtistsString() -> String {
+        let artistNames: [String] = self.getArtists().map({return $0.name})
+        let artistsString = artistNames.joinWithSeparator(", ")
+        return artistsString
+    }
+    
+    func thumbnailForSize(size: Int) -> UIImage? {
+        if let firstVideo = self.videos.filter({$0.thumb_src != nil}).first,
+               thumbImage = firstVideo.thumbnailForSize(size) {
+                return thumbImage
+        }
+        else {
+            return nil
+        }
     }
 }

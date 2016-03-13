@@ -17,7 +17,7 @@ class VenueService: APIService {
     static private let googleMapsURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     
     // search venues
-    static func search(searchString: String, completion: (success: Bool, venues: [Venue]?, result: String?) -> Void) {
+    static func search(searchString: String, completion: (success: Bool, venues: [VenueSearchResult]?, result: String?) -> Void) {
         let urlString = "\(googleMapsURLString)?key=\(googleMapsKey)&input=\(searchString)"
         let url = NSURL(string: (urlString as NSString).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!.absoluteString
         
@@ -28,7 +28,7 @@ class VenueService: APIService {
                     completion(success: false, venues: nil, result: "Cannot Search Venues")
                     return
                 case .Success:
-                    let venues = Mapper<Venue>().mapArray(response.result.value!["predictions"])
+                    let venues = Mapper<VenueSearchResult>().mapArray(response.result.value!["predictions"])
                     completion(success: true, venues: venues, result: nil)
                     return
             }

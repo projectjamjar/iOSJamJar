@@ -13,7 +13,7 @@ class Artist: NSObject, Mappable {
     // Artist Attributes
     // Note: This model is based off of spotify_model, not JamJars
     // TODO: Add in missing attributes (like images)
-    var id: String!
+    var id: Int!
     var name: String!
     var spotify_id: String?
     var genres: [String]?

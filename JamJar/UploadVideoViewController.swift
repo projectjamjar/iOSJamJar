@@ -15,7 +15,7 @@ class UploadVideoViewController: BaseViewController{
     
     //information about the concert that is sent to this controller
     var selectedArtists = [Artist]()
-    var selectedVenue: Venue!
+    var selectedVenue: VenueSearchResult!
     var selectedDate: String!
     
     //Information to maintain information on all videos
