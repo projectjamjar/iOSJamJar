@@ -48,4 +48,20 @@ class Video: NSObject, Mappable {
         artists <- map["artists"]
     }
     
+    
+    func thumbnailForSize(size: Int) -> UIImage? {
+        // Given a target size, get the thumbnail for that size (or nil)
+        let targetThumbSize = "\(size)"
+        if let thumbs = self.thumb_src,
+               urlString = thumbs[targetThumbSize],
+               url = NSURL(string: urlString),
+               data = NSData(contentsOfURL: url),
+               image = UIImage(data: data) {
+                    return image
+        }
+        else {
+            return nil
+        }
+    }
+    
 }

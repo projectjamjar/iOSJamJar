@@ -47,4 +47,14 @@ class Concert: NSObject, Mappable {
         }
         return artists
     }
+    
+    func thumbnailForSize(size: Int) -> UIImage? {
+        if let firstVideo = self.videos.filter({$0.thumb_src != nil}).first,
+               thumbImage = firstVideo.thumbnailForSize(size) {
+                return thumbImage
+        }
+        else {
+            return nil
+        }
+    }
 }

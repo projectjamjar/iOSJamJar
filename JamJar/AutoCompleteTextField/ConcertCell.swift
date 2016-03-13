@@ -19,15 +19,9 @@ class ConcertCell: UITableViewCell {
     func setup(concert: Concert) {
         self.concert = concert
         
-        // Get the first video
-        if let firstVideo = self.concert.videos.filter({$0.thumb_src != nil}).first {
-            let targetThumbSize = "256"
-            if let urlString = firstVideo.thumb_src[targetThumbSize],
-                   url = NSURL(string: urlString),
-                   data = NSData(contentsOfURL: url),
-                   image = UIImage(data: data) {
-                thumbnailImageView.image = image
-            }
+        // Set the thumbnail to the first video with the target thumbnail size
+        if let thumbImage = self.concert.thumbnailForSize(256) {
+                thumbnailImageView.image = thumbImage
         }
         else {
             thumbnailImageView.image = UIImage(named: "logo-transparent")
