@@ -39,6 +39,10 @@ class APIService {
         self.token = token
     }
     
+    static func getToken() -> String? {
+        return self.token
+    }
+    
     static func getRequestHeaders() -> [String: String] {
         var headers = [
             "Content-Type": "application/json"

@@ -18,7 +18,7 @@ import Photos
 class EnterConcertInformationViewController: BaseViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var selectedArtists = [Artist]()
-    var selectedVenue: Venue!
+    var selectedVenue: VenueSearchResult!
     var videosToUpload: [NSURL] = []
     // Seperate from textField to save the correct date format
     var savedDate: String!
@@ -76,7 +76,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             }
         }
         venueTextField.onSelect = {[weak self] text, indexpath in
-            self!.selectedVenue = self!.venueTextField.autoCompleteAttributes![text] as! Venue
+            self!.selectedVenue = self!.venueTextField.autoCompleteAttributes![text] as! VenueSearchResult
             self!.view.endEditing(true)
         }
         
@@ -145,7 +145,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     private func venueTextFieldChange(inputString: String) {
         
         VenueService.search(inputString) {
-            (success: Bool, venues: [Venue]?, message: String?) in
+            (success, venues, message) in
             if !success {
                 // Error - show the user and clear previous search info
                 let errorTitle = "Search failed!"
@@ -157,8 +157,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 // Our search was successful, display search results
                 var venueResults = [String]()
                 for venue in venues! {
-                    venueResults.append(venue.description)
-                    self.venueTextField.autoCompleteAttributes![venue.description] = venue
+                    venueResults.append(venue.name)
+                    self.venueTextField.autoCompleteAttributes![venue.name] = venue
                 }
                 self.venueTextField.autoCompleteStrings = venueResults
             }

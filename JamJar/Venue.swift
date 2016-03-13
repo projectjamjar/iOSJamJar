@@ -8,6 +8,28 @@
 
 import ObjectMapper
 
+class VenueSearchResult: NSObject, Mappable {
+    var place_id: String!
+    var name: String!
+    
+    /**
+     The constructor required by ObjectMapper
+     */
+    required init?(_ map: Map) {}
+    
+    /**
+     The mapping function for ObjectMapper.  This function relates model
+     properties to fields in a JSON Response.
+     
+     - parameter map: The map of the JSON response
+     */
+    func mapping(map: Map) {
+        place_id <- map["place_id"]
+        name <- map["description"]
+    }
+}
+
+
 class Venue: NSObject, Mappable {
     
     // Venue Attributes
