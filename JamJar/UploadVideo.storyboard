@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -177,14 +178,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wwO-03-K4Q">
-                                <rect key="frame" x="67" y="72" width="240" height="200"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwO-03-K4Q">
+                                <rect key="frame" x="63" y="72" width="248" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="height" multiplier="6:5" id="WEy-tm-wjU"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="gUG-YR-E67" kind="embed" identifier="playVideo" id="I0p-wV-DVi"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Video Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-50-d1h" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="67" y="280" width="240" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Video Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-50-d1h" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="63" y="299" width="248" height="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -192,9 +196,12 @@
                                     <action selector="videoNameTextFieldEdited:" destination="XPg-sG-R38" eventType="editingDidEnd" id="MUX-4A-GTc"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5">
-                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5">
+                                <rect key="frame" x="-4" y="568" width="383" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YHc-qN-dpx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
                                 <state key="normal" title="Finish and Upload">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -204,22 +211,22 @@
                                     <action selector="finishAndUploadButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="11b-6k-bGX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">
-                                <rect key="frame" x="322" y="155" width="33" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">
+                                <rect key="frame" x="326" y="159" width="33" height="33"/>
                                 <state key="normal" image="right-arrow"/>
                                 <connections>
                                     <action selector="rightButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="BGv-yO-MIP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-VK-xJ4">
-                                <rect key="frame" x="20" y="155" width="33" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-VK-xJ4">
+                                <rect key="frame" x="16" y="159" width="33" height="33"/>
                                 <state key="normal" image="left-arrow"/>
                                 <connections>
                                     <action selector="leftButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="EJ9-GG-1Ml"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-fR-JCB">
-                                <rect key="frame" x="67" y="328" width="240" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-fR-JCB">
+                                <rect key="frame" x="63" y="345" width="248" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Public"/>
@@ -232,6 +239,32 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1rG-VK-xJ4" firstAttribute="centerY" secondItem="wwO-03-K4Q" secondAttribute="centerY" id="0QY-hw-296"/>
+                            <constraint firstItem="Z6j-50-d1h" firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="width" id="BTU-pe-pwt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tBj-DW-nVa" secondAttribute="trailing" id="E4D-fE-AdM"/>
+                            <constraint firstItem="tBj-DW-nVa" firstAttribute="leading" secondItem="wwO-03-K4Q" secondAttribute="trailing" constant="15" id="Edn-9v-8O2"/>
+                            <constraint firstItem="tBj-DW-nVa" firstAttribute="centerY" secondItem="wwO-03-K4Q" secondAttribute="centerY" id="K6Q-U2-I96"/>
+                            <constraint firstItem="VBu-fR-JCB" firstAttribute="leading" secondItem="okr-e8-1IL" secondAttribute="leadingMargin" constant="47" id="KUu-ii-plf"/>
+                            <constraint firstItem="o0A-Eg-1cd" firstAttribute="top" secondItem="Fbx-Db-MD5" secondAttribute="bottom" id="LUV-E6-w1B"/>
+                            <constraint firstItem="VBu-fR-JCB" firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="width" id="NZt-Y1-5LS"/>
+                            <constraint firstItem="Fbx-Db-MD5" firstAttribute="leading" secondItem="okr-e8-1IL" secondAttribute="leadingMargin" constant="-20" id="PVb-bl-cOE"/>
+                            <constraint firstItem="wwO-03-K4Q" firstAttribute="top" secondItem="ZBT-VG-3Wz" secondAttribute="bottom" constant="8" id="UX4-sJ-YCH"/>
+                            <constraint firstItem="Z6j-50-d1h" firstAttribute="leading" secondItem="okr-e8-1IL" secondAttribute="leadingMargin" constant="47" id="c4b-GW-qBw"/>
+                            <constraint firstItem="wwO-03-K4Q" firstAttribute="leading" secondItem="1rG-VK-xJ4" secondAttribute="trailing" constant="14" id="lGV-hN-HFB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fbx-Db-MD5" secondAttribute="trailing" constant="-20" id="ot3-DD-1Gg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VBu-fR-JCB" secondAttribute="trailing" constant="48" id="rQW-Ze-mnk"/>
+                            <constraint firstItem="Z6j-50-d1h" firstAttribute="top" secondItem="wwO-03-K4Q" secondAttribute="bottom" constant="20" id="sRV-Yf-Zl2"/>
+                            <constraint firstItem="VBu-fR-JCB" firstAttribute="top" secondItem="Z6j-50-d1h" secondAttribute="bottom" constant="20" id="tzS-BO-xAD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z6j-50-d1h" secondAttribute="trailing" constant="48" id="uoy-Oj-Vx0"/>
+                            <constraint firstItem="Z6j-50-d1h" firstAttribute="top" secondItem="wwO-03-K4Q" secondAttribute="bottom" constant="8" id="xvJ-Rw-XLw"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1rG-VK-xJ4" secondAttribute="leading" id="yFg-So-j7l"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xvJ-Rw-XLw"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Upload - Add Video Details" id="kvn-uc-JYg"/>
                     <connections>
