@@ -187,7 +187,7 @@
                                     <segue destination="gUG-YR-E67" kind="embed" identifier="playVideo" id="I0p-wV-DVi"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Video Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-50-d1h" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-50-d1h" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
                                 <rect key="frame" x="63" y="299" width="248" height="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>

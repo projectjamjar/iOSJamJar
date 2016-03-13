@@ -18,8 +18,21 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     var selectedConcert: Concert? = nil
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loadConcerts()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
+    }
+    
+    func refresh(sender:AnyObject)
+    {
         
         self.loadConcerts()
     }
@@ -37,6 +50,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
                 // Our login was successful, goto Home!
                 self.concerts = result!
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }

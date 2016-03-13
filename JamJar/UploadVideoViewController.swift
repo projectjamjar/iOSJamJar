@@ -38,8 +38,9 @@ class UploadVideoViewController: BaseViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
         //placeholder text for videoNameTextField needs to be set to white
-        videoNameTextField.attributedPlaceholder = NSAttributedString(string:"Video Name",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+//        videoNameTextField.attributedPlaceholder = NSAttributedString(string:"Video Name",
+//            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        videoNameTextField.setColoredPlaceholder("Video Name...")
         
         //removes the white background from the corners to make the UI look better
         self.publicPrivateSegmentedControl.layer.cornerRadius = 5.0;
