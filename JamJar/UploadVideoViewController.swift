@@ -24,6 +24,9 @@ class UploadVideoViewController: BaseViewController{
     var namesOfVideos: [String]!
     var publicPrivateStatusOfVideos: [Int]!
     
+    // Keep track of upload progress
+    var queue: Int = 0
+    
     //UI Outlets
     @IBOutlet var videoNameTextField: UITextField!
     @IBOutlet var publicPrivateSegmentedControl: UISegmentedControl!
@@ -102,23 +105,40 @@ class UploadVideoViewController: BaseViewController{
     
     func uploadVideos(concert_id: Int) {
         //begin for loop through videos
+        showProgressView()
+        self.queue = self.videosToUpload.count
+        
         for index in 0...(self.videosToUpload.count) - 1 {
-            print(index)
-            
             VideoService.upload(self.videosToUpload[index], name: self.namesOfVideos[index], is_private: self.publicPrivateStatusOfVideos[index], concert_id: concert_id, artists: self.selectedArtists) { (success: Bool, message: String?) in
                 if !success {
                     // Error - show the user and clear previous search info
+                    showErrorView()
                     SCLAlertView().showError("Upload Error!", subTitle: message!, closeButtonTitle: "Got it")
                 } else {
-                    self.resetUploadControllers()
+                    self.callback()
                 }
             }
             
         }
     }
     
+    // Keep track of videos uploaded
+    func callback()
+    {
+        self.queue--
+        // Execute final callback when queue is empty
+        if self.queue == 0 {
+            showSuccessView()
+            self.resetUploadControllers()
+        }
+    }
+    
     func resetUploadControllers() {
-        print("Delete all stored information and return to the previous view")
+        let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
+        
+        concertViewController.clearViewForm()
+        
+        navigationController?.popViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

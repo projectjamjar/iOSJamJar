@@ -199,9 +199,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                     SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
                     return
                 }
-                self.queue = assets.count
-                // Store all of the URLs for the selected videos
                 
+                showProgressView()
+                self.queue = assets.count
+                
+                // Store all of the URLs for the selected videos
                 for asset in assets {
                     asset.fetchAVAsset(nil, completeBlock: { info in
                         //copy file into local "Documents" Directory
@@ -219,6 +221,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                                     self.callback()
                                 } else {
                                     print("Error: Video could not be processed")
+                                    showErrorView()
                                 }
                         }
                     })
@@ -236,8 +239,22 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.queue--
         // Execute final callback when queue is empty
         if self.queue == 0 {
+            showSuccessView()
             self.performSegueWithIdentifier("uploadVideo", sender: nil)
         }
+    }
+    
+    // Method to clear the form
+    func clearViewForm() {
+        self.selectedArtists = []
+        self.selectedVenue = nil
+        self.savedDate = nil
+        self.queue = 0
+        self.artistsTextField.text = ""
+        self.venueTextField.text = ""
+        self.dateTextField.text = ""
+        self.artistsStackView.subviews.forEach({ $0.removeFromSuperview() })
+        self.artistsTextField.setColoredPlaceholder("Search Artists...")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -249,6 +266,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             uploadVideoViewController.selectedDate = self.savedDate
             uploadVideoViewController.videosToUpload = self.videosToUpload
             
+            //Clear video list to avoid conflicts
+            self.videosToUpload = []
         }
     }
 }

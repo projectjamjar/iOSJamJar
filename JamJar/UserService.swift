@@ -111,13 +111,10 @@ class UserService: APIService {
     }
     
     static func logout() {
+        // Unset the user and token singletons and delete locksmith data
         UserService.currentUser(nil)
-        do {
-            try Locksmith.deleteDataForUserAccount(AuthService.userAccount)
-        }
-        catch _ {
-            print("Couldn't delete user data")
-        }
+        APIService.setToken(nil)
+        AuthService.RemoveUserData()
         
         // Set up the login storyboard again
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

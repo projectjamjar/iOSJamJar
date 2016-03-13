@@ -8,6 +8,7 @@ PODS:
   - GoogleMaps (1.12.1)
   - Locksmith (2.0.2)
   - ObjectMapper (1.1.5)
+  - PKHUD (3.1.0)
   - SCLAlertView (0.5.1)
   - SwiftyJSON (2.3.2)
 
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - GoogleMaps
   - Locksmith
   - ObjectMapper
+  - PKHUD
   - SCLAlertView
   - SwiftyJSON
 
@@ -26,6 +28,7 @@ SPEC CHECKSUMS:
   GoogleMaps: d4e7526e96e78faf7131ea95f13dd5411cc2916d
   Locksmith: 7f2b68448449a7712348f9a4ed60604c1cc8dfa6
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
+  PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 

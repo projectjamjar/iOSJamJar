@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
@@ -62,4 +63,24 @@ class BaseTableViewController: UITableViewController {
         self.view.endEditing(true)
         return false
     }
+}
+
+func showProgressView() {
+    PKHUD.sharedHUD.contentView = PKHUDProgressView()
+    PKHUD.sharedHUD.dimsBackground = true
+    PKHUD.sharedHUD.show()
+}
+
+func showSuccessView() {
+    PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+    PKHUD.sharedHUD.dimsBackground = true
+    PKHUD.sharedHUD.show()
+    PKHUD.sharedHUD.hide(afterDelay: 1.0)
+}
+
+func showErrorView() {
+    PKHUD.sharedHUD.contentView = PKHUDErrorView()
+    PKHUD.sharedHUD.dimsBackground = true
+    PKHUD.sharedHUD.show()
+    PKHUD.sharedHUD.hide(afterDelay: 1.0)
 }
