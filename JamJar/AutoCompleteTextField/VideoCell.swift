@@ -26,12 +26,20 @@ class VideoCell: UITableViewCell {
         // Set the thumbnail to the first video with the target thumbnail size
         if let thumbImage = self.video.thumbnailForSize(256) {
             thumbnailImageView.image = thumbImage
+            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
         }
         else {
             thumbnailImageView.image = UIImage(named: "logo-transparent")
             thumbnailImageView.contentMode = .ScaleAspectFit
             thumbnailImageView.backgroundColor = UIColor.jjCoralColor()
+            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
+
         }
+        
+        // Round the edges of the imageview
+        thumbnailImageView.layer.borderWidth = 2
+        thumbnailImageView.layer.cornerRadius = 5.0
+        thumbnailImageView.clipsToBounds = true
         
         // Join all artist names and set the artist label
         let artistNames: [String] = self.video.artists.map({return $0.name})

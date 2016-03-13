@@ -60,6 +60,8 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         selectedConcert = concertCell.concert
         
         self.performSegueWithIdentifier("ToVideoList", sender: nil)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

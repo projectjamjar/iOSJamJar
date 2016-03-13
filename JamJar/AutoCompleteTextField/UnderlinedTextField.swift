@@ -14,7 +14,7 @@ public class UnderlinedTextField:UITextField {
         super.awakeFromNib()
         let startY = self.frame.height - 2
         let lineView = UIView(frame: CGRectMake(0,startY,self.frame.width,2.0))
-        lineView.backgroundColor = UIColor.whiteColor()
+        lineView.backgroundColor = UIColor.jjCoralColor()
         self.addSubview(lineView)
     }
 }
