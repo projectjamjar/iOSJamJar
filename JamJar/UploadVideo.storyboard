@@ -191,7 +191,7 @@
                                 <rect key="frame" x="63" y="299" width="248" height="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="videoNameTextFieldEdited:" destination="XPg-sG-R38" eventType="editingDidEnd" id="MUX-4A-GTc"/>
                                 </connections>

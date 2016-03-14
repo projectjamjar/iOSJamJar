@@ -124,10 +124,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             (success: Bool, artists: [Artist]?, message: String?) in
             if !success {
                 // Error - show the user and clear previous search info
-                let errorTitle = "Search failed!"
-                if let error = message { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                self.artistsTextField.autoCompleteStrings = nil
+                // HIDE THIS FOR THE DEMO, THEN UNHIDE IT ONCE ITZ FIXED
+//                let errorTitle = "Search failed!"
+//                if let error = message { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+//                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+//                self.artistsTextField.autoCompleteStrings = nil
             }
             else {
                 // Our search was successful, display search results

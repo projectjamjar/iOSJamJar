@@ -38,6 +38,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func loadConcerts() {
+        showProgressView()
         ConcertService.getConcerts() {
             (success, result, error) in
             if !success {
@@ -52,6 +53,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
+            hideProgressView()
         }
     }
     

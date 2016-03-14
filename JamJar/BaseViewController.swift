@@ -71,6 +71,10 @@ func showProgressView() {
     PKHUD.sharedHUD.show()
 }
 
+func hideProgressView() {
+    PKHUD.sharedHUD.hide(animated: true, completion: nil)
+}
+
 func showSuccessView() {
     PKHUD.sharedHUD.contentView = PKHUDSuccessView()
     PKHUD.sharedHUD.dimsBackground = true
