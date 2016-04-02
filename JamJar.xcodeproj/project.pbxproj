@@ -52,6 +52,8 @@
 		AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */; };
 		AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */; };
 		AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */; };
+		AAB62F601CB0603800C6CC15 /* JamJarEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */; };
+		AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */; };
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */; };
 		AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4891C912B56007A1DB6 /* Concert.swift */; };
@@ -110,6 +112,8 @@
 		AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarEdge.swift; sourceTree = "<group>"; };
+		AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarGraph.swift; sourceTree = "<group>"; };
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertService.swift; sourceTree = "<group>"; };
 		AAD1E4891C912B56007A1DB6 /* Concert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		AA6DE9631C6D0B68007A64B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AAB62F5E1CB05F9900C6CC15 /* JamJar */,
 				AA0526A81C47187600894DC7 /* User.swift */,
 				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 				AA130FFD1C765B5100851AD4 /* Artist.swift */,
@@ -281,6 +286,15 @@
 			children = (
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		AAB62F5E1CB05F9900C6CC15 /* JamJar */ = {
+			isa = PBXGroup;
+			children = (
+				AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */,
+				AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */,
+			);
+			name = JamJar;
 			sourceTree = "<group>";
 		};
 		AABBF92A1C6D057F00EB3EC4 /* Discover */ = {
@@ -482,7 +496,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */,
 				AA1310071C78FC3800851AD4 /* EnterConcertInformationController.swift in Sources */,
+				AAB62F601CB0603800C6CC15 /* JamJarEdge.swift in Sources */,
 				AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */,
 				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,

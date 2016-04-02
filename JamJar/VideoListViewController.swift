@@ -11,8 +11,6 @@ import SCLAlertView
 
 class VideoListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-//    @IBOutlet weak var sectionPicker: UISegmentedControl!
-//    @IBOutlet weak var searchBar: UISearchBar?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistLabel: UILabel!
@@ -21,9 +19,9 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
     
     var concert: Concert? = nil
     var videos: [Video] = [Video]()
-    //var filteredVideos: [Video] = [Video]()
     var myVideos: [Video] = [Video]()
     var individualVideos: [Video] = [Video]()
+    var jamjars: [JamJarGraph] = [JamJarGraph]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +29,20 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
         // Register the reusable video cell
         self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         
-        // Initialize the filteredVideos to the video list
-        //filteredVideos = videos
+        // Set JamJars
+        ConcertService.getJamJars((self.concert?.id)!) {
+            (success, result, error) in
+            if !success {
+                // Error - show the user
+                let errorTitle = "JamJar error!"
+                if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+            }
+            else {
+                // Successfully retrieved JamJars, store them
+                self.jamjars = result!
+            }
+        }
         
         // Set myVideos
         self.myVideos = self.videos.filter { (video) -> Bool in
