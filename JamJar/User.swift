@@ -41,8 +41,8 @@ class User: NSObject, NSCoding, Mappable {
     
     required init(coder aDecoder: NSCoder) {
         id = aDecoder.decodeObjectForKey("id") as! Int?
-        email = aDecoder.decodeObjectForKey("username") as! String
-        username = aDecoder.decodeObjectForKey("email") as! String
+        email = aDecoder.decodeObjectForKey("email") as! String
+        username = aDecoder.decodeObjectForKey("username") as! String
         firstName = aDecoder.decodeObjectForKey("firstName") as! String
         lastName = aDecoder.decodeObjectForKey("lastName") as! String
         fullName = aDecoder.decodeObjectForKey("fullName") as! String
