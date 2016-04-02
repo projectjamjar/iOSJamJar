@@ -28,6 +28,7 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
         
         // Register the reusable video cell
         self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
+        self.tableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
         
         // Set JamJars
         ConcertService.getJamJars((self.concert?.id)!) {
@@ -41,6 +42,7 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
             else {
                 // Successfully retrieved JamJars, store them
                 self.jamjars = result!
+                self.tableView.reloadData()
             }
         }
         
@@ -84,7 +86,7 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return 0
+            return self.jamjars.count
         case 1:
             return self.myVideos.count
         case 2:
@@ -108,11 +110,28 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //TODO: Get a code review for this, could be refactored to separate videos from JamJars
+        //cell for JamJar
+        if(indexPath.section == 0) {
+            let jamjar = self.jamjars[indexPath.row]
+            
+            //retrieve first video
+            let firstVideo = self.videos.filter { (video) -> Bool in
+                return (video.id == jamjar.start_id)
+            }
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("JamJarCell", forIndexPath: indexPath) as! JamJarCell
+            cell.setup(jamjar, startVideo: firstVideo[0])
+            
+            return cell
+        }
+        
+        //cell for everything else
         var videoList: [Video] = [Video]()
         
         switch (indexPath.section) {
         case 0:
-            print("JamJars go here")
+            print("Error: JamJar trying to use VideoCell")
         case 1:
             videoList = self.myVideos
         case 2:
