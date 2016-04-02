@@ -12,8 +12,12 @@ import SCLAlertView
 class VideoListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
 //    @IBOutlet weak var sectionPicker: UISegmentedControl!
-    @IBOutlet weak var searchBar: UISearchBar?
+//    @IBOutlet weak var searchBar: UISearchBar?
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var artistImageView: UIImageView!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var venueLabel: UILabel!
     
     var concert: Concert? = nil
     var videos: [Video] = [Video]()
@@ -30,6 +34,19 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
         
         if let concert = self.concert {
             self.title = concert.getArtistsString()
+            
+            // Make Image round and assign image
+            self.artistImageView.cropToCircle()
+            self.artistImageView.image = concert.getArtists()[0].getImage()
+            
+            // Assign Artist to label
+            self.artistLabel.text = concert.getArtistsString()
+            
+            // Assign Date to label
+            self.dateLabel.text = concert.date.string("MM-d-YYYY")
+            
+            // Assign Venue to Label
+            self.venueLabel.text = concert.venue.name
         }
     }
     
