@@ -13,7 +13,7 @@ class JamJarGraph: NSObject, Mappable {
     // JamJarGraph Attributes
     var nodes: [String : [JamJarEdge]]?
     var count: Int!
-    var start_id: Int!
+    var startId: Int!
     
     /**
      The constructor required by ObjectMapper
@@ -29,7 +29,7 @@ class JamJarGraph: NSObject, Mappable {
     func mapping(map: Map) {
         nodes <- map["adjacencies"]
         count <- map["count"]
-        start_id <- map["start_id"]
+        startId <- map["start_id"]
     }
     
 }
