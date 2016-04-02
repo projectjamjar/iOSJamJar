@@ -117,7 +117,7 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
             
             //retrieve first video
             let firstVideo = self.videos.filter { (video) -> Bool in
-                return (video.id == jamjar.start_id)
+                return (video.id == jamjar.startId)
             }
             
             let cell = tableView.dequeueReusableCellWithIdentifier("JamJarCell", forIndexPath: indexPath) as! JamJarCell
