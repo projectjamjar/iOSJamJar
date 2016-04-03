@@ -56,6 +56,8 @@
 		AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */; };
 		AAB62F681CB06A9A00C6CC15 /* JamJarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB62F671CB06A9A00C6CC15 /* JamJarCell.xib */; };
 		AAB62F6A1CB06AC100C6CC15 /* JamJarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F691CB06AC100C6CC15 /* JamJarCell.swift */; };
+		AAB62F6C1CB07F9E00C6CC15 /* JamJarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB62F6B1CB07F9E00C6CC15 /* JamJarHeaderCell.xib */; };
+		AAB62F6E1CB0800000C6CC15 /* JamJarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F6D1CB0800000C6CC15 /* JamJarHeaderCell.swift */; };
 		AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABBF9281C6D057800EB3EC4 /* Discover.storyboard */; };
 		AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */; };
 		AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1E4891C912B56007A1DB6 /* Concert.swift */; };
@@ -118,6 +120,8 @@
 		AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarGraph.swift; sourceTree = "<group>"; };
 		AAB62F671CB06A9A00C6CC15 /* JamJarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JamJarCell.xib; sourceTree = "<group>"; };
 		AAB62F691CB06AC100C6CC15 /* JamJarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarCell.swift; sourceTree = "<group>"; };
+		AAB62F6B1CB07F9E00C6CC15 /* JamJarHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JamJarHeaderCell.xib; sourceTree = "<group>"; };
+		AAB62F6D1CB0800000C6CC15 /* JamJarHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarHeaderCell.swift; sourceTree = "<group>"; };
 		AABBF9281C6D057800EB3EC4 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertService.swift; sourceTree = "<group>"; };
 		AAD1E4891C912B56007A1DB6 /* Concert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				30AD45591C9522D300F999E7 /* VideoCell.xib */,
 				AAB62F691CB06AC100C6CC15 /* JamJarCell.swift */,
 				AAB62F671CB06A9A00C6CC15 /* JamJarCell.xib */,
+				AAB62F6D1CB0800000C6CC15 /* JamJarHeaderCell.swift */,
+				AAB62F6B1CB07F9E00C6CC15 /* JamJarHeaderCell.xib */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -437,6 +443,7 @@
 				AA6DE9731C6FD1C4007A64B7 /* UploadVideo.storyboard in Resources */,
 				30AD455A1C9522D300F999E7 /* VideoCell.xib in Resources */,
 				AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */,
+				AAB62F6C1CB07F9E00C6CC15 /* JamJarHeaderCell.xib in Resources */,
 				AABBF9291C6D057800EB3EC4 /* Discover.storyboard in Resources */,
 				30AD455C1C95230200F999E7 /* ConcertCell.xib in Resources */,
 				AAEB3E6D1BE0478900601B14 /* Assets.xcassets in Resources */,
@@ -530,6 +537,7 @@
 				AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
+				AAB62F6E1CB0800000C6CC15 /* JamJarHeaderCell.swift in Sources */,
 				30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,

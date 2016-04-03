@@ -26,29 +26,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="446" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rrg-Rv-gcp">
-                        <rect key="frame" x="130" y="10" width="95" height="86"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rrg-Rv-gcp">
+                        <rect key="frame" x="130" y="10" width="298" height="86"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="JamJar Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-fn-oT3">
-                                <rect key="frame" x="0.0" y="0.0" width="95" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="JamJar Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-fn-oT3">
+                                <rect key="frame" x="0.0" y="0.0" width="298" height="31"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-tP-h5d">
-                                <rect key="frame" x="0.0" y="31" width="95" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="# Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-tP-h5d">
+                                <rect key="frame" x="0.0" y="31" width="298" height="19"/>
                                 <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Contributors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3i3-fT-cQZ">
-                                <rect key="frame" x="0.0" y="50" width="95" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="# Contributors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3i3-fT-cQZ">
+                                <rect key="frame" x="0.0" y="50" width="298" height="18"/>
                                 <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-k5-zSL">
-                                <rect key="frame" x="0.0" y="68" width="95" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Length Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-k5-zSL">
+                                <rect key="frame" x="0.0" y="68" width="298" height="18"/>
                                 <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -63,8 +63,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="gOq-u1-GkL"/>
                                 <exclude reference="3Tb-5h-hkf"/>
+                                <exclude reference="gOq-u1-GkL"/>
                             </mask>
                         </variation>
                     </imageView>

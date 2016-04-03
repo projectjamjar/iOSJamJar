@@ -23,12 +23,17 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
     var individualVideos: [Video] = [Video]()
     var jamjars: [JamJarGraph] = [JamJarGraph]()
     
+    var showJamJars: Bool = true
+    var showMyVideos: Bool = true
+    var showIndividualVideos: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Register the reusable video cell
         self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         self.tableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
+        self.tableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
         
         // Set JamJars
         ConcertService.getJamJars((self.concert?.id)!) {
@@ -83,30 +88,48 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
         return 3
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
+        headerCell.backgroundColor = UIColor.grayColor()
+        
+        switch (section) {
+        case 0:
+            headerCell.setup("JamJars", number: 0, status: showJamJars)
+        case 1:
+            headerCell.setup("My Videos", number: 1, status: showMyVideos)
+        case 2:
+            headerCell.setup("Individual Videos", number: 2, status: showIndividualVideos)
+        default:
+            headerCell.setup("Error", number: -1, status: false)
+        }
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "collapseExpandSection:")
+        tap.cancelsTouchesInView = true
+        headerCell.addGestureRecognizer(tap)
+        
+        return headerCell
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return self.jamjars.count
+            if(showJamJars) {
+                return self.jamjars.count
+            }
         case 1:
-            return self.myVideos.count
+            if(showMyVideos) {
+                return self.myVideos.count
+            }
         case 2:
-            return self.individualVideos.count
+            if(showIndividualVideos) {
+                return self.individualVideos.count
+            }
         default:
             return 0
         }
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section) {
-        case 0:
-            return "JamJars"
-        case 1:
-            return "My Videos"
-        case 2:
-            return "Individual Videos"
-        default:
-            return "Other"
-        }
+        
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -174,5 +197,26 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
     }
     */
+    
+    /***************************************************************************
+     Header Cell Action
+     ***************************************************************************/
+    //Calls this function when the tap is recognized.
+    func collapseExpandSection(sender: UITapGestureRecognizer) {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        let headerCell = sender.view as! JamJarHeaderCell
+        
+        switch (headerCell.sectionNumber) {
+        case 0:
+            showJamJars = !showJamJars
+        case 1:
+            showMyVideos = !showMyVideos
+        case 2:
+            showIndividualVideos = !showIndividualVideos
+        default:
+            print("Error: Not a Section")
+        }
+        self.tableView.reloadData()
+    }
 }
 
