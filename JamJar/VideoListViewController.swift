@@ -88,6 +88,10 @@ class VideoListViewController: BaseViewController, UITableViewDelegate, UITableV
         return 3
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
         headerCell.backgroundColor = UIColor.grayColor()

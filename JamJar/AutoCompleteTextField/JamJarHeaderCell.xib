@@ -8,7 +8,6 @@
     <customFonts key="customFonts">
         <mutableArray key="Muli-Light.ttf">
             <string>Muli-Light</string>
-            <string>Muli-Light</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -21,35 +20,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4P-5K-0iU">
-                        <rect key="frame" x="301" y="11" width="11" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="11" id="woP-Bf-Nog"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSR-uD-KLB">
-                        <rect key="frame" x="8" y="11" width="285" height="21"/>
+                        <rect key="frame" x="8" y="11" width="269" height="21"/>
                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow-white" translatesAutoresizingMaskIntoConstraints="NO" id="SBq-rs-TdU">
+                        <rect key="frame" x="285" y="8" width="27" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="27" id="BGF-AQ-eZJ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZSR-uD-KLB" firstAttribute="centerY" secondItem="DE5-wb-8Zy" secondAttribute="centerY" id="RAh-wu-dSc"/>
-                    <constraint firstItem="ZSR-uD-KLB" firstAttribute="baseline" secondItem="l4P-5K-0iU" secondAttribute="baseline" id="Ty9-gc-nNT"/>
-                    <constraint firstItem="l4P-5K-0iU" firstAttribute="leading" secondItem="ZSR-uD-KLB" secondAttribute="trailing" constant="8" symbolic="YES" id="dJc-ld-qeN"/>
-                    <constraint firstItem="l4P-5K-0iU" firstAttribute="trailing" secondItem="DE5-wb-8Zy" secondAttribute="trailingMargin" id="ePX-5x-1Sk"/>
-                    <constraint firstItem="ZSR-uD-KLB" firstAttribute="leading" secondItem="DE5-wb-8Zy" secondAttribute="leadingMargin" id="p61-2s-IuR"/>
+                    <constraint firstItem="ZSR-uD-KLB" firstAttribute="centerY" secondItem="SBq-rs-TdU" secondAttribute="centerY" id="4do-gt-09h"/>
+                    <constraint firstItem="SBq-rs-TdU" firstAttribute="trailing" secondItem="DE5-wb-8Zy" secondAttribute="trailingMargin" id="4eM-0X-HL1"/>
+                    <constraint firstItem="ZSR-uD-KLB" firstAttribute="leading" secondItem="DE5-wb-8Zy" secondAttribute="leadingMargin" id="kdR-Pa-Bsk"/>
+                    <constraint firstItem="SBq-rs-TdU" firstAttribute="leading" secondItem="ZSR-uD-KLB" secondAttribute="trailing" constant="8" symbolic="YES" id="pQd-fJ-Pkj"/>
+                    <constraint firstItem="SBq-rs-TdU" firstAttribute="bottom" secondItem="DE5-wb-8Zy" secondAttribute="bottomMargin" id="tsD-zQ-zEk"/>
+                    <constraint firstItem="SBq-rs-TdU" firstAttribute="top" secondItem="DE5-wb-8Zy" secondAttribute="topMargin" id="xPk-1g-yPq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="sectionLabel" destination="ZSR-uD-KLB" id="zWj-6n-XLi"/>
-                <outlet property="statusLabel" destination="l4P-5K-0iU" id="CEQ-7o-WPH"/>
+                <outlet property="statusImageView" destination="SBq-rs-TdU" id="cTp-c6-2yC"/>
             </connections>
             <point key="canvasLocation" x="312" y="182"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="down-arrow-white" width="100" height="100"/>
+    </resources>
 </document>

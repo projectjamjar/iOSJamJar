@@ -11,7 +11,7 @@ import UIKit
 class JamJarHeaderCell: UITableViewCell {
 
     @IBOutlet weak var sectionLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusImageView: UIImageView!
     var sectionNumber: Int!
     
     func setup(title: String, number: Int, status: Bool) {
@@ -19,9 +19,9 @@ class JamJarHeaderCell: UITableViewCell {
         self.sectionNumber = number
         
         if(status) {
-            statusLabel.text = "<"
+            statusImageView.image = UIImage(named: "down-arrow-white")
         } else {
-            statusLabel.text = ">"
+            statusImageView.image = UIImage(named: "right-arrow-white")
         }
     }
 }
