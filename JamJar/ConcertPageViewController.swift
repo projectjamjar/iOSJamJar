@@ -1,5 +1,5 @@
 //
-//  VideoListViewController.swift
+//  ConcertPageViewController.swift
 //  JamJar
 //
 //  Created by Mark Koh on 3/12/16.
@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class VideoListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!

@@ -75,7 +75,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         let concertCell = tableView.cellForRowAtIndexPath(indexPath) as! ConcertCell
         selectedConcert = concertCell.concert
         
-        self.performSegueWithIdentifier("ToVideoList", sender: nil)
+        self.performSegueWithIdentifier("ToConcertPage", sender: nil)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -83,8 +83,8 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: self)
         
-        if segue.identifier == "ToVideoList" {
-            let vc = segue.destinationViewController as! VideoListViewController
+        if segue.identifier == "ToConcertPage" {
+            let vc = segue.destinationViewController as! ConcertPageViewController
             vc.videos = self.selectedConcert!.videos
             vc.concert = self.selectedConcert!
         }

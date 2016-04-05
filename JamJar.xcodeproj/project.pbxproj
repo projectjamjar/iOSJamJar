@@ -10,8 +10,8 @@
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
 		30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DE1C85091F00CD05F2 /* UITextField.swift */; };
 		30AA73EA1C8613F900CD05F2 /* ArtistChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */; };
-		30AD45531C9521ED00F999E7 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30AD45521C9521ED00F999E7 /* Video.storyboard */; };
-		30AD45561C95222C00F999E7 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AD45551C95222C00F999E7 /* VideoListViewController.swift */; };
+		30AD45531C9521ED00F999E7 /* ConcertPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30AD45521C9521ED00F999E7 /* ConcertPage.storyboard */; };
+		30AD45561C95222C00F999E7 /* ConcertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AD45551C95222C00F999E7 /* ConcertPageViewController.swift */; };
 		30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AD45571C95223B00F999E7 /* VideoCell.swift */; };
 		30AD455A1C9522D300F999E7 /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AD45591C9522D300F999E7 /* VideoCell.xib */; };
 		30AD455C1C95230200F999E7 /* ConcertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AD455B1C95230200F999E7 /* ConcertCell.xib */; };
@@ -72,8 +72,8 @@
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
 		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistChipView.swift; sourceTree = "<group>"; };
-		30AD45521C9521ED00F999E7 /* Video.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Video.storyboard; sourceTree = "<group>"; };
-		30AD45551C95222C00F999E7 /* VideoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		30AD45521C9521ED00F999E7 /* ConcertPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConcertPage.storyboard; sourceTree = "<group>"; };
+		30AD45551C95222C00F999E7 /* ConcertPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertPageViewController.swift; sourceTree = "<group>"; };
 		30AD45571C95223B00F999E7 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		30AD45591C9522D300F999E7 /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		30AD455B1C95230200F999E7 /* ConcertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConcertCell.xib; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				AABBF9281C6D057800EB3EC4 /* Discover.storyboard */,
 				AA6DE9611C6D086E007A64B7 /* Search.storyboard */,
 				AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */,
-				30AD45521C9521ED00F999E7 /* Video.storyboard */,
+				30AD45521C9521ED00F999E7 /* ConcertPage.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -174,12 +174,12 @@
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
 		};
-		30AD45541C95221300F999E7 /* Videos */ = {
+		30AD45541C95221300F999E7 /* ConcertPage */ = {
 			isa = PBXGroup;
 			children = (
-				30AD45551C95222C00F999E7 /* VideoListViewController.swift */,
+				30AD45551C95222C00F999E7 /* ConcertPageViewController.swift */,
 			);
-			name = Videos;
+			name = ConcertPage;
 			sourceTree = "<group>";
 		};
 		30EE7A0D1C913D5100293685 /* TableViewCells */ = {
@@ -349,7 +349,7 @@
 				AA6DE9691C6FAAF6007A64B7 /* Settings */,
 				30AA73DA1C84DFF100CD05F2 /* Storyboards */,
 				AA6DE9701C6FD17B007A64B7 /* UploadVideo */,
-				30AD45541C95221300F999E7 /* Videos */,
+				30AD45541C95221300F999E7 /* ConcertPage */,
 				AA130FFA1C7641B600851AD4 /* Views */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
 				AAEB3E6C1BE0478900601B14 /* Assets.xcassets */,
@@ -450,7 +450,7 @@
 				AA6DE96B1C6FAB5D007A64B7 /* Settings.storyboard in Resources */,
 				AAB62F681CB06A9A00C6CC15 /* JamJarCell.xib in Resources */,
 				AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */,
-				30AD45531C9521ED00F999E7 /* Video.storyboard in Resources */,
+				30AD45531C9521ED00F999E7 /* ConcertPage.storyboard in Resources */,
 				AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,7 +533,7 @@
 				AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */,
 				30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */,
 				30EE7A111C914A5400293685 /* Transforms.swift in Sources */,
-				30AD45561C95222C00F999E7 /* VideoListViewController.swift in Sources */,
+				30AD45561C95222C00F999E7 /* ConcertPageViewController.swift in Sources */,
 				AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,

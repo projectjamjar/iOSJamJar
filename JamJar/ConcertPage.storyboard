@@ -16,7 +16,7 @@
         <!--Videos-->
         <scene sceneID="uLV-aL-oey">
             <objects>
-                <viewController storyboardIdentifier="VideoList" title="Videos" automaticallyAdjustsScrollViewInsets="NO" id="AkW-uJ-fTb" customClass="VideoListViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConcertPage" title="Videos" automaticallyAdjustsScrollViewInsets="NO" id="AkW-uJ-fTb" customClass="ConcertPageViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fCg-zp-hdY"/>
                         <viewControllerLayoutGuide type="bottom" id="ZVE-9Y-1aD"/>
