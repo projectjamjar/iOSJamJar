@@ -14,7 +14,10 @@ class Concert: NSObject, Mappable {
     var id: Int!
     var date: NSDate!
     var venue: Venue!
-    var videos: [Video]!
+    var artists: [Artist]!
+    var thumbs: [[String: String]]!
+    var videos: [Video]?
+    var jamjars: [JamJarGraph]?
     
     /**
     The constructor required by ObjectMapper
@@ -31,33 +34,26 @@ class Concert: NSObject, Mappable {
         id <- map["id"]
         date <- (map["date"], ObjectMapper.CustomDateFormatTransform(formatString: "yyyy-MM-dd"))
         venue <- map["venue"]
+        artists <- map["artists"]
         videos <- map["videos"]
-    }
-    
-    func getArtists() -> [Artist] {
-        var artistIds = [Int]()
-        var artists = [Artist]()
-        videos.forEach { video in
-            video.artists.forEach({ (artist) -> () in
-                if !artistIds.contains(artist.id) {
-                    artists.append(artist)
-                    artistIds.append(artist.id)
-                }
-            })
-        }
-        return artists
+        jamjars <- map["graph"]
     }
     
     func getArtistsString() -> String {
-        let artistNames: [String] = self.getArtists().map({return $0.name})
+        let artistNames: [String] = self.artists.map({return $0.name})
         let artistsString = artistNames.joinWithSeparator(", ")
         return artistsString
     }
     
     func thumbnailForSize(size: Int) -> UIImage? {
-        if let firstVideo = self.videos.filter({$0.thumb_src != nil}).first,
-               thumbImage = firstVideo.thumbnailForSize(size) {
-                return thumbImage
+        // Given a target size, get the thumbnail for that size (or nil)
+        let targetThumbSize = "\(size)"
+        if let thumb_list = self.thumbs.first,
+            urlString = thumb_list[targetThumbSize],
+            url = NSURL(string: urlString),
+            data = NSData(contentsOfURL: url),
+            image = UIImage(data: data) {
+            return image
         }
         else {
             return nil

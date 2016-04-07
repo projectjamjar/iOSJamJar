@@ -85,7 +85,6 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         
         if segue.identifier == "ToConcertPage" {
             let vc = segue.destinationViewController as! ConcertPageViewController
-            vc.videos = self.selectedConcert!.videos
             vc.concert = self.selectedConcert!
         }
     }

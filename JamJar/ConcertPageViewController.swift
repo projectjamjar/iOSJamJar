@@ -18,10 +18,8 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var venueLabel: UILabel!
     
     var concert: Concert? = nil
-    var videos: [Video] = [Video]()
     var myVideos: [Video] = [Video]()
     var individualVideos: [Video] = [Video]()
-    var jamjars: [JamJarGraph] = [JamJarGraph]()
     
     var showJamJars: Bool = true
     var showMyVideos: Bool = true
@@ -35,38 +33,14 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         self.tableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
         self.tableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
         
-        // Set JamJars
-        ConcertService.getJamJars((self.concert?.id)!) {
-            (success, result, error) in
-            if !success {
-                // Error - show the user
-                let errorTitle = "JamJar error!"
-                if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-            }
-            else {
-                // Successfully retrieved JamJars, store them
-                self.jamjars = result!
-                self.tableView.reloadData()
-            }
-        }
-        
-        // Set myVideos
-        self.myVideos = self.videos.filter { (video) -> Bool in
-            return (video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
-        }
-        
-        // Set individualVideos
-        self.individualVideos = self.videos.filter { (video) -> Bool in
-            return !(video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
-        }
+        self.refreshTableView()
         
         if let concert = self.concert {
             self.title = concert.getArtistsString()
             
             // Make Image round and assign image
             self.artistImageView.cropToCircle()
-            self.artistImageView.image = concert.getArtists()[0].getImage()
+            self.artistImageView.image = concert.artists[0].getImage()
             
             // Assign Artist to label
             self.artistLabel.text = concert.getArtistsString()
@@ -76,6 +50,34 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
             
             // Assign Venue to Label
             self.venueLabel.text = concert.venue.name
+        }
+    }
+    
+    func refreshTableView() {
+        // Set Update Concert Information
+        ConcertService.getConcertDetails((self.concert?.id)!) {
+            (success, result, error) in
+            if !success {
+                // Error - show the user
+                let errorTitle = "Concert error!"
+                if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+            }
+            else {
+                // Successfully retrieved JamJars, store them
+                self.concert = result!
+                self.tableView.reloadData()
+            }
+        }
+        
+        // Set myVideos
+        self.myVideos = self.concert!.videos!.filter { (video) -> Bool in
+            return (video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
+        }
+        
+        // Set individualVideos
+        self.individualVideos = self.concert!.videos!.filter { (video) -> Bool in
+            return !(video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
         }
     }
     
@@ -119,7 +121,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         switch (section) {
         case 0:
             if(showJamJars) {
-                return self.jamjars.count
+                return self.concert!.jamjars!.count
             }
         case 1:
             if(showMyVideos) {
@@ -140,10 +142,10 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         //TODO: Get a code review for this, could be refactored to separate videos from JamJars
         //cell for JamJar
         if(indexPath.section == 0) {
-            let jamjar = self.jamjars[indexPath.row]
+            let jamjar = self.concert!.jamjars![indexPath.row]
             
             //retrieve first video
-            let firstVideo = self.videos.filter { (video) -> Bool in
+            let firstVideo = self.concert!.videos!.filter { (video) -> Bool in
                 return (video.id == jamjar.startId)
             }
             
