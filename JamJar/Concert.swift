@@ -14,10 +14,10 @@ class Concert: NSObject, Mappable {
     var id: Int!
     var date: NSDate!
     var venue: Venue!
-    var artists: [Artist]?
+    var artists: [Artist]! = []
     var thumbs: [[String: String]]?
-    var videos: [Video]?
-    var jamjars: [JamJarGraph]?
+    var videos: [Video]! = []
+    var jamjars: [JamJarGraph]! = []
     
     /**
     The constructor required by ObjectMapper
@@ -41,12 +41,9 @@ class Concert: NSObject, Mappable {
     }
     
     func getArtistsString() -> String {
-        if let artistNames: [String] = self.artists!.map({return $0.name}) {
-            let artistsString = artistNames.joinWithSeparator(", ")
-            return artistsString
-        }
-        return "No Artists"
-    }
+        let artistNames: [String] = self.artists!.map({return $0.name})
+        let artistsString = artistNames.joinWithSeparator(", ")
+        return artistsString    }
     
     func thumbnailForSize(size: Int) -> UIImage? {
         // Given a target size, get the thumbnail for that size (or nil)

@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class ArtistService: APIService {
 
-    // search venues
+    // search artists
     static func search(searchString: String, completion: (success: Bool, artists: [Artist]?, result: String?) -> Void) {
         self.get(APIService.buildURL("artists/search/" + searchString)).responseJSON { response in
             switch response.result {

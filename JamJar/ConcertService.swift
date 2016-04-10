@@ -23,6 +23,7 @@ class ConcertService: APIService {
                 completion(success: false, concert: nil, result: "Cannot Get Concerts")
                 return
             case .Success:
+                //print(response.result.value!)
                 let concerts = Mapper<Concert>().mapArray(response.result.value!)
                 completion(success: true, concert: concerts, result: nil)
                 return

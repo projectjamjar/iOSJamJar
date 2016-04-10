@@ -9,13 +9,14 @@
 import UIKit
 import SCLAlertView
 
-class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var venueLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var concert: Concert? = nil
     var myVideos: [Video] = [Video]()
@@ -25,8 +26,13 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     var showMyVideos: Bool = true
     var showIndividualVideos: Bool = true
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //add overlay to background image
+        self.backgroundImageView.addOverLay(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3))
         
         // Register the reusable video cell
         self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
@@ -34,9 +40,20 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         self.tableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
         
         self.refreshTableView()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        self.refreshTableView()
     }
     
     func refreshTableView() {
+        showProgressView()
         // Set Update Concert Information
         ConcertService.getConcertDetails((self.concert?.id)!) {
             (success, result, error) in
@@ -49,7 +66,6 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
             else {
                 // Successfully retrieved JamJars, store them
                 self.concert = result!
-                self.tableView.reloadData()
                 
                 // Set myVideos
                 self.myVideos = self.concert!.videos!.filter { (video) -> Bool in
@@ -77,7 +93,10 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
                     // Assign Venue to Label
                     self.venueLabel.text = concert.venue.name
                 }
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
+            hideProgressView()
         }
     }
     
@@ -121,7 +140,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         switch (section) {
         case 0:
             if(showJamJars) {
-                return self.concert!.jamjars!.count
+                return (self.concert?.jamjars?.count)!
             }
         case 1:
             if(showMyVideos) {

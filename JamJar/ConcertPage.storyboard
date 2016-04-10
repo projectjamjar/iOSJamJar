@@ -99,6 +99,7 @@
                     <connections>
                         <outlet property="artistImageView" destination="iUF-91-6yi" id="dTT-IP-rhM"/>
                         <outlet property="artistLabel" destination="zAu-go-VkO" id="Dz8-UP-54g"/>
+                        <outlet property="backgroundImageView" destination="Ib4-sz-zhI" id="1fK-Hv-dR3"/>
                         <outlet property="dateLabel" destination="hvY-uj-eee" id="ofb-gi-BlE"/>
                         <outlet property="tableView" destination="1rT-97-rGg" id="Uf5-VZ-B6h"/>
                         <outlet property="venueLabel" destination="BVX-Ec-V3L" id="Nse-0V-GBN"/>
