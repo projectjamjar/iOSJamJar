@@ -42,13 +42,13 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         ConcertService.getConcerts() {
             (success, result, error) in
             if !success {
-                // Error - show the user
+                // Error - show the error
                 let errorTitle = "Server error!"
                 if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
                 else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
             }
             else {
-                // Our login was successful, goto Home!
+                // Loaded Concerts
                 self.concerts = result!
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()

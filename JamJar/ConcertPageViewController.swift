@@ -34,23 +34,6 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         self.tableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
         
         self.refreshTableView()
-        
-        if let concert = self.concert {
-            self.title = concert.getArtistsString()
-            
-            // Make Image round and assign image
-            self.artistImageView.cropToCircle()
-            self.artistImageView.image = concert.artists[0].getImage()
-            
-            // Assign Artist to label
-            self.artistLabel.text = concert.getArtistsString()
-            
-            // Assign Date to label
-            self.dateLabel.text = concert.date.string("MM-d-YYYY")
-            
-            // Assign Venue to Label
-            self.venueLabel.text = concert.venue.name
-        }
     }
     
     func refreshTableView() {
@@ -67,17 +50,34 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
                 // Successfully retrieved JamJars, store them
                 self.concert = result!
                 self.tableView.reloadData()
+                
+                // Set myVideos
+                self.myVideos = self.concert!.videos!.filter { (video) -> Bool in
+                    return (video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
+                }
+                
+                // Set individualVideos
+                self.individualVideos = self.concert!.videos!.filter { (video) -> Bool in
+                    return !(video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
+                }
+                
+                if let concert = self.concert {
+                    self.title = concert.getArtistsString()
+                    
+                    // Make Image round and assign image
+                    self.artistImageView.cropToCircle()
+                    self.artistImageView.image = concert.artists![0].getImage()
+                    
+                    // Assign Artist to label
+                    self.artistLabel.text = concert.getArtistsString()
+                    
+                    // Assign Date to label
+                    self.dateLabel.text = concert.date.string("MM-d-YYYY")
+                    
+                    // Assign Venue to Label
+                    self.venueLabel.text = concert.venue.name
+                }
             }
-        }
-        
-        // Set myVideos
-        self.myVideos = self.concert!.videos!.filter { (video) -> Bool in
-            return (video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
-        }
-        
-        // Set individualVideos
-        self.individualVideos = self.concert!.videos!.filter { (video) -> Bool in
-            return !(video.user.username.lowercaseString == UserService.currentUser()?.username.lowercaseString)
         }
     }
     
