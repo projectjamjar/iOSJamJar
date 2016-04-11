@@ -25,4 +25,11 @@ public extension UIView {
         self.cropToCircle()
         return self
     }
+    
+    public func addOverLay(overlayColor: UIColor) -> UIView? {
+        let overlay = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        overlay.backgroundColor = overlayColor
+        self.addSubview(overlay)
+        return self
+    }
 }

@@ -51,4 +51,22 @@ class ConcertService: APIService {
             }
         }
     }
+    
+    // get JamJars
+    static func getConcertDetails(concert_id: Int, completion: (success: Bool, concert: Concert?, result: String?) -> Void) {
+        let url = self.buildURL("concerts/\(concert_id)/")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, concert: nil, result: "Cannot Get Concert")
+                return
+            case .Success:
+                let concertDetail = Mapper<Concert>().map(response.result.value!)
+                completion(success: true, concert: concertDetail, result: nil)
+                return
+            }
+        }
+    }
 }

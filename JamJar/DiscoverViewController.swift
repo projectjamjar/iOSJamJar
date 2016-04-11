@@ -42,13 +42,13 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         ConcertService.getConcerts() {
             (success, result, error) in
             if !success {
-                // Error - show the user
+                // Error - show the error
                 let errorTitle = "Server error!"
                 if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
                 else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
             }
             else {
-                // Our login was successful, goto Home!
+                // Loaded Concerts
                 self.concerts = result!
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -75,7 +75,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         let concertCell = tableView.cellForRowAtIndexPath(indexPath) as! ConcertCell
         selectedConcert = concertCell.concert
         
-        self.performSegueWithIdentifier("ToVideoList", sender: nil)
+        self.performSegueWithIdentifier("ToConcertPage", sender: nil)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -83,9 +83,8 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: self)
         
-        if segue.identifier == "ToVideoList" {
-            let vc = segue.destinationViewController as! VideoListViewController
-            vc.videos = self.selectedConcert!.videos
+        if segue.identifier == "ToConcertPage" {
+            let vc = segue.destinationViewController as! ConcertPageViewController
             vc.concert = self.selectedConcert!
         }
     }
