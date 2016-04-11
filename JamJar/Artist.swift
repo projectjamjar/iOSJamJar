@@ -16,6 +16,7 @@ class Artist: NSObject, Mappable {
     var id: Int!
     var name: String!
     var spotify_id: String?
+    var popularity: Int!
     var genres: [String]?
     var images: [ArtistImage]?
     
@@ -36,6 +37,7 @@ class Artist: NSObject, Mappable {
         id <- map["id"]
         name <- map["name"]
         spotify_id <- map["spotify_id"]
+        popularity <- map["popularity"]
         genres <- map["genres"]
         images <- map["images"]
     }

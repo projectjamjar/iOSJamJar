@@ -82,7 +82,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
                     
                     // Make Image round and assign image
                     self.artistImageView.cropToCircle()
-                    self.artistImageView.image = concert.artists![0].getImage()
+                    self.artistImageView.image = concert.getMostPopularArtist().getImage()
                     
                     // Assign Artist to label
                     self.artistLabel.text = concert.getArtistsString()

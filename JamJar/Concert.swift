@@ -17,6 +17,7 @@ class Concert: NSObject, Mappable {
     var artists: [Artist]! = []
     var thumbs: [[String: String]]?
     var videos: [Video]! = []
+    var videos_count: Int!
     var jamjars: [JamJarGraph]! = []
     
     /**
@@ -37,13 +38,20 @@ class Concert: NSObject, Mappable {
         artists <- map["artists"]
         thumbs <- map["thumbs"]
         videos <- map["videos"]
+        videos_count <- map["videos_count"]
         jamjars <- map["graph"]
     }
     
     func getArtistsString() -> String {
         let artistNames: [String] = self.artists!.map({return $0.name})
         let artistsString = artistNames.joinWithSeparator(", ")
-        return artistsString    }
+        return artistsString
+    }
+    
+    func getMostPopularArtist() -> Artist {
+        let sortedPopularity = self.artists.sort({$0.popularity > $1.popularity})
+        return sortedPopularity[0]
+    }
     
     func thumbnailForSize(size: Int) -> UIImage? {
         // Given a target size, get the thumbnail for that size (or nil)

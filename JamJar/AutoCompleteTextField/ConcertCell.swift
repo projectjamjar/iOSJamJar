@@ -48,8 +48,8 @@ class ConcertCell: UITableViewCell {
         dateVenueLabel.text = "\(dateString) | \(venueString)"
         
         // Number of videos
-        //let numVideos = self.concert.videos!.count
-        //videoCountLabel.text = "\(numVideos) videos"
+        let numVideos = self.concert.videos_count
+        videoCountLabel.text = "\(numVideos) videos"
         
         
     }
