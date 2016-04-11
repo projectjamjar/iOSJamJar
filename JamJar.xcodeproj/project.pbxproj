@@ -53,6 +53,7 @@
 		AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */; };
 		AA6FC3AF1CBC446C007C56AA /* VideoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FC3AE1CBC446C007C56AA /* VideoPageViewController.swift */; };
 		AA6FC3B11CBC4509007C56AA /* VideoPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */; };
+		AA6FC3B31CBC491E007C56AA /* JamJarAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FC3B21CBC491E007C56AA /* JamJarAVPlayerViewController.swift */; };
 		AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */; };
 		AAB62F601CB0603800C6CC15 /* JamJarEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */; };
 		AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */; };
@@ -119,6 +120,7 @@
 		AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AA6FC3AE1CBC446C007C56AA /* VideoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPageViewController.swift; sourceTree = "<group>"; };
 		AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoPage.storyboard; sourceTree = "<group>"; };
+		AA6FC3B21CBC491E007C56AA /* JamJarAVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayerViewController.swift; sourceTree = "<group>"; };
 		AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarEdge.swift; sourceTree = "<group>"; };
 		AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarGraph.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6FC3AE1CBC446C007C56AA /* VideoPageViewController.swift */,
+				AA6FC3B21CBC491E007C56AA /* JamJarAVPlayerViewController.swift */,
 			);
 			name = VideoPage;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */,
 				AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */,
 				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
+				AA6FC3B31CBC491E007C56AA /* JamJarAVPlayerViewController.swift in Sources */,
 				AA1037F01C87E12C00DCB0B5 /* ArtistService.swift in Sources */,
 				AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */,
 				30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */,
