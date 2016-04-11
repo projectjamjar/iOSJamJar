@@ -51,6 +51,8 @@
 		AA6DE9731C6FD1C4007A64B7 /* UploadVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9721C6FD1C4007A64B7 /* UploadVideo.storyboard */; };
 		AA6DE9751C6FD1D0007A64B7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */; };
 		AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */; };
+		AA6FC3AF1CBC446C007C56AA /* VideoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FC3AE1CBC446C007C56AA /* VideoPageViewController.swift */; };
+		AA6FC3B11CBC4509007C56AA /* VideoPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */; };
 		AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */; };
 		AAB62F601CB0603800C6CC15 /* JamJarEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */; };
 		AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */; };
@@ -115,6 +117,8 @@
 		AA6DE9721C6FD1C4007A64B7 /* UploadVideo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadVideo.storyboard; sourceTree = "<group>"; };
 		AA6DE9741C6FD1D0007A64B7 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AA6DE97A1C700E25007A64B7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AA6FC3AE1CBC446C007C56AA /* VideoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPageViewController.swift; sourceTree = "<group>"; };
+		AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoPage.storyboard; sourceTree = "<group>"; };
 		AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarEdge.swift; sourceTree = "<group>"; };
 		AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarGraph.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				AA6DE9611C6D086E007A64B7 /* Search.storyboard */,
 				AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */,
 				30AD45521C9521ED00F999E7 /* ConcertPage.storyboard */,
+				AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -300,6 +305,14 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		AA6FC3AD1CBC4442007C56AA /* VideoPage */ = {
+			isa = PBXGroup;
+			children = (
+				AA6FC3AE1CBC446C007C56AA /* VideoPageViewController.swift */,
+			);
+			name = VideoPage;
+			sourceTree = "<group>";
+		};
 		AAB62F5E1CB05F9900C6CC15 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +351,7 @@
 		AAEB3E641BE0478900601B14 /* JamJar */ = {
 			isa = PBXGroup;
 			children = (
+				30AD45541C95221300F999E7 /* ConcertPage */,
 				AABBF92A1C6D057F00EB3EC4 /* Discover */,
 				30AA73DD1C85090E00CD05F2 /* Extensions and Utils */,
 				AA0F204C1C51905C0099665E /* Fonts */,
@@ -349,7 +363,7 @@
 				AA6DE9691C6FAAF6007A64B7 /* Settings */,
 				30AA73DA1C84DFF100CD05F2 /* Storyboards */,
 				AA6DE9701C6FD17B007A64B7 /* UploadVideo */,
-				30AD45541C95221300F999E7 /* ConcertPage */,
+				AA6FC3AD1CBC4442007C56AA /* VideoPage */,
 				AA130FFA1C7641B600851AD4 /* Views */,
 				AAEB3E651BE0478900601B14 /* AppDelegate.swift */,
 				AAEB3E6C1BE0478900601B14 /* Assets.xcassets */,
@@ -451,6 +465,7 @@
 				AAB62F681CB06A9A00C6CC15 /* JamJarCell.xib in Resources */,
 				AAEB3E6B1BE0478900601B14 /* Main.storyboard in Resources */,
 				30AD45531C9521ED00F999E7 /* ConcertPage.storyboard in Resources */,
+				AA6FC3B11CBC4509007C56AA /* VideoPage.storyboard in Resources */,
 				AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +540,7 @@
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
+				AA6FC3AF1CBC446C007C56AA /* VideoPageViewController.swift in Sources */,
 				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,
 				AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */,
 				AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */,
