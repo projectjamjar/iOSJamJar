@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (3.1.3)
-  - DKImagePickerController (3.0.11):
-    - DKImagePickerController/Camera (= 3.0.11)
-    - DKImagePickerController/ImageManager (= 3.0.11)
-  - DKImagePickerController/Camera (3.0.11)
-  - DKImagePickerController/ImageManager (3.0.11)
-  - GoogleMaps (1.12.1)
-  - Locksmith (2.0.2)
-  - ObjectMapper (1.1.5)
+  - Alamofire (3.3.1)
+  - DKImagePickerController (3.1.3):
+    - DKImagePickerController/Camera (= 3.1.3)
+    - DKImagePickerController/ImageManager (= 3.1.3)
+  - DKImagePickerController/Camera (3.1.3)
+  - DKImagePickerController/ImageManager (3.1.3)
+  - GoogleMaps (1.13.0)
+  - Locksmith (2.0.8)
+  - ObjectMapper (1.2.0)
   - PKHUD (3.1.0)
-  - SCLAlertView (0.5.1)
+  - SCLAlertView (0.5.2)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -23,13 +23,13 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
-  DKImagePickerController: 72a10532150138588c8f593fdf0fb5a6ff7f9471
-  GoogleMaps: d4e7526e96e78faf7131ea95f13dd5411cc2916d
-  Locksmith: 7f2b68448449a7712348f9a4ed60604c1cc8dfa6
-  ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  DKImagePickerController: 5ad3a065e65287c1584e4250e378f99102e2753e
+  GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
+  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
-  SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
+  SCLAlertView: 66873759027a98f891b6ba9042d75db9082abca2
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

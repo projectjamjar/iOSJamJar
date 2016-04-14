@@ -26,6 +26,9 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     var showMyVideos: Bool = true
     var showIndividualVideos: Bool = true
     
+    var selectedVideo: Video? = nil
+    var selectedJamJar: JamJarGraph? = nil
+    
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -198,7 +201,18 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Video selected: \(indexPath.row)")
+        switch (indexPath.section) {
+        case 0:
+            let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
+            print("Push to JamJar Controller")
+        default:
+            let videoCell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
+            selectedVideo = videoCell.video
+            
+            self.performSegueWithIdentifier("ToVideoPage", sender: nil)
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     /***************************************************************************
@@ -242,6 +256,15 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
             print("Error: Not a Section")
         }
         self.tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: self)
+        
+        if segue.identifier == "ToVideoPage" {
+            let vc = segue.destinationViewController as! VideoPageViewController
+            vc.video = self.selectedVideo!
+        }
     }
 }
 

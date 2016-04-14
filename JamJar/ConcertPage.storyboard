@@ -103,11 +103,20 @@
                         <outlet property="dateLabel" destination="hvY-uj-eee" id="ofb-gi-BlE"/>
                         <outlet property="tableView" destination="1rT-97-rGg" id="Uf5-VZ-B6h"/>
                         <outlet property="venueLabel" destination="BVX-Ec-V3L" id="Nse-0V-GBN"/>
+                        <segue destination="xmX-I7-LNn" kind="show" identifier="ToVideoPage" id="aNh-NZ-XxR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFw-jM-56Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1815.5" y="-297.5"/>
+            <point key="canvasLocation" x="1568.5" y="-300.5"/>
+        </scene>
+        <!--VideoPage-->
+        <scene sceneID="o1w-zt-XQu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPage" referencedIdentifier="VideoPage" id="xmX-I7-LNn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tYG-ES-NVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936.5" y="-579"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Va-qK-Q95">

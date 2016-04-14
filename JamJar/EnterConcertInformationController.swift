@@ -217,7 +217,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                                 
                                 if let newData:NSData = imageData {
                                     // Saves the video in another location so it can then be used for upload
-                                    try! newData.writeToFile(targetVideoURL, atomically: true)
+                                    newData.writeToFile(targetVideoURL, atomically: true)
                                     // Saved URL is stored for future use
                                     self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
                                     self.callback()
@@ -238,7 +238,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     // Keep track of video URLs being stored
     func callback()
     {
-        self.queue--
+        self.queue -= 1
         // Execute final callback when queue is empty
         if self.queue == 0 {
             showSuccessView()

@@ -156,8 +156,8 @@ class UploadVideoViewController: BaseViewController{
             let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
             
             let videoPath = self.videosToUpload[currentVideoSelected]
-            
-            embeddedVideoViewController.player = AVPlayer(URL: videoPath)
+            let videoPlayer = AVPlayer(URL: videoPath)
+            embeddedVideoViewController.player = videoPlayer
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fyY-YC-HQK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fyY-YC-HQK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,7 +8,7 @@
         <!--Video Page View Controller-->
         <scene sceneID="WqG-F1-ThB">
             <objects>
-                <viewController id="N2B-XS-y7Q" customClass="VideoPageViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPage" id="N2B-XS-y7Q" customClass="VideoPageViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uVD-wz-7nZ"/>
                         <viewControllerLayoutGuide type="bottom" id="8h5-Lt-B1E"/>
@@ -85,19 +85,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbl-gN-oRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-322.5" y="-297.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="JoJ-HR-S7e">
-            <objects>
-                <viewController id="hyf-cG-RBg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="a99-Vg-C09">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mw2-zE-5RC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="fgo-3U-Qch">

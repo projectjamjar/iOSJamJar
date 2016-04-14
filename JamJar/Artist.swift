@@ -14,8 +14,9 @@ class Artist: NSObject, Mappable {
     // Note: This model is based off of spotify_model, not JamJars
     // TODO: Add in missing attributes (like images)
     var id: Int!
+    var spotifyResponseId: String?
     var name: String!
-    var spotify_id: String?
+    var spotifyId: String?
     var popularity: Int!
     var genres: [String]?
     var images: [ArtistImage]?
@@ -35,8 +36,9 @@ class Artist: NSObject, Mappable {
      */
     func mapping(map: Map) {
         id <- map["id"]
+        spotifyResponseId <- map["id"]
         name <- map["name"]
-        spotify_id <- map["spotify_id"]
+        spotifyId <- map["spotify_id"] // Mark found this issue
         popularity <- map["popularity"]
         genres <- map["genres"]
         images <- map["images"]

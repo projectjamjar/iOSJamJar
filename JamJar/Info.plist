@@ -32,14 +32,14 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>api.projectjamjar.com</key>
+			<key>s3.amazonaws.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
-			<key>ebookfrenzy.com</key>
+			<key>api.projectjamjar.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
