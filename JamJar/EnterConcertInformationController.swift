@@ -209,15 +209,29 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 for asset in assets {
                     asset.fetchAVAsset(nil, completeBlock: { info in
                         //copy file into local "Documents" Directory
+                        //print(info)
+                        //print(info?.URL)
+                        //let testData = NSData(contentsOfURL: (info?.URL)!)
+                        
+                        //let fileManager = NSFileManager.defaultManager()
+                        //let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
                         let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info!.URL.lastPathComponent!
-                        let phManager = PHImageManager.defaultManager()
-                        let options = PHImageRequestOptions()
-                        phManager.requestImageDataForAsset(asset.originalAsset!, options: options)
-                            {   imageData,dataUTI,orientation,info in
-                                
-                                if let newData:NSData = imageData {
-                                    // Saves the video in another location so it can then be used for upload
-                                    newData.writeToFile(targetVideoURL, atomically: true)
+                        //let targetVideoURL = directoryURL.URLByAppendingPathComponent(info!.URL.lastPathComponent!)
+                        /*
+                        let videoData = NSData(contentsOfURL: (info?.URL)!)!
+                        videoData.writeToFile(targetVideoURL.path!, atomically: true)
+                        self.videosToUpload.append(targetVideoURL)
+                        self.callback()
+                        */
+                        
+                        //let phManager = PHImageManager.defaultManager()
+                        //let options = PHImageRequestOptions()
+                        
+                        PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let asset = asset as? AVURLAsset
+                                if let data = NSData(contentsOfURL: asset!.URL) {
+                                    data.writeToFile(targetVideoURL, atomically: true)
                                     // Saved URL is stored for future use
                                     self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
                                     self.callback()
@@ -225,7 +239,25 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                                     print("Error: Video could not be processed")
                                     showErrorView()
                                 }
+                            })
+                        })
+                        
+                        /*
+                        phManager.requestImageDataForAsset(asset.originalAsset!, options: options)
+                        {
+                            imageData,dataUTI,orientation,info in
+                                if let newData:NSData = imageData {
+                                    // Saves the video in another location so it can then be used for upload
+                                    newData.writeToFile(targetVideoURL.path!, atomically: true)
+                                    // Saved URL is stored for future use
+                                    self.videosToUpload.append(targetVideoURL)
+                                    self.callback()
+                                } else {
+                                    print("Error: Video could not be processed")
+                                    showErrorView()
+                                }
                         }
+                         */
                     })
                 }
             }
