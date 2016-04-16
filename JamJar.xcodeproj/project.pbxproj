@@ -55,6 +55,8 @@
 		AA6FC3B11CBC4509007C56AA /* VideoPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */; };
 		AA6FC3B31CBC491E007C56AA /* JamJarAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FC3B21CBC491E007C56AA /* JamJarAVPlayerViewController.swift */; };
 		AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */; };
+		AAB45DEA1CC2CC2F003B6B6F /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */; };
+		AAB45DEC1CC2CD0A003B6B6F /* UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */; };
 		AAB62F601CB0603800C6CC15 /* JamJarEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */; };
 		AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */; };
 		AAB62F681CB06A9A00C6CC15 /* JamJarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB62F671CB06A9A00C6CC15 /* JamJarCell.xib */; };
@@ -122,6 +124,8 @@
 		AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoPage.storyboard; sourceTree = "<group>"; };
 		AA6FC3B21CBC491E007C56AA /* JamJarAVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayerViewController.swift; sourceTree = "<group>"; };
 		AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarController.swift; sourceTree = "<group>"; };
 		AAB62F5F1CB0603800C6CC15 /* JamJarEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarEdge.swift; sourceTree = "<group>"; };
 		AAB62F631CB062D700C6CC15 /* JamJarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarGraph.swift; sourceTree = "<group>"; };
 		AAB62F671CB06A9A00C6CC15 /* JamJarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JamJarCell.xib; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				30EE7A101C914A5400293685 /* Transforms.swift */,
 				30EE7A121C91554E00293685 /* Date.swift */,
 				30EE7A141C91606D00293685 /* Colors.swift */,
+				AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */,
+				AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,
 				30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */,
+				AAB45DEC1CC2CD0A003B6B6F /* UITabBarController.swift in Sources */,
 				AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */,
 				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
 				AA6FC3B31CBC491E007C56AA /* JamJarAVPlayerViewController.swift in Sources */,
@@ -557,6 +564,7 @@
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AAB62F6E1CB0800000C6CC15 /* JamJarHeaderCell.swift in Sources */,
+				AAB45DEA1CC2CC2F003B6B6F /* UINavigationController.swift in Sources */,
 				30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,

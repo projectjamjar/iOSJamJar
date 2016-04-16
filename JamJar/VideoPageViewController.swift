@@ -13,15 +13,72 @@ import AVFoundation
 class VideoPageViewController: BaseViewController{
     
     var video: Video!
+    var embeddedVideoViewController: AVPlayerViewController!
+    
+    //Variable to store video frame
+    var videoFrameInPortrait: CGRect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.embeddedVideoViewController = self.childViewControllers[0] as! AVPlayerViewController
+        
+        //Save the potrait video frame
+        videoFrameInPortrait = self.embeddedVideoViewController.view.frame
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //make embedded controller full screen
+    func fullScreenVideo() {
+        //hide navigation bar and tool bar
+        self.navigationController?.navigationBarHidden = true
+        self.tabBarController?.tabBar.hidden = true
+        
+        //create offset in height from tabbar and navigationbar
+        //TODO: This offset isn't calculated properly. Fix this if needed
+        let offset = (self.tabBarController!.tabBar.frame.size.height + self.navigationController!.navigationBar.frame.size.height - 17) * -1
+        
+        UIView.animateWithDuration(0.25) {
+            self.embeddedVideoViewController.view.frame = CGRect(x: 0, y: offset, width: self.view.frame.width, height: self.view.frame.height)
+        }
+    }
+    
+    //Worst function name ever
+    func unfullScreenVideo() {
+        //show navigation bar and tool bar
+        self.navigationController?.navigationBarHidden = false
+        self.tabBarController?.tabBar.hidden = false
+        
+        UIView.animateWithDuration(0.25) {
+            self.embeddedVideoViewController.view.frame = self.videoFrameInPortrait
+        }
+    }
+    
+    //Allow rotate
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIDevice.currentDevice().orientation{
+        case .Portrait:
+            unfullScreenVideo()
+            break
+        case .LandscapeLeft,.LandscapeRight:
+            fullScreenVideo()
+            break
+        default:
+            print("Unknown Orientation")
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

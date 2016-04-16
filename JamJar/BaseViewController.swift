@@ -35,6 +35,15 @@ class BaseViewController: UIViewController {
         self.view.endEditing(true)
         return false
     }
+    
+    //Prevent rotate
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
 }
 
 class BaseTableViewController: UITableViewController {
@@ -62,6 +71,15 @@ class BaseTableViewController: UITableViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    //Prevent rotate
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 }
 
