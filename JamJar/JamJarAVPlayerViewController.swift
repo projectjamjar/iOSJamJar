@@ -44,6 +44,11 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.updateSeekSlider()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        self.player?.removeTimeObserver(self.timeObserver)
+        self.player = nil
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,6 +131,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     // Play/Pause functionality
     func playButtonAction(sender:UIButton!)
     {
+        print("play pause")
         playPause()
     }
     

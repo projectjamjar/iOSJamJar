@@ -10,10 +10,22 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPageViewController: BaseViewController{
+class VideoPageViewController: BaseViewController/*, UITableViewDelegate, UITableViewDataSource */{
     
     var video: Video!
-    var embeddedVideoViewController: JamJarAVPlayerViewController!
+    var concert: Concert!
+    weak var embeddedVideoViewController: JamJarAVPlayerViewController!
+    
+    //IBOutlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var uploaderLabel: UILabel!
+    @IBOutlet weak var viewCountLabel: UILabel!
+    @IBOutlet weak var likeDislikeLabel: UILabel!
+    @IBOutlet weak var artistsLabel: UILabel!
+    @IBOutlet weak var venueLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var suggestedTableView: UITableView!
+    
     
     //Variable to store video frame
     var videoFrameInPortrait: CGRect!
@@ -26,6 +38,14 @@ class VideoPageViewController: BaseViewController{
         
         //Save the potrait video frame
         videoFrameInPortrait = self.embeddedVideoViewController.view.frame
+        
+        //Set up UI Elements
+        titleLabel.text = video.name
+        uploaderLabel.text = video.user.username
+        viewCountLabel.text = String(video.views) + " Views"
+        artistsLabel.text = video.getArtistsString()
+        venueLabel.text = concert.venue.name
+        dateLabel.text = concert.date.string("MM-d-YYYY")
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,6 +107,7 @@ class VideoPageViewController: BaseViewController{
             let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
             print(self.video.hls_src)
             
+            //let videoPath = NSURL(string: "http://144.118.231.71:8000/out.m3u8")
             let videoPath = NSURL(string: self.video.hls_src)
             //let videoPath = NSURL(string: "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8")
             //let videoPath = NSURL(string: "http://devstreaming.apple.com/videos/wwdc/2015/106z3yjwpfymnauri96m/106/hls_vod_mvp.m3u8")

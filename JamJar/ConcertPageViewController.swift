@@ -264,6 +264,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         if segue.identifier == "ToVideoPage" {
             let vc = segue.destinationViewController as! VideoPageViewController
             vc.video = self.selectedVideo!
+            vc.concert = self.concert!
         }
     }
 }
