@@ -24,4 +24,8 @@ class JamJarHeaderCell: UITableViewCell {
             statusImageView.image = UIImage(named: "right-arrow-white")
         }
     }
+    
+    func hideStatus() {
+        self.statusImageView.hidden = true
+    }
 }

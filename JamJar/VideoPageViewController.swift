@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPageViewController: BaseViewController/*, UITableViewDelegate, UITableViewDataSource */{
+class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var video: Video!
     var concert: Concert!
@@ -25,7 +25,6 @@ class VideoPageViewController: BaseViewController/*, UITableViewDelegate, UITabl
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var suggestedTableView: UITableView!
-    
     
     //Variable to store video frame
     var videoFrameInPortrait: CGRect!
@@ -46,6 +45,12 @@ class VideoPageViewController: BaseViewController/*, UITableViewDelegate, UITabl
         artistsLabel.text = video.getArtistsString()
         venueLabel.text = concert.venue.name
         dateLabel.text = concert.date.string("MM-d-YYYY")
+        
+        // Register the reusable video cell
+        self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
+        self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
+        
+        self.suggestedTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,5 +119,47 @@ class VideoPageViewController: BaseViewController/*, UITableViewDelegate, UITabl
             
             embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
         }
+    }
+    
+    /***************************************************************************
+     TableView Setup
+     ***************************************************************************/
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
+        headerCell.backgroundColor = UIColor.grayColor()
+        headerCell.setup("Suggested Videos", number: 0, status: true)
+        headerCell.hideStatus()
+        
+        return headerCell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return concert.videos.count - 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var videoList: [Video] = self.concert!.videos!.filter { (video) -> Bool in
+            return !(video.id! == self.video.id)
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
+        
+        cell.setup(videoList[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let videoCell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
+        self.video = videoCell.video
+        self.viewDidLoad()
     }
 }
