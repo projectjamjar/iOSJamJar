@@ -89,7 +89,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="fgo-3U-Qch">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="1uO-xh-j1T" sceneMemberID="viewController"/>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="1uO-xh-j1T" customClass="JamJarAVPlayerViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8y-YU-eza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="691.5" y="-472"/>

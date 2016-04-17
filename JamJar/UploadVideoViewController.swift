@@ -64,9 +64,10 @@ class UploadVideoViewController: BaseViewController{
     
     func changeVideo(newIndex: Int) {
         //Update video
-        let embeddedVideoViewController = self.childViewControllers[0] as! AVPlayerViewController
+        let embeddedVideoViewController = self.childViewControllers[0] as! JamJarAVPlayerViewController
         let videoPath = self.videosToUpload[currentVideoSelected]
         embeddedVideoViewController.player = AVPlayer(URL: videoPath)
+        embeddedVideoViewController.viewDidLoad()
         
         //update videoNameTextField
         self.videoNameTextField.text = self.namesOfVideos[newIndex]
@@ -153,7 +154,7 @@ class UploadVideoViewController: BaseViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
-            let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
+            let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
             
             let videoPath = self.videosToUpload[currentVideoSelected]
             let videoPlayer = AVPlayer(URL: videoPath)

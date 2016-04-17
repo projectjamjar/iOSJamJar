@@ -281,7 +281,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="i01-fX-hFK">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="gUG-YR-E67" sceneMemberID="viewController"/>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="gUG-YR-E67" customClass="JamJarAVPlayerViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvz-iT-66h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1059" y="-567"/>

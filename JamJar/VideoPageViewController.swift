@@ -13,7 +13,7 @@ import AVFoundation
 class VideoPageViewController: BaseViewController{
     
     var video: Video!
-    var embeddedVideoViewController: AVPlayerViewController!
+    var embeddedVideoViewController: JamJarAVPlayerViewController!
     
     //Variable to store video frame
     var videoFrameInPortrait: CGRect!
@@ -22,7 +22,7 @@ class VideoPageViewController: BaseViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.embeddedVideoViewController = self.childViewControllers[0] as! AVPlayerViewController
+        self.embeddedVideoViewController = self.childViewControllers[0] as! JamJarAVPlayerViewController
         
         //Save the potrait video frame
         videoFrameInPortrait = self.embeddedVideoViewController.view.frame
@@ -41,6 +41,7 @@ class VideoPageViewController: BaseViewController{
         
         //create offset in height from tabbar and navigationbar
         //TODO: This offset isn't calculated properly. Fix this if needed
+        // 81 - 17 = 64
         let offset = (self.tabBarController!.tabBar.frame.size.height + self.navigationController!.navigationBar.frame.size.height - 17) * -1
         
         UIView.animateWithDuration(0.25) {
@@ -83,7 +84,7 @@ class VideoPageViewController: BaseViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
-            let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
+            let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
             print(self.video.hls_src)
             
             let videoPath = NSURL(string: self.video.hls_src)
