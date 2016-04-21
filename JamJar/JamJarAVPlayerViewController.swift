@@ -18,6 +18,8 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     var timeRemainingLabel: UILabel = UILabel()
     var seekSlider: UISlider = UISlider()
     var playerRateBeforeSeek: Float = 0
+    var loadingIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    let playbackLikelyToKeepUpContext = UnsafeMutablePointer<(Void)>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +32,15 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         createPlayButton()
         createTimeObserver()
         createSeekSlider()
+        createBufferIndicator()
         
-        let bottomBarColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
+        let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
         self.bottomBar.backgroundColor = bottomBarColor
         self.view.addSubview(self.bottomBar)
+        
+        //start video
+        loadingIndicatorView.startAnimating()
+        self.player!.play() // Start the playback
     }
     
     override func viewWillLayoutSubviews() {
@@ -42,12 +49,20 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         // Update Bottom Bar
         self.bottomBar.frame = CGRect(x: 0, y: self.view.frame.height - 30, width: self.view.frame.width, height: 30)
         self.updateSeekSlider()
+        self.updateBufferIndicator()
     }
     
+    deinit {
+        self.player?.removeTimeObserver(timeObserver)
+        self.player?.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
+    }
+    
+    /*
     override func viewDidDisappear(animated: Bool) {
         self.player?.removeTimeObserver(self.timeObserver)
         self.player = nil
     }
+    */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,6 +83,11 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
         let timeRemaining: Float64 = CMTimeGetSeconds(self.player!.currentItem!.duration) - elapsedTime
         timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+        
+        //Update Slider
+        let sliderPosition = elapsedTime / CMTimeGetSeconds(self.player!.currentItem!.duration)
+        print(sliderPosition)
+        self.seekSlider.value = Float(sliderPosition)
     }
     
     private func observeTime(elapsedTime: CMTime) {
@@ -82,10 +102,10 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Play Button
     func createPlayButton() {
-        self.playButton = UIButton(type: UIButtonType.System) as UIButton
+        self.playButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
         playButton.frame = CGRectMake(0, 0, 30, 30)
-        playButton.backgroundColor = UIColor.greenColor()
-        playButton.setTitle(">", forState: UIControlState.Normal)
+        //playButton.backgroundColor = UIColor.greenColor()
+        playButton.setImage(UIImage(named: "right-arrow-white"), forState: .Normal)
         playButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(playButton)
@@ -109,7 +129,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Seek Slider
     func createSeekSlider() {
-        self.seekSlider.value = 0
         self.bottomBar.addSubview(seekSlider)
         seekSlider.addTarget(self, action: "sliderBeganTracking:",
                              forControlEvents: UIControlEvents.TouchDown)
@@ -123,7 +142,18 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     func updateSeekSlider() {
         self.seekSlider.frame = CGRect(x: self.timeRemainingLabel.frame.origin.x + self.timeRemainingLabel.bounds.size.width,
-                                  y: 0, width: self.bottomBar.bounds.size.width - self.timeRemainingLabel.bounds.size.width - self.playButton.bounds.size.width - 5, height: 30)
+                                  y: 0, width: self.bottomBar.bounds.size.width - self.timeRemainingLabel.bounds.size.width - self.playButton.bounds.size.width - 20, height: 30)
+    }
+    
+    func createBufferIndicator() {
+        loadingIndicatorView.hidesWhenStopped = true
+        view.addSubview(loadingIndicatorView)
+        self.player!.addObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp",
+                             options: NSKeyValueObservingOptions.New, context: playbackLikelyToKeepUpContext)
+    }
+    
+    func updateBufferIndicator() {
+        loadingIndicatorView.center = CGPoint(x: CGRectGetMidX(view.bounds), y: CGRectGetMidY(view.bounds))
     }
     
     // Button Actions
@@ -137,14 +167,18 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Begin seeking
     func sliderBeganTracking(slider: UISlider!) {
+        print("sliderBeganTracking")
         playerRateBeforeSeek = self.player!.rate
+        print(playerRateBeforeSeek)
         self.player!.pause()
     }
     
     // End seeking
     func sliderEndedTracking(slider: UISlider!) {
+        print("sliderEndedTracking")
         let videoDuration = CMTimeGetSeconds(self.player!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
+        print(seekSlider.value) //prints a float that is between 0 and 1
         updateTimeLabel(elapsedTime, duration: videoDuration)
         
         self.player!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
@@ -156,8 +190,20 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Seek Value Changed
     func sliderValueChanged(slider: UISlider!) {
+        print("sliderValueChanged")
         let videoDuration = CMTimeGetSeconds(self.player!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
         updateTimeLabel(elapsedTime, duration: videoDuration)
+    }
+    
+    // Buffer stuff
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if (context == playbackLikelyToKeepUpContext) {
+            if (self.player!.currentItem!.playbackLikelyToKeepUp) {
+                loadingIndicatorView.stopAnimating()
+            } else {
+                loadingIndicatorView.startAnimating()
+            }
+        }
     }
 }

@@ -61,7 +61,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     //make embedded controller full screen
     func fullScreenVideo() {
         //hide navigation bar and tool bar
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBar.hidden = true
         self.tabBarController?.tabBar.hidden = true
         
         //create offset in height from tabbar and navigationbar
@@ -77,7 +77,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     //Worst function name ever
     func unfullScreenVideo() {
         //show navigation bar and tool bar
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.hidden = false
         self.tabBarController?.tabBar.hidden = false
         
         UIView.animateWithDuration(0.25) {
