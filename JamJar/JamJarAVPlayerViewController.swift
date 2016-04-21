@@ -14,6 +14,8 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     var bottomBar: UIView! = UIView()
     var playButton: UIButton!
+    var rewindButton: UIButton!
+    var fastFowardButton: UIButton!
     var timeObserver: AnyObject!
     var timeRemainingLabel: UILabel = UILabel()
     var seekSlider: UISlider = UISlider()
@@ -29,7 +31,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.showsPlaybackControls = false
         
         // Add Buttons to Bar
+        createRewindButton()
         createPlayButton()
+        createFastForwardButton()
         createTimeObserver()
         createSeekSlider()
         createBufferIndicator()
@@ -73,8 +77,10 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     func playPause() {
         let playerIsPlaying = self.player?.rate > 0
         if playerIsPlaying {
+            playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Pause), forState: .Normal)
             self.player?.pause()
         } else {
+            playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
             self.player?.play()
         }
     }
@@ -86,7 +92,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         
         //Update Slider
         let sliderPosition = elapsedTime / CMTimeGetSeconds(self.player!.currentItem!.duration)
-        print(sliderPosition)
         self.seekSlider.value = Float(sliderPosition)
     }
     
@@ -103,17 +108,41 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     // Play Button
     func createPlayButton() {
         self.playButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
-        playButton.frame = CGRectMake(0, 0, 30, 30)
-        //playButton.backgroundColor = UIColor.greenColor()
-        playButton.setImage(UIImage(named: "right-arrow-white"), forState: .Normal)
+        playButton.frame = CGRectMake(40, 0, 30, 30)
+        playButton.tintColor = UIColor(red: 241, green: 95, blue: 78)
+        playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
         playButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(playButton)
     }
     
+    // Rewind Button Button
+    func createRewindButton() {
+        self.rewindButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
+        rewindButton.frame = CGRectMake(10, 0, 30, 30)
+        rewindButton.tintColor = UIColor.whiteColor()
+        rewindButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Rewind), forState: .Normal)
+        //rewindButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.bottomBar.addSubview(rewindButton)
+    }
+    
+    // Fast Forward Button
+    func createFastForwardButton() {
+        self.fastFowardButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
+        fastFowardButton.frame = CGRectMake(70, 0, 30, 30)
+        fastFowardButton.tintColor = UIColor.whiteColor()
+        fastFowardButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.FastForward), forState: .Normal)
+        //fastFowardButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.bottomBar.addSubview(fastFowardButton)
+    }
+    
+    
     // TimeRemaining Label
     func createTimeObserver() {
         timeRemainingLabel.text = "0:00" //Serves as a default value incase nothing is returned
+        timeRemainingLabel.font = UIFont(name: "Muli", size: 14)
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         timeObserver = self.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) {
             (elapsedTime: CMTime) -> Void in
@@ -124,12 +153,13 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.bottomBar.addSubview(timeRemainingLabel);
         
         //layout time remaining label
-        timeRemainingLabel.frame = CGRect(x: 40, y: 0, width: 60, height: 30)
+        timeRemainingLabel.frame = CGRect(x: 100, y: 0, width: 60, height: 30)
     }
     
     // Seek Slider
     func createSeekSlider() {
-        self.bottomBar.addSubview(seekSlider)
+        seekSlider.tintColor = UIColor(red: 241, green: 95, blue: 78)
+        self.view.addSubview(seekSlider)
         seekSlider.addTarget(self, action: "sliderBeganTracking:",
                              forControlEvents: UIControlEvents.TouchDown)
         seekSlider.addTarget(self, action: "sliderEndedTracking:",
@@ -141,8 +171,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     }
     
     func updateSeekSlider() {
-        self.seekSlider.frame = CGRect(x: self.timeRemainingLabel.frame.origin.x + self.timeRemainingLabel.bounds.size.width,
-                                  y: 0, width: self.bottomBar.bounds.size.width - self.timeRemainingLabel.bounds.size.width - self.playButton.bounds.size.width - 20, height: 30)
+        self.seekSlider.frame = CGRect(x: 10, y: self.bottomBar.frame.origin.y - 30, width: self.bottomBar.bounds.size.width - 20, height: 30)
     }
     
     func createBufferIndicator() {
@@ -161,7 +190,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     // Play/Pause functionality
     func playButtonAction(sender:UIButton!)
     {
-        print("play pause")
         playPause()
     }
     
@@ -205,5 +233,25 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
                 loadingIndicatorView.startAnimating()
             }
         }
+    }
+    
+    // private haxing of the built in icons that should need to be done but is done cause Apple wants to make my life harder
+    //Get image from built in icons
+    private func imageFromSystemBarButton(systemItem: UIBarButtonSystemItem)-> UIImage {
+        let tempItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: nil, action: nil)
+        
+        // add to toolbar and render it
+        UIToolbar().setItems([tempItem], animated: false)
+        
+        // got image from real uibutton
+        let itemView = tempItem.valueForKey("view") as! UIView
+        for view in itemView.subviews {
+            if view.isKindOfClass(UIButton){
+                let button = view as! UIButton
+                return button.imageView!.image!
+            }
+        }
+        
+        return UIImage()
     }
 }
