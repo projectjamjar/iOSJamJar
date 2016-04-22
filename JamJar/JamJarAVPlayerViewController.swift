@@ -16,12 +16,13 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     var playButton: UIButton!
     var rewindButton: UIButton!
     var fastFowardButton: UIButton!
+    var fullScreenButton: UIButton!
     var timeObserver: AnyObject!
-    var timeRemainingLabel: UILabel = UILabel()
+    var timePassedLabel: UILabel = UILabel()
     var seekSlider: UISlider = UISlider()
     var playerRateBeforeSeek: Float = 0
     var loadingIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-    let playbackLikelyToKeepUpContext = UnsafeMutablePointer<(Void)>()
+    let playbackLikelyToKeepUpContext: UnsafeMutablePointer<(Void)> = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         createRewindButton()
         createPlayButton()
         createFastForwardButton()
+        createFullScreenButton()
         createTimeObserver()
         createSeekSlider()
         createBufferIndicator()
@@ -52,6 +54,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         
         // Update Bottom Bar
         self.bottomBar.frame = CGRect(x: 0, y: self.view.frame.height - 30, width: self.view.frame.width, height: 30)
+        updateFullScreenButton()
         self.updateSeekSlider()
         self.updateBufferIndicator()
     }
@@ -87,8 +90,13 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Methods to handle time remaining
     private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
-        let timeRemaining: Float64 = CMTimeGetSeconds(self.player!.currentItem!.duration) - elapsedTime
-        timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+        let timePassed: Float64 = elapsedTime
+        let totalTime: Float64 = CMTimeGetSeconds(self.player!.currentItem!.duration)
+        timePassedLabel.text = String(format: "%02d:%02d/%02d:%02d",
+                                      ((lround(timePassed) / 60) % 60),
+                                      lround(timePassed) % 60,
+                                      ((lround(totalTime) / 60) % 60),
+                                      lround(totalTime) % 60)
         
         //Update Slider
         let sliderPosition = elapsedTime / CMTimeGetSeconds(self.player!.currentItem!.duration)
@@ -138,22 +146,36 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.bottomBar.addSubview(fastFowardButton)
     }
     
+    // Full Screen Button
+    func createFullScreenButton() {
+        self.fullScreenButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
+        fullScreenButton.frame = CGRectMake(self.view.frame.width - 40, 0, 30, 30)
+        fullScreenButton.tintColor = UIColor.whiteColor()
+        fullScreenButton.setImage(UIImage(named: "full_screen"), forState: .Normal)
+        fullScreenButton.addTarget(self, action: "fullScreenPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.bottomBar.addSubview(fullScreenButton)
+    }
+    
+    func updateFullScreenButton() {
+        fullScreenButton.frame = CGRectMake(self.view.frame.width - 40, 0, 30, 30)
+    }
     
     // TimeRemaining Label
     func createTimeObserver() {
-        timeRemainingLabel.text = "0:00" //Serves as a default value incase nothing is returned
-        timeRemainingLabel.font = UIFont(name: "Muli", size: 14)
+        timePassedLabel.text = "0:00/0:00" //Serves as a default value incase nothing is returned
+        timePassedLabel.font = UIFont(name: "Muli", size: 14)
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         timeObserver = self.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) {
             (elapsedTime: CMTime) -> Void in
             self.observeTime(elapsedTime)
         }
         
-        timeRemainingLabel.textColor = UIColor.whiteColor()
-        self.bottomBar.addSubview(timeRemainingLabel);
+        timePassedLabel.textColor = UIColor.whiteColor()
+        self.bottomBar.addSubview(timePassedLabel);
         
         //layout time remaining label
-        timeRemainingLabel.frame = CGRect(x: 100, y: 0, width: 60, height: 30)
+        timePassedLabel.frame = CGRect(x: 100, y: 0, width: 120, height: 30)
     }
     
     // Seek Slider
@@ -222,6 +244,19 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         let videoDuration = CMTimeGetSeconds(self.player!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
         updateTimeLabel(elapsedTime, duration: videoDuration)
+    }
+    
+    // Full Screen pressed
+    func fullScreenPressed(sender:UIButton!) {
+        switch UIDevice.currentDevice().orientation{
+        case .Portrait:
+            let value = UIInterfaceOrientation.LandscapeLeft.rawValue
+            UIDevice.currentDevice().setValue(value, forKey: "orientation")
+            break
+        default:
+            let value = UIInterfaceOrientation.Portrait.rawValue
+            UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        }
     }
     
     // Buffer stuff
