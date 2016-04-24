@@ -60,6 +60,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     }
     
     deinit {
+        print("deinit called")
         self.player?.removeTimeObserver(timeObserver)
         self.player?.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
     }
@@ -80,10 +81,10 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     func playPause() {
         let playerIsPlaying = self.player?.rate > 0
         if playerIsPlaying {
-            playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Pause), forState: .Normal)
+            playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
             self.player?.pause()
         } else {
-            playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
+            playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Pause), forState: .Normal)
             self.player?.play()
         }
     }
@@ -217,7 +218,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Begin seeking
     func sliderBeganTracking(slider: UISlider!) {
-        print("sliderBeganTracking")
         playerRateBeforeSeek = self.player!.rate
         print(playerRateBeforeSeek)
         self.player!.pause()
@@ -225,7 +225,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // End seeking
     func sliderEndedTracking(slider: UISlider!) {
-        print("sliderEndedTracking")
         let videoDuration = CMTimeGetSeconds(self.player!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
         print(seekSlider.value) //prints a float that is between 0 and 1
@@ -240,7 +239,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     
     // Seek Value Changed
     func sliderValueChanged(slider: UISlider!) {
-        print("sliderValueChanged")
         let videoDuration = CMTimeGetSeconds(self.player!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
         updateTimeLabel(elapsedTime, duration: videoDuration)
@@ -268,6 +266,15 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
                 loadingIndicatorView.startAnimating()
             }
         }
+    }
+    
+    // executed code for when the AVPlayer is touched
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        
+        //TODO: Fade in / fade out these elements
+        self.bottomBar.hidden = !self.bottomBar.hidden
+        self.seekSlider.hidden = !self.seekSlider.hidden
     }
     
     // private haxing of the built in icons that should need to be done but is done cause Apple wants to make my life harder

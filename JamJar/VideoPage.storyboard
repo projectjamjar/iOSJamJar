@@ -100,6 +100,7 @@
                         <outlet property="titleLabel" destination="2RN-su-0bx" id="nbN-Bk-doO"/>
                         <outlet property="uploaderLabel" destination="b02-QJ-OMw" id="IOo-Iq-uQL"/>
                         <outlet property="venueLabel" destination="BBp-3M-XHp" id="Ivy-we-zLV"/>
+                        <outlet property="videoContainerView" destination="yMK-J0-XGB" id="fs4-hC-swv"/>
                         <outlet property="viewCountLabel" destination="j7z-gk-iRr" id="gCk-Bg-31Q"/>
                     </connections>
                 </viewController>

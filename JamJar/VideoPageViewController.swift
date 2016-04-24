@@ -14,7 +14,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     var video: Video!
     var concert: Concert!
-    weak var embeddedVideoViewController: JamJarAVPlayerViewController!
     
     //IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,18 +24,18 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var suggestedTableView: UITableView!
+    @IBOutlet weak var videoContainerView: UIView!
     
     //Variable to store video frame
     var videoFrameInPortrait: CGRect!
+    var videoContainerFrameInPortrait: CGRect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.embeddedVideoViewController = self.childViewControllers[0] as! JamJarAVPlayerViewController
-        
         //Save the potrait video frame
-        videoFrameInPortrait = self.embeddedVideoViewController.view.frame
+        videoContainerFrameInPortrait = self.videoContainerView.frame
         
         //Set up UI Elements
         titleLabel.text = video.name
@@ -64,13 +63,8 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.navigationController?.navigationBar.hidden = true
         self.tabBarController?.tabBar.hidden = true
         
-        //create offset in height from tabbar and navigationbar
-        //TODO: This offset isn't calculated properly. Fix this if needed
-        // 81 - 17 = 64
-        let offset = (self.tabBarController!.tabBar.frame.size.height + self.navigationController!.navigationBar.frame.size.height - 17) * -1
-        
         UIView.animateWithDuration(0.25) {
-            self.embeddedVideoViewController.view.frame = CGRect(x: 0, y: offset, width: self.view.frame.width, height: self.view.frame.height)
+            self.videoContainerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }
     }
     
@@ -81,7 +75,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.tabBarController?.tabBar.hidden = false
         
         UIView.animateWithDuration(0.25) {
-            self.embeddedVideoViewController.view.frame = self.videoFrameInPortrait
+            self.videoContainerView.frame = self.videoContainerFrameInPortrait
         }
     }
     
@@ -99,11 +93,8 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         case .Portrait:
             unfullScreenVideo()
             break
-        case .LandscapeLeft,.LandscapeRight:
-            fullScreenVideo()
-            break
         default:
-            print("Unknown Orientation")
+            fullScreenVideo()
         }
     }
     
