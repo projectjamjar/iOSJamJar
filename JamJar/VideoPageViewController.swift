@@ -12,8 +12,8 @@ import AVFoundation
 
 class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var video: Video!
-    var concert: Concert!
+    weak var video: Video!
+    weak var concert: Concert!
     
     //IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,6 +55,14 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        for controller in self.childViewControllers {
+            if let child = controller as? JamJarAVPlayerViewController {
+                child.removeObservers()
+            }
+        }
     }
     
     //make embedded controller full screen
@@ -100,7 +108,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
-            let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
+            unowned let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
             print(self.video.hls_src)
             
             //let videoPath = NSURL(string: "http://144.118.231.71:8000/out.m3u8")

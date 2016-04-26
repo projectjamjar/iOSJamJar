@@ -12,6 +12,7 @@ import AVFoundation
 
 class JamJarAVPlayerViewController: AVPlayerViewController {
     
+    
     var bottomBar: UIView! = UIView()
     var playButton: UIButton!
     var rewindButton: UIButton!
@@ -32,8 +33,8 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.showsPlaybackControls = false
         
         // Add Buttons to Bar
-        createRewindButton()
         createPlayButton()
+        createRewindButton()
         createFastForwardButton()
         createFullScreenButton()
         createTimeObserver()
@@ -54,24 +55,22 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         
         // Update Bottom Bar
         self.bottomBar.frame = CGRect(x: 0, y: self.view.frame.height - 30, width: self.view.frame.width, height: 30)
-        updateFullScreenButton()
+        self.updateFullScreenButton()
         self.updateSeekSlider()
         self.updateBufferIndicator()
     }
     
-    deinit {
-        print("deinit called")
-        self.player?.removeTimeObserver(timeObserver)
-        self.player?.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
+    func removeObservers() {
+        self.player!.removeTimeObserver(self.timeObserver)
+        timeObserver = nil
+        self.player!.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp", context: playbackLikelyToKeepUpContext)
     }
     
-    /*
     override func viewDidDisappear(animated: Bool) {
-        self.player?.removeTimeObserver(self.timeObserver)
-        self.player = nil
+        playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
+        self.player!.pause()
     }
-    */
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -171,7 +170,6 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
             (elapsedTime: CMTime) -> Void in
             self.observeTime(elapsedTime)
         }
-        
         timePassedLabel.textColor = UIColor.whiteColor()
         self.bottomBar.addSubview(timePassedLabel);
         
