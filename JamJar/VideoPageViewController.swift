@@ -34,6 +34,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //disable autolayout constraints
+        //NSLayoutConstraint.deactivateConstraints(self.landscapeConstraintsPad)
+        //self.view.translatesAutoresizingMaskIntoConstraints = true
+        
         //Save the potrait video frame
         videoContainerFrameInPortrait = self.videoContainerView.frame
         
@@ -85,6 +89,8 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         UIView.animateWithDuration(0.25) {
             self.videoContainerView.frame = self.videoContainerFrameInPortrait
         }
+        
+        self.view.layoutIfNeeded()
     }
     
     //Allow rotate
@@ -128,7 +134,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 30.0
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

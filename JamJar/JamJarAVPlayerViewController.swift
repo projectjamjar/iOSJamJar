@@ -118,7 +118,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.playButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
         playButton.frame = CGRectMake(40, 0, 30, 30)
         playButton.tintColor = UIColor(red: 241, green: 95, blue: 78)
-        playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
+        playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Pause), forState: .Normal)
         playButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(playButton)
