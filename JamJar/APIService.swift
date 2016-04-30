@@ -13,16 +13,17 @@ class APIService {
     static private let url: NSURL = NSURL(string: baseURL)!
     static private var token: String?
     
-    static func appendSlash(var path: String) -> String {
-        if path.characters.last != "/" {
-            path += "/"
+    static func appendSlash(path: String) -> String {
+        var returnPath = path
+        if returnPath.characters.last != "/" {
+            returnPath += "/"
         }
-        return path
+        return returnPath
     }
     
-    static func buildURL(var path: String) -> String {
-        path = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        return NSURL(string: self.appendSlash(path), relativeToURL: url)!.absoluteString
+    static func buildURL(path: String) -> String {
+        let returnPath = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        return NSURL(string: self.appendSlash(returnPath), relativeToURL: url)!.absoluteString
     }
     
     /*

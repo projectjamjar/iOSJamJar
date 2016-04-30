@@ -11,7 +11,7 @@ import AVKit
 import AVFoundation
 import SCLAlertView
 
-class UploadVideoViewController: BaseViewController{
+class UploadVideoViewController: BaseViewController {
     
     //information about the concert that is sent to this controller
     var selectedArtists = [Artist]()
@@ -27,15 +27,28 @@ class UploadVideoViewController: BaseViewController{
     // Keep track of upload progress
     var queue: Int = 0
     
+    //Variable to store video frame
+    var videoContainerFrameInPortrait: CGRect!
+    
     //UI Outlets
     @IBOutlet var videoNameTextField: UITextField!
     @IBOutlet var publicPrivateSegmentedControl: UISegmentedControl!
     @IBOutlet var leftButton: UIButton!
     @IBOutlet var rightButton: UIButton!
+    @IBOutlet weak var videoContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Prevents view from bugging out when it starts in landscape mode.
+        if(!UIDevice.currentDevice().orientation.isPortrait) {
+            let value = UIInterfaceOrientation.Portrait.rawValue
+            UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        }
+        
+        //Save the potrait video frame
+        videoContainerFrameInPortrait = self.videoContainerView.frame
         
         //placeholder text for videoNameTextField needs to be set to white
 //        videoNameTextField.attributedPlaceholder = NSAttributedString(string:"Video Name",
@@ -62,11 +75,22 @@ class UploadVideoViewController: BaseViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        //When the page is reset, remove observers from the AVPlayerController
+        for controller in self.childViewControllers {
+            if let child = controller as? JamJarAVPlayerViewController {
+                child.removeObservers()
+            }
+        }
+    }
+    
     func changeVideo(newIndex: Int) {
         //Update video
-        let embeddedVideoViewController = self.childViewControllers[0] as! AVPlayerViewController
+        let embeddedVideoViewController = self.childViewControllers[0] as! JamJarAVPlayerViewController
         let videoPath = self.videosToUpload[currentVideoSelected]
+        embeddedVideoViewController.removeObservers()
         embeddedVideoViewController.player = AVPlayer(URL: videoPath)
+        embeddedVideoViewController.viewDidLoad()
         
         //update videoNameTextField
         self.videoNameTextField.text = self.namesOfVideos[newIndex]
@@ -76,7 +100,7 @@ class UploadVideoViewController: BaseViewController{
     }
     
     @IBAction func leftButtonPressed(sender: UIButton) {
-        currentVideoSelected--
+        currentVideoSelected -= 1
         if(currentVideoSelected < 0) {
             currentVideoSelected = (videosToUpload.count) - 1
         }
@@ -84,7 +108,7 @@ class UploadVideoViewController: BaseViewController{
     }
     
     @IBAction func rightButtonPressed(sender: UIButton) {
-        currentVideoSelected++
+        currentVideoSelected += 1
         if(currentVideoSelected >= videosToUpload.count) {
             currentVideoSelected = 0
         }
@@ -135,7 +159,7 @@ class UploadVideoViewController: BaseViewController{
     // Keep track of videos uploaded
     func callback()
     {
-        self.queue--
+        self.queue -= 1
         // Execute final callback when queue is empty
         if self.queue == 0 {
             showSuccessView()
@@ -143,6 +167,50 @@ class UploadVideoViewController: BaseViewController{
         }
     }
     
+    //make embedded controller full screen
+    func fullScreenVideo() {
+        //hide navigation bar and tool bar
+        self.navigationController?.navigationBar.hidden = true
+        self.tabBarController?.tabBar.hidden = true
+        
+        UIView.animateWithDuration(0.25) {
+            self.videoContainerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        }
+    }
+    
+    //Worst function name ever
+    func unfullScreenVideo() {
+        //show navigation bar and tool bar
+        self.navigationController?.navigationBar.hidden = false
+        self.tabBarController?.tabBar.hidden = false
+        
+        UIView.animateWithDuration(0.25) {
+            self.videoContainerView.frame = self.videoContainerFrameInPortrait
+        }
+        
+        self.view.layoutIfNeeded()
+    }
+    
+    //Allow rotate
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIDevice.currentDevice().orientation{
+        case .Portrait:
+            unfullScreenVideo()
+            break
+        default:
+            fullScreenVideo()
+        }
+    }
+    
+    //reset view
     func resetUploadControllers() {
         let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
         
@@ -153,11 +221,11 @@ class UploadVideoViewController: BaseViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
-            let embeddedVideoViewController = segue.destinationViewController as! AVPlayerViewController
+            let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
             
             let videoPath = self.videosToUpload[currentVideoSelected]
-            
-            embeddedVideoViewController.player = AVPlayer(URL: videoPath)
+            let videoPlayer = AVPlayer(URL: videoPath)
+            embeddedVideoViewController.player = videoPlayer
         }
     }
 }

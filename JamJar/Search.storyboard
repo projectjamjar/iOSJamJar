@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gew-VL-NOo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gew-VL-NOo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Muli-Light.ttf">
+            <string>Muli-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Search-->
         <scene sceneID="Yoh-o7-ozu">
@@ -19,7 +24,7 @@
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="CIj-wk-FY0" kind="relationship" relationship="rootViewController" id="wai-Ok-4VJ"/>
+                        <segue destination="DPx-sL-kNE" kind="relationship" relationship="rootViewController" id="Rn1-VM-Q7x"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCA-Oe-Fsz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,11 +36,11 @@
             <objects>
                 <tableViewController id="CIj-wk-FY0" customClass="SearchViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="roC-tH-rmg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" placeholder="Search" showsScopeBar="YES" id="MSF-KT-OjQ">
-                            <rect key="frame" x="0.0" y="64" width="375" height="88"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -47,10 +52,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pxo-9F-K7a">
-                                <rect key="frame" x="0.0" y="136" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pxo-9F-K7a" id="KaT-Xj-HOV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -76,7 +81,49 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-477.5" y="395.5"/>
+            <point key="canvasLocation" x="-348" y="437"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZCX-oS-8yr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqw-I7-MZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="DPx-sL-kNE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="09V-hp-SqV"/>
+                        <viewControllerLayoutGuide type="bottom" id="ydo-Fr-20K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uZa-jB-nhS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-3V-PaK">
+                                <rect key="frame" x="168" y="251" width="40" height="87"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="70"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There doesn't seem to be anything here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOf-MH-pjv">
+                                <rect key="frame" x="36" y="348" width="305" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vOf-MH-pjv" firstAttribute="centerX" secondItem="ETD-3V-PaK" secondAttribute="centerX" id="KVp-7u-qCF"/>
+                            <constraint firstItem="vOf-MH-pjv" firstAttribute="top" secondItem="ETD-3V-PaK" secondAttribute="bottom" constant="10" id="QiM-JI-tMM"/>
+                            <constraint firstItem="ETD-3V-PaK" firstAttribute="centerX" secondItem="uZa-jB-nhS" secondAttribute="centerX" id="Wpq-E2-tm9"/>
+                            <constraint firstItem="ETD-3V-PaK" firstAttribute="centerY" secondItem="uZa-jB-nhS" secondAttribute="centerY" constant="-15" id="ZT0-gh-g1c"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xUv-dF-deJ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-460.5" y="-297.5"/>
         </scene>
     </scenes>
     <resources>

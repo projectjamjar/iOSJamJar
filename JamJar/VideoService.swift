@@ -40,7 +40,7 @@ class VideoService: APIService {
                 }
                 
                 for artist in artists {
-                    multipartFormData.appendBodyPart(data: String(artist.id).dataUsingEncoding(NSUTF8StringEncoding)!, name: "artists")
+                    multipartFormData.appendBodyPart(data: artist.spotifyResponseId!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "artists")
                 }
             },
             encodingCompletion: { encodingResult in

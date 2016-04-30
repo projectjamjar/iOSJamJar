@@ -27,8 +27,25 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(DiscoverViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
+    }
+    
+    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
+        switch sectionPicker.selectedSegmentIndex {
+        case 0:
+            print("JamPicks Selected")
+            SCLAlertView().showError("Under Construction!", subTitle: "Discovering JamPicks will be available soon!", closeButtonTitle: "Got it")
+            sectionPicker.selectedSegmentIndex = 1
+        case 1:
+            print("Concerts Selected")
+        case 2:
+            print("Genres Selected")
+            SCLAlertView().showError("Under Construction!", subTitle: "Discovering concerts by genre will be available soon!", closeButtonTitle: "Got it")
+            sectionPicker.selectedSegmentIndex = 1
+        default:
+            break;
+        }
     }
     
     func refresh(sender:AnyObject)

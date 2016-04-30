@@ -15,7 +15,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -34,6 +34,15 @@ class BaseViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    //Prevent rotate
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 }
 
@@ -43,7 +52,7 @@ class BaseTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -62,6 +71,15 @@ class BaseTableViewController: UITableViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    //Prevent rotate
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 }
 

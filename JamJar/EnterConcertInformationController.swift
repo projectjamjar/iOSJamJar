@@ -85,7 +85,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
-        datePickerView.addTarget(self, action: Selector("dataPickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
     }
     
@@ -94,7 +94,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.selectedArtists.append(artist)
         
         let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,40))
-        artistChip.setup(artist, deleteTarget: self, deleteAction: Selector("removeArtistTapped:"))
+        artistChip.setup(artist, deleteTarget: self, deleteAction: #selector(EnterConcertInformationViewController.removeArtistTapped(_:)))
         self.artistsStackView.addArrangedSubview(artistChip)
         
         self.artistsTextField.setColoredPlaceholder("Add Another Artist...")
@@ -208,16 +208,13 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 // Store all of the URLs for the selected videos
                 for asset in assets {
                     asset.fetchAVAsset(nil, completeBlock: { info in
-                        //copy file into local "Documents" Directory
                         let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info!.URL.lastPathComponent!
-                        let phManager = PHImageManager.defaultManager()
-                        let options = PHImageRequestOptions()
-                        phManager.requestImageDataForAsset(asset.originalAsset!, options: options)
-                            {   imageData,dataUTI,orientation,info in
-                                
-                                if let newData:NSData = imageData {
-                                    // Saves the video in another location so it can then be used for upload
-                                    try! newData.writeToFile(targetVideoURL, atomically: true)
+                        
+                        PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let asset = asset as? AVURLAsset
+                                if let data = NSData(contentsOfURL: asset!.URL) {
+                                    data.writeToFile(targetVideoURL, atomically: true)
                                     // Saved URL is stored for future use
                                     self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
                                     self.callback()
@@ -225,7 +222,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                                     print("Error: Video could not be processed")
                                     showErrorView()
                                 }
-                        }
+                            })
+                        })
                     })
                 }
             }
@@ -238,7 +236,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     // Keep track of video URLs being stored
     func callback()
     {
-        self.queue--
+        self.queue -= 1
         // Execute final callback when queue is empty
         if self.queue == 0 {
             showSuccessView()
