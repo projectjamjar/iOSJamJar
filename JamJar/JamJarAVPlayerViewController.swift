@@ -64,6 +64,14 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.player!.removeTimeObserver(self.timeObserver)
         timeObserver = nil
         self.player!.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp", context: playbackLikelyToKeepUpContext)
+        
+        //Remove buttons to avoid duplication if the view is reloading
+        self.rewindButton.removeFromSuperview()
+        self.playButton.removeFromSuperview()
+        self.fastFowardButton.removeFromSuperview()
+        self.seekSlider.removeFromSuperview()
+        self.fullScreenButton.removeFromSuperview()
+        self.bottomBar.removeFromSuperview()
     }
     
     override func viewDidDisappear(animated: Bool) {
