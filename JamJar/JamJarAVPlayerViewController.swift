@@ -119,7 +119,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         playButton.frame = CGRectMake(40, 0, 30, 30)
         playButton.tintColor = UIColor(red: 241, green: 95, blue: 78)
         playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Pause), forState: .Normal)
-        playButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        playButton.addTarget(self, action: #selector(JamJarAVPlayerViewController.playButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(playButton)
     }
@@ -152,7 +152,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         fullScreenButton.frame = CGRectMake(self.view.frame.width - 40, 0, 30, 30)
         fullScreenButton.tintColor = UIColor.whiteColor()
         fullScreenButton.setImage(UIImage(named: "full_screen"), forState: .Normal)
-        fullScreenButton.addTarget(self, action: "fullScreenPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        fullScreenButton.addTarget(self, action: #selector(JamJarAVPlayerViewController.fullScreenPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(fullScreenButton)
     }
@@ -181,13 +181,13 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     func createSeekSlider() {
         seekSlider.tintColor = UIColor(red: 241, green: 95, blue: 78)
         self.view.addSubview(seekSlider)
-        seekSlider.addTarget(self, action: "sliderBeganTracking:",
+        seekSlider.addTarget(self, action: #selector(JamJarAVPlayerViewController.sliderBeganTracking(_:)),
                              forControlEvents: UIControlEvents.TouchDown)
-        seekSlider.addTarget(self, action: "sliderEndedTracking:",
+        seekSlider.addTarget(self, action: #selector(JamJarAVPlayerViewController.sliderEndedTracking(_:)),
                              forControlEvents: UIControlEvents.TouchUpInside)
-        seekSlider.addTarget(self, action: "sliderEndedTracking:",
+        seekSlider.addTarget(self, action: #selector(JamJarAVPlayerViewController.sliderEndedTracking(_:)),
                              forControlEvents: UIControlEvents.TouchUpOutside)
-        seekSlider.addTarget(self, action: "sliderValueChanged:",
+        seekSlider.addTarget(self, action: #selector(JamJarAVPlayerViewController.sliderValueChanged(_:)),
                              forControlEvents: UIControlEvents.ValueChanged)
     }
     

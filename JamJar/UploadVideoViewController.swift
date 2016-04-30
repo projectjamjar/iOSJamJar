@@ -11,7 +11,7 @@ import AVKit
 import AVFoundation
 import SCLAlertView
 
-class UploadVideoViewController: BaseViewController{
+class UploadVideoViewController: BaseViewController {
     
     //information about the concert that is sent to this controller
     var selectedArtists = [Artist]()
@@ -66,6 +66,7 @@ class UploadVideoViewController: BaseViewController{
         //Update video
         let embeddedVideoViewController = self.childViewControllers[0] as! JamJarAVPlayerViewController
         let videoPath = self.videosToUpload[currentVideoSelected]
+        embeddedVideoViewController.removeObservers()
         embeddedVideoViewController.player = AVPlayer(URL: videoPath)
         embeddedVideoViewController.viewDidLoad()
         
@@ -77,7 +78,7 @@ class UploadVideoViewController: BaseViewController{
     }
     
     @IBAction func leftButtonPressed(sender: UIButton) {
-        currentVideoSelected--
+        currentVideoSelected -= 1
         if(currentVideoSelected < 0) {
             currentVideoSelected = (videosToUpload.count) - 1
         }
@@ -85,7 +86,7 @@ class UploadVideoViewController: BaseViewController{
     }
     
     @IBAction func rightButtonPressed(sender: UIButton) {
-        currentVideoSelected++
+        currentVideoSelected += 1
         if(currentVideoSelected >= videosToUpload.count) {
             currentVideoSelected = 0
         }
@@ -136,7 +137,7 @@ class UploadVideoViewController: BaseViewController{
     // Keep track of videos uploaded
     func callback()
     {
-        self.queue--
+        self.queue -= 1
         // Execute final callback when queue is empty
         if self.queue == 0 {
             showSuccessView()

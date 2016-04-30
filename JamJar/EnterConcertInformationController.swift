@@ -85,7 +85,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
-        datePickerView.addTarget(self, action: Selector("dataPickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
     }
     
@@ -94,7 +94,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.selectedArtists.append(artist)
         
         let artistChip = ArtistChipView(frame: CGRectMake(0,0,self.artistsTextField.frame.width,40))
-        artistChip.setup(artist, deleteTarget: self, deleteAction: Selector("removeArtistTapped:"))
+        artistChip.setup(artist, deleteTarget: self, deleteAction: #selector(EnterConcertInformationViewController.removeArtistTapped(_:)))
         self.artistsStackView.addArrangedSubview(artistChip)
         
         self.artistsTextField.setColoredPlaceholder("Add Another Artist...")

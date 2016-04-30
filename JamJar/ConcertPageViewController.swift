@@ -46,7 +46,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(ConcertPageViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
     }
     
@@ -132,7 +132,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         }
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "collapseExpandSection:")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ConcertPageViewController.collapseExpandSection(_:)))
         tap.cancelsTouchesInView = true
         headerCell.addGestureRecognizer(tap)
         
