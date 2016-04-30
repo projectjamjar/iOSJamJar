@@ -144,6 +144,7 @@
                     <navigationItem key="navigationItem" id="yCA-C6-Q7d"/>
                     <connections>
                         <outlet property="artistsLabel" destination="Kvw-vy-vtY" id="bst-lL-Qx6"/>
+                        <outlet property="concertInfoView" destination="FI9-Jd-Xfe" id="c7d-89-bHp"/>
                         <outlet property="dateLabel" destination="GYN-pX-v1t" id="cie-mv-qFh"/>
                         <outlet property="likeDislikeLabel" destination="Rc6-ts-Efr" id="N9Z-GV-H5b"/>
                         <outlet property="suggestedTableView" destination="FG7-6m-pAX" id="cvy-qI-RxH"/>
@@ -152,11 +153,20 @@
                         <outlet property="venueLabel" destination="BBp-3M-XHp" id="Ivy-we-zLV"/>
                         <outlet property="videoContainerView" destination="yMK-J0-XGB" id="fs4-hC-swv"/>
                         <outlet property="viewCountLabel" destination="j7z-gk-iRr" id="gCk-Bg-31Q"/>
+                        <segue destination="rcj-i2-Sw1" kind="show" identifier="ToConcertPage" id="sp6-x3-Xmo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwF-r4-lT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="206.5" y="-297.5"/>
+        </scene>
+        <!--ConcertPage-->
+        <scene sceneID="pif-qp-fuL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ConcertPage" referencedIdentifier="ConcertPage" id="rcj-i2-Sw1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1D-aa-LtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593.5" y="-187"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wvZ-sH-R9a">

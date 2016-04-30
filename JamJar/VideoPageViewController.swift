@@ -25,6 +25,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var suggestedTableView: UITableView!
     @IBOutlet weak var videoContainerView: UIView!
+    @IBOutlet weak var concertInfoView: UIView!
     
     //Variable to store video frame
     var videoContainerFrameInPortrait: CGRect!
@@ -35,6 +36,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         
         //Save the potrait video frame
         videoContainerFrameInPortrait = self.videoContainerView.frame
+        
+        //Add action for concert tapped
+        let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
+        self.concertInfoView.addGestureRecognizer(concertTap)
         
         //Set up UI Elements
         titleLabel.text = video.name
@@ -88,6 +93,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.view.layoutIfNeeded()
     }
     
+    func concertTapped(sender:AnyObject) {
+        self.performSegueWithIdentifier("ToConcertPage", sender: nil)
+    }
+    
     //Allow rotate
     override func shouldAutorotate() -> Bool {
         return true
@@ -118,6 +127,11 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
             //let videoPath = NSURL(string: "http://devstreaming.apple.com/videos/wwdc/2015/106z3yjwpfymnauri96m/106/hls_vod_mvp.m3u8")
             
             embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
+        }
+        else if segue.identifier == "ToConcertPage" {
+            print("test")
+            let vc = segue.destinationViewController as! ConcertPageViewController
+            vc.concert = self.concert
         }
     }
     
