@@ -178,24 +178,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwO-03-K4Q">
-                                <rect key="frame" x="63" y="72" width="248" height="207"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="height" multiplier="6:5" id="WEy-tm-wjU"/>
-                                </constraints>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-fR-JCB">
+                                <rect key="frame" x="63" y="345" width="248" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="Public"/>
+                                    <segment title="Private"/>
+                                </segments>
+                                <color key="tintColor" red="0.43156002900000001" green="0.67254577019999995" blue="0.36935284029999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="gUG-YR-E67" kind="embed" identifier="playVideo" id="I0p-wV-DVi"/>
+                                    <action selector="publicPrivateSelected:" destination="XPg-sG-R38" eventType="valueChanged" id="0tg-1O-3gf"/>
                                 </connections>
-                            </containerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-50-d1h" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="63" y="299" width="248" height="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-VK-xJ4">
+                                <rect key="frame" x="16" y="159" width="33" height="33"/>
+                                <state key="normal" image="left-arrow"/>
                                 <connections>
-                                    <action selector="videoNameTextFieldEdited:" destination="XPg-sG-R38" eventType="editingDidEnd" id="MUX-4A-GTc"/>
+                                    <action selector="leftButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="EJ9-GG-1Ml"/>
                                 </connections>
-                            </textField>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">
+                                <rect key="frame" x="326" y="159" width="33" height="33"/>
+                                <state key="normal" image="right-arrow"/>
+                                <connections>
+                                    <action selector="rightButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="BGv-yO-MIP"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5">
                                 <rect key="frame" x="-4" y="568" width="383" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -211,32 +219,24 @@
                                     <action selector="finishAndUploadButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="11b-6k-bGX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBj-DW-nVa">
-                                <rect key="frame" x="326" y="159" width="33" height="33"/>
-                                <state key="normal" image="right-arrow"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-50-d1h" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="63" y="299" width="248" height="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
-                                    <action selector="rightButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="BGv-yO-MIP"/>
+                                    <action selector="videoNameTextFieldEdited:" destination="XPg-sG-R38" eventType="editingDidEnd" id="MUX-4A-GTc"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-VK-xJ4">
-                                <rect key="frame" x="16" y="159" width="33" height="33"/>
-                                <state key="normal" image="left-arrow"/>
+                            </textField>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwO-03-K4Q">
+                                <rect key="frame" x="63" y="72" width="248" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="height" multiplier="6:5" id="WEy-tm-wjU"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="leftButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="EJ9-GG-1Ml"/>
+                                    <segue destination="gUG-YR-E67" kind="embed" identifier="playVideo" id="I0p-wV-DVi"/>
                                 </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-fR-JCB">
-                                <rect key="frame" x="63" y="345" width="248" height="29"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <segments>
-                                    <segment title="Public"/>
-                                    <segment title="Private"/>
-                                </segments>
-                                <color key="tintColor" red="0.43156002900000001" green="0.67254577019999995" blue="0.36935284029999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="publicPrivateSelected:" destination="XPg-sG-R38" eventType="valueChanged" id="0tg-1O-3gf"/>
-                                </connections>
-                            </segmentedControl>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -271,6 +271,7 @@
                         <outlet property="leftButton" destination="1rG-VK-xJ4" id="BY0-4r-4YV"/>
                         <outlet property="publicPrivateSegmentedControl" destination="VBu-fR-JCB" id="fdP-7D-lcf"/>
                         <outlet property="rightButton" destination="tBj-DW-nVa" id="uAI-sN-Ddy"/>
+                        <outlet property="videoContainerView" destination="wwO-03-K4Q" id="MXu-61-sm5"/>
                         <outlet property="videoNameTextField" destination="Z6j-50-d1h" id="MR6-KG-pYF"/>
                     </connections>
                 </viewController>

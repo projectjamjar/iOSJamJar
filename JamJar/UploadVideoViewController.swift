@@ -27,15 +27,28 @@ class UploadVideoViewController: BaseViewController {
     // Keep track of upload progress
     var queue: Int = 0
     
+    //Variable to store video frame
+    var videoContainerFrameInPortrait: CGRect!
+    
     //UI Outlets
     @IBOutlet var videoNameTextField: UITextField!
     @IBOutlet var publicPrivateSegmentedControl: UISegmentedControl!
     @IBOutlet var leftButton: UIButton!
     @IBOutlet var rightButton: UIButton!
+    @IBOutlet weak var videoContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Prevents view from bugging out when it starts in landscape mode.
+        if(!UIDevice.currentDevice().orientation.isPortrait) {
+            let value = UIInterfaceOrientation.Portrait.rawValue
+            UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        }
+        
+        //Save the potrait video frame
+        videoContainerFrameInPortrait = self.videoContainerView.frame
         
         //placeholder text for videoNameTextField needs to be set to white
 //        videoNameTextField.attributedPlaceholder = NSAttributedString(string:"Video Name",
@@ -145,6 +158,50 @@ class UploadVideoViewController: BaseViewController {
         }
     }
     
+    //make embedded controller full screen
+    func fullScreenVideo() {
+        //hide navigation bar and tool bar
+        self.navigationController?.navigationBar.hidden = true
+        self.tabBarController?.tabBar.hidden = true
+        
+        UIView.animateWithDuration(0.25) {
+            self.videoContainerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        }
+    }
+    
+    //Worst function name ever
+    func unfullScreenVideo() {
+        //show navigation bar and tool bar
+        self.navigationController?.navigationBar.hidden = false
+        self.tabBarController?.tabBar.hidden = false
+        
+        UIView.animateWithDuration(0.25) {
+            self.videoContainerView.frame = self.videoContainerFrameInPortrait
+        }
+        
+        self.view.layoutIfNeeded()
+    }
+    
+    //Allow rotate
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIDevice.currentDevice().orientation{
+        case .Portrait:
+            unfullScreenVideo()
+            break
+        default:
+            fullScreenVideo()
+        }
+    }
+    
+    //reset view
     func resetUploadControllers() {
         let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
         

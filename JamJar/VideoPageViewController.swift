@@ -27,16 +27,11 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var videoContainerView: UIView!
     
     //Variable to store video frame
-    var videoFrameInPortrait: CGRect!
     var videoContainerFrameInPortrait: CGRect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //disable autolayout constraints
-        //NSLayoutConstraint.deactivateConstraints(self.landscapeConstraintsPad)
-        //self.view.translatesAutoresizingMaskIntoConstraints = true
         
         //Save the potrait video frame
         videoContainerFrameInPortrait = self.videoContainerView.frame
