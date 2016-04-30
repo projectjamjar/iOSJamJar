@@ -203,7 +203,8 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch (indexPath.section) {
         case 0:
-            let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
+            //let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
+            SCLAlertView().showError("Under Construction!", subTitle: "JamJars will be available soon!", closeButtonTitle: "Got it")
             print("Push to JamJar Controller")
         default:
             let videoCell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell

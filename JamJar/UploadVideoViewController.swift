@@ -75,6 +75,15 @@ class UploadVideoViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        //When the page is reset, remove observers from the AVPlayerController
+        for controller in self.childViewControllers {
+            if let child = controller as? JamJarAVPlayerViewController {
+                child.removeObservers()
+            }
+        }
+    }
+    
     func changeVideo(newIndex: Int) {
         //Update video
         let embeddedVideoViewController = self.childViewControllers[0] as! JamJarAVPlayerViewController

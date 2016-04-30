@@ -62,6 +62,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     deinit {
+        //When the video page is dismissed, remove observers from the AVPlayerController
         for controller in self.childViewControllers {
             if let child = controller as? JamJarAVPlayerViewController {
                 child.removeObservers()

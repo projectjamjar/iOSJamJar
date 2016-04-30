@@ -12,7 +12,7 @@ import AVFoundation
 
 class JamJarAVPlayerViewController: AVPlayerViewController {
     
-    
+    //UI elements
     var bottomBar: UIView! = UIView()
     var playButton: UIButton!
     var rewindButton: UIButton!
@@ -41,6 +41,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         createSeekSlider()
         createBufferIndicator()
         
+        // Create bottom bar
         let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
         self.bottomBar.backgroundColor = bottomBarColor
         self.view.addSubview(self.bottomBar)
@@ -60,7 +61,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.updateBufferIndicator()
     }
     
+    // This controller needs to have observers removed from memory or else the player will never deinit
     func removeObservers() {
+        //Remove the observers
         self.player!.removeTimeObserver(self.timeObserver)
         timeObserver = nil
         self.player!.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp", context: playbackLikelyToKeepUpContext)
@@ -74,6 +77,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.bottomBar.removeFromSuperview()
     }
     
+    //Pause the video if the video is out of scope
     override func viewDidDisappear(animated: Bool) {
         playButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Play), forState: .Normal)
         self.player!.pause()
@@ -111,6 +115,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.seekSlider.value = Float(sliderPosition)
     }
     
+    // Method is called when observer cycles periodically
     private func observeTime(elapsedTime: CMTime) {
         let duration = CMTimeGetSeconds(self.player!.currentItem!.duration);
         if (isfinite(duration)) {
@@ -165,6 +170,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.bottomBar.addSubview(fullScreenButton)
     }
     
+    // When the view is updated, change fullscreen button's position
     func updateFullScreenButton() {
         fullScreenButton.frame = CGRectMake(self.view.frame.width - 40, 0, 30, 30)
     }
@@ -199,10 +205,12 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
                              forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    // When the view is updated, change slider position
     func updateSeekSlider() {
         self.seekSlider.frame = CGRect(x: 10, y: self.bottomBar.frame.origin.y - 30, width: self.bottomBar.bounds.size.width - 20, height: 30)
     }
     
+    // Show a loader image when video is buffering
     func createBufferIndicator() {
         loadingIndicatorView.hidesWhenStopped = true
         view.addSubview(loadingIndicatorView)
