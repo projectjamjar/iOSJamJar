@@ -25,6 +25,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     var loadingIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     let playbackLikelyToKeepUpContext: UnsafeMutablePointer<(Void)> = nil
     
+    // AVPlayer Storage
+    var testBackUpVideo: AVPlayer = AVPlayer(URL: NSURL(string: "https://s3.amazonaws.com/jamjar-videos/prod/a892649e-e138-476d-b928-d284d275430d/video.m3u8")!)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,9 +40,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         createRewindButton()
         createFastForwardButton()
         createFullScreenButton()
-        createTimeObserver()
-        createSeekSlider()
-        createBufferIndicator()
+        //createTimeObserver()
+        //createSeekSlider()
+        //createBufferIndicator()
         
         // Create bottom bar
         let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
@@ -47,8 +50,13 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.view.addSubview(self.bottomBar)
         
         //start video
-        loadingIndicatorView.startAnimating()
+        //loadingIndicatorView.startAnimating()
         self.player!.play() // Start the playback
+        
+        // Load JamJar unique data
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(JamJarAVPlayerViewController.respondToSwipeGesture(_:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
     }
     
     override func viewWillLayoutSubviews() {
@@ -268,6 +276,31 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         default:
             let value = UIInterfaceOrientation.Portrait.rawValue
             UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        }
+    }
+    
+    // Swipe recognition method
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Right:
+                print("Swiped right")
+                self.player? = self.testBackUpVideo
+                //self.removeObservers()
+                //self.viewDidLoad()
+                self.player?.play()
+            case UISwipeGestureRecognizerDirection.Down:
+                print("Swiped down")
+            case UISwipeGestureRecognizerDirection.Left:
+                print("Swiped left")
+            case UISwipeGestureRecognizerDirection.Up:
+                print("Swiped up")
+            default:
+                break
+            }
         }
     }
     
