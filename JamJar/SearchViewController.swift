@@ -20,6 +20,9 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     var selectedType: SearchResultType = .Concert
     var filtered:[AnyObject] = []
     
+    // Selections to be used for segues
+    var selectedItem: AnyObject?
+    
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,4 +136,39 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     func updateTable() {
         self.tableView.reloadData()
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if let concertCell = cell as? ConcertCell {
+            // We chose a concert!
+            let concert = concertCell.concert
+            self.selectedItem = concert
+            self.performSegueWithIdentifier("ToConcert", sender: self)
+        }
+        else if let videoCell = cell as? VideoCell {
+            // We chose a video cell!
+            let video = videoCell.video
+            self.selectedItem = video
+            self.performSegueWithIdentifier("ToVideo", sender: self)
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if segue.identifier == "ToConcert" {
+            if let destination = segue.destinationViewController as? ConcertPageViewController,
+                concert = self.selectedItem as? Concert {
+                destination.concert = concert
+            }
+        }
+        else if segue.identifier == "ToVideo" {
+            if let destination = segue.destinationViewController as? VideoPageViewController,
+                video = self.selectedItem as? Video {
+                destination.video = video
+            }
+        }
+    }
+    
 }
