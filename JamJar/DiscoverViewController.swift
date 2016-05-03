@@ -23,6 +23,9 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Register tableview cell XIBs
+        self.tableView.registerNib(UINib(nibName: "ConcertCell", bundle: nil), forCellReuseIdentifier: "ConcertCell")
+        
         self.loadConcerts()
         
         self.refreshControl = UIRefreshControl()

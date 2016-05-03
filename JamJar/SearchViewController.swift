@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: BaseTableViewController, UISearchBarDelegate {
+class SearchViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     // MARK: - Properties
     @IBOutlet var searchBar: UISearchBar!
@@ -36,12 +36,16 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
     
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
