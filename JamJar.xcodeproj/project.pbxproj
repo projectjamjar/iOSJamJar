@@ -42,6 +42,9 @@
 		AA1310071C78FC3800851AD4 /* EnterConcertInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */; };
 		AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */; };
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
+		AA59C8101CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */; };
+		AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */; };
+		AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
 		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
@@ -111,6 +114,9 @@
 		AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterConcertInformationController.swift; sourceTree = "<group>"; };
 		AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVideoViewController.swift; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StitchedJamJarAVPlayerViewController.swift; sourceTree = "<group>"; };
+		AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarPageViewController.swift; sourceTree = "<group>"; };
+		AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JamJarPage.storyboard; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 				AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */,
 				30AD45521C9521ED00F999E7 /* ConcertPage.storyboard */,
 				AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */,
+				AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -252,6 +259,15 @@
 			);
 			name = Views;
 			path = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
+		AA59C8111CD83B1B00457CFD /* JamJarPage */ = {
+			isa = PBXGroup;
+			children = (
+				AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */,
+				AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */,
+			);
+			name = JamJarPage;
 			sourceTree = "<group>";
 		};
 		AA6DE9601C6D084E007A64B7 /* Search */ = {
@@ -364,6 +380,7 @@
 				AABBF92A1C6D057F00EB3EC4 /* Discover */,
 				30AA73DD1C85090E00CD05F2 /* Extensions and Utils */,
 				AA0F204C1C51905C0099665E /* Fonts */,
+				AA59C8111CD83B1B00457CFD /* JamJarPage */,
 				AA0526A51C46F7D200894DC7 /* Login */,
 				AA6DE9631C6D0B68007A64B7 /* Models */,
 				AA6DE9711C6FD1A5007A64B7 /* Profile */,
@@ -454,6 +471,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */,
 				30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */,
 				30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */,
 				30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */,
@@ -570,10 +588,12 @@
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
+				AA59C8101CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift in Sources */,
 				30EE7A131C91554E00293685 /* Date.swift in Sources */,
 				AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */,
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
 				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,
+				AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */,
 				AAB62F6A1CB06AC100C6CC15 /* JamJarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

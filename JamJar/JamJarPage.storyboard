@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GZr-gF-FqY">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="4Bb-Q5-Dqu">
+            <objects>
+                <navigationController id="GZr-gF-FqY" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cYs-pD-T7r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hQN-M5-cH1" kind="relationship" relationship="rootViewController" id="Zbb-Iv-c6U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQZ-Ij-Fo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-51" y="311"/>
+        </scene>
+        <!--Jam Jar Page View Controller-->
+        <scene sceneID="mbn-YK-auD">
+            <objects>
+                <viewController storyboardIdentifier="JamJarPage" id="hQN-M5-cH1" customClass="JamJarPageViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kOJ-r9-I1A"/>
+                        <viewControllerLayoutGuide type="bottom" id="cQv-He-NFT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EtP-W6-W2o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eyw-Ti-Mkd">
+                                <rect key="frame" x="-8" y="64" width="391" height="221"/>
+                                <connections>
+                                    <segue destination="tQZ-W9-YMk" kind="embed" identifier="playJamJar" id="Zh3-3g-wLy"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rfi-q1-mOq"/>
+                    <connections>
+                        <outlet property="jamJarContainerView" destination="Eyw-Ti-Mkd" id="pw8-vX-uu8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FA0-f5-o7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="456.5" y="310.5"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="2l1-m5-L3E">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="tQZ-W9-YMk" customClass="StitchedJamJarAVPlayerViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3K-DP-6Sc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="137"/>
+        </scene>
+    </scenes>
+</document>

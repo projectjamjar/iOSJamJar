@@ -203,9 +203,10 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch (indexPath.section) {
         case 0:
-            //let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
-            SCLAlertView().showError("Under Construction!", subTitle: "JamJars will be available soon!", closeButtonTitle: "Got it")
-            print("Push to JamJar Controller")
+            let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
+            selectedJamJar = jamjarCell.jamjar
+            
+            self.performSegueWithIdentifier("ToJamJarPage", sender: nil)
         default:
             let videoCell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
             selectedVideo = videoCell.video
@@ -266,6 +267,10 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
             let vc = segue.destinationViewController as! VideoPageViewController
             vc.video = self.selectedVideo!
             vc.concert = self.concert!
+        } else if segue.identifier == "ToJamJarPage" {
+            let vc = segue.destinationViewController as! JamJarPageViewController
+            vc.jamjar = self.selectedJamJar
+            vc.concert = self.concert
         }
     }
 }

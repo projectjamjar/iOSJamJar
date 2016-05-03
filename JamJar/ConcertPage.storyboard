@@ -104,6 +104,7 @@
                         <outlet property="tableView" destination="1rT-97-rGg" id="Uf5-VZ-B6h"/>
                         <outlet property="venueLabel" destination="BVX-Ec-V3L" id="Nse-0V-GBN"/>
                         <segue destination="xmX-I7-LNn" kind="show" identifier="ToVideoPage" id="aNh-NZ-XxR"/>
+                        <segue destination="qPq-sc-ix2" kind="show" identifier="ToJamJarPage" id="pOk-vv-G8p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFw-jM-56Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,6 +118,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYG-ES-NVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1936.5" y="-579"/>
+        </scene>
+        <!--JamJarPage-->
+        <scene sceneID="Dim-rE-WqH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="JamJarPage" referencedIdentifier="JamJarPage" id="qPq-sc-ix2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zye-OL-Ahv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1931.5" y="-300"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Va-qK-Q95">

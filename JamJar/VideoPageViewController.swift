@@ -130,7 +130,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
             embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
         }
         else if segue.identifier == "ToConcertPage" {
-            print("test")
             let vc = segue.destinationViewController as! ConcertPageViewController
             vc.concert = self.concert
         }
