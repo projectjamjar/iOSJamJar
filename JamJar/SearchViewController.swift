@@ -11,7 +11,9 @@ import UIKit
 class SearchViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     // MARK: - Properties
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var sectionPicker: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     
     var searchActive : Bool = false
     var searchResult: SearchResult? = nil
@@ -22,6 +24,11 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Register tableview cell XIBs
+        self.tableView.registerNib(UINib(nibName: "ConcertCell", bundle: nil), forCellReuseIdentifier: "ConcertCell")
+        // Register tableview cell XIBs
+        self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         
         /*
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
@@ -41,21 +48,61 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the appropriate number of rows
+        if let result = self.searchResult {
+            if self.selectedType == .Concert {
+                return result.concerts.count
+            }
+            else if self.selectedType == .Video {
+                return result.videos.count
+            }
+        }
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if let result = self.searchResult {
+            if self.selectedType == .Concert {
+                let concert = result.concerts[indexPath.row]
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier("ConcertCell", forIndexPath: indexPath) as! ConcertCell
+                
+                cell.setup(concert)
+                
+                return cell
+            }
+            else if self.selectedType == .Video {
+                let video = result.videos[indexPath.row]
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
+                
+                cell.setup(video)
+                
+                return cell
+            }
+        }
+        // This should never happen
         return UITableViewCell()
-    }
-    
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        // Search Bar Function jawn
-        print("HEY! \(selectedScope)")
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         //update search results jawn
         print("Jawn changed!")
+    }
+    
+    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
+        switch sectionPicker.selectedSegmentIndex {
+        case 0:
+            print("Concerts Selected")
+            self.selectedType = .Concert
+        case 1:
+            print("Videos Selected")
+            self.selectedType = .Video
+        default:
+            self.selectedType = .Concert
+            break;
+        }
+        self.updateTable()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -80,22 +127,10 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
                 
             }
         }
-        
-//        filtered = data.filter({ (text) -> Bool in
-//            let tmp: NSString = text
-//            let range = tmp.rangeOfString(text, options: NSStringCompareOptions.CaseInsensitiveSearch)
-//            return range.location != NSNotFound
-//        })
-//        if(filtered.count == 0){
-//            searchActive = false;
-//        } else {
-//            searchActive = true;
-//        }
-//        self.tableView.reloadData()
     }
     
     
     func updateTable() {
-        
+        self.tableView.reloadData()
     }
 }

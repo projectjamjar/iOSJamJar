@@ -3,18 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Muli-Italic.ttf">
-            <string>Muli-Italic</string>
-            <string>Muli-Italic</string>
-        </mutableArray>
-        <mutableArray key="Muli-Regular.ttf">
-            <string>Muli</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--Search-->
         <scene sceneID="Yoh-o7-ozu">
@@ -103,14 +92,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Hx7-1M-aLa">
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="Hx7-1M-aLa">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="CX1-q6-NIx" id="DQo-QO-ToA"/>
+                                    <outlet property="delegate" destination="CX1-q6-NIx" id="8T4-aw-irB"/>
                                 </connections>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-il-Ify">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-il-Ify">
                                 <rect key="frame" x="0.0" y="108" width="375" height="41"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -129,62 +118,6 @@
                                 <rect key="frame" x="0.0" y="153" width="375" height="465"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConcertCell" rowHeight="109" id="cMg-bQ-Tl2" customClass="ConcertCell" customModule="JamJar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="109"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMg-bQ-Tl2" id="7a9-5G-bJp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-1b-4zr">
-                                                    <rect key="frame" x="15" y="15" width="117" height="78"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="9C9-1b-4zr" secondAttribute="height" multiplier="1.5:1" id="6y3-OB-wyY"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="y0J-yw-WZH">
-                                                    <rect key="frame" x="140" y="25" width="211" height="58"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lil' Khalifa, Wiz Wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-e8-xGH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2-10-2016 @ Brexel Nightclub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="StQ-Bw-yep">
-                                                            <rect key="frame" x="0.0" y="21" width="211" height="19"/>
-                                                            <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="15"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="63 videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0n-NT-pNv">
-                                                            <rect key="frame" x="0.0" y="40" width="211" height="18"/>
-                                                            <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="9C9-1b-4zr" secondAttribute="bottom" constant="15" id="Pjp-9g-Bmc"/>
-                                                <constraint firstItem="9C9-1b-4zr" firstAttribute="leading" secondItem="7a9-5G-bJp" secondAttribute="leading" constant="15" id="dsI-SE-I8D"/>
-                                                <constraint firstItem="y0J-yw-WZH" firstAttribute="centerY" secondItem="9C9-1b-4zr" secondAttribute="centerY" id="k5E-gf-vf6"/>
-                                                <constraint firstItem="9C9-1b-4zr" firstAttribute="top" secondItem="7a9-5G-bJp" secondAttribute="top" constant="15" id="lIV-AT-uge"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="y0J-yw-WZH" secondAttribute="trailing" constant="10" id="oVS-8i-Qz1"/>
-                                                <constraint firstItem="y0J-yw-WZH" firstAttribute="leading" secondItem="9C9-1b-4zr" secondAttribute="trailing" constant="8" id="pnG-Vw-oh4"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="artistLabel" destination="SMF-e8-xGH" id="reB-1H-jwQ"/>
-                                            <outlet property="dateVenueLabel" destination="StQ-Bw-yep" id="dQZ-NH-0v8"/>
-                                            <outlet property="thumbnailImageView" destination="9C9-1b-4zr" id="eqJ-aU-VfZ"/>
-                                            <outlet property="videoCountLabel" destination="u0n-NT-pNv" id="7zd-Ml-2S5"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="CX1-q6-NIx" id="3yU-ci-9cs"/>
                                     <outlet property="delegate" destination="CX1-q6-NIx" id="cRe-oL-Lbd"/>
@@ -213,7 +146,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Discover" id="sMb-h1-nqI"/>
+                    <navigationItem key="navigationItem" title="Search" id="sMb-h1-nqI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

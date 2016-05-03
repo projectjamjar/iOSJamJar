@@ -18,7 +18,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Upload Videos-->
+        <!--Upload-->
         <scene sceneID="Ll3-9V-Uog">
             <objects>
                 <viewController id="730-y5-e2R" customClass="EnterConcertInformationViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
@@ -146,7 +146,7 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="navbtn-upload" selectedImage="navbtn-upload" id="9FU-dB-tuk"/>
-                    <navigationItem key="navigationItem" title="Upload Videos" id="Kvx-cR-8vi"/>
+                    <navigationItem key="navigationItem" title="Upload" id="Kvx-cR-8vi"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
