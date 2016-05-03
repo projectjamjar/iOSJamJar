@@ -16,7 +16,10 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var rewindButton: UIButton!
     var fastFowardButton: UIButton!
     
-    // AVPlayer Storage
+    // Video and AVPlayer Storage
+    var currentVideo: Video!
+    var videos: [Video]!
+    var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
     var testBackUpVideo: AVPlayer = AVPlayer(URL: NSURL(string: "https://s3.amazonaws.com/jamjar-videos/prod/a892649e-e138-476d-b928-d284d275430d/video.m3u8")!)
     
     override func viewDidLoad() {

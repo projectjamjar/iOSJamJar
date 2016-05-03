@@ -45,6 +45,7 @@
 		AA59C8101CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */; };
 		AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */; };
 		AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */; };
+		AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
 		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
@@ -117,6 +118,7 @@
 		AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StitchedJamJarAVPlayerViewController.swift; sourceTree = "<group>"; };
 		AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarPageViewController.swift; sourceTree = "<group>"; };
 		AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JamJarPage.storyboard; sourceTree = "<group>"; };
+		AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayer.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				30EE7A141C91606D00293685 /* Colors.swift */,
 				AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */,
 				AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */,
+				AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				AAB62F6E1CB0800000C6CC15 /* JamJarHeaderCell.swift in Sources */,
 				AAB45DEA1CC2CC2F003B6B6F /* UINavigationController.swift in Sources */,
 				30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */,
+				AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,

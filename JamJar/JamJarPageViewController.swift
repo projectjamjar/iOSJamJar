@@ -90,9 +90,12 @@ class JamJarPageViewController: BaseViewController {
         if(segue.identifier == "playJamJar") {
             unowned let embeddedVideoViewController = segue.destinationViewController as! StitchedJamJarAVPlayerViewController
             
-            let videoPath = NSURL(string: "https://s3.amazonaws.com/jamjar-videos/prod/b31229ba-ac12-4acd-9f0f-28198ab2c9bc/video.m3u8")
+            let firstVideo = self.concert.videos.filter{ $0.id == self.jamjar.startId }.first
+            let videoPath = NSURL(string: (firstVideo?.hls_src)!)
             
             embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
+            embeddedVideoViewController.currentVideo = firstVideo
+            embeddedVideoViewController.videos = self.concert.videos
         }
         else if segue.identifier == "ToConcertPage" {
             let vc = segue.destinationViewController as! ConcertPageViewController
