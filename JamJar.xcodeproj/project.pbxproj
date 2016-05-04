@@ -17,6 +17,7 @@
 		30AD455C1C95230200F999E7 /* ConcertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AD455B1C95230200F999E7 /* ConcertCell.xib */; };
 		30CA638C1CD847C700A17CE3 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638B1CD847C700A17CE3 /* SearchService.swift */; };
 		30CA638E1CD847FA00A17CE3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638D1CD847FA00A17CE3 /* SearchResult.swift */; };
+		30CA63901CD9AF7900A17CE3 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638F1CD9AF7900A17CE3 /* Threading.swift */; };
 		30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */; };
 		30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */; };
 		30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */; };
@@ -86,6 +87,7 @@
 		30AD455B1C95230200F999E7 /* ConcertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConcertCell.xib; sourceTree = "<group>"; };
 		30CA638B1CD847C700A17CE3 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		30CA638D1CD847FA00A17CE3 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		30CA638F1CD9AF7900A17CE3 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		30EE7A0E1C913D6900293685 /* ConcertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertCell.swift; sourceTree = "<group>"; };
 		30EE7A101C914A5400293685 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				30EE7A141C91606D00293685 /* Colors.swift */,
 				AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */,
 				AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */,
+				30CA638F1CD9AF7900A17CE3 /* Threading.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
 				30EE7A131C91554E00293685 /* Date.swift in Sources */,
+				30CA63901CD9AF7900A17CE3 /* Threading.swift in Sources */,
 				AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */,
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
 				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,

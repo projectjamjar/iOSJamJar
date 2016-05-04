@@ -167,6 +167,9 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
             if let destination = segue.destinationViewController as? VideoPageViewController,
                 video = self.selectedItem as? Video {
                 destination.video = video
+                if let concert = video.concert {
+                    destination.concert = concert
+                }
             }
         }
     }
