@@ -95,8 +95,8 @@
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="190" width="343" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="188" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
                                 </constraints>
@@ -166,7 +166,7 @@
             </objects>
             <point key="canvasLocation" x="191.5" y="-297.5"/>
         </scene>
-        <!--Upload - Add Video Details-->
+        <!--Add Videos-->
         <scene sceneID="CxU-Gt-hz8">
             <objects>
                 <viewController id="XPg-sG-R38" customClass="UploadVideoViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
@@ -266,7 +266,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Upload - Add Video Details" id="kvn-uc-JYg"/>
+                    <navigationItem key="navigationItem" title="Add Videos" id="kvn-uc-JYg"/>
                     <connections>
                         <outlet property="leftButton" destination="1rG-VK-xJ4" id="BY0-4r-4YV"/>
                         <outlet property="publicPrivateSegmentedControl" destination="VBu-fR-JCB" id="fdP-7D-lcf"/>

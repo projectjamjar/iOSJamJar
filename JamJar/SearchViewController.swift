@@ -18,7 +18,6 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
     var searchActive : Bool = false
     var searchResult: SearchResult? = nil
     var selectedType: SearchResultType = .Concert
-    var filtered:[AnyObject] = []
     
     // Selections to be used for segues
     var selectedItem: AnyObject?
@@ -37,6 +36,8 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = leftNavBarButton
         */
+        
+        self.setBackgroundView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +45,111 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    ////////////////////////////////////////////////////////////////////////////
+    // UI Stuff
+    ////////////////////////////////////////////////////////////////////////////
     
+    func updateUI() {
+        self.tableView.reloadData()
+        self.setBackgroundView()
+        
+        if let result = searchResult {
+            let numConcerts = result.concerts.count
+            let numVideos = result.videos.count
+            self.sectionPicker.setTitle("Concerts (\(numConcerts))", forSegmentAtIndex: 0)
+            self.sectionPicker.setTitle("Videos (\(numVideos))", forSegmentAtIndex: 1)
+        }
+        else {
+            self.sectionPicker.setTitle("Concerts", forSegmentAtIndex: 0)
+            self.sectionPicker.setTitle("Videos", forSegmentAtIndex: 1)
+        }
+    }
+    
+    func setBackgroundView() {
+        // Set the background view message if we haven't searched yet
+        if self.searchResult == nil {
+            self.displayBackgroundMessage("Type above to search Concerts and Videos...")
+        }
+        else if selectedType == .Concert &&
+                self.searchResult!.concerts.count == 0 {
+            self.displayBackgroundMessage("No matching concerts found...")
+        }
+        else if selectedType == .Video &&
+            self.searchResult!.videos.count == 0 {
+            self.displayBackgroundMessage("No matching videos found...")
+        }
+        else {
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = .SingleLine
+        }
+    }
+    
+    func displayBackgroundMessage(message: String) {
+        let backgroundLabel = MuliLabel()
+        backgroundLabel.setup(message,
+                              size: 24.0,
+                              alignment: .Center,
+                              padding: 10.0,
+                              color: UIColor.lightGrayColor())
+        self.tableView.backgroundView = backgroundLabel
+        self.tableView.separatorStyle = .None
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Segmented Control Stuff
+    ////////////////////////////////////////////////////////////////////////////
+    
+    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
+        switch sectionPicker.selectedSegmentIndex {
+        case 0:
+            print("Concerts Selected")
+            self.selectedType = .Concert
+        case 1:
+            print("Videos Selected")
+            self.selectedType = .Video
+        default:
+            self.selectedType = .Concert
+            break;
+        }
+        self.updateUI()
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Search Bar Stuff
+    ////////////////////////////////////////////////////////////////////////////
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // Debounce search bar queries so we don't make a bazillion requests
+        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(self.searchText), object: nil)
+        self.performSelector(#selector(self.searchText), withObject: nil, afterDelay: 0.5)
+    }
+    
+    func searchText() {
+        if let text = self.searchBar.text {
+            
+            SearchService.search(text) {
+                (success, results, result) in
+                if !success {
+                    print("Uh oh! - Search got bonked!")
+                }
+                else {
+                    self.searchResult = results!
+                    self.updateUI()
+                }
+                
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = nil
+        self.searchResult = nil
+        self.updateUI()
+    }
+ 
+    ////////////////////////////////////////////////////////////////////////////
+    // Table Stuff
+    ////////////////////////////////////////////////////////////////////////////
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -88,55 +193,6 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
         return UITableViewCell()
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        //update search results jawn
-        print("Jawn changed!")
-    }
-    
-    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
-        switch sectionPicker.selectedSegmentIndex {
-        case 0:
-            print("Concerts Selected")
-            self.selectedType = .Concert
-        case 1:
-            print("Videos Selected")
-            self.selectedType = .Video
-        default:
-            self.selectedType = .Concert
-            break;
-        }
-        self.updateTable()
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        // Debounce search bar queries so we don't make a bazillion requests
-        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(self.searchText), object: nil)
-        self.performSelector(#selector(self.searchText), withObject: nil, afterDelay: 0.5)
-
-    }
-    
-    func searchText() {
-        if let text = self.searchBar.text {
-        
-            SearchService.search(text) {
-                (success, results, result) in
-                if !success {
-                    print("Uh oh! - Search got bonked!")
-                }
-                else {
-                    self.searchResult = results!
-                    self.updateTable()
-                }
-                
-            }
-        }
-    }
-    
-    
-    func updateTable() {
-        self.tableView.reloadData()
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
@@ -154,7 +210,12 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+
     
+    ////////////////////////////////////////////////////////////////////////////
+    // Segue Stuff
+    ////////////////////////////////////////////////////////////////////////////
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         if segue.identifier == "ToConcert" {
