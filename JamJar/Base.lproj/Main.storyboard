@@ -230,16 +230,6 @@
             </objects>
             <point key="canvasLocation" x="-225" y="-390"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="ILZ-s3-62n">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="qN3-sE-ffy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mlF-vK-fWh"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oKq-Lc-U4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-244" y="-192"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="Tqd-Fs-ZHT">
             <objects>
@@ -270,7 +260,6 @@
                         <segue destination="RQt-u5-KKk" kind="relationship" relationship="viewControllers" id="2a2-4y-0W6"/>
                         <segue destination="PYT-Ex-VsU" kind="relationship" relationship="viewControllers" id="6Jw-eM-E5K"/>
                         <segue destination="ZLc-ov-2BV" kind="relationship" relationship="viewControllers" id="gXQ-OO-uQz"/>
-                        <segue destination="qN3-sE-ffy" kind="relationship" relationship="viewControllers" id="mCl-BC-7Iy"/>
                         <segue destination="0mm-t8-QbF" kind="relationship" relationship="viewControllers" id="D8w-u6-VcF"/>
                     </connections>
                 </tabBarController>

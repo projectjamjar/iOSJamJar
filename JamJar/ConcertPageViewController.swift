@@ -142,9 +142,11 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
+            return 0
+            /*
             if(showJamJars) {
                 return (self.concert?.jamjars?.count)!
-            }
+            }*/
         case 1:
             if(showMyVideos) {
                 return self.myVideos.count
@@ -215,28 +217,6 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    /***************************************************************************
-        Search Bar Setup
-    ***************************************************************************/
-    /*
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        let lowerCaseSearchString = searchText.lowercaseString
-        // Filter videos by name, username, and artist
-        self.filteredVideos = self.videos.filter { (video) -> Bool in
-            if video.name.lowercaseString.containsString(lowerCaseSearchString) ||
-               video.user.username.lowercaseString.containsString(lowerCaseSearchString) ||
-                video.getArtistsString().lowercaseString.containsString(lowerCaseSearchString) {
-                    return true
-            }
-            else {
-                return false
-            }
-        }
-        
-        self.tableView.reloadData()
-    }
-    */
     
     /***************************************************************************
      Header Cell Action
