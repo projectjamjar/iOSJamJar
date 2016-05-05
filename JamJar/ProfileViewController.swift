@@ -51,7 +51,7 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         // Register the reusable video cell
         self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
-        self.tableView.registerNib(UINib(nibName: "ConcertCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
+        self.tableView.registerNib(UINib(nibName: "ConcertCell", bundle: nil), forCellReuseIdentifier: "ConcertCell")
 //        self.tableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
         self.tableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "JamJarHeader")
         
@@ -127,7 +127,6 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("JamJarHeader") as! JamJarHeader
-        header.backgroundColor = UIColor.grayColor()
         
         switch (section) {
         case 0:

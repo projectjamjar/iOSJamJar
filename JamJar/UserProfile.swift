@@ -26,7 +26,7 @@ class UserProfile: Mappable {
      */
     func mapping(map: Map) {
         user <- map["user"]
-        videos <- map["video"]
-        concerts <- map["concert"]
+        videos <- map["videos"]
+        concerts <- map["concerts"]
     }
 }
