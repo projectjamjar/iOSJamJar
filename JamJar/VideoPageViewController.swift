@@ -51,7 +51,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         
         // Register the reusable video cell
         self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
-        self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
+        self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "JamJarHeader")
         
         self.suggestedTableView.reloadData()
     }
@@ -148,7 +148,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
+        let  headerCell = tableView.dequeueReusableHeaderFooterViewWithIdentifier("JamJarHeader") as! JamJarHeader
         headerCell.backgroundColor = UIColor.grayColor()
         headerCell.setup("Suggested Videos", number: 0, status: true)
         headerCell.hideStatus()
