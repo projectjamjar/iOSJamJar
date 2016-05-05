@@ -23,17 +23,14 @@ class VideoCell: UITableViewCell {
         
         videoNameLabel.text = self.video.name
         
-        // Set the thumbnail to the first video with the target thumbnail size
-        if let thumbImage = self.video.thumbnailForSize(256) {
-            thumbnailImageView.image = thumbImage
-            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
-        }
-        else {
-            thumbnailImageView.image = UIImage(named: "logo-transparent")
-            thumbnailImageView.contentMode = .ScaleAspectFit
-            thumbnailImageView.backgroundColor = UIColor.jjCoralColor()
-            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
-
+        // Asynchronously fetch the thumbnail
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // Background - get thumbnail
+            let thumbImage = self.video.thumbnailForSize(256)
+            dispatch_async(dispatch_get_main_queue()) {
+                // Manipulate the UI in the main thread
+                self.setThumbnail(thumbImage)
+            }
         }
         
         // Round the edges of the imageview
@@ -59,5 +56,19 @@ class VideoCell: UITableViewCell {
         viewCountLabel.text = "\(numViews) views"
         
         
+    }
+    
+    func setThumbnail(image: UIImage?) {
+        if let thumbImage = image {
+            thumbnailImageView.image = thumbImage
+            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
+        }
+        else {
+            thumbnailImageView.image = UIImage(named: "logo-transparent")
+            thumbnailImageView.contentMode = .ScaleAspectFit
+            thumbnailImageView.backgroundColor = UIColor.jjCoralColor()
+            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            
+        }
     }
 }

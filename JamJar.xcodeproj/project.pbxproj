@@ -15,6 +15,9 @@
 		30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AD45571C95223B00F999E7 /* VideoCell.swift */; };
 		30AD455A1C9522D300F999E7 /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AD45591C9522D300F999E7 /* VideoCell.xib */; };
 		30AD455C1C95230200F999E7 /* ConcertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AD455B1C95230200F999E7 /* ConcertCell.xib */; };
+		30CA638C1CD847C700A17CE3 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638B1CD847C700A17CE3 /* SearchService.swift */; };
+		30CA638E1CD847FA00A17CE3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638D1CD847FA00A17CE3 /* SearchResult.swift */; };
+		30CA63921CD9C57700A17CE3 /* MuliLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA63911CD9C57700A17CE3 /* MuliLabel.swift */; };
 		30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */; };
 		30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */; };
 		30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */; };
@@ -82,6 +85,9 @@
 		30AD45571C95223B00F999E7 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		30AD45591C9522D300F999E7 /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		30AD455B1C95230200F999E7 /* ConcertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConcertCell.xib; sourceTree = "<group>"; };
+		30CA638B1CD847C700A17CE3 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		30CA638D1CD847FA00A17CE3 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		30CA63911CD9C57700A17CE3 /* MuliLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuliLabel.swift; path = JamJar/MuliLabel.swift; sourceTree = SOURCE_ROOT; };
 		30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		30EE7A0E1C913D6900293685 /* ConcertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertCell.swift; sourceTree = "<group>"; };
 		30EE7A101C914A5400293685 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
@@ -249,6 +255,7 @@
 				AA130FFB1C7641B600851AD4 /* AutoCompleteTextField.swift */,
 				AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */,
 				30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */,
+				30CA63911CD9C57700A17CE3 /* MuliLabel.swift */,
 			);
 			name = Views;
 			path = AutoCompleteTextField;
@@ -271,6 +278,7 @@
 				AA130FFD1C765B5100851AD4 /* Artist.swift */,
 				AA1310041C78F86500851AD4 /* Venue.swift */,
 				AAD1E4891C912B56007A1DB6 /* Concert.swift */,
+				30CA638D1CD847FA00A17CE3 /* SearchResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				AA1037EF1C87E12C00DCB0B5 /* ArtistService.swift */,
 				AAD1E4871C9127DE007A1DB6 /* ConcertService.swift */,
 				AAD1E48B1C913694007A1DB6 /* VideoService.swift */,
+				30CA638B1CD847C700A17CE3 /* SearchService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -537,6 +546,7 @@
 				AAB62F641CB062D700C6CC15 /* JamJarGraph.swift in Sources */,
 				AA1310071C78FC3800851AD4 /* EnterConcertInformationController.swift in Sources */,
 				AAB62F601CB0603800C6CC15 /* JamJarEdge.swift in Sources */,
+				30CA638C1CD847C700A17CE3 /* SearchService.swift in Sources */,
 				AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */,
 				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,
@@ -547,6 +557,7 @@
 				AA6FC3B31CBC491E007C56AA /* JamJarAVPlayerViewController.swift in Sources */,
 				AA1037F01C87E12C00DCB0B5 /* ArtistService.swift in Sources */,
 				AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */,
+				30CA63921CD9C57700A17CE3 /* MuliLabel.swift in Sources */,
 				30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */,
@@ -555,6 +566,7 @@
 				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,
 				AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */,
 				AA0526A41C46F7A300894DC7 /* ForgetPasswordViewController.swift in Sources */,
+				30CA638E1CD847FA00A17CE3 /* SearchResult.swift in Sources */,
 				30AA73EA1C8613F900CD05F2 /* ArtistChipView.swift in Sources */,
 				AA1310051C78F86500851AD4 /* Venue.swift in Sources */,
 				AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */,

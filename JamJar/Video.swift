@@ -15,7 +15,8 @@ class Video: NSObject, Mappable {
     var name: String!
     var uploaded: Bool!
     var hls_src: String!
-    var concert: Int! // Should this be an Int or a Concert?
+    var concertId: Int? // We may have a concertId
+    var concert: Concert? // or we may have a Concert object O.o
     var is_private: Bool!
     var length: Float!
     var thumb_src: [String: String]!
@@ -39,6 +40,7 @@ class Video: NSObject, Mappable {
         name <- map["name"]
         uploaded <- map["uploaded"]
         hls_src <- map["hls_src"]
+        concertId <- map["concert"]
         concert <- map["concert"]
         is_private <- map["is_private"]
         length <- map["length"]
