@@ -46,6 +46,7 @@
 		AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */; };
 		AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */; };
 		AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */; };
+		AA6B32FE1CDAF90A003595BA /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FD1CDAF90A003595BA /* Array.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
 		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
@@ -119,6 +120,7 @@
 		AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarPageViewController.swift; sourceTree = "<group>"; };
 		AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JamJarPage.storyboard; sourceTree = "<group>"; };
 		AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayer.swift; sourceTree = "<group>"; };
+		AA6B32FD1CDAF90A003595BA /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */,
 				AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */,
 				AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */,
+				AA6B32FD1CDAF90A003595BA /* Array.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				30AD45561C95222C00F999E7 /* ConcertPageViewController.swift in Sources */,
 				AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
+				AA6B32FE1CDAF90A003595BA /* Array.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AAB62F6E1CB0800000C6CC15 /* JamJarHeaderCell.swift in Sources */,
 				AAB45DEA1CC2CC2F003B6B6F /* UINavigationController.swift in Sources */,

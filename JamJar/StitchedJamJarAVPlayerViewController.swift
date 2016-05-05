@@ -17,8 +17,10 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var fastFowardButton: UIButton!
     
     // Video and AVPlayer Storage
+    var jamjar: JamJarGraph!
     var currentVideo: Video!
     var videos: [Video]!
+    var overlappingVideos: [Video]! = [Video]()
     var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
     var testBackUpVideo: AVPlayer = AVPlayer(URL: NSURL(string: "https://s3.amazonaws.com/jamjar-videos/prod/a892649e-e138-476d-b928-d284d275430d/video.m3u8")!)
     
@@ -75,6 +77,27 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         self.bottomBar.addSubview(fastFowardButton)
     }
     
+    // check for new overlaps
+    override func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
+        super.updateTimeLabel(elapsedTime, duration: duration)
+        
+        //TODO: find overlaps
+        let edges = jamjar.nodes![String(self.currentVideo.id!)]
+        for edge in edges! {
+            let storedVideoIds = self.overlappingVideos.map { $0.id }
+            if !storedVideoIds.contains(edge.video) && edge.offset < elapsedTime {
+                print("Video " + String(edge.video) + " Now overlapped!")
+                //Todo: make sure this offset and video length is larger than the elapsed time
+                let overlapVideo = getVideoByIdFromList(edge.video)
+                if(elapsedTime < (Double(overlapVideo.length) + edge.offset)) {
+                    self.overlappingVideos.append(overlapVideo)
+                    //TODO: restrict AVPlayer adding if there are too many
+                    self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(fileURLWithPath: overlapVideo.hls_src), videoId: overlapVideo.id!))
+                }
+            }
+        }
+    }
+    
     // Swipe recognition method
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
@@ -98,5 +121,11 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 break
             }
         }
+    }
+    
+    // Get video from video list based on Id
+    private func getVideoByIdFromList(videoId: Int) -> Video {
+        let video = self.videos.filter{ $0.id == videoId }.first
+        return video!
     }
 }

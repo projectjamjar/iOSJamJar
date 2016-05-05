@@ -96,6 +96,7 @@ class JamJarPageViewController: BaseViewController {
             embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
             embeddedVideoViewController.currentVideo = firstVideo
             embeddedVideoViewController.videos = self.concert.videos
+            embeddedVideoViewController.jamjar = self.jamjar
         }
         else if segue.identifier == "ToConcertPage" {
             let vc = segue.destinationViewController as! ConcertPageViewController

@@ -11,4 +11,13 @@ import AVFoundation
 
 class JamJarAVPlayer: AVPlayer {
     var videoId: Int?
+    
+    init(URL: NSURL,videoId: Int) {
+        super.init(URL: URL)
+        self.videoId = videoId
+    }
+    
+    override init(URL: NSURL) {
+        super.init(URL: URL)
+    }
 }
