@@ -93,7 +93,7 @@ class JamJarPageViewController: BaseViewController {
             let firstVideo = self.concert.videos.filter{ $0.id == self.jamjar.startId }.first
             let videoPath = NSURL(string: (firstVideo?.hls_src)!)
             
-            embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
+            embeddedVideoViewController.player = JamJarAVPlayer(URL: videoPath!, videoId: (firstVideo?.id)!)
             embeddedVideoViewController.currentVideo = firstVideo
             embeddedVideoViewController.videos = self.concert.videos
             embeddedVideoViewController.jamjar = self.jamjar

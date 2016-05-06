@@ -98,6 +98,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     internal func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
         let timePassed: Float64 = elapsedTime
         let totalTime: Float64 = CMTimeGetSeconds(self.player!.currentItem!.duration)
+        
         timePassedLabel.text = String(format: "%02d:%02d/%02d:%02d",
                                       ((lround(timePassed) / 60) % 60),
                                       lround(timePassed) % 60,
