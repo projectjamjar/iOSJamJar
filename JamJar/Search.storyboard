@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tg2-gc-HNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400.5" y="896.5"/>
+            <point key="canvasLocation" x="-386.5" y="395.5"/>
         </scene>
         <!--ConcertPage-->
         <scene sceneID="LFA-U5-HWF">
@@ -121,7 +121,7 @@
                 <viewControllerPlaceholder storyboardName="ConcertPage" referencedIdentifier="ConcertPage" id="N5Y-Fd-ozn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avz-Sb-UHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-15.5" y="755"/>
+            <point key="canvasLocation" x="74.5" y="340"/>
         </scene>
         <!--VideoPage-->
         <scene sceneID="hmF-s0-Gmp">
@@ -129,7 +129,7 @@
                 <viewControllerPlaceholder storyboardName="VideoPage" referencedIdentifier="VideoPage" id="ZgG-pS-UaD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHm-1b-1I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13.5" y="866"/>
+            <point key="canvasLocation" x="76.5" y="451"/>
         </scene>
     </scenes>
     <resources>

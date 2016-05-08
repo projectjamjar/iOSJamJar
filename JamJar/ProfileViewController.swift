@@ -31,9 +31,8 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
     var showVideos: Bool = true
     var showConcerts: Bool = true
     
-    // Segue variables
-    var selectedVideo: Video? = nil
-    var selectedConcert: Concert? = nil
+    // Selections to be used for segues
+    var selectedItem: AnyObject?
     
     // Other shit
     var refreshControl: UIRefreshControl!
@@ -101,9 +100,9 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
             self.fullNameLabel.text = user.fullName
         }
         
-        if let profile = self.profile {
-            // Do thingsss
-        }
+//        if let profile = self.profile {
+//            // Do thingsss
+//        }
     }
     
     
@@ -192,25 +191,27 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        switch (indexPath.section) {
-//        case 0:
-//            //let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
-//            SCLAlertView().showError("Under Construction!", subTitle: "JamJars will be available soon!", closeButtonTitle: "Got it")
-//            print("Push to JamJar Controller")
-//        default:
-//            let videoCell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
-//            selectedVideo = videoCell.video
-//            
-//            self.performSegueWithIdentifier("ToVideoPage", sender: nil)
-//        }
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         
+        if let concertCell = cell as? ConcertCell {
+            // We chose a concert!
+            let concert = concertCell.concert
+            self.selectedItem = concert
+            self.performSegueWithIdentifier("ToConcert", sender: self)
+        }
+        else if let videoCell = cell as? VideoCell {
+            // We chose a video cell!
+            let video = videoCell.video
+            self.selectedItem = video
+            self.performSegueWithIdentifier("ToVideo", sender: self)
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     /***************************************************************************
      Header Cell Action
      ***************************************************************************/
-    //Calls this function when the tap is recognized.
+    //Calls this function when the tap on the header cell is recognized
     func collapseExpandSection(sender: UITapGestureRecognizer) {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         let headerCell = sender.view as! JamJarHeader
@@ -223,16 +224,31 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
         default:
             print("Error: Not a Section")
         }
-        self.tableView.reloadData()
+        self.tableView.reloadSections(NSIndexSet(index: headerCell.sectionNumber),
+                                      withRowAnimation: .Fade)
     }
     
+    
+    /***************************************************************************
+     Segue Stuff
+     ***************************************************************************/
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: self)
-        
-//        if segue.identifier == "ToVideoPage" {
-//            let vc = segue.destinationViewController as! VideoPageViewController
-//            vc.video = self.selectedVideo!
-//            vc.concert = self.concert!
-//        }
+        super.prepareForSegue(segue, sender: sender)
+        if segue.identifier == "ToConcert" {
+            if let destination = segue.destinationViewController as? ConcertPageViewController,
+                concert = self.selectedItem as? Concert {
+                destination.concert = concert
+            }
+        }
+        else if segue.identifier == "ToVideo" {
+            if let destination = segue.destinationViewController as? VideoPageViewController,
+                video = self.selectedItem as? Video {
+                destination.video = video
+                if let concert = video.concert {
+                    destination.concert = concert
+                }
+            }
+        }
     }
 }

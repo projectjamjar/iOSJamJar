@@ -256,7 +256,8 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         default:
             print("Error: Not a Section")
         }
-        self.tableView.reloadData()
+        self.tableView.reloadSections(NSIndexSet(index: headerCell.sectionNumber),
+                                      withRowAnimation: .Fade)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
