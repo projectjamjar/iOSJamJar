@@ -24,9 +24,9 @@
                                     <constraint firstAttribute="height" constant="40" id="PEz-M4-5qA"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="JamPicks"/>
+                                    <segment title="JamPicks" enabled="NO"/>
                                     <segment title="Concerts"/>
-                                    <segment title="Genres"/>
+                                    <segment title="Genres" enabled="NO"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
