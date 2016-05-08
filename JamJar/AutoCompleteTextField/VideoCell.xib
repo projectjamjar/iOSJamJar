@@ -48,7 +48,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@efan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afB-4Z-CXL">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@efan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afB-4Z-CXL">
                                 <rect key="frame" x="0.0" y="68" width="200" height="18"/>
                                 <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
                                 <color key="textColor" red="0.23026315789473673" green="0.52631578947368385" blue="0.99342105263157898" alpha="1" colorSpace="calibratedRGB"/>

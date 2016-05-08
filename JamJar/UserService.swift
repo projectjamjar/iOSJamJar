@@ -121,4 +121,24 @@ class UserService: APIService {
         appDelegate.setupLoginStoryboard()
     }
     
+    static func getUserProfile(username: String, completion: (success: Bool, result: UserProfile?, error: String?) -> Void) {
+        let url = self.buildURL("users/\(username)")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, result: nil, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and a profile
+                let profile = Mapper<UserProfile>().map(response.result.value!)
+                
+                completion(success: true, result: profile, error: nil)
+                return
+            }
+        }
+    }
+    
 }

@@ -40,7 +40,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         // Register the reusable video cell
         self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         self.tableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
-        self.tableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
+        self.tableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "JamJarHeader")
         
         self.refreshTableView()
         
@@ -117,7 +117,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
+        let  headerCell = tableView.dequeueReusableHeaderFooterViewWithIdentifier("JamJarHeader") as! JamJarHeader
         headerCell.backgroundColor = UIColor.grayColor()
         
         switch (section) {
@@ -197,7 +197,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
         
-        cell.setup(video)
+        cell.setup(video, viewController: self)
         
         return cell
     }
@@ -224,7 +224,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     //Calls this function when the tap is recognized.
     func collapseExpandSection(sender: UITapGestureRecognizer) {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        let headerCell = sender.view as! JamJarHeaderCell
+        let headerCell = sender.view as! JamJarHeader
         
         switch (headerCell.sectionNumber) {
         case 0:
@@ -236,7 +236,8 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         default:
             print("Error: Not a Section")
         }
-        self.tableView.reloadData()
+        self.tableView.reloadSections(NSIndexSet(index: headerCell.sectionNumber),
+                                      withRowAnimation: .Fade)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

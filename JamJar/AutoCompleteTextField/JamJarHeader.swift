@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JamJarHeaderCell: UITableViewCell {
+class JamJarHeader: UITableViewHeaderFooterView {
 
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var statusImageView: UIImageView!

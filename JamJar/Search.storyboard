@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="35"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="CX1-q6-NIx" kind="relationship" relationship="rootViewController" id="i8J-uo-A2w"/>
@@ -48,15 +52,6 @@
                                     <outlet property="delegate" destination="CX1-q6-NIx" id="8T4-aw-irB"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-Qw-pzG">
-                                <rect key="frame" x="0.0" y="159" width="375" height="459"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="CX1-q6-NIx" id="3yU-ci-9cs"/>
-                                    <outlet property="delegate" destination="CX1-q6-NIx" id="cRe-oL-Lbd"/>
-                                </connections>
-                            </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-il-Ify">
                                 <rect key="frame" x="0.0" y="114" width="375" height="41"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,6 +67,15 @@
                                     <action selector="segmentedControlChanged:" destination="CX1-q6-NIx" eventType="valueChanged" id="YgL-AZ-g9j"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-Qw-pzG">
+                                <rect key="frame" x="0.0" y="159" width="375" height="459"/>
+                                <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CX1-q6-NIx" id="3yU-ci-9cs"/>
+                                    <outlet property="delegate" destination="CX1-q6-NIx" id="cRe-oL-Lbd"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -109,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tg2-gc-HNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400.5" y="896.5"/>
+            <point key="canvasLocation" x="-386.5" y="395.5"/>
         </scene>
         <!--ConcertPage-->
         <scene sceneID="LFA-U5-HWF">
@@ -117,7 +121,7 @@
                 <viewControllerPlaceholder storyboardName="ConcertPage" referencedIdentifier="ConcertPage" id="N5Y-Fd-ozn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avz-Sb-UHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-15.5" y="755"/>
+            <point key="canvasLocation" x="74.5" y="340"/>
         </scene>
         <!--VideoPage-->
         <scene sceneID="hmF-s0-Gmp">
@@ -125,7 +129,7 @@
                 <viewControllerPlaceholder storyboardName="VideoPage" referencedIdentifier="VideoPage" id="ZgG-pS-UaD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHm-1b-1I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13.5" y="866"/>
+            <point key="canvasLocation" x="76.5" y="451"/>
         </scene>
     </scenes>
     <resources>
