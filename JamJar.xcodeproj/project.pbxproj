@@ -47,6 +47,7 @@
 		AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */; };
 		AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */; };
 		AA6B32FE1CDAF90A003595BA /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FD1CDAF90A003595BA /* Array.swift */; };
+		AA6B33001CDFB409003595BA /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FF1CDFB409003595BA /* Protocol.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
 		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
@@ -121,6 +122,7 @@
 		AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JamJarPage.storyboard; sourceTree = "<group>"; };
 		AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayer.swift; sourceTree = "<group>"; };
 		AA6B32FD1CDAF90A003595BA /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		AA6B32FF1CDFB409003595BA /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */,
 				AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */,
 				AA6B32FD1CDAF90A003595BA /* Array.swift */,
+				AA6B32FF1CDFB409003595BA /* Protocol.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
 				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,
 				AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */,
+				AA6B33001CDFB409003595BA /* Protocol.swift in Sources */,
 				AAB62F6A1CB06AC100C6CC15 /* JamJarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

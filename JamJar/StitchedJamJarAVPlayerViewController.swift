@@ -12,6 +12,10 @@ import AVFoundation
 
 class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     
+    // Delegate for JamJarPageViewController
+    // Declare as weak to avoid memory cycles
+    weak var jamjarDelegate: updateVideoDelegate?
+    
     // UI Elements
     var rewindButton: UIButton!
     var fastFowardButton: UIButton!
@@ -22,7 +26,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var videos: [Video]!
     var overlappingVideos: [Video]! = [Video]()
     var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
-    //var testBackUpVideo: AVPlayer = AVPlayer(URL: NSURL(string: "https://s3.amazonaws.com/jamjar-videos/prod/a892649e-e138-476d-b928-d284d275430d/video.m3u8")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,6 +145,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex)
         
         // Now that information has been updated, reload the view and set proper time
+        self.jamjarDelegate?.updateVideo(self.currentVideo)
         self.viewDidLoad()
         self.player!.seekToTime(CMTimeMakeWithSeconds(newTime, 10)) { (completed: Bool) -> Void in
             // Make the player maintain the play/pause status

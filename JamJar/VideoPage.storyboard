@@ -3,10 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Muli-Light.ttf">
+            <string>Muli-Light</string>
             <string>Muli-Light</string>
             <string>Muli-Light</string>
             <string>Muli-Light</string>
@@ -80,14 +82,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7z-gk-iRr">
-                                <rect key="frame" x="259" y="287" width="104" height="15"/>
-                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Likes / # Dislikes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc6-ts-Efr">
-                                <rect key="frame" x="259" y="302" width="104" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="# Views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7z-gk-iRr">
+                                <rect key="frame" x="228" y="287" width="104" height="15"/>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -109,35 +105,101 @@
                                     <segue destination="1uO-xh-j1T" kind="embed" identifier="playVideo" id="H6f-Zg-4bg"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0u-G5-x6p">
+                                <rect key="frame" x="340" y="287" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="2sk-xI-rWV"/>
+                                    <constraint firstAttribute="width" secondItem="a0u-G5-x6p" secondAttribute="height" multiplier="1:1" id="439-Q8-g3j"/>
+                                    <constraint firstAttribute="width" constant="15" id="RSh-SO-C3W"/>
+                                    <constraint firstAttribute="height" constant="15" id="WuH-YO-qdQ"/>
+                                    <constraint firstAttribute="height" constant="15" id="fsL-nS-Ogy"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ic_flag"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="439-Q8-g3j"/>
+                                        <exclude reference="RSh-SO-C3W"/>
+                                        <exclude reference="fsL-nS-Ogy"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="flagVideoTapped:" destination="N2B-XS-y7Q" eventType="touchUpInside" id="Ijj-CU-3pQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="733-7f-5hs">
+                                <rect key="frame" x="244" y="302" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="TeF-pN-FVR"/>
+                                    <constraint firstAttribute="width" constant="15" id="WXK-7d-EJl"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ic_thumb_up"/>
+                                <connections>
+                                    <action selector="likePressed:" destination="N2B-XS-y7Q" eventType="touchUpInside" id="vop-6F-MVY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZj-Ju-u8k">
+                                <rect key="frame" x="299" y="302" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="Vcv-Ow-5Lz"/>
+                                    <constraint firstAttribute="height" constant="15" id="xdY-Ku-9FR"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ic_thumb_down"/>
+                                <connections>
+                                    <action selector="dislikePressed:" destination="N2B-XS-y7Q" eventType="touchUpInside" id="Xlg-IA-wMt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dislikes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTB-4V-GtC">
+                                <rect key="frame" x="316" y="302" width="43" height="15"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9u-9a-Mbg">
+                                <rect key="frame" x="260" y="302" width="31" height="15"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="yMK-J0-XGB" secondAttribute="trailing" constant="-24" id="2E3-hd-fdz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a0u-G5-x6p" secondAttribute="trailing" id="3oJ-6b-b02"/>
+                            <constraint firstItem="gTB-4V-GtC" firstAttribute="leading" secondItem="sZj-Ju-u8k" secondAttribute="trailing" constant="2" id="5CI-l4-GJA"/>
+                            <constraint firstItem="gTB-4V-GtC" firstAttribute="top" secondItem="b02-QJ-OMw" secondAttribute="top" id="731-fk-isK"/>
                             <constraint firstItem="FI9-Jd-Xfe" firstAttribute="leading" secondItem="4Pz-2J-QsX" secondAttribute="leading" id="99M-6Z-Gac"/>
+                            <constraint firstItem="733-7f-5hs" firstAttribute="top" secondItem="b02-QJ-OMw" secondAttribute="top" id="ATT-HA-Da8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FI9-Jd-Xfe" secondAttribute="trailing" constant="-24" id="B6Y-V0-jVy"/>
                             <constraint firstItem="yMK-J0-XGB" firstAttribute="leading" secondItem="4Pz-2J-QsX" secondAttribute="leadingMargin" constant="-24" id="HB4-ZM-B6t"/>
+                            <constraint firstItem="a0u-G5-x6p" firstAttribute="height" secondItem="j7z-gk-iRr" secondAttribute="height" id="JUo-li-1GK"/>
                             <constraint firstItem="yMK-J0-XGB" firstAttribute="top" secondItem="uVD-wz-7nZ" secondAttribute="bottom" id="Jhn-EA-fPU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gTB-4V-GtC" secondAttribute="trailing" id="KjJ-uv-cVP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FG7-6m-pAX" secondAttribute="trailing" constant="-24" id="LGI-oF-ofz"/>
                             <constraint firstItem="FG7-6m-pAX" firstAttribute="leading" secondItem="4Pz-2J-QsX" secondAttribute="leadingMargin" constant="-24" id="Lbx-zu-70D"/>
+                            <constraint firstItem="sZj-Ju-u8k" firstAttribute="top" secondItem="b02-QJ-OMw" secondAttribute="top" id="Lqd-W1-eJe"/>
                             <constraint firstAttribute="trailing" secondItem="FI9-Jd-Xfe" secondAttribute="trailing" id="LwY-Jp-GtR"/>
+                            <constraint firstItem="a0u-G5-x6p" firstAttribute="top" secondItem="2RN-su-0bx" secondAttribute="top" id="N2d-F9-eOd"/>
                             <constraint firstItem="2RN-su-0bx" firstAttribute="top" secondItem="4Pz-2J-QsX" secondAttribute="top" constant="287" id="NCn-o3-IfZ"/>
                             <constraint firstItem="j7z-gk-iRr" firstAttribute="top" secondItem="2RN-su-0bx" secondAttribute="top" id="Of3-pc-6lD"/>
+                            <constraint firstItem="y9u-9a-Mbg" firstAttribute="leading" secondItem="733-7f-5hs" secondAttribute="trailing" constant="3" id="TAD-Vb-7vu"/>
                             <constraint firstItem="2RN-su-0bx" firstAttribute="leading" secondItem="4Pz-2J-QsX" secondAttribute="leadingMargin" constant="-4" id="ZiZ-sc-bey"/>
                             <constraint firstItem="8h5-Lt-B1E" firstAttribute="top" secondItem="FG7-6m-pAX" secondAttribute="bottom" id="aUh-jO-Rhl"/>
+                            <constraint firstItem="y9u-9a-Mbg" firstAttribute="top" secondItem="b02-QJ-OMw" secondAttribute="top" id="akq-8T-bTC"/>
                             <constraint firstItem="FI9-Jd-Xfe" firstAttribute="top" secondItem="b02-QJ-OMw" secondAttribute="bottom" constant="5" id="bCp-8R-Pt8"/>
-                            <constraint firstItem="Rc6-ts-Efr" firstAttribute="width" secondItem="j7z-gk-iRr" secondAttribute="width" id="bqf-S8-mYP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rc6-ts-Efr" secondAttribute="trailing" constant="-4" id="cvr-Zs-1SV"/>
                             <constraint firstItem="FI9-Jd-Xfe" firstAttribute="leading" secondItem="4Pz-2J-QsX" secondAttribute="leadingMargin" constant="-24" id="dGX-dd-dUb"/>
                             <constraint firstItem="b02-QJ-OMw" firstAttribute="top" secondItem="2RN-su-0bx" secondAttribute="bottom" id="lqd-wx-MdV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="j7z-gk-iRr" secondAttribute="trailing" constant="-4" id="pdY-4L-XVy"/>
-                            <constraint firstItem="Rc6-ts-Efr" firstAttribute="top" secondItem="j7z-gk-iRr" secondAttribute="bottom" id="q8J-Co-dmS"/>
+                            <constraint firstItem="a0u-G5-x6p" firstAttribute="leading" secondItem="j7z-gk-iRr" secondAttribute="trailing" constant="8" id="pWV-61-p5F"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j7z-gk-iRr" secondAttribute="trailing" constant="69" id="pdY-4L-XVy"/>
                             <constraint firstItem="b02-QJ-OMw" firstAttribute="leading" secondItem="4Pz-2J-QsX" secondAttribute="leadingMargin" constant="-4" id="rMB-Pb-PMl"/>
                             <constraint firstItem="FG7-6m-pAX" firstAttribute="top" secondItem="FI9-Jd-Xfe" secondAttribute="bottom" id="v9d-if-Myv"/>
+                            <constraint firstItem="sZj-Ju-u8k" firstAttribute="leading" secondItem="y9u-9a-Mbg" secondAttribute="trailing" constant="8" id="wfF-0s-RoP"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="B6Y-V0-jVy"/>
                                 <exclude reference="dGX-dd-dUb"/>
+                                <exclude reference="pdY-4L-XVy"/>
+                                <exclude reference="JUo-li-1GK"/>
                             </mask>
                         </variation>
                     </view>
@@ -146,7 +208,11 @@
                         <outlet property="artistsLabel" destination="Kvw-vy-vtY" id="bst-lL-Qx6"/>
                         <outlet property="concertInfoView" destination="FI9-Jd-Xfe" id="c7d-89-bHp"/>
                         <outlet property="dateLabel" destination="GYN-pX-v1t" id="cie-mv-qFh"/>
-                        <outlet property="likeDislikeLabel" destination="Rc6-ts-Efr" id="N9Z-GV-H5b"/>
+                        <outlet property="dislikeButton" destination="sZj-Ju-u8k" id="cOU-yh-MeC"/>
+                        <outlet property="dislikesCountLabel" destination="gTB-4V-GtC" id="6bT-lc-to0"/>
+                        <outlet property="flagButton" destination="a0u-G5-x6p" id="gsa-QC-j3z"/>
+                        <outlet property="likeButton" destination="733-7f-5hs" id="XFc-L0-wCc"/>
+                        <outlet property="likesCountLabel" destination="y9u-9a-Mbg" id="zRg-ns-fTe"/>
                         <outlet property="suggestedTableView" destination="FG7-6m-pAX" id="cvy-qI-RxH"/>
                         <outlet property="titleLabel" destination="2RN-su-0bx" id="nbN-Bk-doO"/>
                         <outlet property="uploaderLabel" destination="b02-QJ-OMw" id="IOo-Iq-uQL"/>
@@ -201,4 +267,9 @@
             <point key="canvasLocation" x="691.5" y="-472"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_flag" width="48" height="48"/>
+        <image name="ic_thumb_down" width="48" height="48"/>
+        <image name="ic_thumb_up" width="48" height="48"/>
+    </resources>
 </document>

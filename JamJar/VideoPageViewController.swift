@@ -19,13 +19,17 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var uploaderLabel: UILabel!
     @IBOutlet weak var viewCountLabel: UILabel!
-    @IBOutlet weak var likeDislikeLabel: UILabel!
     @IBOutlet weak var artistsLabel: UILabel!
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var suggestedTableView: UITableView!
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var concertInfoView: UIView!
+    @IBOutlet weak var likesCountLabel: UILabel!
+    @IBOutlet weak var dislikesCountLabel: UILabel!
+    @IBOutlet weak var flagButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var dislikeButton: UIButton!
     
     //Variable to store video frame
     var videoContainerFrameInPortrait: CGRect!
@@ -48,6 +52,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         artistsLabel.text = video.getArtistsString()
         venueLabel.text = concert.venue.name
         dateLabel.text = concert.date.string("MM-d-YYYY")
+        //likesCountLabel.text = String(video.likes)
         
         // Register the reusable video cell
         self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
@@ -96,6 +101,18 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     func concertTapped(sender:AnyObject) {
         self.performSegueWithIdentifier("ToConcertPage", sender: nil)
+    }
+    
+    @IBAction func likePressed(sender: UIButton) {
+        print("Liked Video")
+    }
+    
+    @IBAction func dislikePressed(sender: UIButton) {
+        print("Disliked Video")
+    }
+    
+    @IBAction func flagVideoTapped(sender: UIButton) {
+        print("Flagged Video")
     }
     
     //Allow rotate
