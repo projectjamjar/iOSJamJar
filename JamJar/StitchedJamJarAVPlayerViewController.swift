@@ -126,6 +126,9 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                     self.overlappingVideos.append(overlapVideo)
                     //TODO: restrict AVPlayer adding if there are too many
                     self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: overlapVideo.hls_src)!, videoId: overlapVideo.id!))
+                    
+                    // Record view to video
+                    self.jamjarDelegate?.recordView(overlapVideo.id!)
                 }
             } else if storedVideoIds.contains(edge.video) && (Double(overlapVideo.length) + edge.offset) < elapsedTime {
                 // Remove video from appropriate lists

@@ -42,7 +42,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.bottomBar.backgroundColor = bottomBarColor
         self.view.addSubview(self.bottomBar)
         
-        //start video
+        // start video
         loadingIndicatorView.startAnimating()
         self.player!.play() // Start the playback
     }

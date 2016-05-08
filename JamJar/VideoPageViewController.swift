@@ -60,6 +60,9 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
         
         self.suggestedTableView.reloadData()
+        
+        // Acknowledge the video was viewed here
+        self.recordView(self.video.id!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,6 +73,11 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
         removeOberservsInPlayer()
+    }
+    
+    // Record a view
+    func recordView(videoId: Int!) {
+        VideoService.watchingVideo(videoId)
     }
     
     //make embedded controller full screen

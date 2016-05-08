@@ -68,6 +68,11 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         removeOberservsInPlayer()
     }
     
+    // Record a view
+    func recordView(videoId: Int!) {
+        VideoService.watchingVideo(videoId)
+    }
+    
     //make embedded controller full screen
     func fullScreenVideo() {
         //hide navigation bar and tool bar
@@ -174,6 +179,9 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
             let firstVideo = self.concert.videos.filter{ $0.id == self.jamjar.startId }.first
             updateVideo(firstVideo!)
             let videoPath = NSURL(string: (firstVideo?.hls_src)!)
+            
+            //record view of first video
+            recordView(firstVideo?.id!)
             
             embeddedVideoViewController.player = JamJarAVPlayer(URL: videoPath!, videoId: (firstVideo?.id)!)
             embeddedVideoViewController.currentVideo = firstVideo

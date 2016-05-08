@@ -12,6 +12,15 @@ import SwiftyJSON
 
 class VideoService: APIService {
     
+    // Record a view of a video
+    static func watchingVideo(videoId: Int) {
+        var url = self.buildURL("videos/")
+        url += String(videoId)
+        url += "/watching/"
+        
+        self.post(url)
+    }
+    
     // Upload Video
     static func upload(videoURL: NSURL, name: String, is_private: Int, concert_id: Int, artists: [Artist], completion: (success: Bool, result: String?) -> Void) {
         let url = self.buildURL("videos")
