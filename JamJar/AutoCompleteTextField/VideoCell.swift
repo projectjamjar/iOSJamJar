@@ -18,22 +18,24 @@ class VideoCell: UITableViewCell {
     
     var video: Video!
     
-    func setup(video: Video) {
+    // Store the viewController that we'll push the profile to if the user
+    // button is clicked
+    weak var viewController: UIViewController!
+    
+    func setup(video: Video, viewController: UIViewController) {
         self.video = video
+        self.viewController = viewController
         
         videoNameLabel.text = self.video.name
         
-        // Set the thumbnail to the first video with the target thumbnail size
-        if let thumbImage = self.video.thumbnailForSize(256) {
-            thumbnailImageView.image = thumbImage
-            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
-        }
-        else {
-            thumbnailImageView.image = UIImage(named: "logo-transparent")
-            thumbnailImageView.contentMode = .ScaleAspectFit
-            thumbnailImageView.backgroundColor = UIColor.jjCoralColor()
-            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
-
+        // Asynchronously fetch the thumbnail
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // Background - get thumbnail
+            let thumbImage = self.video.thumbnailForSize(256)
+            dispatch_async(dispatch_get_main_queue()) {
+                // Manipulate the UI in the main thread
+                self.setThumbnail(thumbImage)
+            }
         }
         
         // Round the edges of the imageview
@@ -51,13 +53,42 @@ class VideoCell: UITableViewCell {
 //        let venueString = self.concert.venue.name
 //        dateVenueLabel.text = "\(dateString) | \(venueString)"
         
-        // Uploader label (we need to make clicking this do something tapgesturerecognizer)
+        // Uploader label
         self.uploaderLabel.text = "@\(self.video.user.username)"
+        // When clicked, bring up the profile for that user
+        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.uploaderLabelTapped))
+        self.uploaderLabel.addGestureRecognizer(tgr)
         
         // Number of videos
         let numViews = self.video.views
         viewCountLabel.text = "\(numViews) views"
         
+        
+    }
+    
+    func setThumbnail(image: UIImage?) {
+        if let thumbImage = image {
+            thumbnailImageView.image = thumbImage
+            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
+        }
+        else {
+            thumbnailImageView.image = UIImage(named: "logo-transparent")
+            thumbnailImageView.contentMode = .ScaleAspectFit
+            thumbnailImageView.backgroundColor = UIColor.jjCoralColor()
+            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            
+        }
+    }
+    
+    func uploaderLabelTapped() {
+        
+        // Initialize the ProfileViewController for the uploader
+        let vc = UIStoryboard(name: "Profile",bundle: nil).instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
+        vc.username = self.video.user.username
+        vc.user = self.video.user
+        
+        // Push it onto the navcontroller of our parent viewcontroller
+        self.viewController.navigationController?.pushViewController(vc, animated: true)
         
     }
 }
