@@ -15,7 +15,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class JamJarPageViewController: BaseViewController, updateVideoDelegate {
+class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITableViewDelegate, UITableViewDataSource {
     
     weak var jamjar: JamJarGraph!
     weak var concert: Concert!
@@ -46,6 +46,16 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate {
         
         //Save the potrait jamjar frame
         jamJarContainerFrameInPortrait = self.jamJarContainerView.frame
+        
+        //Add action for concert tapped
+        let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
+        self.concertInfoView.addGestureRecognizer(concertTap)
+        
+        // Register the reusable video cell
+        self.suggestedTableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
+        self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeaderCell", bundle: nil), forCellReuseIdentifier: "JamJarHeaderCell")
+        
+        self.suggestedTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,11 +65,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate {
     
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
-        for controller in self.childViewControllers {
-            if let child = controller as? StitchedJamJarAVPlayerViewController {
-                child.removeObservers()
-            }
-        }
+        removeOberservsInPlayer()
     }
     
     //make embedded controller full screen
@@ -84,6 +90,33 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate {
         }
         
         self.view.layoutIfNeeded()
+    }
+    
+    func removeOberservsInPlayer() {
+        for controller in self.childViewControllers {
+            if let child = controller as? StitchedJamJarAVPlayerViewController {
+                child.removeObservers()
+            }
+        }
+    }
+    
+    func changeJamJarInPlayer() {
+        for controller in self.childViewControllers {
+            if let child = controller as? StitchedJamJarAVPlayerViewController {
+                child.removeObservers()
+                
+                //define first video
+                let firstVideo = self.concert.videos.filter{ $0.id == self.jamjar.startId }.first
+                updateVideo(firstVideo!)
+                let videoPath = NSURL(string: (firstVideo?.hls_src)!)
+                
+                child.player = JamJarAVPlayer(URL: videoPath!, videoId: (firstVideo?.id)!)
+                child.currentVideo = firstVideo
+                child.jamjar = self.jamjar
+                
+                child.viewDidLoad()
+            }
+        }
     }
     
     //Update video the UI elements
@@ -150,5 +183,52 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate {
             let vc = segue.destinationViewController as! ConcertPageViewController
             vc.concert = self.concert
         }
+    }
+    
+    /***************************************************************************
+     TableView Setup
+     ***************************************************************************/
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
+        headerCell.backgroundColor = UIColor.grayColor()
+        headerCell.setup("Suggested Content", number: 0, status: true)
+        headerCell.hideStatus()
+        
+        return headerCell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return concert.jamjars.count - 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var jamjarList: [JamJarGraph] = self.concert!.jamjars!.filter { (jamjar) -> Bool in
+            return !(jamjar.startId! == self.jamjar.startId)
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("JamJarCell", forIndexPath: indexPath) as! JamJarCell
+        
+        let startVideo = self.concert.videos.filter { (video) -> Bool in
+            return video.id == jamjarList[indexPath.row].startId
+        }.first
+        
+        cell.setup(jamjarList[indexPath.row], startVideo: startVideo!)
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let jamjarCell = tableView.cellForRowAtIndexPath(indexPath) as! JamJarCell
+        self.jamjar = jamjarCell.jamjar
+        changeJamJarInPlayer()
+        self.viewDidLoad()
     }
 }

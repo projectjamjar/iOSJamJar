@@ -77,7 +77,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         rewindButton.frame = CGRectMake(10, 0, 30, 30)
         rewindButton.tintColor = UIColor.whiteColor()
         rewindButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Rewind), forState: .Normal)
-        //rewindButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        rewindButton.addTarget(self, action: #selector(StitchedJamJarAVPlayerViewController.rewindButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(rewindButton)
     }
@@ -88,9 +88,25 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         fastFowardButton.frame = CGRectMake(70, 0, 30, 30)
         fastFowardButton.tintColor = UIColor.whiteColor()
         fastFowardButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.FastForward), forState: .Normal)
-        //fastFowardButton.addTarget(self, action: "playButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        fastFowardButton.addTarget(self, action: #selector(StitchedJamJarAVPlayerViewController.fastForwardButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(fastFowardButton)
+    }
+    
+    func rewindButtonAction(sender:UIButton!)
+    {
+        if !self.overlappingVideos.isEmpty {
+            let newVideoId = self.storedAVPlayers.last?.videoId
+            changeCurrentVideo(newVideoId!)
+        }
+    }
+    
+    func fastForwardButtonAction(sender:UIButton!)
+    {
+        if !self.overlappingVideos.isEmpty {
+            let newVideoId = self.storedAVPlayers.first?.videoId
+            changeCurrentVideo(newVideoId!)
+        }
     }
     
     // check for new overlaps

@@ -68,11 +68,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
-        for controller in self.childViewControllers {
-            if let child = controller as? JamJarAVPlayerViewController {
-                child.removeObservers()
-            }
-        }
+        removeOberservsInPlayer()
     }
     
     //make embedded controller full screen
@@ -97,6 +93,25 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         }
         
         self.view.layoutIfNeeded()
+    }
+    
+    func removeOberservsInPlayer() {
+        for controller in self.childViewControllers {
+            if let child = controller as? JamJarAVPlayerViewController {
+                child.removeObservers()
+            }
+        }
+    }
+    
+    func changeVideoInPlayer() {
+        for controller in self.childViewControllers {
+            if let child = controller as? JamJarAVPlayerViewController {
+                child.removeObservers()
+                let videoPath = NSURL(string: self.video.hls_src)
+                child.player = AVPlayer(URL: videoPath!)
+                child.viewDidLoad()
+            }
+        }
     }
     
     func concertTapped(sender:AnyObject) {
@@ -139,10 +154,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
             unowned let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
             print(self.video.hls_src)
             
-            //let videoPath = NSURL(string: "http://144.118.231.71:8000/out.m3u8")
             let videoPath = NSURL(string: self.video.hls_src)
-            //let videoPath = NSURL(string: "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8")
-            //let videoPath = NSURL(string: "http://devstreaming.apple.com/videos/wwdc/2015/106z3yjwpfymnauri96m/106/hls_vod_mvp.m3u8")
             
             embeddedVideoViewController.player = AVPlayer(URL: videoPath!)
         }
@@ -166,7 +178,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("JamJarHeaderCell") as! JamJarHeaderCell
         headerCell.backgroundColor = UIColor.grayColor()
-        headerCell.setup("Suggested Videos", number: 0, status: true)
+        headerCell.setup("Suggested Content", number: 0, status: true)
         headerCell.hideStatus()
         
         return headerCell
@@ -191,6 +203,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let videoCell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
         self.video = videoCell.video
+        changeVideoInPlayer()
         self.viewDidLoad()
     }
 }
