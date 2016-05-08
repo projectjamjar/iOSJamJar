@@ -52,7 +52,8 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         artistsLabel.text = video.getArtistsString()
         venueLabel.text = concert.venue.name
         dateLabel.text = concert.date.string("MM-d-YYYY")
-        //likesCountLabel.text = String(video.likes)
+        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
+        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
         
         // Register the reusable video cell
         self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
@@ -114,16 +115,33 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func updateLikeDislikeButtons() {
+        self.likeButton.selected = (video.userVote == true)
+        self.dislikeButton.selected = (video.userVote == false)
+        self.likeButton.highlightBackgroundLike()
+        self.dislikeButton.highlightBackgroundDislike()
+    }
+    
     func concertTapped(sender:AnyObject) {
         self.performSegueWithIdentifier("ToConcertPage", sender: nil)
     }
     
     @IBAction func likePressed(sender: UIButton) {
-        print("Liked Video")
+        if(video.userVote == true) {
+            video.userVote = nil
+        } else {
+            video.userVote = true
+        }
+        updateLikeDislikeButtons()
     }
     
     @IBAction func dislikePressed(sender: UIButton) {
-        print("Disliked Video")
+        if(video.userVote == false) {
+            video.userVote = nil
+        } else {
+            video.userVote = false
+        }
+        updateLikeDislikeButtons()
     }
     
     @IBAction func flagVideoTapped(sender: UIButton) {

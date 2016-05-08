@@ -48,6 +48,7 @@
 		AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */; };
 		AA6B32FE1CDAF90A003595BA /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FD1CDAF90A003595BA /* Array.swift */; };
 		AA6B33001CDFB409003595BA /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FF1CDFB409003595BA /* Protocol.swift */; };
+		AA6B33061CDFDDEB003595BA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B33051CDFDDEA003595BA /* UIButton.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
 		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
@@ -123,6 +124,7 @@
 		AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayer.swift; sourceTree = "<group>"; };
 		AA6B32FD1CDAF90A003595BA /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		AA6B32FF1CDFB409003595BA /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		AA6B33051CDFDDEA003595BA /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */,
 				AA6B32FD1CDAF90A003595BA /* Array.swift */,
 				AA6B32FF1CDFB409003595BA /* Protocol.swift */,
+				AA6B33051CDFDDEA003595BA /* UIButton.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -291,11 +294,11 @@
 			isa = PBXGroup;
 			children = (
 				AAB62F5E1CB05F9900C6CC15 /* JamJar */,
-				AA0526A81C47187600894DC7 /* User.swift */,
-				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 				AA130FFD1C765B5100851AD4 /* Artist.swift */,
-				AA1310041C78F86500851AD4 /* Venue.swift */,
 				AAD1E4891C912B56007A1DB6 /* Concert.swift */,
+				AA0526A81C47187600894DC7 /* User.swift */,
+				AA1310041C78F86500851AD4 /* Venue.swift */,
+				AA558CCF1BE1D94000D591A8 /* Video.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				AAB45DEA1CC2CC2F003B6B6F /* UINavigationController.swift in Sources */,
 				30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */,
 				AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */,
+				AA6B33061CDFDDEB003595BA /* UIButton.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,

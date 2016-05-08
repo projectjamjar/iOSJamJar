@@ -127,6 +127,8 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         artistsLabel.text = video.getArtistsString()
         venueLabel.text = concert.venue.name
         dateLabel.text = concert.date.string("MM-d-YYYY")
+        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
+        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
     }
     
     func concertTapped(sender:AnyObject) {

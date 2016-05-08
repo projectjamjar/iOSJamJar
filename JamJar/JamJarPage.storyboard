@@ -61,30 +61,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-ij-d5n">
-                                <rect key="frame" x="295" y="302" width="15" height="15"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-ij-d5n">
+                                <rect key="frame" x="299" y="302" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="A34-QQ-mh5"/>
                                     <constraint firstAttribute="height" constant="15" id="Obi-o6-CBA"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="ic_thumb_down"/>
+                                <state key="normal" image="ic_thumb_down"/>
                                 <connections>
                                     <action selector="dislikePressed:" destination="hQN-M5-cH1" eventType="touchUpInside" id="g1m-wk-7rg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIB-CF-pdI">
-                                <rect key="frame" x="240" y="302" width="15" height="15"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIB-CF-pdI">
+                                <rect key="frame" x="244" y="302" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="dbF-C7-IIo"/>
                                     <constraint firstAttribute="height" constant="15" id="yGf-aZ-fVe"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="ic_thumb_up"/>
+                                <state key="normal" image="ic_thumb_up"/>
                                 <connections>
                                     <action selector="likePressed:" destination="hQN-M5-cH1" eventType="touchUpInside" id="IDE-HD-4PD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-bN-Vue">
-                                <rect key="frame" x="336" y="287" width="15" height="15"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-bN-Vue">
+                                <rect key="frame" x="340" y="287" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Ias-79-oXS"/>
                                     <constraint firstAttribute="width" constant="15" id="k1p-15-RsD"/>
@@ -92,7 +92,7 @@
                                     <constraint firstAttribute="height" constant="15" id="nBd-eR-PtA"/>
                                     <constraint firstAttribute="width" secondItem="XAb-bN-Vue" secondAttribute="height" multiplier="1:1" id="vPL-5u-hWs"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="ic_flag"/>
+                                <state key="normal" image="ic_flag"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="vPL-5u-hWs"/>
