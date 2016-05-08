@@ -142,11 +142,9 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return 0
-            /*
             if(showJamJars) {
                 return (self.concert?.jamjars?.count)!
-            }*/
+            }
         case 1:
             if(showMyVideos) {
                 return self.myVideos.count

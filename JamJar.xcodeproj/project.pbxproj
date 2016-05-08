@@ -305,11 +305,13 @@
 			isa = PBXGroup;
 			children = (
 				AAB62F5E1CB05F9900C6CC15 /* JamJar */,
-				AA130FFD1C765B5100851AD4 /* Artist.swift */,
-				AAD1E4891C912B56007A1DB6 /* Concert.swift */,
 				AA0526A81C47187600894DC7 /* User.swift */,
-				AA1310041C78F86500851AD4 /* Venue.swift */,
+				30F05C261CDAE5AF00FD179F /* UserProfile.swift */,
 				AA558CCF1BE1D94000D591A8 /* Video.swift */,
+				AA130FFD1C765B5100851AD4 /* Artist.swift */,
+				AA1310041C78F86500851AD4 /* Venue.swift */,
+				AAD1E4891C912B56007A1DB6 /* Concert.swift */,
+				30CA638D1CD847FA00A17CE3 /* SearchResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
