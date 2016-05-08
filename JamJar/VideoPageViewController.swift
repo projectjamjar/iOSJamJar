@@ -167,7 +167,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
         
-        cell.setup(videoList[indexPath.row])
+        cell.setup(videoList[indexPath.row], viewController: self)
         
         return cell
     }

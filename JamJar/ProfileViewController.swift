@@ -45,6 +45,8 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
             self.username = UserService.currentUser()?.username
         }
         
+        self.updateUI()
+        
         //add overlay to background image
         self.backgroundImageView.addOverLay(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3))
         
@@ -100,9 +102,11 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
             self.fullNameLabel.text = user.fullName
         }
         
-//        if let profile = self.profile {
-//            // Do thingsss
-//        }
+        if let profile = self.profile {
+            // Do thingsss
+            let videoCount = profile.videos.count
+            self.videoCountLabel.text = "\(videoCount) videos"
+        }
     }
     
     
@@ -173,7 +177,7 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
             let video = self.profile!.videos[indexPath.row]
             
             let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
-            cell.setup(video)
+            cell.setup(video, viewController: self)
             
             return cell
         case 1:

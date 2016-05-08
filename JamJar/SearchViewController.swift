@@ -184,7 +184,7 @@ class SearchViewController: BaseViewController, UITableViewDelegate, UITableView
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
                 
-                cell.setup(video)
+                cell.setup(video, viewController: self)
                 
                 return cell
             }

@@ -18,8 +18,13 @@ class VideoCell: UITableViewCell {
     
     var video: Video!
     
-    func setup(video: Video) {
+    // Store the viewController that we'll push the profile to if the user
+    // button is clicked
+    var viewController: UIViewController!
+    
+    func setup(video: Video, viewController: UIViewController) {
         self.video = video
+        self.viewController = viewController
         
         videoNameLabel.text = self.video.name
         
@@ -48,8 +53,11 @@ class VideoCell: UITableViewCell {
 //        let venueString = self.concert.venue.name
 //        dateVenueLabel.text = "\(dateString) | \(venueString)"
         
-        // Uploader label (we need to make clicking this do something tapgesturerecognizer)
+        // Uploader label
         self.uploaderLabel.text = "@\(self.video.user.username)"
+        // When clicked, bring up the profile for that user
+        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.uploaderLabelTapped))
+        self.uploaderLabel.addGestureRecognizer(tgr)
         
         // Number of videos
         let numViews = self.video.views
@@ -70,5 +78,17 @@ class VideoCell: UITableViewCell {
             thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
             
         }
+    }
+    
+    func uploaderLabelTapped() {
+        
+        // Initialize the ProfileViewController for the uploader
+        let vc = UIStoryboard(name: "Profile",bundle: nil).instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
+        vc.username = self.video.user.username
+        vc.user = self.video.user
+        
+        // Push it onto the navcontroller of our parent viewcontroller
+        self.viewController.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }

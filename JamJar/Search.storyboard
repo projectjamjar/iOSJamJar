@@ -52,15 +52,6 @@
                                     <outlet property="delegate" destination="CX1-q6-NIx" id="8T4-aw-irB"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-Qw-pzG">
-                                <rect key="frame" x="0.0" y="159" width="375" height="459"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="CX1-q6-NIx" id="3yU-ci-9cs"/>
-                                    <outlet property="delegate" destination="CX1-q6-NIx" id="cRe-oL-Lbd"/>
-                                </connections>
-                            </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-il-Ify">
                                 <rect key="frame" x="0.0" y="114" width="375" height="41"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,6 +67,15 @@
                                     <action selector="segmentedControlChanged:" destination="CX1-q6-NIx" eventType="valueChanged" id="YgL-AZ-g9j"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-Qw-pzG">
+                                <rect key="frame" x="0.0" y="159" width="375" height="459"/>
+                                <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CX1-q6-NIx" id="3yU-ci-9cs"/>
+                                    <outlet property="delegate" destination="CX1-q6-NIx" id="cRe-oL-Lbd"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

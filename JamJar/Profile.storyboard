@@ -18,7 +18,7 @@
         <!--Profile-->
         <scene sceneID="1BG-Ii-0cn">
             <objects>
-                <viewController storyboardIdentifier="ConcertPage" title="Profile" automaticallyAdjustsScrollViewInsets="NO" id="Oh9-Z2-9vk" customClass="ProfileViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" title="Profile" automaticallyAdjustsScrollViewInsets="NO" id="Oh9-Z2-9vk" customClass="ProfileViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5SI-Ge-TM8"/>
                         <viewControllerLayoutGuide type="bottom" id="kVB-wf-icf"/>

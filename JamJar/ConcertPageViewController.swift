@@ -195,7 +195,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
         
-        cell.setup(video)
+        cell.setup(video, viewController: self)
         
         return cell
     }
@@ -215,28 +215,6 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    /***************************************************************************
-        Search Bar Setup
-    ***************************************************************************/
-    /*
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        let lowerCaseSearchString = searchText.lowercaseString
-        // Filter videos by name, username, and artist
-        self.filteredVideos = self.videos.filter { (video) -> Bool in
-            if video.name.lowercaseString.containsString(lowerCaseSearchString) ||
-               video.user.username.lowercaseString.containsString(lowerCaseSearchString) ||
-                video.getArtistsString().lowercaseString.containsString(lowerCaseSearchString) {
-                    return true
-            }
-            else {
-                return false
-            }
-        }
-        
-        self.tableView.reloadData()
-    }
-    */
     
     /***************************************************************************
      Header Cell Action
