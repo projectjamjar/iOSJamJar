@@ -20,7 +20,7 @@ class VideoCell: UITableViewCell {
     
     // Store the viewController that we'll push the profile to if the user
     // button is clicked
-    var viewController: UIViewController!
+    weak var viewController: UIViewController!
     
     func setup(video: Video, viewController: UIViewController) {
         self.video = video
