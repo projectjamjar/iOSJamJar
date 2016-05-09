@@ -197,7 +197,7 @@ class ConcertPageViewController: BaseViewController, UITableViewDelegate, UITabl
         
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
         
-        cell.setup(video, viewController: self)
+        cell.setup(video, concert: self.concert!, viewController: self)
         
         return cell
     }

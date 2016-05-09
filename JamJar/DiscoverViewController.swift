@@ -208,7 +208,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
             
             let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
             
-            cell.setup(jampick, viewController: self)
+            cell.setup(jampick, concert: jampick.concert!, viewController: self)
             
             return cell
         }
