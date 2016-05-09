@@ -57,4 +57,22 @@ class VideoService: APIService {
             }
         )
     }
+    
+    // get all concerts
+    static func getJamPicks(completion: (success: Bool, result: [Video]?, error: String?) -> Void) {
+        var url = self.buildURL("videos/jampicks")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, result: nil, error: "Cannot Get Jampicks")
+                return
+            case .Success:
+                let objects = Mapper<Video>().mapArray(response.result.value!)
+                completion(success: true, result: objects, error: nil)
+                return
+            }
+        }
+    }
 }

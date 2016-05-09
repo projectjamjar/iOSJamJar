@@ -16,7 +16,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     var concerts: [Concert] = [Concert]()
     var genres: [Genre] = [Genre]()
-    
+    var jampicks: [Video] = [Video]()
     
     var filteredConcerts: [Concert] = [Concert]()
     
@@ -32,35 +32,21 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         // Register tableview cell XIBs
         self.tableView.registerNib(UINib(nibName: "ConcertCell", bundle: nil), forCellReuseIdentifier: "ConcertCell")
         self.tableView.registerNib(UINib(nibName: "GenreCell", bundle: nil), forCellReuseIdentifier: "GenreCell")
+        self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         
+        // Load ALL the data!
         self.loadData()
         
+        // Setup pull-to-refresh
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: #selector(DiscoverViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
     }
     
-    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
-        switch sectionPicker.selectedSegmentIndex {
-        case 0:
-            print("JamPicks Selected")
-            SCLAlertView().showError("Under Construction!", subTitle: "Discovering JamPicks will be available soon!", closeButtonTitle: "Got it")
-            sectionPicker.selectedSegmentIndex = 1
-        case 1:
-            print("Concerts Selected")
-        case 2:
-            print("Genres Selected")
-        default:
-            break;
-        }
-
-        // Reset the genre
-        self.selectedGenre = nil
-        
-        // Reload the tableview
-        self.tableView.reloadData()
-    }
+    /***************************************************************************
+     Data Retrieval/Managers
+     ***************************************************************************/
     
     func refresh(sender:AnyObject)
     {
@@ -73,7 +59,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         // Create an async thread group
         let group = dispatch_group_create()
         
-        // Enter the async request group
+        // Enter the async request group and get concerts
         dispatch_group_enter(group)
         ConcertService.getConcerts() {
             (success, result, error) in
@@ -91,6 +77,7 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
             
         }
         
+        // Get the current list of genres
         dispatch_group_enter(group)
         ArtistService.getGenres { (success, result, error) in
             if !success {
@@ -99,6 +86,20 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
             else {
                 // Loaded genres
                 self.genres = result!
+            }
+            dispatch_group_leave(group)
+        }
+        
+        // Get the current list of jampicks
+        dispatch_group_enter(group)
+        VideoService.getJamPicks {
+            (success, result, error) in
+            if !success {
+                // Display an error
+            }
+            else {
+                // Loaded genres
+                self.jampicks = result!
             }
             dispatch_group_leave(group)
         }
@@ -127,10 +128,38 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    
+    /***************************************************************************
+     Segmented Control Setup
+     ***************************************************************************/
+    
+    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
+        switch sectionPicker.selectedSegmentIndex {
+        case 0:
+            print("JamPicks Selected")
+        case 1:
+            print("Concerts Selected")
+        case 2:
+            print("Genres Selected")
+        default:
+            break;
+        }
+        
+        // Reset the genre
+        self.selectedGenre = nil
+        
+        // Reload the tableview
+        self.tableView.reloadData()
+    }
+    
+    /***************************************************************************
+     TableView Setup
+     ***************************************************************************/
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sectionPicker.selectedSegmentIndex {
         case 0:
-            return 0
+            return self.jampicks.count
         case 1:
             return self.concerts.count
         case 2:
@@ -169,6 +198,15 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
                 concert = self.filteredConcerts[indexPath.row]
             }
         }
+        else if sectionPicker.selectedSegmentIndex == 0 {
+            let jampick = self.jampicks[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
+            
+            cell.setup(jampick, viewController: self)
+            
+            return cell
+        }
         
         // If we have a concert, return the concert cell
         if let concert = concert {
@@ -199,6 +237,10 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
+    /***************************************************************************
+     Segue Handlers
+     ***************************************************************************/
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: self)
         
