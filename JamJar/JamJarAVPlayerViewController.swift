@@ -23,6 +23,8 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     var loadingIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     let playbackLikelyToKeepUpContext: UnsafeMutablePointer<(Void)> = nil
     
+    var showFullScreenButton = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,7 +34,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         
         // Add Buttons to Bar
         createPlayButton()
-        createFullScreenButton()
+        if showFullScreenButton {
+            createFullScreenButton()
+        }
         createTimeObserver()
         createSeekSlider()
         createBufferIndicator()
@@ -52,7 +56,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         
         // Update Bottom Bar
         self.bottomBar.frame = CGRect(x: 0, y: self.view.frame.height - 30, width: self.view.frame.width, height: 30)
-        self.updateFullScreenButton()
+        if showFullScreenButton {
+            self.updateFullScreenButton()
+        }
         self.updateSeekSlider()
         self.updateBufferIndicator()
     }
@@ -67,7 +73,9 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         //Remove buttons to avoid duplication if the view is reloading
         self.playButton.removeFromSuperview()
         self.seekSlider.removeFromSuperview()
-        self.fullScreenButton.removeFromSuperview()
+        if showFullScreenButton {
+            self.fullScreenButton.removeFromSuperview()
+        }
         self.bottomBar.removeFromSuperview()
     }
     

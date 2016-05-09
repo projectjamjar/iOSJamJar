@@ -191,25 +191,6 @@ class UploadVideoViewController: BaseViewController {
         self.view.layoutIfNeeded()
     }
     
-    //Allow rotate
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.All
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        switch UIDevice.currentDevice().orientation{
-        case .Portrait:
-            unfullScreenVideo()
-            break
-        default:
-            fullScreenVideo()
-        }
-    }
-    
     //reset view
     func resetUploadControllers() {
         let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
@@ -225,6 +206,8 @@ class UploadVideoViewController: BaseViewController {
             
             let videoPath = self.videosToUpload[currentVideoSelected]
             let videoPlayer = AVPlayer(URL: videoPath)
+            
+            embeddedVideoViewController.showFullScreenButton = false
             embeddedVideoViewController.player = videoPlayer
         }
     }
