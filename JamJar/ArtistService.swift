@@ -27,4 +27,22 @@ class ArtistService: APIService {
             }
         }
     }
+    
+    // get genres
+    static func getGenres(completion: (success: Bool, result: [Genre]?, error: String?) -> Void) {
+        let url = self.buildURL("genres")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, result: nil, error: "Cannot Get Genres")
+                return
+            case .Success:
+                let genres = Mapper<Genre>().mapArray(response.result.value!)
+                completion(success: true, result: genres, error: nil)
+                return
+            }
+        }
+    }
 }

@@ -17,13 +17,15 @@ class VideoCell: UITableViewCell {
     @IBOutlet weak var viewCountLabel: UILabel!
     
     var video: Video!
+    var concert: Concert!
     
     // Store the viewController that we'll push the profile to if the user
     // button is clicked
     weak var viewController: UIViewController!
     
-    func setup(video: Video, viewController: UIViewController) {
+    func setup(video: Video, concert: Concert, viewController: UIViewController) {
         self.video = video
+        self.concert = concert
         self.viewController = viewController
         
         videoNameLabel.text = self.video.name
@@ -49,9 +51,9 @@ class VideoCell: UITableViewCell {
         artistLabel.text = artistsString
         
         // Get and format the date and venue
-//        let dateString = self.video.concert.string("MM-d-YYYY")
-//        let venueString = self.concert.venue.name
-//        dateVenueLabel.text = "\(dateString) | \(venueString)"
+        let dateString = self.concert.date.string("MM-d-YYYY")
+        let venueString = self.concert.venue.name
+        dateVenueLabel.text = "\(dateString) | \(venueString)"
         
         // Uploader label
         self.uploaderLabel.text = "@\(self.video.user.username)"

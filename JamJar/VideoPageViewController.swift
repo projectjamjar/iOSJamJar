@@ -40,6 +40,12 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // PROTECT YO SELF
+        // If the video is still processin, pop that shit from the navcontroller
+        if !self.video.uploaded {
+            self.navigationController?.popViewControllerAnimated(false)
+        }
+        
         //Save the potrait video frame
         videoContainerFrameInPortrait = self.videoContainerView.frame
         
@@ -311,7 +317,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
         
-        cell.setup(videoList[indexPath.row], viewController: self)
+        cell.setup(videoList[indexPath.row], concert: self.concert, viewController: self)
         
         return cell
     }

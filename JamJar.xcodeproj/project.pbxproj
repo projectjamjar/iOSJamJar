@@ -18,6 +18,8 @@
 		30CA638C1CD847C700A17CE3 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638B1CD847C700A17CE3 /* SearchService.swift */; };
 		30CA638E1CD847FA00A17CE3 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA638D1CD847FA00A17CE3 /* SearchResult.swift */; };
 		30CA63921CD9C57700A17CE3 /* MuliLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA63911CD9C57700A17CE3 /* MuliLabel.swift */; };
+		30D12A391CDFFBCE005CF3A7 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D12A381CDFFBCD005CF3A7 /* GenreCell.swift */; };
+		30D12A3B1CDFFC15005CF3A7 /* GenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D12A3A1CDFFC15005CF3A7 /* GenreCell.xib */; };
 		30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204D1C5190720099665E /* Comfortaa-Bold.ttf */; };
 		30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204E1C5190720099665E /* Comfortaa-Light.ttf */; };
 		30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA0F204F1C5190720099665E /* Comfortaa-Regular.ttf */; };
@@ -97,6 +99,8 @@
 		30CA638B1CD847C700A17CE3 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		30CA638D1CD847FA00A17CE3 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		30CA63911CD9C57700A17CE3 /* MuliLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuliLabel.swift; path = JamJar/MuliLabel.swift; sourceTree = SOURCE_ROOT; };
+		30D12A381CDFFBCD005CF3A7 /* GenreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenreCell.swift; path = JamJar/GenreCell.swift; sourceTree = SOURCE_ROOT; };
+		30D12A3A1CDFFC15005CF3A7 /* GenreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenreCell.xib; sourceTree = "<group>"; };
 		30EE7A0B1C9135B600293685 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		30EE7A0E1C913D6900293685 /* ConcertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertCell.swift; sourceTree = "<group>"; };
 		30EE7A101C914A5400293685 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				AAB62F671CB06A9A00C6CC15 /* JamJarCell.xib */,
 				AAB62F6D1CB0800000C6CC15 /* JamJarHeader.swift */,
 				AAB62F6B1CB07F9E00C6CC15 /* JamJarHeader.xib */,
+				30D12A381CDFFBCD005CF3A7 /* GenreCell.swift */,
+				30D12A3A1CDFFC15005CF3A7 /* GenreCell.xib */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 				30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */,
 				30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */,
 				30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */,
+				30D12A3B1CDFFC15005CF3A7 /* GenreCell.xib in Resources */,
 				30EE7A071C8F4B5B00293685 /* Muli-Italic.ttf in Resources */,
 				30EE7A081C8F4B5B00293685 /* Muli-Light.ttf in Resources */,
 				30EE7A091C8F4B5B00293685 /* Muli-LightItalic.ttf in Resources */,
@@ -589,6 +596,7 @@
 				AAB45DEC1CC2CD0A003B6B6F /* UITabBarController.swift in Sources */,
 				AA05269E1C46EE9500894DC7 /* LoginViewController.swift in Sources */,
 				AA0526A21C46F65500894DC7 /* SignUpViewController.swift in Sources */,
+				30D12A391CDFFBCE005CF3A7 /* GenreCell.swift in Sources */,
 				AA6FC3B31CBC491E007C56AA /* JamJarAVPlayerViewController.swift in Sources */,
 				AA1037F01C87E12C00DCB0B5 /* ArtistService.swift in Sources */,
 				AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */,

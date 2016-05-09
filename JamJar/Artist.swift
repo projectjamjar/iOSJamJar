@@ -125,3 +125,25 @@ class ArtistImage: NSObject, Mappable {
         width <- map["width"]
     }
 }
+
+class Genre: NSObject, Mappable {
+    // Artist Image Attributes
+    var id: Int!
+    var name: String!
+    
+    /**
+     The constructor required by ObjectMapper
+     */
+    required init?(_ map: Map) {}
+    
+    /**
+     The mapping function for ObjectMapper.  This function relates model
+     properties to fields in a JSON Response.
+     
+     - parameter map: The map of the JSON response
+     */
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
+}

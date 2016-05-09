@@ -24,9 +24,9 @@
                                     <constraint firstAttribute="height" constant="40" id="PEz-M4-5qA"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="JamPicks" enabled="NO"/>
+                                    <segment title="JamPicks"/>
                                     <segment title="Concerts"/>
-                                    <segment title="Genres" enabled="NO"/>
+                                    <segment title="Genres"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -68,6 +68,7 @@
                         <outlet property="sectionPicker" destination="jn0-8h-fFp" id="9Tc-Vt-92i"/>
                         <outlet property="tableView" destination="HRl-UI-KMZ" id="amP-74-cXm"/>
                         <segue destination="fEg-Vr-e2h" kind="show" identifier="ToConcertPage" id="aYg-3S-4a0"/>
+                        <segue destination="20G-pp-gzq" kind="show" identifier="ToVideoPage" id="BBD-kL-JiI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JA1-Tl-UT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,6 +82,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drN-UR-aSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1417" y="-543"/>
+        </scene>
+        <!--VideoPage-->
+        <scene sceneID="hGf-pI-BrA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPage" referencedIdentifier="VideoPage" id="20G-pp-gzq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ooT-ma-R7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409.5" y="-400"/>
         </scene>
         <!--Discover-->
         <scene sceneID="QwN-hr-dLA">
