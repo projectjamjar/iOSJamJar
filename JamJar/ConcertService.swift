@@ -13,8 +13,14 @@ import SwiftyJSON
 class ConcertService: APIService {
     
     // get all concerts
-    static func getConcerts(completion: (success: Bool, concert: [Concert]?, result: String?) -> Void) {
-        let url = self.buildURL("concerts")
+    static func getConcerts(genres: [Genre]? = nil, completion: (success: Bool, concert: [Concert]?, result: String?) -> Void) {
+        var url = self.buildURL("concerts")
+        
+        // If we got genres, join them into a '+' separated list
+        if let genres = genres {
+            let genreQuery = genres.map { "\($0.id)" }.joinWithSeparator("+")
+            url += "?genres=\(genreQuery)"
+        }
         
         self.get(url).responseJSON { response in
             switch response.result {
