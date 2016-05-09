@@ -14,11 +14,13 @@
 import UIKit
 import AVKit
 import AVFoundation
+import SCLAlertView
 
 class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITableViewDelegate, UITableViewDataSource {
     
     weak var jamjar: JamJarGraph!
     weak var concert: Concert!
+    weak var video: Video!
     
     // UI Element
     @IBOutlet weak var jamJarContainerView: UIView!
@@ -126,6 +128,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
     
     //Update video the UI elements
     func updateVideo(video: Video) {
+        self.video = video
         titleLabel.text = video.name
         uploaderLabel.text = video.user.username
         viewCountLabel.text = String(video.views) + " Views"
@@ -134,6 +137,14 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         dateLabel.text = concert.date.string("MM-d-YYYY")
         likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
         dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
+        updateLikeDislikeButtons()
+    }
+    
+    func updateLikeDislikeButtons() {
+        self.likeButton.selected = (video.userVote == true)
+        self.dislikeButton.selected = (video.userVote == false)
+        self.likeButton.highlightBackgroundLike()
+        self.dislikeButton.highlightBackgroundDislike()
     }
     
     func concertTapped(sender:AnyObject) {
@@ -141,11 +152,59 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
     }
     
     @IBAction func likePressed(sender: UIButton) {
-        print("Liked Video")
+        if(video.userVote == true) {
+            VideoService.vote(video.id, vote: nil) { success, error in
+                if !success {
+                    // Error - show the user
+                    let errorTitle = "Video error!"
+                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+                } else {
+                    self.video.userVote = nil
+                    self.updateLikeDislikeButtons()
+                }
+            }
+        } else {
+            VideoService.vote(video.id, vote: true) { success, error in
+                if !success {
+                    // Error - show the user
+                    let errorTitle = "Video error!"
+                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+                } else {
+                    self.video.userVote = true
+                    self.updateLikeDislikeButtons()
+                }
+            }
+        }
     }
     
     @IBAction func dislikePressed(sender: UIButton) {
-        print("Disliked Video")
+        if(video.userVote == false) {
+            VideoService.vote(video.id, vote: nil) { success, error in
+                if !success {
+                    // Error - show the user
+                    let errorTitle = "Video error!"
+                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+                } else {
+                    self.video.userVote = nil
+                    self.updateLikeDislikeButtons()
+                }
+            }
+        } else {
+            VideoService.vote(video.id, vote: false) { success, error in
+                if !success {
+                    // Error - show the user
+                    let errorTitle = "Video error!"
+                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+                } else {
+                    self.video.userVote = false
+                    self.updateLikeDislikeButtons()
+                }
+            }
+        }
     }
     
     @IBAction func flagVideoTapped(sender: UIButton) {

@@ -21,6 +21,33 @@ class VideoService: APIService {
         self.post(url)
     }
     
+    // Vote a video
+    static func vote(videoId: Int!, vote: Bool?, completion: (success: Bool, result: String?) -> Void) {
+        let url = self.buildURL("videos/vote/")
+        
+        var parameters = [
+            "video" : videoId
+        ] as [String: AnyObject]
+        if (vote == nil) {
+            parameters["vote"] = NSNull()
+        } else {
+            parameters["vote"] = vote
+        }
+        
+        self.post(url, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, result: "Error when voting the video")
+                return
+            case .Success:
+                //let concert = Mapper<Concert>().map(response.result.value!)
+                completion(success: true, result: nil)
+                return
+            }
+        }
+    }
+    
     // Upload Video
     static func upload(videoURL: NSURL, name: String, is_private: Int, concert_id: Int, artists: [Artist], completion: (success: Bool, result: String?) -> Void) {
         let url = self.buildURL("videos")
