@@ -185,7 +185,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         } else {
             // Instantiate DKImagePickerController and set it to only show videos
             let pickerController = DKImagePickerController()
-            pickerController.sourceType = [.Photo]
+            pickerController.sourceType = .Photo
             pickerController.assetType = .AllVideos
             // Cancel button action for DKImagePickerController
             pickerController.didCancel = {
@@ -208,7 +208,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                 // Store all of the URLs for the selected videos
                 for asset in assets {
                     asset.fetchAVAsset(nil, completeBlock: { info in
-                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info!.URL.lastPathComponent!
+                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info.AVAsset!.URL.lastPathComponent!
                         
                         PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
                             dispatch_async(dispatch_get_main_queue(), {

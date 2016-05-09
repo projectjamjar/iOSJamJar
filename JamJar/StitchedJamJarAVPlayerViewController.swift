@@ -62,11 +62,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        print("Memory Warning in Stitched JamJar")
-    }
-    
-    deinit {
-        print("Deallocation for stiched player controller")
     }
     
     // Functions to add custom UI Elements
@@ -119,10 +114,8 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         for edge in edges! {
             let overlapVideo = getVideoByIdFromList(edge.video)
             if !storedVideoIds.contains(edge.video) && edge.offset < elapsedTime {
-                //print("Video " + String(edge.video) + " now overlapped!")
                 // Make sure this offset and video length is larger than the elapsed time
                 if(elapsedTime < (Double(overlapVideo.length) + edge.offset)) {
-                    print("Video " + String(edge.video) + " now stored!")
                     self.overlappingVideos.append(overlapVideo)
                     //TODO: restrict AVPlayer adding if there are too many
                     self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: overlapVideo.hls_src)!, videoId: overlapVideo.id!))
@@ -135,7 +128,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 self.overlappingVideos = self.overlappingVideos.filter() { $0.id! != overlapVideo.id! } // There may be a better way to remove element from array
                 self.storedAVPlayers = self.storedAVPlayers.filter() { $0.videoId! != overlapVideo.id! }
                 // TODO: if AVPlayer list was full, and overlapping video list is greater than the AVPlayer list, replace removed AVPlayer
-                print("Video " + String(edge.video) + " is removed!")
             }
         }
     }
@@ -149,9 +141,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         let timePassed = CMTimeGetSeconds(self.player!.currentItem!.currentTime())
         let edge = getEdgeFromJamJar(newVideoId)
         let newTime = Double(timePassed) - edge.offset
-        print("Time passed: " + String(timePassed))
-        print("Offset: " + String(edge.offset))
-        print("New Time: " + String(newTime))
         
         // Switch videos
         let tempVideoIndex = getOverlappingVideoIndexById(newVideoId)
@@ -184,7 +173,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
             
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
-                print("Swiped right")
                 // find videoId of first AVPlayer
                 if !self.overlappingVideos.isEmpty {
                     let newVideoId = self.storedAVPlayers.first?.videoId
@@ -193,7 +181,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
             case UISwipeGestureRecognizerDirection.Down:
                 print("Swiped down")
             case UISwipeGestureRecognizerDirection.Left:
-                print("Swiped left")
                 // find videoId of first AVPlayer
                 if !self.overlappingVideos.isEmpty {
                     let newVideoId = self.storedAVPlayers.last?.videoId
@@ -210,7 +197,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     // Handling when a video ends
     func playerDidFinishPlaying(note: NSNotification) {
         //move to default next video
-        print("Video finished playing")
         if !self.overlappingVideos.isEmpty {
             let newVideoId = self.storedAVPlayers.first?.videoId
             changeCurrentVideo(newVideoId!)

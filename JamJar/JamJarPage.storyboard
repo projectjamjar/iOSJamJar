@@ -95,9 +95,9 @@
                                 <state key="normal" image="ic_flag"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="vPL-5u-hWs"/>
-                                        <exclude reference="k1p-15-RsD"/>
                                         <exclude reference="Ias-79-oXS"/>
+                                        <exclude reference="k1p-15-RsD"/>
+                                        <exclude reference="vPL-5u-hWs"/>
                                     </mask>
                                 </variation>
                                 <connections>

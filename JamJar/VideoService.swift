@@ -41,8 +41,32 @@ class VideoService: APIService {
                 completion(success: false, result: "Error when voting the video")
                 return
             case .Success:
-                //let concert = Mapper<Concert>().map(response.result.value!)
                 completion(success: true, result: nil)
+                return
+            }
+        }
+    }
+    
+    // Flag video
+    static func flag(videoId: Int!, reason: String!, notes: String?, completion: (success: Bool, result: String?) -> Void) {
+        let url = self.buildURL("videos/flags/")
+        
+        var parameters = [
+            "video" : videoId,
+            "flag_type" : reason
+        ] as [String: AnyObject]
+        if(notes != nil) {
+            parameters["notes"] = notes
+        }
+        
+        self.post(url, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, result: "Error flagging the video.")
+                return
+            case .Success:
+                completion(success: true, result: "Video was flagged.")
                 return
             }
         }

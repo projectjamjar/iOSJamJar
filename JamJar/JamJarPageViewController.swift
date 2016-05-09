@@ -16,11 +16,12 @@ import AVKit
 import AVFoundation
 import SCLAlertView
 
-class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITableViewDelegate, UITableViewDataSource {
+class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
     
     weak var jamjar: JamJarGraph!
     weak var concert: Concert!
     weak var video: Video!
+    var reasonsToFlag: [String]!
     
     // UI Element
     @IBOutlet weak var jamJarContainerView: UIView!
@@ -56,6 +57,9 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         // Register the reusable video cell
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forCellReuseIdentifier: "JamJarHeader")
+        
+        // Set Report Reasons Data
+        self.reasonsToFlag = ["Accuracy", "Inappropriate", "Quality","Report User"];
         
         self.suggestedTableView.reloadData()
     }
@@ -137,7 +141,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         dateLabel.text = concert.date.string("MM-d-YYYY")
         likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
         dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
-        updateLikeDislikeButtons()
+        //updateLikeDislikeButtons()
     }
     
     func updateLikeDislikeButtons() {
@@ -208,7 +212,55 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
     }
     
     @IBAction func flagVideoTapped(sender: UIButton) {
-        print("Flagged Video")
+        let videoId = self.video.id!
+        
+        let flagView = SCLAlertView()
+        
+        // Creat the subview
+        let subview = UIView(frame: CGRectMake(0,0,216,100))
+        let x = (subview.frame.width - 180) / 2
+        
+        // reason label
+        let reasonLabel = UILabel(frame: CGRectMake(x,5,180,25))
+        reasonLabel.text = "Reason:"
+        subview.addSubview(reasonLabel)
+        
+        // reason PickerView
+        let reasonPickerView = UIPickerView(frame: CGRectMake(x,10,180,100))
+        reasonPickerView.delegate = self
+        reasonPickerView.dataSource = self
+        subview.addSubview(reasonPickerView)
+        
+        // Add the subview to the alert's UI property
+        flagView.customSubview = subview
+        
+        // Add Notes Text Field
+        let notes = flagView.addTextField("Notes")
+        
+        flagView.addButton("Submit") {
+            let reason = self.reasonsToFlag[reasonPickerView.selectedRowInComponent(0)]
+            
+            var flagType: String
+            if reason == "Report User" {
+                flagType = "U"
+            } else {
+                flagType = String(reason[reason.startIndex])
+            }
+            
+            VideoService.flag(videoId, reason: flagType, notes: notes.text) { success, result in
+                if !success {
+                    // Error - show the error
+                    let errorTitle = "Video Flag Error!"
+                    SCLAlertView().showError(errorTitle, subTitle: result!, closeButtonTitle: "Got it")
+                } else {
+                    // Success
+                    let successTitle = "Video Flagged!"
+                    SCLAlertView().showSuccess(successTitle, subTitle: result!, closeButtonTitle: "Got it")
+                }
+            }
+        }
+        
+        flagView.showEdit("Flag Video", subTitle: "Reason", closeButtonTitle: "Cancel")
     }
     
     //Allow rotate
@@ -299,5 +351,21 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         self.jamjar = jamjarCell.jamjar
         changeJamJarInPlayer()
         self.viewDidLoad()
+    }
+    
+    /***************************************************************************
+     UIPickerView Setup
+     ***************************************************************************/
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return reasonsToFlag.count;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return reasonsToFlag[row]
     }
 }
