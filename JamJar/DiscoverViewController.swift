@@ -14,15 +14,20 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var sectionPicker: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    // Lists of stuff that we get from the API from loadData()
     var concerts: [Concert] = [Concert]()
     var genres: [Genre] = [Genre]()
     var jampicks: [Video] = [Video]()
     
+    // Concerts filtered by genre
     var filteredConcerts: [Concert] = [Concert]()
     
+    // The genre to filter on
     var selectedGenre: Genre? = nil
     
+    // Segue variables
     var selectedConcert: Concert? = nil
+    var selectedVideo: Video? = nil
     
     var refreshControl: UIRefreshControl!
     
@@ -233,6 +238,10 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
             self.selectedGenre = genreCell.genre
             self.getConcertsForGenre()
         }
+        else if let videoCell = tableView.cellForRowAtIndexPath(indexPath) as? VideoCell {
+            self.selectedVideo = videoCell.video
+            self.performSegueWithIdentifier("ToVideoPage", sender: nil)
+        }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -247,6 +256,11 @@ class DiscoverViewController: BaseViewController, UITableViewDelegate, UITableVi
         if segue.identifier == "ToConcertPage" {
             let vc = segue.destinationViewController as! ConcertPageViewController
             vc.concert = self.selectedConcert!
+        }
+        else if segue.identifier == "ToVideoPage" {
+            let vc = segue.destinationViewController as! VideoPageViewController
+            vc.video = self.selectedVideo!
+            vc.concert = self.selectedVideo?.concert
         }
     }
 }
