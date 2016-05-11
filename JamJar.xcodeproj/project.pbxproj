@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		308AB85B1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */; };
+		308AB85D1CE2F11400731B4B /* ChooseVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */; };
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
 		30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DE1C85091F00CD05F2 /* UITextField.swift */; };
 		30AA73EA1C8613F900CD05F2 /* ArtistChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */; };
@@ -88,6 +90,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarVideoCameraDelegate.swift; sourceTree = "<group>"; };
+		308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVideosViewController.swift; sourceTree = "<group>"; };
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
 		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistChipView.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				AA6B32FD1CDAF90A003595BA /* Array.swift */,
 				AA6B32FF1CDFB409003595BA /* Protocol.swift */,
 				AA6B33051CDFDDEA003595BA /* UIButton.swift */,
+				308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			children = (
 				AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */,
 				AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */,
+				308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */,
 			);
 			name = UploadVideo;
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 				30CA638C1CD847C700A17CE3 /* SearchService.swift in Sources */,
 				AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */,
 				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
+				308AB85D1CE2F11400731B4B /* ChooseVideosViewController.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,
 				30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */,
 				AAB45DEC1CC2CD0A003B6B6F /* UITabBarController.swift in Sources */,
@@ -604,6 +611,7 @@
 				30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */,
+				308AB85B1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
 				AA6FC3AF1CBC446C007C56AA /* VideoPageViewController.swift in Sources */,
 				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,

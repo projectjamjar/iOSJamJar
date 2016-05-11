@@ -15,6 +15,9 @@
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
+            <string>Muli</string>
+            <string>Muli</string>
+            <string>Muli</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -159,12 +162,136 @@
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
                         <outlet property="venuesAutoCompleteTable" destination="03Y-2b-oAI" id="515-sW-fr0"/>
                         <outlet property="venuesAutoCompleteTableHeight" destination="pvg-v3-S0U" id="omU-NG-JE2"/>
-                        <segue destination="XPg-sG-R38" kind="show" identifier="uploadVideo" id="i8K-kX-BIB"/>
+                        <segue destination="a23-2Z-jd0" kind="show" identifier="ToChooseVideos" id="LzH-w1-bu2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrb-5m-Hzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="191.5" y="-297.5"/>
+        </scene>
+        <!--Choose Videos View Controller-->
+        <scene sceneID="28W-Xc-YIg">
+            <objects>
+                <viewController id="a23-2Z-jd0" customClass="ChooseVideosViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2KT-lF-xSh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gb3-sb-mo6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uoP-JI-4br">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK8-9K-Wy4">
+                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KOd-zE-TnA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Zqy-hj-moS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="KWR-kE-8Hz"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aca-ve-rpT">
+                                <rect key="frame" x="0.0" y="114" width="375" height="454"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lYL-wu-c0n">
+                                    <size key="itemSize" width="110" height="75"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoItem" id="vOc-Q3-wMA" customClass="VideoItem" customModule="JamJar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UIj-Zc-ufx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-3v-Snk">
+                                                    <rect key="frame" x="77" y="3" width="30" height="34"/>
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="17"/>
+                                                    <state key="normal" title="X"/>
+                                                    <connections>
+                                                        <action selector="deleteVideo:" destination="vOc-Q3-wMA" eventType="touchUpInside" id="1gK-ST-Afl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="UIj-Zc-ufx" firstAttribute="leading" secondItem="vOc-Q3-wMA" secondAttribute="leading" id="4jK-Bu-4vf"/>
+                                            <constraint firstAttribute="trailing" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="3" id="8ke-Ff-gcd"/>
+                                            <constraint firstAttribute="trailing" secondItem="UIj-Zc-ufx" secondAttribute="trailing" id="CdR-H3-gCv"/>
+                                            <constraint firstItem="1fQ-3v-Snk" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" constant="3" id="ZI9-8h-iqh"/>
+                                            <constraint firstItem="UIj-Zc-ufx" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" id="exq-zJ-Oin"/>
+                                            <constraint firstAttribute="bottom" secondItem="UIj-Zc-ufx" secondAttribute="bottom" id="gka-LN-j0i"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="deleteButton" destination="1fQ-3v-Snk" id="urr-Zd-3P3"/>
+                                            <outlet property="thumbnail" destination="UIj-Zc-ufx" id="rtp-Ly-pwh"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="a23-2Z-jd0" id="uNf-6F-RRS"/>
+                                    <outlet property="delegate" destination="a23-2Z-jd0" id="w0c-FO-naP"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-pF-hfE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YaP-73-ygL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="k6g-Ct-laL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
+                                <state key="normal" title="Choose or Take More Videos">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="k6g-Ct-laL"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="TWe-Da-s5v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aca-ve-rpT" firstAttribute="top" secondItem="ZVR-pF-hfE" secondAttribute="bottom" id="0qX-at-pVx"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="2KT-lF-xSh" secondAttribute="bottom" id="4oU-Vk-gWu"/>
+                            <constraint firstAttribute="trailing" secondItem="aca-ve-rpT" secondAttribute="trailing" id="Ehm-yF-kNb"/>
+                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="top" secondItem="aca-ve-rpT" secondAttribute="bottom" id="JBw-cB-DxL"/>
+                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="QVL-wi-nFU"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="bXP-ie-kPD"/>
+                            <constraint firstItem="aca-ve-rpT" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="gQU-yx-dkC"/>
+                            <constraint firstAttribute="trailing" secondItem="dK8-9K-Wy4" secondAttribute="trailing" id="tUI-y8-75M"/>
+                            <constraint firstItem="Gb3-sb-mo6" firstAttribute="top" secondItem="dK8-9K-Wy4" secondAttribute="bottom" id="tqu-m2-vg9"/>
+                            <constraint firstAttribute="trailing" secondItem="ZVR-pF-hfE" secondAttribute="trailing" id="vBi-35-hKU"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="collectionView" destination="aca-ve-rpT" id="Z6Y-Tj-jwU"/>
+                        <outlet property="continueButton" destination="dK8-9K-Wy4" id="9Tr-rT-5Qt"/>
+                        <segue destination="XPg-sG-R38" kind="show" identifier="ToUploadVideos" id="Rxm-77-3Tb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xiq-g0-Uga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="691.5" y="-297.5"/>
         </scene>
         <!--Add Videos-->
         <scene sceneID="CxU-Gt-hz8">
@@ -277,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpk-MR-0VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="635.5" y="-297.5"/>
+            <point key="canvasLocation" x="1215.5" y="-297.5"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="i01-fX-hFK">
@@ -285,7 +412,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="gUG-YR-E67" customClass="JamJarAVPlayerViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvz-iT-66h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059" y="-567"/>
+            <point key="canvasLocation" x="1651" y="-451.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qhu-tv-HTB">

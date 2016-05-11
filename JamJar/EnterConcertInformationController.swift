@@ -183,52 +183,56 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         if(self.selectedVenue == nil || self.selectedArtists.isEmpty || self.dateTextField.text == "") {
             SCLAlertView().showError("Incomplete Fields", subTitle: "Please select artists, a venue, and a date", closeButtonTitle: "Got it")
         } else {
-            // Instantiate DKImagePickerController and set it to only show videos
-            let pickerController = DKImagePickerController()
-            pickerController.sourceType = .Photo
-            pickerController.assetType = .AllVideos
-            // Cancel button action for DKImagePickerController
-            pickerController.didCancel = {
-                pickerController.dismissViewControllerAnimated(true, completion: nil)
-            }
-            pickerController.showsCancelButton = true
+//            // Instantiate DKImagePickerController and set it to only show videos
+//            let pickerController = DKImagePickerController()
+//            pickerController.sourceType = .Both
+//            pickerController.assetType = .AllVideos
+//            pickerController.UIDelegate = JamJarVideoCameraDelegate()
+//            
+//            // Cancel button action for DKImagePickerController
+//            pickerController.didCancel = {
+//                pickerController.dismissViewControllerAnimated(true, completion: nil)
+//            }
+//            pickerController.showsCancelButton = true
+//            
+//            // Action for DKImagePickerController after videos were selected
+//            pickerController.didSelectAssets = { (assets: [DKAsset]) in
+//                
+//                // Don't let the user move on until they have selected videos
+//                if(assets.count == 0) {
+//                    SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
+//                    return
+//                }
+//                
+//                showProgressView()
+//                self.queue = assets.count
+//                
+//                // Store all of the URLs for the selected videos
+//                for asset in assets {
+//                    asset.fetchAVAsset(nil, completeBlock: { info in
+//                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info.AVAsset!.URL.lastPathComponent!
+//                        
+//                        PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
+//                            dispatch_async(dispatch_get_main_queue(), {
+//                                let asset = asset as? AVURLAsset
+//                                if let data = NSData(contentsOfURL: asset!.URL) {
+//                                    data.writeToFile(targetVideoURL, atomically: true)
+//                                    // Saved URL is stored for future use
+//                                    self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
+//                                    self.callback()
+//                                } else {
+//                                    print("Error: Video could not be processed")
+//                                    showErrorView()
+//                                }
+//                            })
+//                        })
+//                    })
+//                }
+//            }
+//            
+//            self.presentViewController(pickerController, animated: true) {}
             
-            // Action for DKImagePickerController after videos were selected
-            pickerController.didSelectAssets = { (assets: [DKAsset]) in
-                
-                // Don't let the user move on until they have selected videos
-                if(assets.count == 0) {
-                    SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
-                    return
-                }
-                
-                showProgressView()
-                self.queue = assets.count
-                
-                // Store all of the URLs for the selected videos
-                for asset in assets {
-                    asset.fetchAVAsset(nil, completeBlock: { info in
-                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info.AVAsset!.URL.lastPathComponent!
-                        
-                        PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
-                            dispatch_async(dispatch_get_main_queue(), {
-                                let asset = asset as? AVURLAsset
-                                if let data = NSData(contentsOfURL: asset!.URL) {
-                                    data.writeToFile(targetVideoURL, atomically: true)
-                                    // Saved URL is stored for future use
-                                    self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
-                                    self.callback()
-                                } else {
-                                    print("Error: Video could not be processed")
-                                    showErrorView()
-                                }
-                            })
-                        })
-                    })
-                }
-            }
-            
-            self.presentViewController(pickerController, animated: true) {}
+            self.performSegueWithIdentifier("ToChooseVideos", sender: self)
         }
         
     }
@@ -266,13 +270,24 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "uploadVideo") {
-            let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
+//        if(segue.identifier == "uploadVideo") {
+//            let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
+//            
+//            uploadVideoViewController.selectedVenue = self.selectedVenue
+//            uploadVideoViewController.selectedArtists = self.selectedArtists
+//            uploadVideoViewController.selectedDate = self.savedDate
+//            uploadVideoViewController.videosToUpload = self.videosToUpload
+//            
+//            //Clear video list to avoid conflicts
+//            self.videosToUpload = []
+//        }
+        if(segue.identifier == "ToChooseVideos") {
+            let uploadVideoViewController = segue.destinationViewController as! ChooseVideosViewController
             
             uploadVideoViewController.selectedVenue = self.selectedVenue
             uploadVideoViewController.selectedArtists = self.selectedArtists
             uploadVideoViewController.selectedDate = self.savedDate
-            uploadVideoViewController.videosToUpload = self.videosToUpload
+//            uploadVideoViewController.videosToUpload = self.videosToUpload
             
             //Clear video list to avoid conflicts
             self.videosToUpload = []
