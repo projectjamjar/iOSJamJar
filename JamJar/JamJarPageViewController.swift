@@ -39,16 +39,9 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
     
-
-    //Variable to store video frame
-    var jamJarContainerFrameInPortrait: CGRect!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //Save the potrait jamjar frame
-        jamJarContainerFrameInPortrait = self.jamJarContainerView.frame
         
         //Add action for concert tapped
         let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
@@ -84,10 +77,6 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         //hide navigation bar and tool bar
         self.navigationController?.navigationBar.hidden = true
         self.tabBarController?.tabBar.hidden = true
-        
-        UIView.animateWithDuration(0.25) {
-            self.jamJarContainerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        }
     }
     
     //Worst function name ever
@@ -95,12 +84,6 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         //show navigation bar and tool bar
         self.navigationController?.navigationBar.hidden = false
         self.tabBarController?.tabBar.hidden = false
-        
-        UIView.animateWithDuration(0.25) {
-            self.jamJarContainerView.frame = self.jamJarContainerFrameInPortrait
-        }
-        
-        self.view.layoutIfNeeded()
     }
     
     func removeOberservsInPlayer() {

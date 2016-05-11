@@ -33,9 +33,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
     
-    //Variable to store video frame
-    var videoContainerFrameInPortrait: CGRect!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,9 +42,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         if !self.video.uploaded {
             self.navigationController?.popViewControllerAnimated(false)
         }
-        
-        //Save the potrait video frame
-        videoContainerFrameInPortrait = self.videoContainerView.frame
         
         //Add action for concert tapped
         let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
@@ -97,10 +91,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         //hide navigation bar and tool bar
         self.navigationController?.navigationBar.hidden = true
         self.tabBarController?.tabBar.hidden = true
-        
-        UIView.animateWithDuration(0.25) {
-            self.videoContainerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        }
     }
     
     //Worst function name ever
@@ -108,12 +98,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         //show navigation bar and tool bar
         self.navigationController?.navigationBar.hidden = false
         self.tabBarController?.tabBar.hidden = false
-        
-        UIView.animateWithDuration(0.25) {
-            self.videoContainerView.frame = self.videoContainerFrameInPortrait
-        }
-        
-        self.view.layoutIfNeeded()
     }
     
     func removeOberservsInPlayer() {
