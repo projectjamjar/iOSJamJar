@@ -213,7 +213,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UIj-Zc-ufx">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5S6-LU-0Ju">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-3v-Snk">
@@ -229,16 +229,16 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="UIj-Zc-ufx" firstAttribute="leading" secondItem="vOc-Q3-wMA" secondAttribute="leading" id="4jK-Bu-4vf"/>
+                                            <constraint firstItem="5S6-LU-0Ju" firstAttribute="leading" secondItem="vOc-Q3-wMA" secondAttribute="leading" id="2SV-iO-3zu"/>
                                             <constraint firstAttribute="trailing" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="3" id="8ke-Ff-gcd"/>
-                                            <constraint firstAttribute="trailing" secondItem="UIj-Zc-ufx" secondAttribute="trailing" id="CdR-H3-gCv"/>
+                                            <constraint firstAttribute="trailing" secondItem="5S6-LU-0Ju" secondAttribute="trailing" id="Bvl-lp-Rud"/>
+                                            <constraint firstItem="5S6-LU-0Ju" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" id="U0i-k6-DMj"/>
                                             <constraint firstItem="1fQ-3v-Snk" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" constant="3" id="ZI9-8h-iqh"/>
-                                            <constraint firstItem="UIj-Zc-ufx" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" id="exq-zJ-Oin"/>
-                                            <constraint firstAttribute="bottom" secondItem="UIj-Zc-ufx" secondAttribute="bottom" id="gka-LN-j0i"/>
+                                            <constraint firstAttribute="bottom" secondItem="5S6-LU-0Ju" secondAttribute="bottom" id="x3q-8f-3xO"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="deleteButton" destination="1fQ-3v-Snk" id="urr-Zd-3P3"/>
-                                            <outlet property="thumbnail" destination="UIj-Zc-ufx" id="rtp-Ly-pwh"/>
+                                            <outlet property="thumbnailView" destination="5S6-LU-0Ju" id="ZNS-ep-tBI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -264,6 +264,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="chooseVideos:" destination="a23-2Z-jd0" eventType="touchUpInside" id="beo-aI-MDg"/>
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="TWe-Da-s5v"/>
                                 </connections>
                             </button>
