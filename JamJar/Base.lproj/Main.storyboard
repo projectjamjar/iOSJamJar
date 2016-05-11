@@ -112,7 +112,7 @@
                                     <constraint firstAttribute="height" constant="110" id="POt-1r-j1v"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE-LIVE THE CONCERT EXPERIENCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM4-vx-DLT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RE-LIVE THE CONCERT EXPERIENCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM4-vx-DLT">
                                 <rect key="frame" x="57" y="150" width="261" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3QJ-eD-Va1"/>
@@ -571,7 +571,7 @@
                                     <constraint firstAttribute="height" constant="110" id="nv4-bu-3HM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE-LIVE THE CONCERT EXPERIENCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiC-W7-tQP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RE-LIVE THE CONCERT EXPERIENCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiC-W7-tQP">
                                 <rect key="frame" x="57" y="150" width="261" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XE9-Os-neh"/>
