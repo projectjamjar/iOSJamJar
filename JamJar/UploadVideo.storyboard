@@ -197,7 +197,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aca-ve-rpT">
-                                <rect key="frame" x="0.0" y="114" width="375" height="454"/>
+                                <rect key="frame" x="15" y="129" width="345" height="424"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lYL-wu-c0n">
                                     <size key="itemSize" width="110" height="75"/>
@@ -206,7 +206,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoItem" id="vOc-Q3-wMA" customClass="VideoItem" customModule="JamJar" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="755" reuseIdentifier="VideoItem" id="vOc-Q3-wMA" customClass="VideoItem" customModule="JamJar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -215,6 +215,10 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5S6-LU-0Ju">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="75" id="Qx3-ok-tbP"/>
+                                                        <constraint firstAttribute="width" constant="110" id="ql3-yP-rm8"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-3v-Snk">
                                                     <rect key="frame" x="77" y="3" width="30" height="34"/>
@@ -227,7 +231,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="5S6-LU-0Ju" firstAttribute="leading" secondItem="vOc-Q3-wMA" secondAttribute="leading" id="2SV-iO-3zu"/>
                                             <constraint firstAttribute="trailing" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="3" id="8ke-Ff-gcd"/>
@@ -271,13 +275,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aca-ve-rpT" firstAttribute="top" secondItem="ZVR-pF-hfE" secondAttribute="bottom" id="0qX-at-pVx"/>
+                            <constraint firstItem="aca-ve-rpT" firstAttribute="top" secondItem="ZVR-pF-hfE" secondAttribute="bottom" constant="15" id="0qX-at-pVx"/>
                             <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="2KT-lF-xSh" secondAttribute="bottom" id="4oU-Vk-gWu"/>
-                            <constraint firstAttribute="trailing" secondItem="aca-ve-rpT" secondAttribute="trailing" id="Ehm-yF-kNb"/>
-                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="top" secondItem="aca-ve-rpT" secondAttribute="bottom" id="JBw-cB-DxL"/>
+                            <constraint firstAttribute="trailing" secondItem="aca-ve-rpT" secondAttribute="trailing" constant="15" id="Ehm-yF-kNb"/>
+                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="top" secondItem="aca-ve-rpT" secondAttribute="bottom" constant="15" id="JBw-cB-DxL"/>
                             <constraint firstItem="dK8-9K-Wy4" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="QVL-wi-nFU"/>
                             <constraint firstItem="ZVR-pF-hfE" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="bXP-ie-kPD"/>
-                            <constraint firstItem="aca-ve-rpT" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="gQU-yx-dkC"/>
+                            <constraint firstItem="aca-ve-rpT" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="15" id="gQU-yx-dkC"/>
                             <constraint firstAttribute="trailing" secondItem="dK8-9K-Wy4" secondAttribute="trailing" id="tUI-y8-75M"/>
                             <constraint firstItem="Gb3-sb-mo6" firstAttribute="top" secondItem="dK8-9K-Wy4" secondAttribute="bottom" id="tqu-m2-vg9"/>
                             <constraint firstAttribute="trailing" secondItem="ZVR-pF-hfE" secondAttribute="trailing" id="vBi-35-hKU"/>

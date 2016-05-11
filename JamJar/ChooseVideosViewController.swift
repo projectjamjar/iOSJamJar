@@ -11,6 +11,7 @@ import DKImagePickerController
 import SCLAlertView
 import AVFoundation
 import Photos
+import KTCenterFlowLayout
 
 class VideoItem: UICollectionViewCell {
     @IBOutlet weak var thumbnailView: UIImageView!
@@ -21,7 +22,8 @@ class VideoItem: UICollectionViewCell {
     func setup(videoUrl: NSURL) {
         self.videoUrl = videoUrl
         
-//        self.thumbnail
+
+        // Get the thumbnail for the video
         let asset = AVAsset(URL: videoUrl)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         let time = CMTime(seconds: 1, preferredTimescale: 1)
@@ -32,6 +34,13 @@ class VideoItem: UICollectionViewCell {
         } catch {
             print(error)
         }
+        
+        // Round the edges
+        self.thumbnailView.layer.borderWidth = 2
+        self.thumbnailView.layer.cornerRadius = 5.0
+        self.thumbnailView.clipsToBounds = true
+        self.thumbnailView.layer.borderColor = UIColor.jjCoralColor().CGColor
+
      }
     
     @IBAction func deleteVideo(sender: UIButton?) {
@@ -56,14 +65,24 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup the collection view flow styles
+//        let layout = KTCenterFlowLayout()
+//        layout.minimumInteritemSpacing = 5.0
+//        layout.minimumLineSpacing = 5.0
+//        self.collectionView.setCollectionViewLayout(layout, animated: true)
+        
         // Do stuff here
         
         self.updateUI()
+        
+        self.showVideoPicker()
     }
     
     func updateUI() {
         // Enable/disable the continue button
         self.continueButton.enabled = videosToUpload.count > 0
+        
+        self.collectionView.reloadData()
     }
     
     /***************************************************************************
@@ -85,9 +104,13 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
     /***************************************************************************
      Choose Video Stuff
      ***************************************************************************/
-    
     // Called by the Choose Videos button
     @IBAction func chooseVideos(sender: UIButton?) {
+        self.showVideoPicker()
+    }
+    
+    // Called by the Choose Videos button
+    func showVideoPicker() {
         // Instantiate DKImagePickerController and set it to only show videos
         let pickerController = DKImagePickerController()
         pickerController.sourceType = .Both
