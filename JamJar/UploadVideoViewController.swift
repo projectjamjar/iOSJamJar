@@ -193,11 +193,11 @@ class UploadVideoViewController: BaseViewController {
     
     //reset view
     func resetUploadControllers() {
-        let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
-        
-        concertViewController.clearViewForm()
-        
-        navigationController?.popViewControllerAnimated(true)
+//        let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
+//        
+//        concertViewController.clearViewForm()
+//        
+//        navigationController?.popViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

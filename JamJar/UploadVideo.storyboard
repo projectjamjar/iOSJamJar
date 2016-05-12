@@ -7,8 +7,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Muli-Light.ttf">
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
+        </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
-            <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
@@ -169,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="191.5" y="-297.5"/>
         </scene>
-        <!--Choose Videos View Controller-->
+        <!--Choose Videos-->
         <scene sceneID="28W-Xc-YIg">
             <objects>
-                <viewController id="a23-2Z-jd0" customClass="ChooseVideosViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Choose Videos" id="a23-2Z-jd0" customClass="ChooseVideosViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2KT-lF-xSh"/>
                         <viewControllerLayoutGuide type="bottom" id="Gb3-sb-mo6"/>
@@ -194,10 +197,11 @@
                                 </state>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="KWR-kE-8Hz"/>
+                                    <action selector="continueButtonPressed:" destination="a23-2Z-jd0" eventType="touchUpInside" id="gOY-Cs-nga"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aca-ve-rpT">
-                                <rect key="frame" x="15" y="129" width="345" height="424"/>
+                                <rect key="frame" x="15" y="214" width="345" height="339"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lYL-wu-c0n">
                                     <size key="itemSize" width="110" height="75"/>
@@ -220,10 +224,13 @@
                                                         <constraint firstAttribute="width" constant="110" id="ql3-yP-rm8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-3v-Snk">
-                                                    <rect key="frame" x="77" y="3" width="30" height="34"/>
-                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="17"/>
-                                                    <state key="normal" title="X"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-3v-Snk">
+                                                    <rect key="frame" x="62" y="-7" width="55" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="8bJ-Xp-F9s"/>
+                                                        <constraint firstAttribute="width" constant="55" id="yYz-LQ-df1"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="delete"/>
                                                     <connections>
                                                         <action selector="deleteVideo:" destination="vOc-Q3-wMA" eventType="touchUpInside" id="1gK-ST-Afl"/>
                                                     </connections>
@@ -234,12 +241,20 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="5S6-LU-0Ju" firstAttribute="leading" secondItem="vOc-Q3-wMA" secondAttribute="leading" id="2SV-iO-3zu"/>
+                                            <constraint firstItem="1fQ-3v-Snk" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="topMargin" constant="-15" id="5kW-aZ-HgG"/>
                                             <constraint firstAttribute="trailing" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="3" id="8ke-Ff-gcd"/>
                                             <constraint firstAttribute="trailing" secondItem="5S6-LU-0Ju" secondAttribute="trailing" id="Bvl-lp-Rud"/>
                                             <constraint firstItem="5S6-LU-0Ju" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" id="U0i-k6-DMj"/>
                                             <constraint firstItem="1fQ-3v-Snk" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" constant="3" id="ZI9-8h-iqh"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="-15" id="s39-NF-LAB"/>
                                             <constraint firstAttribute="bottom" secondItem="5S6-LU-0Ju" secondAttribute="bottom" id="x3q-8f-3xO"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8ke-Ff-gcd"/>
+                                                <exclude reference="ZI9-8h-iqh"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="deleteButton" destination="1fQ-3v-Snk" id="urr-Zd-3P3"/>
                                             <outlet property="thumbnailView" destination="5S6-LU-0Ju" id="ZNS-ep-tBI"/>
@@ -252,7 +267,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-pF-hfE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="149" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YaP-73-ygL"/>
@@ -272,20 +287,46 @@
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="TWe-Da-s5v"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adding videos for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="enl-z3-emO">
+                                <rect key="frame" x="10" y="74" width="355" height="18"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steve Aoki @ World Cafe Live on May 1, 2016" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4jj-0z-Fgk">
+                                <rect key="frame" x="10" y="97" width="355" height="42"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aca-ve-rpT" firstAttribute="top" secondItem="ZVR-pF-hfE" secondAttribute="bottom" constant="15" id="0qX-at-pVx"/>
+                            <constraint firstItem="enl-z3-emO" firstAttribute="top" secondItem="2KT-lF-xSh" secondAttribute="bottom" constant="10" id="2Xk-DZ-au1"/>
                             <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="2KT-lF-xSh" secondAttribute="bottom" id="4oU-Vk-gWu"/>
                             <constraint firstAttribute="trailing" secondItem="aca-ve-rpT" secondAttribute="trailing" constant="15" id="Ehm-yF-kNb"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="enl-z3-emO" secondAttribute="bottom" constant="10" id="HbI-aC-sWX"/>
+                            <constraint firstAttribute="trailing" secondItem="4jj-0z-Fgk" secondAttribute="trailing" constant="10" id="Iip-xg-XY8"/>
                             <constraint firstItem="dK8-9K-Wy4" firstAttribute="top" secondItem="aca-ve-rpT" secondAttribute="bottom" constant="15" id="JBw-cB-DxL"/>
+                            <constraint firstItem="4jj-0z-Fgk" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="10" id="MLa-AM-KOE"/>
                             <constraint firstItem="dK8-9K-Wy4" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="QVL-wi-nFU"/>
+                            <constraint firstItem="enl-z3-emO" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="10" id="Tm8-65-z9M"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="4jj-0z-Fgk" secondAttribute="bottom" constant="10" id="UmE-Rd-DkQ"/>
+                            <constraint firstItem="4jj-0z-Fgk" firstAttribute="top" secondItem="enl-z3-emO" secondAttribute="bottom" constant="5" id="W09-wS-dSN"/>
+                            <constraint firstAttribute="trailing" secondItem="enl-z3-emO" secondAttribute="trailing" constant="10" id="YS3-1q-8yJ"/>
                             <constraint firstItem="ZVR-pF-hfE" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="bXP-ie-kPD"/>
                             <constraint firstItem="aca-ve-rpT" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="15" id="gQU-yx-dkC"/>
                             <constraint firstAttribute="trailing" secondItem="dK8-9K-Wy4" secondAttribute="trailing" id="tUI-y8-75M"/>
                             <constraint firstItem="Gb3-sb-mo6" firstAttribute="top" secondItem="dK8-9K-Wy4" secondAttribute="bottom" id="tqu-m2-vg9"/>
                             <constraint firstAttribute="trailing" secondItem="ZVR-pF-hfE" secondAttribute="trailing" id="vBi-35-hKU"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4oU-Vk-gWu"/>
+                                <exclude reference="HbI-aC-sWX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -445,6 +486,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete" width="100" height="100"/>
         <image name="left-arrow" width="33" height="33"/>
         <image name="navbtn-upload" width="22" height="22"/>
         <image name="right-arrow" width="33" height="33"/>

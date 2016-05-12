@@ -18,9 +18,11 @@ class VideoItem: UICollectionViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     
     weak var videoUrl: NSURL!
+    var deleteCallback: ((videoURL: NSURL) -> Void)!
     
-    func setup(videoUrl: NSURL) {
+    func setup(videoUrl: NSURL, deleteCallback: ((videoURL: NSURL) -> Void)) {
         self.videoUrl = videoUrl
+        self.deleteCallback = deleteCallback
         
 
         // Get the thumbnail for the video
@@ -40,15 +42,20 @@ class VideoItem: UICollectionViewCell {
         self.thumbnailView.layer.cornerRadius = 5.0
         self.thumbnailView.clipsToBounds = true
         self.thumbnailView.layer.borderColor = UIColor.jjCoralColor().CGColor
+        
+        // Also round the edges of the delete button
+        self.deleteButton.layer.cornerRadius = 5.0
+        self.deleteButton.clipsToBounds = true
 
      }
     
     @IBAction func deleteVideo(sender: UIButton?) {
         print("Delete: \(videoUrl)")
+        self.deleteCallback(videoURL: self.videoUrl)
     }
 }
 
-class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -66,10 +73,10 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
         super.viewDidLoad()
         
         // Setup the collection view flow styles
-//        let layout = KTCenterFlowLayout()
-//        layout.minimumInteritemSpacing = 5.0
-//        layout.minimumLineSpacing = 5.0
-//        self.collectionView.setCollectionViewLayout(layout, animated: true)
+        let layout = KTCenterFlowLayout()
+        layout.minimumInteritemSpacing = 15.0
+        layout.minimumLineSpacing = 15.0
+        self.collectionView.setCollectionViewLayout(layout, animated: true)
         
         // Do stuff here
         
@@ -92,11 +99,17 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
         return videosToUpload.count
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 110.0, height: 75.0)
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let videoUrl = self.videosToUpload[indexPath.row]
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("VideoItem", forIndexPath: indexPath) as! VideoItem
         
-        item.setup(videoUrl)
+        item.setup(videoUrl, deleteCallback: { (videoUrl: NSURL) in
+            self.removeVideo(videoUrl)
+        })
         
         return item
     }
@@ -167,7 +180,37 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
         if self.queue == 0 {
             showSuccessView()
 //            self.performSegueWithIdentifier("uploadVideo", sender: nil)
-            self.collectionView.reloadData()
+            self.updateUI()
+        }
+    }
+    
+    func removeVideo(videoUrl: NSURL) {
+        let index = self.videosToUpload.indexOf(videoUrl)
+        if let index = index {
+            self.videosToUpload.removeAtIndex(index)
+            self.updateUI()
+        }
+    }
+    
+    
+    /***************************************************************************
+     Continue Stuff
+     ***************************************************************************/
+    @IBAction func continueButtonPressed(sender: UIButton?) {
+        self.performSegueWithIdentifier("ToUploadVideos", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "ToUploadVideos") {
+            let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
+
+            uploadVideoViewController.selectedVenue = self.selectedVenue
+            uploadVideoViewController.selectedArtists = self.selectedArtists
+            uploadVideoViewController.selectedDate = self.selectedDate
+            uploadVideoViewController.videosToUpload = self.videosToUpload
+
+            //Clear video list to avoid conflicts
+//            self.videosToUpload = []
         }
     }
 }

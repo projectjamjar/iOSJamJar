@@ -354,8 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */,
-				AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */,
 				308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */,
+				AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */,
 			);
 			name = UploadVideo;
 			sourceTree = "<group>";
