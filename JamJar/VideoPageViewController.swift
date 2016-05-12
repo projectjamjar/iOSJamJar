@@ -15,7 +15,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     weak var video: Video!
     weak var concert: Concert!
-    var reasonsToFlag: [String]!
+    var reasonsToFlag: [String]! = ["Accuracy", "Inappropriate", "Quality","Report User"]
     
     //IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -62,13 +62,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "JamJarHeader")
         
-        // Set Report Reasons Data
-        self.reasonsToFlag = ["Accuracy", "Inappropriate", "Quality","Report User"];
-        
         self.suggestedTableView.reloadData()
         
         // Acknowledge the video was viewed here
-        self.recordView(self.video.id!)
+        self.updateViewCount(self.video.id!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,11 +75,11 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
-        removeOberservsInPlayer()
+        removeObserversInPlayer()
     }
     
     // Record a view
-    func recordView(videoId: Int!) {
+    func updateViewCount(videoId: Int!) {
         VideoService.watchingVideo(videoId)
     }
     
@@ -100,7 +97,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.tabBarController?.tabBar.hidden = false
     }
     
-    func removeOberservsInPlayer() {
+    func removeObserversInPlayer() {
         for controller in self.childViewControllers {
             if let child = controller as? JamJarAVPlayerViewController {
                 child.removeObservers()
@@ -130,59 +127,45 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.performSegueWithIdentifier("ToConcertPage", sender: nil)
     }
     
-    @IBAction func likePressed(sender: UIButton) {
-        if(video.userVote == true) {
-            VideoService.vote(video.id, vote: nil) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = nil
-                    self.updateLikeDislikeButtons()
-                }
-            }
-        } else {
-            VideoService.vote(video.id, vote: true) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = true
-                    self.updateLikeDislikeButtons()
+    func likeDislikeSet(vote: Bool?) {
+        //reset count
+        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
+        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
+        
+        VideoService.vote(video.id, vote: vote) { success, error in
+            if !success {
+                // Error - show the user
+                let errorTitle = "Video error!"
+                if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+            } else {
+                self.video.userVote = vote
+                self.updateLikeDislikeButtons()
+                
+                //increment like/dislike count appropriately
+                //TODO: refresh video for updated votes? What do we refresh? when do we refresh data?
+                if(vote == true) {
+                    self.likesCountLabel.text = String(Int(self.likesCountLabel.text!)! + 1)
+                } else if (vote == false) {
+                    self.dislikesCountLabel.text = String(Int(self.dislikesCountLabel.text!)! + 1)
                 }
             }
         }
     }
     
+    @IBAction func likePressed(sender: UIButton) {
+        if(video.userVote == true) {
+           self.likeDislikeSet(nil)
+        } else {
+            self.likeDislikeSet(true)
+        }
+    }
+    
     @IBAction func dislikePressed(sender: UIButton) {
         if(video.userVote == false) {
-            VideoService.vote(video.id, vote: nil) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = nil
-                    self.updateLikeDislikeButtons()
-                }
-            }
+            self.likeDislikeSet(nil)
         } else {
-            VideoService.vote(video.id, vote: false) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = false
-                    self.updateLikeDislikeButtons()
-                }
-            }
+            self.likeDislikeSet(false)
         }
     }
     

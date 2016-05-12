@@ -79,7 +79,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="43" height="15"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-ij-d5n">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-ij-d5n">
                                 <rect key="frame" x="299" y="342" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="A34-QQ-mh5"/>
@@ -111,7 +111,7 @@
                                     <action selector="dislikePressed:" destination="hQN-M5-cH1" eventType="touchUpInside" id="g1m-wk-7rg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIB-CF-pdI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIB-CF-pdI">
                                 <rect key="frame" x="244" y="342" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="dbF-C7-IIo"/>
@@ -143,7 +143,7 @@
                                     <action selector="likePressed:" destination="hQN-M5-cH1" eventType="touchUpInside" id="IDE-HD-4PD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-bN-Vue">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-bN-Vue">
                                 <rect key="frame" x="340" y="327" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Ias-79-oXS"/>

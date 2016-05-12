@@ -9,5 +9,5 @@
 protocol updateVideoDelegate: class {
     func updateVideo(video: Video)
     
-    func recordView(videoId: Int!)
+    func updateViewCount(videoId: Int!)
 }

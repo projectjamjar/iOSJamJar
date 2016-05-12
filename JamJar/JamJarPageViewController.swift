@@ -21,7 +21,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
     weak var jamjar: JamJarGraph!
     weak var concert: Concert!
     weak var video: Video!
-    var reasonsToFlag: [String]!
+    var reasonsToFlag: [String]! = ["Accuracy", "Inappropriate", "Quality","Report User"]
     
     // UI Element
     @IBOutlet weak var jamJarContainerView: UIView!
@@ -51,9 +51,6 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarCell", bundle: nil), forCellReuseIdentifier: "JamJarCell")
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forCellReuseIdentifier: "JamJarHeader")
         
-        // Set Report Reasons Data
-        self.reasonsToFlag = ["Accuracy", "Inappropriate", "Quality","Report User"];
-        
         self.suggestedTableView.reloadData()
     }
     
@@ -64,11 +61,11 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
     
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
-        removeOberservsInPlayer()
+        removeObserversInPlayer()
     }
     
     // Record a view
-    func recordView(videoId: Int!) {
+    func updateViewCount(videoId: Int!) {
         VideoService.watchingVideo(videoId)
     }
     
@@ -86,7 +83,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         self.tabBarController?.tabBar.hidden = false
     }
     
-    func removeOberservsInPlayer() {
+    func removeObserversInPlayer() {
         for controller in self.childViewControllers {
             if let child = controller as? StitchedJamJarAVPlayerViewController {
                 child.removeObservers()
@@ -94,6 +91,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         }
     }
     
+    // This is used to switch the active JamJar when "Suggested Content" has a selected element
     func changeJamJarInPlayer() {
         for controller in self.childViewControllers {
             if let child = controller as? StitchedJamJarAVPlayerViewController {
@@ -124,7 +122,6 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
         dateLabel.text = concert.date.string("MM-d-YYYY")
         likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
         dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
-        //updateLikeDislikeButtons()
     }
     
     func updateLikeDislikeButtons() {
@@ -275,7 +272,7 @@ class JamJarPageViewController: BaseViewController, updateVideoDelegate, UITable
             let videoPath = NSURL(string: (firstVideo?.hls_src)!)
             
             //record view of first video
-            recordView(firstVideo?.id!)
+            updateViewCount(firstVideo?.id!)
             
             embeddedVideoViewController.player = JamJarAVPlayer(URL: videoPath!, videoId: (firstVideo?.id)!)
             embeddedVideoViewController.currentVideo = firstVideo
