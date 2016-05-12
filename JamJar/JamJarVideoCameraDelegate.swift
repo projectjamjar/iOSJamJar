@@ -27,7 +27,7 @@ public class JamJarVideoCameraDelegate: DKImagePickerControllerDefaultUIDelegate
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .Camera
-        picker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        picker.mediaTypes = [kUTTypeMovie as String]
         
         return picker
     }

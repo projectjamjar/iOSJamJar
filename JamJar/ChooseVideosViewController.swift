@@ -58,12 +58,14 @@ class VideoItem: UICollectionViewCell {
 class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var concertTitleLabel: UILabel!
     
     //information about the concert that is sent to this controller
     var selectedArtists = [Artist]()
     var selectedVenue: VenueSearchResult!
-    var selectedDate: String!
+    var selectedDate: NSDate!
     
     // Videos that are selected in this controller
     var videosToUpload: [NSURL] = []
@@ -78,10 +80,32 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
         layout.minimumLineSpacing = 15.0
         self.collectionView.setCollectionViewLayout(layout, animated: true)
         
-        // Do stuff here
+        // Setup the title
+        let artistNamesList: [String] = self.selectedArtists.map { return $0.name }
+        let artistNamesString = artistNamesList.joinWithSeparator(", ")
+        let dateString = self.selectedDate.string(prettyDateFormat)
         
+        // Try to parse out the venue name from the string (google only gives us a long jawn)
+        let commaIndex = self.selectedVenue.name.characters.indexOf(",")
+        let concertString: String
+        if let commaIndex = commaIndex {
+            let venueName = self.selectedVenue.name.substringToIndex(commaIndex)
+            concertString = "\(artistNamesString) @ \(venueName) on \(dateString)"
+        }
+        else {
+            concertString = "\(artistNamesString) on \(dateString)"
+        }
+        self.concertTitleLabel.text = concertString
+        
+        // Add the camera jawn
+        let cameraImage = UIImage(named: "camera")!.imageWithRenderingMode(.AlwaysTemplate)
+        self.chooseButton.setImage(cameraImage, forState: .Normal)
+        self.chooseButton.tintColor = UIColor.whiteColor()
+        
+        // Update the UI
         self.updateUI()
         
+        // Show the video piker when the view gets loaded
         self.showVideoPicker()
     }
     
@@ -89,7 +113,25 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
         // Enable/disable the continue button
         self.continueButton.enabled = videosToUpload.count > 0
         
+        // If there are no videos, let the user know
+        if self.videosToUpload.count == 0 {
+            self.displayBackgroundMessage("Choose some videos to get started")
+        }
+        else {
+            self.collectionView.backgroundView = nil
+        }
+        
         self.collectionView.reloadData()
+    }
+    
+    func displayBackgroundMessage(message: String) {
+        let backgroundLabel = MuliLabel()
+        backgroundLabel.setup(message,
+                              size: 24.0,
+                              alignment: .Center,
+                              padding: 10.0,
+                              color: UIColor.lightGrayColor())
+        self.collectionView.backgroundView = backgroundLabel
     }
     
     /***************************************************************************
@@ -197,7 +239,13 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
      Continue Stuff
      ***************************************************************************/
     @IBAction func continueButtonPressed(sender: UIButton?) {
-        self.performSegueWithIdentifier("ToUploadVideos", sender: nil)
+        if self.videosToUpload.count > 0 {
+            self.performSegueWithIdentifier("ToUploadVideos", sender: nil)
+        }
+        else {
+            // ETHAN: Make sure Mark put an error message here before merging
+            print("Nawww")
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

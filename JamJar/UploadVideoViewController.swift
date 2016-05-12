@@ -16,7 +16,7 @@ class UploadVideoViewController: BaseViewController {
     //information about the concert that is sent to this controller
     var selectedArtists = [Artist]()
     var selectedVenue: VenueSearchResult!
-    var selectedDate: String!
+    var selectedDate: NSDate!
     
     //Information to maintain information on all videos
     var currentVideoSelected = 0
@@ -68,6 +68,7 @@ class UploadVideoViewController: BaseViewController {
             self.rightButton.hidden = true
             self.rightButton.enabled = false
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,7 +127,8 @@ class UploadVideoViewController: BaseViewController {
     
     @IBAction func finishAndUploadButtonPressed(sender: UIButton) {
         // Post Concert
-        ConcertService.create(self.selectedVenue.place_id, date: self.selectedDate) {
+        let prettyDate = self.selectedDate.string(shortDateFormat)
+        ConcertService.create(self.selectedVenue.place_id, date: prettyDate) {
             (success: Bool, concert: Concert?, message: String?) in
             if !success {
                 // Error - show the user and clear previous search info

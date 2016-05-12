@@ -21,13 +21,13 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     var selectedVenue: VenueSearchResult!
     var videosToUpload: [NSURL] = []
     // Seperate from textField to save the correct date format
-    var savedDate: String!
+    var selectedDate: NSDate!
     // queue is used to keep track of assets being saved so that segue can be called after the video URLs have been properly stored in videosToUpload
     var queue: Int = 0
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
-    
+        
     @IBOutlet var artistsAutoCompleteTable: UITableView!
     @IBOutlet var artistsAutoCompleteTableHeight: NSLayoutConstraint!
     @IBOutlet var venuesAutoCompleteTable: UITableView!
@@ -87,6 +87,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         datePickerView.datePickerMode = UIDatePickerMode.Date
         datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
+        
     }
     
     func addArtist(artist: Artist) {
@@ -167,16 +168,10 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     func dataPickerChanged(sender:UIDatePicker) {
-        let dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateFormat = "MMMM d, yyyy"
-        
-        let strDate = dateFormatter.stringFromDate(sender.date)
-        
-        dateTextField.text = strDate
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.savedDate = dateFormatter.stringFromDate(sender.date)
+        // Make the date text field human-readable
+        dateTextField.text = sender.date.string(prettyDateFormat)
+        // Save the selected date
+        self.selectedDate = sender.date
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
@@ -252,7 +247,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func clearViewForm() {
         self.selectedArtists = []
         self.selectedVenue = nil
-        self.savedDate = nil
+        self.selectedDate = nil
         self.queue = 0
         self.artistsTextField.text = ""
         self.venueTextField.text = ""
@@ -275,7 +270,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
 //            
 //            uploadVideoViewController.selectedVenue = self.selectedVenue
 //            uploadVideoViewController.selectedArtists = self.selectedArtists
-//            uploadVideoViewController.selectedDate = self.savedDate
+//            uploadVideoViewController.selectedDate = self.selectedDate
 //            uploadVideoViewController.videosToUpload = self.videosToUpload
 //            
 //            //Clear video list to avoid conflicts
@@ -286,7 +281,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             
             uploadVideoViewController.selectedVenue = self.selectedVenue
             uploadVideoViewController.selectedArtists = self.selectedArtists
-            uploadVideoViewController.selectedDate = self.savedDate
+            uploadVideoViewController.selectedDate = self.selectedDate
 //            uploadVideoViewController.videosToUpload = self.videosToUpload
             
             //Clear video list to avoid conflicts

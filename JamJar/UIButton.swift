@@ -24,4 +24,9 @@ extension UIButton {
             self.backgroundColor = nil
         }
     }
+    
+    func roundCorners(rounding: CGFloat) {
+        self.layer.cornerRadius = rounding
+        self.clipsToBounds = true
+    }
 }

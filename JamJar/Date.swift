@@ -8,6 +8,7 @@
 
 let standardDateFormat = "yyyy-MM-dd HH:mm:ss"
 let formattedDateFormat = "MMMM d hh:mm a"
+let prettyDateFormat = "MMMM d, yyyy"
 let shortDateFormat = "yyyy-MM-dd"
 
 extension NSDate {

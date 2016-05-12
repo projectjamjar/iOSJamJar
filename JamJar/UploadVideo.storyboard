@@ -54,8 +54,8 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK">
-                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.37254901960784315" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Q8n-pW-Z29"/>
@@ -114,14 +114,14 @@
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gOg-pZ-ukK" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" id="0nC-hO-kIB"/>
-                            <constraint firstAttribute="trailing" secondItem="gOg-pZ-ukK" secondAttribute="trailing" id="1z7-Bp-M7d"/>
+                            <constraint firstItem="gOg-pZ-ukK" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" constant="15" id="0nC-hO-kIB"/>
+                            <constraint firstAttribute="trailing" secondItem="gOg-pZ-ukK" secondAttribute="trailing" constant="15" id="1z7-Bp-M7d"/>
                             <constraint firstItem="v4F-fM-cij" firstAttribute="centerX" secondItem="nUF-Fg-yph" secondAttribute="centerX" id="2Dr-kx-BQT"/>
                             <constraint firstItem="q9p-dH-gZz" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="4Wf-FU-jmm"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="5kn-6R-4ff"/>
                             <constraint firstItem="I66-hi-QZq" firstAttribute="top" secondItem="A8E-ng-9Tl" secondAttribute="bottom" constant="5" id="8TC-6m-Jny"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="q9p-dH-gZz" secondAttribute="bottom" constant="10" id="A70-4P-CHY"/>
-                            <constraint firstItem="UP7-am-aUb" firstAttribute="top" secondItem="gOg-pZ-ukK" secondAttribute="bottom" id="Bkr-6k-WGc"/>
+                            <constraint firstItem="UP7-am-aUb" firstAttribute="top" secondItem="gOg-pZ-ukK" secondAttribute="bottom" constant="15" id="Bkr-6k-WGc"/>
                             <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="03Y-2b-oAI" secondAttribute="bottom" constant="5" id="E4V-tc-NUP"/>
                             <constraint firstItem="03Y-2b-oAI" firstAttribute="width" secondItem="I66-hi-QZq" secondAttribute="width" id="EGx-nb-ooP"/>
                             <constraint firstItem="03Y-2b-oAI" firstAttribute="leading" secondItem="I66-hi-QZq" secondAttribute="leading" id="FfG-hM-xql"/>
@@ -184,8 +184,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK8-9K-Wy4">
-                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK8-9K-Wy4" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="KOd-zE-TnA"/>
@@ -201,7 +201,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aca-ve-rpT">
-                                <rect key="frame" x="15" y="214" width="345" height="339"/>
+                                <rect key="frame" x="15" y="214" width="345" height="324"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lYL-wu-c0n">
                                     <size key="itemSize" width="110" height="75"/>
@@ -266,15 +266,16 @@
                                     <outlet property="delegate" destination="a23-2Z-jd0" id="w0c-FO-naP"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-pF-hfE">
-                                <rect key="frame" x="0.0" y="149" width="375" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-pF-hfE" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="88" y="149" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YaP-73-ygL"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="k6g-Ct-laL"/>
+                                    <constraint firstAttribute="width" constant="200" id="qEC-9T-Egz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
-                                <state key="normal" title="Choose or Take More Videos">
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="18"/>
+                                <state key="normal" title="  Add Videos">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -310,27 +311,32 @@
                             <constraint firstAttribute="trailing" secondItem="4jj-0z-Fgk" secondAttribute="trailing" constant="10" id="Iip-xg-XY8"/>
                             <constraint firstItem="dK8-9K-Wy4" firstAttribute="top" secondItem="aca-ve-rpT" secondAttribute="bottom" constant="15" id="JBw-cB-DxL"/>
                             <constraint firstItem="4jj-0z-Fgk" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="10" id="MLa-AM-KOE"/>
-                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="QVL-wi-nFU"/>
+                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="15" id="QVL-wi-nFU"/>
                             <constraint firstItem="enl-z3-emO" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="10" id="Tm8-65-z9M"/>
                             <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="4jj-0z-Fgk" secondAttribute="bottom" constant="10" id="UmE-Rd-DkQ"/>
                             <constraint firstItem="4jj-0z-Fgk" firstAttribute="top" secondItem="enl-z3-emO" secondAttribute="bottom" constant="5" id="W09-wS-dSN"/>
                             <constraint firstAttribute="trailing" secondItem="enl-z3-emO" secondAttribute="trailing" constant="10" id="YS3-1q-8yJ"/>
-                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" id="bXP-ie-kPD"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="centerX" secondItem="uoP-JI-4br" secondAttribute="centerX" id="Z4w-zM-s2f"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="25" id="bXP-ie-kPD"/>
                             <constraint firstItem="aca-ve-rpT" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="15" id="gQU-yx-dkC"/>
-                            <constraint firstAttribute="trailing" secondItem="dK8-9K-Wy4" secondAttribute="trailing" id="tUI-y8-75M"/>
-                            <constraint firstItem="Gb3-sb-mo6" firstAttribute="top" secondItem="dK8-9K-Wy4" secondAttribute="bottom" id="tqu-m2-vg9"/>
-                            <constraint firstAttribute="trailing" secondItem="ZVR-pF-hfE" secondAttribute="trailing" id="vBi-35-hKU"/>
+                            <constraint firstAttribute="trailing" secondItem="dK8-9K-Wy4" secondAttribute="trailing" constant="15" id="tUI-y8-75M"/>
+                            <constraint firstItem="Gb3-sb-mo6" firstAttribute="top" secondItem="dK8-9K-Wy4" secondAttribute="bottom" constant="15" id="tqu-m2-vg9"/>
+                            <constraint firstAttribute="trailing" secondItem="ZVR-pF-hfE" secondAttribute="trailing" constant="25" id="vBi-35-hKU"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="4oU-Vk-gWu"/>
                                 <exclude reference="HbI-aC-sWX"/>
+                                <exclude reference="bXP-ie-kPD"/>
+                                <exclude reference="vBi-35-hKU"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="chooseButton" destination="ZVR-pF-hfE" id="bKD-0t-Lpg"/>
                         <outlet property="collectionView" destination="aca-ve-rpT" id="Z6Y-Tj-jwU"/>
+                        <outlet property="concertTitleLabel" destination="4jj-0z-Fgk" id="0KJ-4i-U7R"/>
                         <outlet property="continueButton" destination="dK8-9K-Wy4" id="9Tr-rT-5Qt"/>
                         <segue destination="XPg-sG-R38" kind="show" identifier="ToUploadVideos" id="Rxm-77-3Tb"/>
                     </connections>
@@ -377,8 +383,8 @@
                                     <action selector="rightButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="BGv-yO-MIP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5">
-                                <rect key="frame" x="-4" y="568" width="383" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YHc-qN-dpx"/>
@@ -414,6 +420,8 @@
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1rG-VK-xJ4" firstAttribute="centerY" secondItem="wwO-03-K4Q" secondAttribute="centerY" id="0QY-hw-296"/>
+                            <constraint firstAttribute="trailing" secondItem="Fbx-Db-MD5" secondAttribute="trailing" constant="15" id="3w1-Tr-fAw"/>
+                            <constraint firstItem="o0A-Eg-1cd" firstAttribute="top" secondItem="Fbx-Db-MD5" secondAttribute="bottom" constant="15" id="5S8-Nz-srs"/>
                             <constraint firstItem="Z6j-50-d1h" firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="width" id="BTU-pe-pwt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tBj-DW-nVa" secondAttribute="trailing" id="E4D-fE-AdM"/>
                             <constraint firstItem="tBj-DW-nVa" firstAttribute="leading" secondItem="wwO-03-K4Q" secondAttribute="trailing" constant="15" id="Edn-9v-8O2"/>
@@ -429,6 +437,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="VBu-fR-JCB" secondAttribute="trailing" constant="48" id="rQW-Ze-mnk"/>
                             <constraint firstItem="Z6j-50-d1h" firstAttribute="top" secondItem="wwO-03-K4Q" secondAttribute="bottom" constant="20" id="sRV-Yf-Zl2"/>
                             <constraint firstItem="VBu-fR-JCB" firstAttribute="top" secondItem="Z6j-50-d1h" secondAttribute="bottom" constant="20" id="tzS-BO-xAD"/>
+                            <constraint firstItem="Fbx-Db-MD5" firstAttribute="leading" secondItem="okr-e8-1IL" secondAttribute="leading" constant="15" id="uZy-Lc-1ci"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z6j-50-d1h" secondAttribute="trailing" constant="48" id="uoy-Oj-Vx0"/>
                             <constraint firstItem="Z6j-50-d1h" firstAttribute="top" secondItem="wwO-03-K4Q" secondAttribute="bottom" constant="8" id="xvJ-Rw-XLw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1rG-VK-xJ4" secondAttribute="leading" id="yFg-So-j7l"/>
@@ -436,6 +445,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="xvJ-Rw-XLw"/>
+                                <exclude reference="PVb-bl-cOE"/>
+                                <exclude reference="ot3-DD-1Gg"/>
+                                <exclude reference="LUV-E6-w1B"/>
                             </mask>
                         </variation>
                     </view>
