@@ -55,11 +55,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             }
         }
         artistsTextField.onSelect = {[weak self] text, indexpath in
-            let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
-            
-            self!.addArtist(selectedArtist)
-            
-            self!.artistsTextField.text = nil
+            if let selectedArtist = self!.artistsTextField.autoCompleteAttributes?[text] as? Artist {
+                self!.addArtist(selectedArtist)
+                
+                self!.artistsTextField.text = nil
+            }
         }
         
         //Define attributes for venueTextField

@@ -110,9 +110,6 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
     }
     
     func updateUI() {
-        // Enable/disable the continue button
-        self.continueButton.enabled = videosToUpload.count > 0
-        
         // If there are no videos, let the user know
         if self.videosToUpload.count == 0 {
             self.displayBackgroundMessage("Choose some videos to get started")
@@ -181,9 +178,8 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
         // Action for DKImagePickerController after videos were selected
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
 
-            // Don't let the user move on until they have selected videos
+            // Don't do things if no videos were selected
             if(assets.count == 0) {
-                SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
                 return
             }
 
@@ -193,22 +189,38 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
             // Store all of the URLs for the selected videos
             for asset in assets {
                 asset.fetchAVAsset(nil, completeBlock: { info in
-                    let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info.AVAsset!.URL.lastPathComponent!
+                    let filename = info.AVAsset!.URL.lastPathComponent!
+                    
+                    // Make sure the file hasn't already been chosen
+                    // (right now we just check the filename)
+                    let alreadyAdded = self.videosToUpload.filter {
+                        return $0.lastPathComponent == filename
+                    }.first != nil
+                    
+                    if !alreadyAdded {
+                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + filename
 
-                    PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
-                        dispatch_async(dispatch_get_main_queue(), {
-                            let asset = asset as? AVURLAsset
-                            if let data = NSData(contentsOfURL: asset!.URL) {
-                                data.writeToFile(targetVideoURL, atomically: true)
-                                // Saved URL is stored for future use
-                                self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
-                                self.callback()
-                            } else {
-                                print("Error: Video could not be processed")
-                                showErrorView()
-                            }
+                        PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let asset = asset as? AVURLAsset
+                                if let data = NSData(contentsOfURL: asset!.URL) {
+                                    data.writeToFile(targetVideoURL, atomically: true)
+                                    // Saved URL is stored for future use
+                                    self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
+                                    self.callback()
+                                } else {
+                                    print("Error: Video could not be processed")
+                                    showErrorView()
+                                }
+                            })
                         })
-                    })
+                    }
+                    else {
+                        // Rejoin the main thread and callback
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.callback()
+                        })
+                    }
                 })
             }
         }
@@ -243,8 +255,8 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
             self.performSegueWithIdentifier("ToUploadVideos", sender: nil)
         }
         else {
-            // ETHAN: Make sure Mark put an error message here before merging
-            print("Nawww")
+            SCLAlertView().showError("No Videos Selected!", subTitle: "Please select some videos before proceeding", closeButtonTitle: "Got it")
+            return
         }
     }
     
