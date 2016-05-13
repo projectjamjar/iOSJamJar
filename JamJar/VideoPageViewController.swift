@@ -15,7 +15,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     weak var video: Video!
     weak var concert: Concert!
-    var reasonsToFlag: [String]!
+    var reasonsToFlag: [String]! = ["Accuracy", "Inappropriate", "Quality","Report User"]
     
     //IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -33,9 +33,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
     
-    //Variable to store video frame
-    var videoContainerFrameInPortrait: CGRect!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,35 +43,15 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
             self.navigationController?.popViewControllerAnimated(false)
         }
         
-        //Save the potrait video frame
-        videoContainerFrameInPortrait = self.videoContainerView.frame
-        
         //Add action for concert tapped
         let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
         self.concertInfoView.addGestureRecognizer(concertTap)
-        
-        //Set up UI Elements
-        titleLabel.text = video.name
-        uploaderLabel.text = video.user.username
-        viewCountLabel.text = String(video.views) + " Views"
-        artistsLabel.text = video.getArtistsString()
-        venueLabel.text = concert.venue.name
-        dateLabel.text = concert.date.string("MM-d-YYYY")
-        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
-        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
-        updateLikeDislikeButtons()
         
         // Register the reusable video cell
         self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "JamJarHeader")
         
-        // Set Report Reasons Data
-        self.reasonsToFlag = ["Accuracy", "Inappropriate", "Quality","Report User"];
-        
         self.suggestedTableView.reloadData()
-        
-        // Acknowledge the video was viewed here
-        self.recordView(self.video.id!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,11 +61,12 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
-        removeOberservsInPlayer()
+        print("Deinit Video/JamJar Page")
+        removeObserversInPlayer()
     }
     
     // Record a view
-    func recordView(videoId: Int!) {
+    func updateViewCount(videoId: Int!) {
         VideoService.watchingVideo(videoId)
     }
     
@@ -97,10 +75,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         //hide navigation bar and tool bar
         self.navigationController?.navigationBar.hidden = true
         self.tabBarController?.tabBar.hidden = true
-        
-        UIView.animateWithDuration(0.25) {
-            self.videoContainerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        }
     }
     
     //Worst function name ever
@@ -108,15 +82,9 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         //show navigation bar and tool bar
         self.navigationController?.navigationBar.hidden = false
         self.tabBarController?.tabBar.hidden = false
-        
-        UIView.animateWithDuration(0.25) {
-            self.videoContainerView.frame = self.videoContainerFrameInPortrait
-        }
-        
-        self.view.layoutIfNeeded()
     }
     
-    func removeOberservsInPlayer() {
+    func removeObserversInPlayer() {
         for controller in self.childViewControllers {
             if let child = controller as? JamJarAVPlayerViewController {
                 child.removeObservers()
@@ -128,11 +96,29 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         for controller in self.childViewControllers {
             if let child = controller as? JamJarAVPlayerViewController {
                 child.removeObservers()
+                
+                //update UI
+                self.updateVideo(self.video)
+                
                 let videoPath = NSURL(string: self.video.hls_src)
                 child.player = AVPlayer(URL: videoPath!)
                 child.viewDidLoad()
             }
         }
+    }
+    
+    //Update video the UI elements
+    func updateVideo(video: Video) {
+        self.video = video
+        titleLabel.text = video.name
+        uploaderLabel.text = video.user.username
+        viewCountLabel.text = String(video.views) + " Views"
+        artistsLabel.text = video.getArtistsString()
+        venueLabel.text = concert.venue.name
+        dateLabel.text = concert.date.string("MM-d-YYYY")
+        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
+        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
+        self.updateLikeDislikeButtons()
     }
     
     func updateLikeDislikeButtons() {
@@ -146,59 +132,45 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.performSegueWithIdentifier("ToConcertPage", sender: nil)
     }
     
-    @IBAction func likePressed(sender: UIButton) {
-        if(video.userVote == true) {
-            VideoService.vote(video.id, vote: nil) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = nil
-                    self.updateLikeDislikeButtons()
-                }
-            }
-        } else {
-            VideoService.vote(video.id, vote: true) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = true
-                    self.updateLikeDislikeButtons()
+    func likeDislikeSet(vote: Bool?) {
+        //reset count
+        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
+        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
+        
+        VideoService.vote(video.id, vote: vote) { success, error in
+            if !success {
+                // Error - show the user
+                let errorTitle = "Video error!"
+                if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
+                else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
+            } else {
+                self.video.userVote = vote
+                self.updateLikeDislikeButtons()
+                
+                //increment like/dislike count appropriately
+                //TODO: refresh video for updated votes? What do we refresh? when do we refresh data?
+                if(vote == true) {
+                    self.likesCountLabel.text = String(Int(self.likesCountLabel.text!)! + 1)
+                } else if (vote == false) {
+                    self.dislikesCountLabel.text = String(Int(self.dislikesCountLabel.text!)! + 1)
                 }
             }
         }
     }
     
+    @IBAction func likePressed(sender: UIButton) {
+        if(video.userVote == true) {
+           self.likeDislikeSet(nil)
+        } else {
+            self.likeDislikeSet(true)
+        }
+    }
+    
     @IBAction func dislikePressed(sender: UIButton) {
         if(video.userVote == false) {
-            VideoService.vote(video.id, vote: nil) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = nil
-                    self.updateLikeDislikeButtons()
-                }
-            }
+            self.likeDislikeSet(nil)
         } else {
-            VideoService.vote(video.id, vote: false) { success, error in
-                if !success {
-                    // Error - show the user
-                    let errorTitle = "Video error!"
-                    if let error = error { SCLAlertView().showError(errorTitle, subTitle: error, closeButtonTitle: "Got it") }
-                    else { SCLAlertView().showError(errorTitle, subTitle: "", closeButtonTitle: "Got it") }
-                } else {
-                    self.video.userVote = false
-                    self.updateLikeDislikeButtons()
-                }
-            }
+            self.likeDislikeSet(false)
         }
     }
     
@@ -274,7 +246,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
             unowned let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
-            print(self.video.hls_src)
+            
+            //define video being played
+            self.updateVideo(self.video)
+            self.updateViewCount(self.video.id)
             
             let videoPath = NSURL(string: self.video.hls_src)
             
