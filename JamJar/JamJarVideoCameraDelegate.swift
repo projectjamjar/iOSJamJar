@@ -28,6 +28,11 @@ public class JamJarVideoCameraDelegate: DKImagePickerControllerDefaultUIDelegate
         picker.delegate = self
         picker.sourceType = .Camera
         picker.mediaTypes = [kUTTypeMovie as String]
+        picker.allowsEditing = true
+        picker.cameraCaptureMode = .Video
+        picker.cameraFlashMode = .Off
+        picker.showsCameraControls = true
+        picker.videoQuality = .TypeMedium
         
         return picker
     }

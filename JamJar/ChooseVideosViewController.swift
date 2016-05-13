@@ -250,6 +250,11 @@ class ChooseVideosViewController: BaseViewController, UICollectionViewDataSource
     /***************************************************************************
      Continue Stuff
      ***************************************************************************/
+    func clearVideos() {
+        self.videosToUpload = [NSURL]()
+        self.updateUI()
+    }
+    
     @IBAction func continueButtonPressed(sender: UIButton?) {
         if self.videosToUpload.count > 0 {
             self.performSegueWithIdentifier("ToUploadVideos", sender: nil)

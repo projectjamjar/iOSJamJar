@@ -59,8 +59,12 @@ class UploadVideoViewController: BaseViewController {
         self.publicPrivateSegmentedControl.layer.cornerRadius = 5.0;
         
         //set default information for namesOfVideos and publicPrivateStatusOfVideos
-        self.namesOfVideos = [String](count:self.videosToUpload.count, repeatedValue: "")
+//        self.namesOfVideos = [String](count:self.videosToUpload.count, repeatedValue: "")
+        self.namesOfVideos = self.videosToUpload.map { return $0.lastPathComponent! }
         self.publicPrivateStatusOfVideos = [Int](count:self.videosToUpload.count, repeatedValue: 0)
+        
+        // Set the initial Video Name text field
+        self.videoNameTextField.text = self.namesOfVideos[0]
         
         if(self.videosToUpload.count < 2) {
             self.leftButton.hidden = true
@@ -195,11 +199,11 @@ class UploadVideoViewController: BaseViewController {
     
     //reset view
     func resetUploadControllers() {
-//        let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
-//        
-//        concertViewController.clearViewForm()
-//        
-//        navigationController?.popViewControllerAnimated(true)
+        let chooseViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! ChooseVideosViewController
+        
+        chooseViewController.clearVideos()
+        
+        navigationController?.popViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
