@@ -47,25 +47,11 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
         self.concertInfoView.addGestureRecognizer(concertTap)
         
-        //Set up UI Elements
-        titleLabel.text = video.name
-        uploaderLabel.text = video.user.username
-        viewCountLabel.text = String(video.views) + " Views"
-        artistsLabel.text = video.getArtistsString()
-        venueLabel.text = concert.venue.name
-        dateLabel.text = concert.date.string("MM-d-YYYY")
-        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
-        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
-        updateLikeDislikeButtons()
-        
         // Register the reusable video cell
         self.suggestedTableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         self.suggestedTableView.registerNib(UINib(nibName: "JamJarHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "JamJarHeader")
         
         self.suggestedTableView.reloadData()
-        
-        // Acknowledge the video was viewed here
-        self.updateViewCount(self.video.id!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,6 +61,7 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     
     deinit {
         //When the video page is dismissed, remove observers from the AVPlayerController
+        print("Deinit Video/JamJar Page")
         removeObserversInPlayer()
     }
     
@@ -109,11 +96,29 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         for controller in self.childViewControllers {
             if let child = controller as? JamJarAVPlayerViewController {
                 child.removeObservers()
+                
+                //update UI
+                self.updateVideo(self.video)
+                
                 let videoPath = NSURL(string: self.video.hls_src)
                 child.player = AVPlayer(URL: videoPath!)
                 child.viewDidLoad()
             }
         }
+    }
+    
+    //Update video the UI elements
+    func updateVideo(video: Video) {
+        self.video = video
+        titleLabel.text = video.name
+        uploaderLabel.text = video.user.username
+        viewCountLabel.text = String(video.views) + " Views"
+        artistsLabel.text = video.getArtistsString()
+        venueLabel.text = concert.venue.name
+        dateLabel.text = concert.date.string("MM-d-YYYY")
+        likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
+        dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
+        self.updateLikeDislikeButtons()
     }
     
     func updateLikeDislikeButtons() {
@@ -241,7 +246,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "playVideo") {
             unowned let embeddedVideoViewController = segue.destinationViewController as! JamJarAVPlayerViewController
-            print(self.video.hls_src)
+            
+            //define video being played
+            self.updateVideo(self.video)
+            self.updateViewCount(self.video.id)
             
             let videoPath = NSURL(string: self.video.hls_src)
             
