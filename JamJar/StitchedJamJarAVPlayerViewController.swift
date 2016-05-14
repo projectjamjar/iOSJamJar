@@ -70,9 +70,9 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     // Rewind Button Button
     func createRewindButton() {
         self.rewindButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
-        rewindButton.frame = CGRectMake(10, 0, 30, 30)
+        rewindButton.frame = CGRectMake(10, 0, uiElementSize, uiElementSize)
         rewindButton.tintColor = UIColor.whiteColor()
-        rewindButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.Rewind), forState: .Normal)
+        rewindButton.setImage(UIImage(named: "ic_fast_rewind"), forState: .Normal)
         rewindButton.addTarget(self, action: #selector(StitchedJamJarAVPlayerViewController.rewindButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(rewindButton)
@@ -81,9 +81,9 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     // Fast Forward Button
     func createFastForwardButton() {
         self.fastFowardButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
-        fastFowardButton.frame = CGRectMake(70, 0, 30, 30)
+        fastFowardButton.frame = CGRectMake(10 + ((10 + uiElementSize) * 2), 0, uiElementSize, uiElementSize)
         fastFowardButton.tintColor = UIColor.whiteColor()
-        fastFowardButton.setImage(self.imageFromSystemBarButton(UIBarButtonSystemItem.FastForward), forState: .Normal)
+        fastFowardButton.setImage(UIImage(named: "ic_fast_forward"), forState: .Normal)
         fastFowardButton.addTarget(self, action: #selector(StitchedJamJarAVPlayerViewController.fastForwardButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(fastFowardButton)
