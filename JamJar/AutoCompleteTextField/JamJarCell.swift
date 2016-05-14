@@ -11,27 +11,15 @@ import UIKit
 class JamJarCell: UITableViewCell {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var jamjarTitleLabel: UILabel!
-    @IBOutlet weak var viewsLabel: UILabel!
-    @IBOutlet weak var contributorsLabel: UILabel!
-    @IBOutlet weak var lengthTimeLabel: UILabel!
+    @IBOutlet weak var videoCountLabel: UILabel!
     
     var jamjar: JamJarGraph!
     
     func setup(jamjar: JamJarGraph, startVideo: Video) {
         self.jamjar = jamjar
         
-        // Assign JamJar title
-        jamjarTitleLabel.text = "JamJar Title"
-        
-        // Assign view count
-        viewsLabel.text = "\(123) views"
-        
-        // Assign contributor count
-        contributorsLabel.text = "\(jamjar.count) contributors"
-        
-        // Assign length of time
-        lengthTimeLabel.text = "123 Minutes"
+        // Assign Video Count
+        videoCountLabel.text = String((jamjar.nodes?.count)!) + " Videos"
         
         // Set the thumbnail to the first video with the target thumbnail size
         if let thumbImage = startVideo.thumbnailForSize(256) {

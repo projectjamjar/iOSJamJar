@@ -7,11 +7,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Muli-Italic.ttf">
-            <string>Muli-Italic</string>
-            <string>Muli-Italic</string>
-            <string>Muli-Italic</string>
-        </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
             <string>Muli</string>
         </mutableArray>
@@ -26,30 +21,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="446" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rrg-Rv-gcp">
-                        <rect key="frame" x="130" y="10" width="95" height="86"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rrg-Rv-gcp">
+                        <rect key="frame" x="130" y="10" width="66" height="86"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="JamJar Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-fn-oT3">
-                                <rect key="frame" x="0.0" y="0.0" width="95" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="# Videos" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-fn-oT3">
+                                <rect key="frame" x="0.0" y="0.0" width="66" height="86"/>
                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="# Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-tP-h5d">
-                                <rect key="frame" x="0.0" y="31" width="95" height="19"/>
-                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="# Contributors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3i3-fT-cQZ">
-                                <rect key="frame" x="0.0" y="50" width="95" height="18"/>
-                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Length Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-k5-zSL">
-                                <rect key="frame" x="0.0" y="68" width="95" height="18"/>
-                                <fontDescription key="fontDescription" name="Muli-Italic" family="Muli" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -89,11 +66,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="contributorsLabel" destination="3i3-fT-cQZ" id="DEB-gZ-TMC"/>
-                <outlet property="jamjarTitleLabel" destination="1bG-fn-oT3" id="WV0-cF-dhg"/>
-                <outlet property="lengthTimeLabel" destination="U2p-k5-zSL" id="uS8-7Y-A9O"/>
                 <outlet property="thumbnailImageView" destination="Fcu-YJ-tuh" id="E3a-ms-iRA"/>
-                <outlet property="viewsLabel" destination="2Mt-tP-h5d" id="3PL-bK-tPd"/>
+                <outlet property="videoCountLabel" destination="1bG-fn-oT3" id="UA2-5K-eJD"/>
             </connections>
             <point key="canvasLocation" x="307" y="-44.5"/>
         </tableViewCell>
