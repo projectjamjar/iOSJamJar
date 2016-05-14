@@ -26,6 +26,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var videos: [Video]!
     var overlappingVideos: [Video]! = [Video]()
     var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
+    let avPlayerListMax = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +109,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     override func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
         super.updateTimeLabel(elapsedTime, duration: duration)
         
-        //TODO: find overlaps
+        // Find overlaps
         let edges = jamjar.nodes![String(self.currentVideo.id!)]
         let storedVideoIds = self.overlappingVideos.map { $0.id }
         for edge in edges! {
@@ -117,8 +118,10 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 // Make sure this offset and video length is larger than the elapsed time
                 if(elapsedTime < (Double(overlapVideo.length) + edge.offset)) {
                     self.overlappingVideos.append(overlapVideo)
-                    //TODO: restrict AVPlayer adding if there are too many
-                    self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: overlapVideo.hls_src)!, videoId: overlapVideo.id!))
+                    // restrict AVPlayer adding if there are too many
+                    if(self.storedAVPlayers.count < avPlayerListMax) {
+                        self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: overlapVideo.hls_src)!, videoId: overlapVideo.id!))
+                    }
                     
                     // Record view to video
                     self.jamjarDelegate?.updateViewCount(overlapVideo.id!)
@@ -127,7 +130,12 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 // Remove video from appropriate lists
                 self.overlappingVideos = self.overlappingVideos.filter() { $0.id! != overlapVideo.id! } // There may be a better way to remove element from array
                 self.storedAVPlayers = self.storedAVPlayers.filter() { $0.videoId! != overlapVideo.id! }
-                // TODO: if AVPlayer list was full, and overlapping video list is greater than the AVPlayer list, replace removed AVPlayer
+                // If we removed a video and a player, and the video list is larger than the avplayer list, add next video to the AVPlayer list
+                if(self.overlappingVideos.count > self.storedAVPlayers.count) {
+                    // New video to be added
+                    let newVideoToPlayer = self.overlappingVideos[self.storedAVPlayers.count]
+                    self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: newVideoToPlayer.hls_src)!, videoId: newVideoToPlayer.id!))
+                }
             }
         }
     }

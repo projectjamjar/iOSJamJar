@@ -494,6 +494,14 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="confirmTextField" destination="5Sy-aJ-5fn" id="Rbt-2X-sKT"/>
+                        <outlet property="emailTextField" destination="Yjn-Dc-tj3" id="GsB-QL-ZYe"/>
+                        <outlet property="firstNameTextField" destination="tRb-6Z-36P" id="vlk-wc-oLS"/>
+                        <outlet property="lastNameTextField" destination="jng-GG-iiH" id="37p-Cj-NrQ"/>
+                        <outlet property="passwordTextField" destination="Y3Y-CM-hFm" id="dwv-QO-alz"/>
+                        <outlet property="usernameTextField" destination="DLr-E7-ybO" id="yKs-YV-TUL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZX-Kv-ihM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
