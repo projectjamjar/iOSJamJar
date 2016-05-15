@@ -21,6 +21,11 @@
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
+            <string>Muli</string>
+            <string>Muli</string>
+            <string>Muli</string>
+            <string>Muli</string>
+            <string>Muli</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -36,24 +41,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about this concert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4F-fM-cij">
-                                <rect key="frame" x="76" y="79" width="224" height="24"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="q9p-dH-gZz">
-                                <rect key="frame" x="16" y="123" width="343" height="0.0"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDR-cl-72N">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" id="le8-tp-QzV"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
                                 <rect key="frame" x="15" y="553" width="345" height="50"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.37254901960784315" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,88 +55,108 @@
                                     <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="2Aw-ky-xow"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Artists" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-K6-4yb" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="133" width="343" height="45"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kab-lo-myX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="474"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="q9p-dH-gZz">
+                                        <rect key="frame" x="20" y="59" width="65" height="0.0"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDR-cl-72N">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="le8-tp-QzV"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Artists" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-K6-4yb" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="69" width="65" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="cJl-FK-yZ8"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                    </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="I" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-ng-9Tl">
+                                        <rect key="frame" x="20" y="119" width="65" height="0.0"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="FJ6-e8-Esu"/>
+                                        </constraints>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="03Y-2b-oAI">
+                                        <rect key="frame" x="20" y="174" width="65" height="0.0"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="pvg-v3-S0U"/>
+                                        </constraints>
+                                    </tableView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-QC-TMv" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="179" width="65" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="y3V-go-67E"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="124" width="65" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about this concert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4F-fM-cij">
+                                        <rect key="frame" x="-1" y="15" width="376" height="24"/>
+                                        <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="cJl-FK-yZ8"/>
+                                    <constraint firstItem="03Y-2b-oAI" firstAttribute="leading" secondItem="I66-hi-QZq" secondAttribute="leading" id="081-CL-pib"/>
+                                    <constraint firstAttribute="trailing" secondItem="YoL-QC-TMv" secondAttribute="trailing" constant="20" id="1of-aA-cTL"/>
+                                    <constraint firstAttribute="trailing" secondItem="q9p-dH-gZz" secondAttribute="trailing" constant="20" id="3fP-h7-MpM"/>
+                                    <constraint firstItem="v4F-fM-cij" firstAttribute="top" secondItem="Kab-lo-myX" secondAttribute="top" constant="15" id="6Bg-Ch-eju"/>
+                                    <constraint firstItem="q9p-dH-gZz" firstAttribute="leading" secondItem="Kab-lo-myX" secondAttribute="leading" constant="20" id="Bqm-ua-SuE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zml-K6-4yb" secondAttribute="trailing" constant="20" id="CcL-X6-ZJY"/>
+                                    <constraint firstItem="I66-hi-QZq" firstAttribute="top" secondItem="A8E-ng-9Tl" secondAttribute="bottom" constant="5" id="Dra-AD-kJr"/>
+                                    <constraint firstItem="I66-hi-QZq" firstAttribute="leading" secondItem="Kab-lo-myX" secondAttribute="leading" constant="20" id="JXt-cd-7B0"/>
+                                    <constraint firstAttribute="bottom" secondItem="YoL-QC-TMv" secondAttribute="bottom" id="Q7G-ef-9Ai"/>
+                                    <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="q9p-dH-gZz" secondAttribute="bottom" constant="10" id="QDI-1B-2ed"/>
+                                    <constraint firstItem="A8E-ng-9Tl" firstAttribute="width" secondItem="Zml-K6-4yb" secondAttribute="width" id="QfH-yn-XF8"/>
+                                    <constraint firstItem="03Y-2b-oAI" firstAttribute="width" secondItem="I66-hi-QZq" secondAttribute="width" id="RtY-Xy-aOT"/>
+                                    <constraint firstItem="A8E-ng-9Tl" firstAttribute="leading" secondItem="Zml-K6-4yb" secondAttribute="leading" id="Swh-X4-KBX"/>
+                                    <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="03Y-2b-oAI" secondAttribute="bottom" constant="5" id="W3L-tF-gWU"/>
+                                    <constraint firstItem="Zml-K6-4yb" firstAttribute="leading" secondItem="Kab-lo-myX" secondAttribute="leading" constant="20" id="aY4-xh-Efb"/>
+                                    <constraint firstItem="q9p-dH-gZz" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="ceG-lY-zBo"/>
+                                    <constraint firstAttribute="trailing" secondItem="I66-hi-QZq" secondAttribute="trailing" constant="20" id="cna-qr-Oyd"/>
+                                    <constraint firstItem="03Y-2b-oAI" firstAttribute="top" secondItem="I66-hi-QZq" secondAttribute="bottom" constant="5" id="kVR-r1-3VL"/>
+                                    <constraint firstItem="YoL-QC-TMv" firstAttribute="leading" secondItem="Kab-lo-myX" secondAttribute="leading" constant="20" id="ogn-Kc-wGX"/>
+                                    <constraint firstItem="v4F-fM-cij" firstAttribute="centerX" secondItem="Kab-lo-myX" secondAttribute="centerX" id="xpQ-hy-JPc"/>
+                                    <constraint firstItem="A8E-ng-9Tl" firstAttribute="top" secondItem="Zml-K6-4yb" secondAttribute="bottom" constant="5" id="z12-II-RWX"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="I" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-ng-9Tl">
-                                <rect key="frame" x="16" y="183" width="343" height="0.0"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="FJ6-e8-Esu"/>
-                                </constraints>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="03Y-2b-oAI">
-                                <rect key="frame" x="16" y="238" width="343" height="0.0"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="pvg-v3-S0U"/>
-                                </constraints>
-                            </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-QC-TMv" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="243" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="y3V-go-67E"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I66-hi-QZq" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
-                                <rect key="frame" x="16" y="188" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="sCr-4e-7Tu"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gOg-pZ-ukK" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" constant="15" id="0nC-hO-kIB"/>
                             <constraint firstAttribute="trailing" secondItem="gOg-pZ-ukK" secondAttribute="trailing" constant="15" id="1z7-Bp-M7d"/>
-                            <constraint firstItem="v4F-fM-cij" firstAttribute="centerX" secondItem="nUF-Fg-yph" secondAttribute="centerX" id="2Dr-kx-BQT"/>
-                            <constraint firstItem="q9p-dH-gZz" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="4Wf-FU-jmm"/>
-                            <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="5kn-6R-4ff"/>
-                            <constraint firstItem="I66-hi-QZq" firstAttribute="top" secondItem="A8E-ng-9Tl" secondAttribute="bottom" constant="5" id="8TC-6m-Jny"/>
-                            <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="q9p-dH-gZz" secondAttribute="bottom" constant="10" id="A70-4P-CHY"/>
                             <constraint firstItem="UP7-am-aUb" firstAttribute="top" secondItem="gOg-pZ-ukK" secondAttribute="bottom" constant="15" id="Bkr-6k-WGc"/>
-                            <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="03Y-2b-oAI" secondAttribute="bottom" constant="5" id="E4V-tc-NUP"/>
-                            <constraint firstItem="03Y-2b-oAI" firstAttribute="width" secondItem="I66-hi-QZq" secondAttribute="width" id="EGx-nb-ooP"/>
-                            <constraint firstItem="03Y-2b-oAI" firstAttribute="leading" secondItem="I66-hi-QZq" secondAttribute="leading" id="FfG-hM-xql"/>
-                            <constraint firstItem="Zml-K6-4yb" firstAttribute="trailing" secondItem="nUF-Fg-yph" secondAttribute="trailingMargin" id="GDB-28-z3d"/>
-                            <constraint firstItem="q9p-dH-gZz" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="Gae-yo-j0v"/>
-                            <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="03Y-2b-oAI" secondAttribute="bottom" constant="5" id="LCY-3j-tzB"/>
-                            <constraint firstItem="A8E-ng-9Tl" firstAttribute="top" secondItem="Zml-K6-4yb" secondAttribute="bottom" constant="5" id="MHr-rA-VEC"/>
-                            <constraint firstItem="Zml-K6-4yb" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="Oee-9S-zIb"/>
-                            <constraint firstItem="Zml-K6-4yb" firstAttribute="width" secondItem="A8E-ng-9Tl" secondAttribute="width" id="WqM-tE-JMI"/>
-                            <constraint firstItem="Zml-K6-4yb" firstAttribute="leading" secondItem="A8E-ng-9Tl" secondAttribute="leading" id="biG-Qj-0Er"/>
-                            <constraint firstItem="I66-hi-QZq" firstAttribute="top" secondItem="Zml-K6-4yb" secondAttribute="bottom" constant="20" id="gAp-xV-Zfv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="q9p-dH-gZz" secondAttribute="trailing" id="gaT-Q6-tYw"/>
-                            <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="I66-hi-QZq" secondAttribute="bottom" constant="20" id="gr7-c8-jhF"/>
-                            <constraint firstItem="I66-hi-QZq" firstAttribute="trailing" secondItem="nUF-Fg-yph" secondAttribute="trailingMargin" id="j2I-Nr-Dh6"/>
-                            <constraint firstItem="YoL-QC-TMv" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="j3r-Fq-Yr7"/>
-                            <constraint firstItem="03Y-2b-oAI" firstAttribute="top" secondItem="I66-hi-QZq" secondAttribute="bottom" constant="5" id="kDZ-2R-j0o"/>
-                            <constraint firstItem="I66-hi-QZq" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="mUX-Fc-96p"/>
-                            <constraint firstItem="YoL-QC-TMv" firstAttribute="trailing" secondItem="nUF-Fg-yph" secondAttribute="trailingMargin" id="p3N-Wi-euu"/>
-                            <constraint firstItem="v4F-fM-cij" firstAttribute="top" secondItem="CXZ-KU-8ax" secondAttribute="bottom" constant="15" id="zsQ-u4-oEQ"/>
+                            <constraint firstItem="v4F-fM-cij" firstAttribute="width" secondItem="nUF-Fg-yph" secondAttribute="width" id="Hu8-aL-Pfa"/>
+                            <constraint firstAttribute="trailing" secondItem="Kab-lo-myX" secondAttribute="trailing" id="QSa-bF-2cc"/>
+                            <constraint firstItem="Kab-lo-myX" firstAttribute="top" secondItem="CXZ-KU-8ax" secondAttribute="bottom" id="VuA-No-wId"/>
+                            <constraint firstItem="gOg-pZ-ukK" firstAttribute="top" secondItem="Kab-lo-myX" secondAttribute="bottom" constant="15" id="k09-Em-ixt"/>
+                            <constraint firstItem="Kab-lo-myX" firstAttribute="width" secondItem="nUF-Fg-yph" secondAttribute="width" id="nv7-a7-AXs"/>
+                            <constraint firstItem="Kab-lo-myX" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" id="x1K-Tn-WKX"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5kn-6R-4ff"/>
-                                <exclude reference="gAp-xV-Zfv"/>
-                                <exclude reference="LCY-3j-tzB"/>
-                                <exclude reference="gr7-c8-jhF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="navbtn-upload" selectedImage="navbtn-upload" id="9FU-dB-tuk"/>
                     <navigationItem key="navigationItem" title="Upload" id="Kvx-cR-8vi"/>
@@ -495,6 +502,153 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cl-bE-wR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-322.5" y="-297.5"/>
+        </scene>
+        <!--Upload-->
+        <scene sceneID="qxs-Ud-6nq">
+            <objects>
+                <viewController id="hiK-3O-cP7" customClass="EnterConcertInformationViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FXK-Bk-RzC"/>
+                        <viewControllerLayoutGuide type="bottom" id="ubk-J1-yLa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bhx-jY-8KN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tell us about this concert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsf-2l-aRr">
+                                <rect key="frame" x="76" y="79" width="224" height="24"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CqO-nH-Phx">
+                                <rect key="frame" x="16" y="123" width="343" height="0.0"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8S3-km-siA">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="nl5-XO-BLg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MJ-qu-m7Y" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XAg-Sh-cVL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="hiK-3O-cP7" eventType="touchUpInside" id="4Ph-VS-jUP"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Artists" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4UF-kB-b4c" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="133" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="1w1-X4-10G"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="I" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jDz-9h-eW2">
+                                <rect key="frame" x="16" y="183" width="343" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="oYo-Vl-xVd"/>
+                                </constraints>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JPH-yA-Xfv">
+                                <rect key="frame" x="16" y="238" width="343" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Av0-ji-Giv"/>
+                                </constraints>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-1t-IQn" customClass="UnderlinedTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="243" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="pHl-Hs-1PS"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Venue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lxq-rw-N2J" customClass="AutoCompleteTextField" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="188" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="oT7-kx-Kbj"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CqO-nH-Phx" firstAttribute="top" secondItem="dsf-2l-aRr" secondAttribute="bottom" constant="20" id="30w-kn-nlh"/>
+                            <constraint firstItem="ohY-1t-IQn" firstAttribute="top" secondItem="JPH-yA-Xfv" secondAttribute="bottom" constant="5" id="85A-vY-5Nq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CqO-nH-Phx" secondAttribute="trailing" id="8zx-AY-56d"/>
+                            <constraint firstItem="JPH-yA-Xfv" firstAttribute="width" secondItem="Lxq-rw-N2J" secondAttribute="width" id="DKr-Qi-jzh"/>
+                            <constraint firstItem="ohY-1t-IQn" firstAttribute="top" secondItem="Lxq-rw-N2J" secondAttribute="bottom" constant="20" id="DhJ-qF-TN3"/>
+                            <constraint firstItem="4UF-kB-b4c" firstAttribute="leading" secondItem="jDz-9h-eW2" secondAttribute="leading" id="Gft-C3-U17"/>
+                            <constraint firstItem="4UF-kB-b4c" firstAttribute="top" secondItem="dsf-2l-aRr" secondAttribute="bottom" constant="20" id="PUQ-I1-sVt"/>
+                            <constraint firstItem="1MJ-qu-m7Y" firstAttribute="leading" secondItem="bhx-jY-8KN" secondAttribute="leading" constant="15" id="PcP-w8-zyD"/>
+                            <constraint firstItem="Lxq-rw-N2J" firstAttribute="trailing" secondItem="bhx-jY-8KN" secondAttribute="trailingMargin" id="Pko-S3-6H3"/>
+                            <constraint firstItem="JPH-yA-Xfv" firstAttribute="top" secondItem="Lxq-rw-N2J" secondAttribute="bottom" constant="5" id="Pv7-0J-AmA"/>
+                            <constraint firstItem="CqO-nH-Phx" firstAttribute="leading" secondItem="bhx-jY-8KN" secondAttribute="leadingMargin" id="S4w-Y6-dUO"/>
+                            <constraint firstItem="dsf-2l-aRr" firstAttribute="top" secondItem="FXK-Bk-RzC" secondAttribute="bottom" constant="15" id="UAd-ZE-AC3"/>
+                            <constraint firstItem="JPH-yA-Xfv" firstAttribute="leading" secondItem="Lxq-rw-N2J" secondAttribute="leading" id="UQ6-m4-etB"/>
+                            <constraint firstItem="ubk-J1-yLa" firstAttribute="top" secondItem="1MJ-qu-m7Y" secondAttribute="bottom" constant="15" id="Uw3-Ou-NAF"/>
+                            <constraint firstItem="ohY-1t-IQn" firstAttribute="top" secondItem="JPH-yA-Xfv" secondAttribute="bottom" constant="5" id="Y8m-0D-tdZ"/>
+                            <constraint firstItem="Lxq-rw-N2J" firstAttribute="top" secondItem="4UF-kB-b4c" secondAttribute="bottom" constant="20" id="awX-So-pSF"/>
+                            <constraint firstItem="dsf-2l-aRr" firstAttribute="centerX" secondItem="bhx-jY-8KN" secondAttribute="centerX" id="bFZ-tF-2pq"/>
+                            <constraint firstItem="4UF-kB-b4c" firstAttribute="width" secondItem="jDz-9h-eW2" secondAttribute="width" id="bcy-vs-0NL"/>
+                            <constraint firstItem="4UF-kB-b4c" firstAttribute="trailing" secondItem="bhx-jY-8KN" secondAttribute="trailingMargin" id="bzK-tU-1hN"/>
+                            <constraint firstItem="ohY-1t-IQn" firstAttribute="leading" secondItem="bhx-jY-8KN" secondAttribute="leadingMargin" id="gvD-gf-wpv"/>
+                            <constraint firstItem="4UF-kB-b4c" firstAttribute="leading" secondItem="bhx-jY-8KN" secondAttribute="leadingMargin" id="igP-hC-6b9"/>
+                            <constraint firstItem="Lxq-rw-N2J" firstAttribute="top" secondItem="jDz-9h-eW2" secondAttribute="bottom" constant="5" id="khb-ic-tqG"/>
+                            <constraint firstAttribute="trailing" secondItem="1MJ-qu-m7Y" secondAttribute="trailing" constant="15" id="p9j-Pg-suz"/>
+                            <constraint firstItem="jDz-9h-eW2" firstAttribute="top" secondItem="4UF-kB-b4c" secondAttribute="bottom" constant="5" id="pjB-FM-Mbi"/>
+                            <constraint firstItem="ohY-1t-IQn" firstAttribute="trailing" secondItem="bhx-jY-8KN" secondAttribute="trailingMargin" id="qtd-yd-M5a"/>
+                            <constraint firstItem="Lxq-rw-N2J" firstAttribute="leading" secondItem="bhx-jY-8KN" secondAttribute="leadingMargin" id="tuE-TH-b3C"/>
+                            <constraint firstItem="4UF-kB-b4c" firstAttribute="top" secondItem="CqO-nH-Phx" secondAttribute="bottom" constant="10" id="zii-O3-8Or"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PUQ-I1-sVt"/>
+                                <exclude reference="awX-So-pSF"/>
+                                <exclude reference="85A-vY-5Nq"/>
+                                <exclude reference="DhJ-qF-TN3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Upload" image="navbtn-upload" selectedImage="navbtn-upload" id="KXi-fX-cPE"/>
+                    <navigationItem key="navigationItem" title="Upload" id="jei-l8-vsd"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="artistsAutoCompleteTable" destination="jDz-9h-eW2" id="B6G-mF-Chx"/>
+                        <outlet property="artistsAutoCompleteTableHeight" destination="oYo-Vl-xVd" id="c90-EM-SKV"/>
+                        <outlet property="artistsStackView" destination="CqO-nH-Phx" id="XBc-NJ-mOA"/>
+                        <outlet property="artistsTextField" destination="4UF-kB-b4c" id="3Ha-oo-qo8"/>
+                        <outlet property="dateTextField" destination="ohY-1t-IQn" id="bpl-YO-TgR"/>
+                        <outlet property="venueTextField" destination="Lxq-rw-N2J" id="NUp-go-665"/>
+                        <outlet property="venuesAutoCompleteTable" destination="JPH-yA-Xfv" id="OfF-gI-WhA"/>
+                        <outlet property="venuesAutoCompleteTableHeight" destination="Av0-ji-Giv" id="ZI6-A4-Dgi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a98-wr-f1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196.5" y="426.5"/>
         </scene>
     </scenes>
     <resources>
