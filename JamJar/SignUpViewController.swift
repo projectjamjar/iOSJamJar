@@ -62,11 +62,14 @@ class SignUpViewController: BaseViewController{
             }
             else {
                 // Signup was successful, tell them to check their email
-                let alertView = SCLAlertView()
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false
+                )
+                let alertView = SCLAlertView(appearance: appearance)
                 alertView.addButton("Got it!") {
                     self.returnToLogin()
                 }
-                alertView.showCloseButton = false
+                
                 alertView.showSuccess("Signup Successful!", subTitle: "An activation email has been sent to \(email).  Please activate your account in order to login.")
             }
         }

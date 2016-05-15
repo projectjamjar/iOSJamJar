@@ -16,7 +16,7 @@ class UploadVideoViewController: BaseViewController {
     //information about the concert that is sent to this controller
     var selectedArtists = [Artist]()
     var selectedVenue: VenueSearchResult!
-    var selectedDate: String!
+    var selectedDate: NSDate!
     
     //Information to maintain information on all videos
     var currentVideoSelected = 0
@@ -59,8 +59,12 @@ class UploadVideoViewController: BaseViewController {
         self.publicPrivateSegmentedControl.layer.cornerRadius = 5.0;
         
         //set default information for namesOfVideos and publicPrivateStatusOfVideos
-        self.namesOfVideos = [String](count:self.videosToUpload.count, repeatedValue: "")
+//        self.namesOfVideos = [String](count:self.videosToUpload.count, repeatedValue: "")
+        self.namesOfVideos = self.videosToUpload.map { return $0.lastPathComponent! }
         self.publicPrivateStatusOfVideos = [Int](count:self.videosToUpload.count, repeatedValue: 0)
+        
+        // Set the initial Video Name text field
+        self.videoNameTextField.text = self.namesOfVideos[0]
         
         if(self.videosToUpload.count < 2) {
             self.leftButton.hidden = true
@@ -68,6 +72,7 @@ class UploadVideoViewController: BaseViewController {
             self.rightButton.hidden = true
             self.rightButton.enabled = false
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,7 +131,8 @@ class UploadVideoViewController: BaseViewController {
     
     @IBAction func finishAndUploadButtonPressed(sender: UIButton) {
         // Post Concert
-        ConcertService.create(self.selectedVenue.place_id, date: self.selectedDate) {
+        let prettyDate = self.selectedDate.string(shortDateFormat)
+        ConcertService.create(self.selectedVenue.place_id, date: prettyDate) {
             (success: Bool, concert: Concert?, message: String?) in
             if !success {
                 // Error - show the user and clear previous search info
@@ -191,30 +197,11 @@ class UploadVideoViewController: BaseViewController {
         self.view.layoutIfNeeded()
     }
     
-    //Allow rotate
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.All
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        switch UIDevice.currentDevice().orientation{
-        case .Portrait:
-            unfullScreenVideo()
-            break
-        default:
-            fullScreenVideo()
-        }
-    }
-    
     //reset view
     func resetUploadControllers() {
-        let concertViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! EnterConcertInformationViewController
+        let chooseViewController = self.navigationController?.viewControllers[((self.navigationController?.viewControllers.count)! - 2)] as! ChooseVideosViewController
         
-        concertViewController.clearViewForm()
+        chooseViewController.clearVideos()
         
         navigationController?.popViewControllerAnimated(true)
     }
@@ -225,6 +212,8 @@ class UploadVideoViewController: BaseViewController {
             
             let videoPath = self.videosToUpload[currentVideoSelected]
             let videoPlayer = AVPlayer(URL: videoPath)
+            
+            embeddedVideoViewController.showFullScreenButton = false
             embeddedVideoViewController.player = videoPlayer
         }
     }

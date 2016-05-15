@@ -45,11 +45,14 @@ class ForgetPasswordViewController: BaseViewController{
             }
             else {
                 // Signup was successful, tell them to check their email
-                let alertView = SCLAlertView()
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false
+                )
+                let alertView = SCLAlertView(appearance: appearance)
                 alertView.addButton("Got it!") {
                     self.returnToLogin()
                 }
-                alertView.showCloseButton = false
+                
                 alertView.showSuccess("Reset successful!", subTitle: "A password reset email has been sent to \(email).  Please check there to reset your password.")
             }
         }

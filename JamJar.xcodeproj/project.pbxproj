@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30783FED1CE4F619007D82CB /* JamJarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30783FEC1CE4F619007D82CB /* JamJarButton.swift */; };
+		308AB85B1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */; };
+		308AB85D1CE2F11400731B4B /* ChooseVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */; };
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
 		30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DE1C85091F00CD05F2 /* UITextField.swift */; };
 		30AA73EA1C8613F900CD05F2 /* ArtistChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */; };
@@ -49,6 +52,13 @@
 		AA1310071C78FC3800851AD4 /* EnterConcertInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */; };
 		AA1310091C79012A00851AD4 /* UploadVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */; };
 		AA558CD01BE1D94000D591A8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA558CCF1BE1D94000D591A8 /* Video.swift */; };
+		AA59C8101CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */; };
+		AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */; };
+		AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */; };
+		AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */; };
+		AA6B32FE1CDAF90A003595BA /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FD1CDAF90A003595BA /* Array.swift */; };
+		AA6B33001CDFB409003595BA /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B32FF1CDFB409003595BA /* Protocol.swift */; };
+		AA6B33061CDFDDEB003595BA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B33051CDFDDEA003595BA /* UIButton.swift */; };
 		AA6DE9621C6D086E007A64B7 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6DE9611C6D086E007A64B7 /* Search.storyboard */; };
 		AA6DE9661C6FA09C007A64B7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9651C6FA09C007A64B7 /* APIService.swift */; };
 		AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE9671C6FA34C007A64B7 /* UserService.swift */; };
@@ -81,6 +91,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30783FEC1CE4F619007D82CB /* JamJarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JamJarButton.swift; path = JamJar/JamJarButton.swift; sourceTree = SOURCE_ROOT; };
+		308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarVideoCameraDelegate.swift; sourceTree = "<group>"; };
+		308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVideosViewController.swift; sourceTree = "<group>"; };
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
 		30AA73DE1C85091F00CD05F2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistChipView.swift; sourceTree = "<group>"; };
@@ -125,6 +138,13 @@
 		AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterConcertInformationController.swift; sourceTree = "<group>"; };
 		AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVideoViewController.swift; sourceTree = "<group>"; };
 		AA558CCF1BE1D94000D591A8 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StitchedJamJarAVPlayerViewController.swift; sourceTree = "<group>"; };
+		AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarPageViewController.swift; sourceTree = "<group>"; };
+		AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JamJarPage.storyboard; sourceTree = "<group>"; };
+		AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarAVPlayer.swift; sourceTree = "<group>"; };
+		AA6B32FD1CDAF90A003595BA /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		AA6B32FF1CDFB409003595BA /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		AA6B33051CDFDDEA003595BA /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AA6DE9611C6D086E007A64B7 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AA6DE9651C6FA09C007A64B7 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		AA6DE9671C6FA34C007A64B7 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -183,6 +203,7 @@
 				AA6DE96A1C6FAB5D007A64B7 /* Settings.storyboard */,
 				30AD45521C9521ED00F999E7 /* ConcertPage.storyboard */,
 				AA6FC3B01CBC4509007C56AA /* VideoPage.storyboard */,
+				AA59C8141CD83E6400457CFD /* JamJarPage.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -197,6 +218,11 @@
 				30EE7A141C91606D00293685 /* Colors.swift */,
 				AAB45DE91CC2CC2F003B6B6F /* UINavigationController.swift */,
 				AAB45DEB1CC2CD0A003B6B6F /* UITabBarController.swift */,
+				AA59C8181CD859B700457CFD /* JamJarAVPlayer.swift */,
+				AA6B32FD1CDAF90A003595BA /* Array.swift */,
+				AA6B32FF1CDFB409003595BA /* Protocol.swift */,
+				AA6B33051CDFDDEA003595BA /* UIButton.swift */,
+				308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -266,9 +292,19 @@
 				AAA824371C7CDA93000D6282 /* UnderlinedTextField.swift */,
 				30AA73E91C8613F900CD05F2 /* ArtistChipView.swift */,
 				30CA63911CD9C57700A17CE3 /* MuliLabel.swift */,
+				30783FEC1CE4F619007D82CB /* JamJarButton.swift */,
 			);
 			name = Views;
 			path = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
+		AA59C8111CD83B1B00457CFD /* JamJarPage */ = {
+			isa = PBXGroup;
+			children = (
+				AA59C80F1CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift */,
+				AA59C8121CD83B6D00457CFD /* JamJarPageViewController.swift */,
+			);
+			name = JamJarPage;
 			sourceTree = "<group>";
 		};
 		AA6DE9601C6D084E007A64B7 /* Search */ = {
@@ -321,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				AA1310061C78FC3800851AD4 /* EnterConcertInformationController.swift */,
+				308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */,
 				AA1310081C79012A00851AD4 /* UploadVideoViewController.swift */,
 			);
 			name = UploadVideo;
@@ -385,6 +422,7 @@
 				AABBF92A1C6D057F00EB3EC4 /* Discover */,
 				30AA73DD1C85090E00CD05F2 /* Extensions and Utils */,
 				AA0F204C1C51905C0099665E /* Fonts */,
+				AA59C8111CD83B1B00457CFD /* JamJarPage */,
 				AA0526A51C46F7D200894DC7 /* Login */,
 				AA6DE9631C6D0B68007A64B7 /* Models */,
 				AA6DE9711C6FD1A5007A64B7 /* Profile */,
@@ -475,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA59C8151CD83E6400457CFD /* JamJarPage.storyboard in Resources */,
 				30EE7A041C8F4B5B00293685 /* Comfortaa-Bold.ttf in Resources */,
 				30EE7A051C8F4B5B00293685 /* Comfortaa-Light.ttf in Resources */,
 				30EE7A061C8F4B5B00293685 /* Comfortaa-Regular.ttf in Resources */,
@@ -561,6 +600,7 @@
 				30CA638C1CD847C700A17CE3 /* SearchService.swift in Sources */,
 				AA6DE97B1C700E25007A64B7 /* SearchViewController.swift in Sources */,
 				AA130FFC1C7641B600851AD4 /* AutoCompleteTextField.swift in Sources */,
+				308AB85D1CE2F11400731B4B /* ChooseVideosViewController.swift in Sources */,
 				AA6DE96F1C6FAFFB007A64B7 /* BaseViewController.swift in Sources */,
 				30EE7A0F1C913D6900293685 /* ConcertCell.swift in Sources */,
 				AAB45DEC1CC2CD0A003B6B6F /* UITabBarController.swift in Sources */,
@@ -574,7 +614,9 @@
 				30AA73DF1C85091F00CD05F2 /* UITextField.swift in Sources */,
 				AA558CD01BE1D94000D591A8 /* Video.swift in Sources */,
 				AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */,
+				308AB85B1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
+				30783FED1CE4F619007D82CB /* JamJarButton.swift in Sources */,
 				AA6FC3AF1CBC446C007C56AA /* VideoPageViewController.swift in Sources */,
 				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,
 				AA6DE9681C6FA34C007A64B7 /* UserService.swift in Sources */,
@@ -588,20 +630,26 @@
 				30AD45561C95222C00F999E7 /* ConcertPageViewController.swift in Sources */,
 				AAD1E48C1C913694007A1DB6 /* VideoService.swift in Sources */,
 				AAA824381C7CDA93000D6282 /* UnderlinedTextField.swift in Sources */,
+				AA6B32FE1CDAF90A003595BA /* Array.swift in Sources */,
 				AA1037EE1C87AC4E00DCB0B5 /* VenueService.swift in Sources */,
 				AAB62F6E1CB0800000C6CC15 /* JamJarHeader.swift in Sources */,
 				AAB45DEA1CC2CC2F003B6B6F /* UINavigationController.swift in Sources */,
 				30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */,
+				AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */,
+				AA6B33061CDFDDEB003595BA /* UIButton.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,
 				30F05C251CDADCDA00FD179F /* ProfileViewController.swift in Sources */,
 				AA130FFE1C765B5100851AD4 /* Artist.swift in Sources */,
 				AA0526A91C47187600894DC7 /* User.swift in Sources */,
+				AA59C8101CD838E100457CFD /* StitchedJamJarAVPlayerViewController.swift in Sources */,
 				30EE7A131C91554E00293685 /* Date.swift in Sources */,
 				30F05C271CDAE5AF00FD179F /* UserProfile.swift in Sources */,
 				AAD1E4881C9127DE007A1DB6 /* ConcertService.swift in Sources */,
 				30F929B01C7CD7CE00B3DF2C /* AuthenticationService.swift in Sources */,
 				30EE7A0C1C9135B600293685 /* DiscoverViewController.swift in Sources */,
+				AA59C8131CD83B6D00457CFD /* JamJarPageViewController.swift in Sources */,
+				AA6B33001CDFB409003595BA /* Protocol.swift in Sources */,
 				AAB62F6A1CB06AC100C6CC15 /* JamJarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

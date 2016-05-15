@@ -7,7 +7,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Muli-Light.ttf">
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
+        </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
+            <string>Muli</string>
+            <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
@@ -48,8 +54,8 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK">
-                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-pZ-ukK" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.37254901960784315" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Q8n-pW-Z29"/>
@@ -108,14 +114,14 @@
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gOg-pZ-ukK" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" id="0nC-hO-kIB"/>
-                            <constraint firstAttribute="trailing" secondItem="gOg-pZ-ukK" secondAttribute="trailing" id="1z7-Bp-M7d"/>
+                            <constraint firstItem="gOg-pZ-ukK" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leading" constant="15" id="0nC-hO-kIB"/>
+                            <constraint firstAttribute="trailing" secondItem="gOg-pZ-ukK" secondAttribute="trailing" constant="15" id="1z7-Bp-M7d"/>
                             <constraint firstItem="v4F-fM-cij" firstAttribute="centerX" secondItem="nUF-Fg-yph" secondAttribute="centerX" id="2Dr-kx-BQT"/>
                             <constraint firstItem="q9p-dH-gZz" firstAttribute="leading" secondItem="nUF-Fg-yph" secondAttribute="leadingMargin" id="4Wf-FU-jmm"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="v4F-fM-cij" secondAttribute="bottom" constant="20" id="5kn-6R-4ff"/>
                             <constraint firstItem="I66-hi-QZq" firstAttribute="top" secondItem="A8E-ng-9Tl" secondAttribute="bottom" constant="5" id="8TC-6m-Jny"/>
                             <constraint firstItem="Zml-K6-4yb" firstAttribute="top" secondItem="q9p-dH-gZz" secondAttribute="bottom" constant="10" id="A70-4P-CHY"/>
-                            <constraint firstItem="UP7-am-aUb" firstAttribute="top" secondItem="gOg-pZ-ukK" secondAttribute="bottom" id="Bkr-6k-WGc"/>
+                            <constraint firstItem="UP7-am-aUb" firstAttribute="top" secondItem="gOg-pZ-ukK" secondAttribute="bottom" constant="15" id="Bkr-6k-WGc"/>
                             <constraint firstItem="YoL-QC-TMv" firstAttribute="top" secondItem="03Y-2b-oAI" secondAttribute="bottom" constant="5" id="E4V-tc-NUP"/>
                             <constraint firstItem="03Y-2b-oAI" firstAttribute="width" secondItem="I66-hi-QZq" secondAttribute="width" id="EGx-nb-ooP"/>
                             <constraint firstItem="03Y-2b-oAI" firstAttribute="leading" secondItem="I66-hi-QZq" secondAttribute="leading" id="FfG-hM-xql"/>
@@ -159,12 +165,185 @@
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
                         <outlet property="venuesAutoCompleteTable" destination="03Y-2b-oAI" id="515-sW-fr0"/>
                         <outlet property="venuesAutoCompleteTableHeight" destination="pvg-v3-S0U" id="omU-NG-JE2"/>
-                        <segue destination="XPg-sG-R38" kind="show" identifier="uploadVideo" id="i8K-kX-BIB"/>
+                        <segue destination="a23-2Z-jd0" kind="show" identifier="ToChooseVideos" id="LzH-w1-bu2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrb-5m-Hzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="191.5" y="-297.5"/>
+        </scene>
+        <!--Choose Videos-->
+        <scene sceneID="28W-Xc-YIg">
+            <objects>
+                <viewController title="Choose Videos" id="a23-2Z-jd0" customClass="ChooseVideosViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2KT-lF-xSh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gb3-sb-mo6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uoP-JI-4br">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK8-9K-Wy4" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KOd-zE-TnA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Zqy-hj-moS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="22"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="KWR-kE-8Hz"/>
+                                    <action selector="continueButtonPressed:" destination="a23-2Z-jd0" eventType="touchUpInside" id="gOY-Cs-nga"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aca-ve-rpT">
+                                <rect key="frame" x="15" y="214" width="345" height="324"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lYL-wu-c0n">
+                                    <size key="itemSize" width="110" height="75"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="755" reuseIdentifier="VideoItem" id="vOc-Q3-wMA" customClass="VideoItem" customModule="JamJar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5S6-LU-0Ju">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="75" id="Qx3-ok-tbP"/>
+                                                        <constraint firstAttribute="width" constant="110" id="ql3-yP-rm8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-3v-Snk">
+                                                    <rect key="frame" x="62" y="-7" width="55" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="8bJ-Xp-F9s"/>
+                                                        <constraint firstAttribute="width" constant="55" id="yYz-LQ-df1"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="delete"/>
+                                                    <connections>
+                                                        <action selector="deleteVideo:" destination="vOc-Q3-wMA" eventType="touchUpInside" id="1gK-ST-Afl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5S6-LU-0Ju" firstAttribute="leading" secondItem="vOc-Q3-wMA" secondAttribute="leading" id="2SV-iO-3zu"/>
+                                            <constraint firstItem="1fQ-3v-Snk" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="topMargin" constant="-15" id="5kW-aZ-HgG"/>
+                                            <constraint firstAttribute="trailing" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="3" id="8ke-Ff-gcd"/>
+                                            <constraint firstAttribute="trailing" secondItem="5S6-LU-0Ju" secondAttribute="trailing" id="Bvl-lp-Rud"/>
+                                            <constraint firstItem="5S6-LU-0Ju" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" id="U0i-k6-DMj"/>
+                                            <constraint firstItem="1fQ-3v-Snk" firstAttribute="top" secondItem="vOc-Q3-wMA" secondAttribute="top" constant="3" id="ZI9-8h-iqh"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="1fQ-3v-Snk" secondAttribute="trailing" constant="-15" id="s39-NF-LAB"/>
+                                            <constraint firstAttribute="bottom" secondItem="5S6-LU-0Ju" secondAttribute="bottom" id="x3q-8f-3xO"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8ke-Ff-gcd"/>
+                                                <exclude reference="ZI9-8h-iqh"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="deleteButton" destination="1fQ-3v-Snk" id="urr-Zd-3P3"/>
+                                            <outlet property="thumbnailView" destination="5S6-LU-0Ju" id="ZNS-ep-tBI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="a23-2Z-jd0" id="uNf-6F-RRS"/>
+                                    <outlet property="delegate" destination="a23-2Z-jd0" id="w0c-FO-naP"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-pF-hfE" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="88" y="149" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YaP-73-ygL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="k6g-Ct-laL"/>
+                                    <constraint firstAttribute="width" constant="200" id="qEC-9T-Egz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="18"/>
+                                <state key="normal" title="  Add Videos">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="k6g-Ct-laL"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="chooseVideos:" destination="a23-2Z-jd0" eventType="touchUpInside" id="beo-aI-MDg"/>
+                                    <action selector="continueButtonPressed:" destination="730-y5-e2R" eventType="touchUpInside" id="TWe-Da-s5v"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adding videos for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="enl-z3-emO">
+                                <rect key="frame" x="10" y="74" width="355" height="18"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steve Aoki @ World Cafe Live on May 1, 2016" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4jj-0z-Fgk">
+                                <rect key="frame" x="10" y="97" width="355" height="42"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aca-ve-rpT" firstAttribute="top" secondItem="ZVR-pF-hfE" secondAttribute="bottom" constant="15" id="0qX-at-pVx"/>
+                            <constraint firstItem="enl-z3-emO" firstAttribute="top" secondItem="2KT-lF-xSh" secondAttribute="bottom" constant="10" id="2Xk-DZ-au1"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="2KT-lF-xSh" secondAttribute="bottom" id="4oU-Vk-gWu"/>
+                            <constraint firstAttribute="trailing" secondItem="aca-ve-rpT" secondAttribute="trailing" constant="15" id="Ehm-yF-kNb"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="enl-z3-emO" secondAttribute="bottom" constant="10" id="HbI-aC-sWX"/>
+                            <constraint firstAttribute="trailing" secondItem="4jj-0z-Fgk" secondAttribute="trailing" constant="10" id="Iip-xg-XY8"/>
+                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="top" secondItem="aca-ve-rpT" secondAttribute="bottom" constant="15" id="JBw-cB-DxL"/>
+                            <constraint firstItem="4jj-0z-Fgk" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="10" id="MLa-AM-KOE"/>
+                            <constraint firstItem="dK8-9K-Wy4" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="15" id="QVL-wi-nFU"/>
+                            <constraint firstItem="enl-z3-emO" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="10" id="Tm8-65-z9M"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="top" secondItem="4jj-0z-Fgk" secondAttribute="bottom" constant="10" id="UmE-Rd-DkQ"/>
+                            <constraint firstItem="4jj-0z-Fgk" firstAttribute="top" secondItem="enl-z3-emO" secondAttribute="bottom" constant="5" id="W09-wS-dSN"/>
+                            <constraint firstAttribute="trailing" secondItem="enl-z3-emO" secondAttribute="trailing" constant="10" id="YS3-1q-8yJ"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="centerX" secondItem="uoP-JI-4br" secondAttribute="centerX" id="Z4w-zM-s2f"/>
+                            <constraint firstItem="ZVR-pF-hfE" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="25" id="bXP-ie-kPD"/>
+                            <constraint firstItem="aca-ve-rpT" firstAttribute="leading" secondItem="uoP-JI-4br" secondAttribute="leading" constant="15" id="gQU-yx-dkC"/>
+                            <constraint firstAttribute="trailing" secondItem="dK8-9K-Wy4" secondAttribute="trailing" constant="15" id="tUI-y8-75M"/>
+                            <constraint firstItem="Gb3-sb-mo6" firstAttribute="top" secondItem="dK8-9K-Wy4" secondAttribute="bottom" constant="15" id="tqu-m2-vg9"/>
+                            <constraint firstAttribute="trailing" secondItem="ZVR-pF-hfE" secondAttribute="trailing" constant="25" id="vBi-35-hKU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4oU-Vk-gWu"/>
+                                <exclude reference="HbI-aC-sWX"/>
+                                <exclude reference="bXP-ie-kPD"/>
+                                <exclude reference="vBi-35-hKU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="chooseButton" destination="ZVR-pF-hfE" id="bKD-0t-Lpg"/>
+                        <outlet property="collectionView" destination="aca-ve-rpT" id="Z6Y-Tj-jwU"/>
+                        <outlet property="concertTitleLabel" destination="4jj-0z-Fgk" id="0KJ-4i-U7R"/>
+                        <outlet property="continueButton" destination="dK8-9K-Wy4" id="9Tr-rT-5Qt"/>
+                        <segue destination="XPg-sG-R38" kind="show" identifier="ToUploadVideos" id="Rxm-77-3Tb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xiq-g0-Uga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="691.5" y="-297.5"/>
         </scene>
         <!--Add Videos-->
         <scene sceneID="CxU-Gt-hz8">
@@ -204,8 +383,8 @@
                                     <action selector="rightButtonPressed:" destination="XPg-sG-R38" eventType="touchUpInside" id="BGv-yO-MIP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5">
-                                <rect key="frame" x="-4" y="568" width="383" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-Db-MD5" customClass="JamJarButton" customModule="JamJar" customModuleProvider="target">
+                                <rect key="frame" x="15" y="553" width="345" height="50"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YHc-qN-dpx"/>
@@ -241,6 +420,8 @@
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1rG-VK-xJ4" firstAttribute="centerY" secondItem="wwO-03-K4Q" secondAttribute="centerY" id="0QY-hw-296"/>
+                            <constraint firstAttribute="trailing" secondItem="Fbx-Db-MD5" secondAttribute="trailing" constant="15" id="3w1-Tr-fAw"/>
+                            <constraint firstItem="o0A-Eg-1cd" firstAttribute="top" secondItem="Fbx-Db-MD5" secondAttribute="bottom" constant="15" id="5S8-Nz-srs"/>
                             <constraint firstItem="Z6j-50-d1h" firstAttribute="width" secondItem="wwO-03-K4Q" secondAttribute="width" id="BTU-pe-pwt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tBj-DW-nVa" secondAttribute="trailing" id="E4D-fE-AdM"/>
                             <constraint firstItem="tBj-DW-nVa" firstAttribute="leading" secondItem="wwO-03-K4Q" secondAttribute="trailing" constant="15" id="Edn-9v-8O2"/>
@@ -256,6 +437,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="VBu-fR-JCB" secondAttribute="trailing" constant="48" id="rQW-Ze-mnk"/>
                             <constraint firstItem="Z6j-50-d1h" firstAttribute="top" secondItem="wwO-03-K4Q" secondAttribute="bottom" constant="20" id="sRV-Yf-Zl2"/>
                             <constraint firstItem="VBu-fR-JCB" firstAttribute="top" secondItem="Z6j-50-d1h" secondAttribute="bottom" constant="20" id="tzS-BO-xAD"/>
+                            <constraint firstItem="Fbx-Db-MD5" firstAttribute="leading" secondItem="okr-e8-1IL" secondAttribute="leading" constant="15" id="uZy-Lc-1ci"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z6j-50-d1h" secondAttribute="trailing" constant="48" id="uoy-Oj-Vx0"/>
                             <constraint firstItem="Z6j-50-d1h" firstAttribute="top" secondItem="wwO-03-K4Q" secondAttribute="bottom" constant="8" id="xvJ-Rw-XLw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1rG-VK-xJ4" secondAttribute="leading" id="yFg-So-j7l"/>
@@ -263,6 +445,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="xvJ-Rw-XLw"/>
+                                <exclude reference="PVb-bl-cOE"/>
+                                <exclude reference="ot3-DD-1Gg"/>
+                                <exclude reference="LUV-E6-w1B"/>
                             </mask>
                         </variation>
                     </view>
@@ -277,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpk-MR-0VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="635.5" y="-297.5"/>
+            <point key="canvasLocation" x="1215.5" y="-297.5"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="i01-fX-hFK">
@@ -285,7 +470,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="gUG-YR-E67" customClass="JamJarAVPlayerViewController" customModule="JamJar" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvz-iT-66h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059" y="-567"/>
+            <point key="canvasLocation" x="1651" y="-451.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qhu-tv-HTB">
@@ -313,6 +498,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete" width="100" height="100"/>
         <image name="left-arrow" width="33" height="33"/>
         <image name="navbtn-upload" width="22" height="22"/>
         <image name="right-arrow" width="33" height="33"/>

@@ -19,15 +19,14 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     
     var selectedArtists = [Artist]()
     var selectedVenue: VenueSearchResult!
-    var videosToUpload: [NSURL] = []
     // Seperate from textField to save the correct date format
-    var savedDate: String!
+    var selectedDate: NSDate!
     // queue is used to keep track of assets being saved so that segue can be called after the video URLs have been properly stored in videosToUpload
     var queue: Int = 0
     @IBOutlet var artistsTextField: AutoCompleteTextField!
     @IBOutlet var venueTextField: AutoCompleteTextField!
     @IBOutlet var dateTextField: UnderlinedTextField!
-    
+        
     @IBOutlet var artistsAutoCompleteTable: UITableView!
     @IBOutlet var artistsAutoCompleteTableHeight: NSLayoutConstraint!
     @IBOutlet var venuesAutoCompleteTable: UITableView!
@@ -55,11 +54,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             }
         }
         artistsTextField.onSelect = {[weak self] text, indexpath in
-            let selectedArtist = self!.artistsTextField.autoCompleteAttributes![text] as! Artist
-            
-            self!.addArtist(selectedArtist)
-            
-            self!.artistsTextField.text = nil
+            if let selectedArtist = self!.artistsTextField.autoCompleteAttributes?[text] as? Artist {
+                self!.addArtist(selectedArtist)
+                
+                self!.artistsTextField.text = nil
+            }
         }
         
         //Define attributes for venueTextField
@@ -87,6 +86,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         datePickerView.datePickerMode = UIDatePickerMode.Date
         datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
+        
     }
     
     func addArtist(artist: Artist) {
@@ -167,68 +167,18 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     func dataPickerChanged(sender:UIDatePicker) {
-        let dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateFormat = "MMMM d, yyyy"
-        
-        let strDate = dateFormatter.stringFromDate(sender.date)
-        
-        dateTextField.text = strDate
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.savedDate = dateFormatter.stringFromDate(sender.date)
+        // Make the date text field human-readable
+        dateTextField.text = sender.date.string(prettyDateFormat)
+        // Save the selected date
+        self.selectedDate = sender.date
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
+        // Make sure all the fields are filled out, then segue to the video Chooser
         if(self.selectedVenue == nil || self.selectedArtists.isEmpty || self.dateTextField.text == "") {
             SCLAlertView().showError("Incomplete Fields", subTitle: "Please select artists, a venue, and a date", closeButtonTitle: "Got it")
         } else {
-            // Instantiate DKImagePickerController and set it to only show videos
-            let pickerController = DKImagePickerController()
-            pickerController.sourceType = [.Photo]
-            pickerController.assetType = .AllVideos
-            // Cancel button action for DKImagePickerController
-            pickerController.didCancel = {
-                pickerController.dismissViewControllerAnimated(true, completion: nil)
-            }
-            pickerController.showsCancelButton = true
-            
-            // Action for DKImagePickerController after videos were selected
-            pickerController.didSelectAssets = { (assets: [DKAsset]) in
-                
-                // Don't let the user move on until they have selected videos
-                if(assets.count == 0) {
-                    SCLAlertView().showError("No Videos Selected!", subTitle: "Please select a video", closeButtonTitle: "Got it")
-                    return
-                }
-                
-                showProgressView()
-                self.queue = assets.count
-                
-                // Store all of the URLs for the selected videos
-                for asset in assets {
-                    asset.fetchAVAsset(nil, completeBlock: { info in
-                        let targetVideoURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] + "/" + info!.URL.lastPathComponent!
-                        
-                        PHCachingImageManager().requestAVAssetForVideo(asset.originalAsset!, options: nil, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [NSObject : AnyObject]?) in
-                            dispatch_async(dispatch_get_main_queue(), {
-                                let asset = asset as? AVURLAsset
-                                if let data = NSData(contentsOfURL: asset!.URL) {
-                                    data.writeToFile(targetVideoURL, atomically: true)
-                                    // Saved URL is stored for future use
-                                    self.videosToUpload.append(NSURL(fileURLWithPath: targetVideoURL))
-                                    self.callback()
-                                } else {
-                                    print("Error: Video could not be processed")
-                                    showErrorView()
-                                }
-                            })
-                        })
-                    })
-                }
-            }
-            
-            self.presentViewController(pickerController, animated: true) {}
+            self.performSegueWithIdentifier("ToChooseVideos", sender: self)
         }
         
     }
@@ -248,7 +198,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func clearViewForm() {
         self.selectedArtists = []
         self.selectedVenue = nil
-        self.savedDate = nil
+        self.selectedDate = nil
         self.queue = 0
         self.artistsTextField.text = ""
         self.venueTextField.text = ""
@@ -266,16 +216,12 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "uploadVideo") {
-            let uploadVideoViewController = segue.destinationViewController as! UploadVideoViewController
+        if(segue.identifier == "ToChooseVideos") {
+            let uploadVideoViewController = segue.destinationViewController as! ChooseVideosViewController
             
             uploadVideoViewController.selectedVenue = self.selectedVenue
             uploadVideoViewController.selectedArtists = self.selectedArtists
-            uploadVideoViewController.selectedDate = self.savedDate
-            uploadVideoViewController.videosToUpload = self.videosToUpload
-            
-            //Clear video list to avoid conflicts
-            self.videosToUpload = []
+            uploadVideoViewController.selectedDate = self.selectedDate
         }
     }
 }
