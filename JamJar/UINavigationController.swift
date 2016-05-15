@@ -14,6 +14,12 @@ extension UINavigationController {
     }
     
     public override func shouldAutorotate() -> Bool {
-        return self.visibleViewController!.shouldAutorotate()
+        // If there's a visible viewcontroller, defer to that
+        if let visibleController = self.visibleViewController {
+            return visibleController.shouldAutorotate()
+        }
+        // Otherwise, don't autorotate???
+        // ETHAN: Is this what we want?
+        return false
     }
 }

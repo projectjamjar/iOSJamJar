@@ -120,7 +120,7 @@ class VideoService: APIService {
     
     // get all concerts
     static func getJamPicks(completion: (success: Bool, result: [Video]?, error: String?) -> Void) {
-        var url = self.buildURL("videos/jampicks")
+        let url = self.buildURL("videos/jampicks")
         
         self.get(url).responseJSON { response in
             switch response.result {

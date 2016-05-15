@@ -9,7 +9,8 @@ pod 'SCLAlertView'
 pod 'ObjectMapper'
 pod 'SwiftyJSON'
 pod 'DKImagePickerController'
-pod "PKHUD"
+pod 'PKHUD'
+pod 'KTCenterFlowLayout'
 
 workspace 'JamJar'
 
