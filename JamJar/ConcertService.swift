@@ -75,4 +75,22 @@ class ConcertService: APIService {
             }
         }
     }
+    
+    // get all concerts
+    static func getSponsoredEvents(completion: (success: Bool, events: [SponsoredEvent]?, result: String?) -> Void) {
+        let url = self.buildURL("concerts/sponsored/")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                completion(success: false, events: nil, result: "Cannot Get Sponsored Events")
+                return
+            case .Success:
+                let events = Mapper<SponsoredEvent>().mapArray(response.result.value!)
+                completion(success: true, events: events, result: nil)
+                return
+            }
+        }
+    }
 }

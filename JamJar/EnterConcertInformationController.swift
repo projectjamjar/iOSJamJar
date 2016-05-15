@@ -32,6 +32,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var venuesAutoCompleteTable: UITableView!
     @IBOutlet var venuesAutoCompleteTableHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var sponsoredStackView: UIStackView!
     @IBOutlet weak var artistsStackView: UIStackView!
     
     override func viewDidLoad() {
@@ -87,6 +88,61 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
         
+        
+        // Hit the API to get suggested events!
+        self.getSponsoredEvents()
+    }
+    
+    func getSponsoredEvents() {
+        // Asynchronously fetch the thumbnail
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // Background - get thumbnail
+            ConcertService.getSponsoredEvents({ (success, events, result) in
+                // Manipulate the UI in the main thread
+                dispatch_async(dispatch_get_main_queue()) {
+                    if !success || events!.count == 0 {
+                        // Don't do anything I guess?
+                    }
+                    else {
+                        // If we're here, we know that we have at least one event
+                        
+                        // Make the label!
+                        let label = MuliLabel()
+                        label.setup("Are you at any of the following events?",
+                            size: 19.0,
+                            alignment: .Center)
+                        self.sponsoredStackView.addArrangedSubview(label)
+                        
+                        // Make a jawn for each event
+                        for event in events! {
+                            let eventString = "\(event.name) @ \(event.concert.venue.name)"
+                            
+                            let eventLabel = MuliLabel()
+                            eventLabel.setup(eventString,
+                                size: 15.0,
+                                data: event)
+                            eventLabel.userInteractionEnabled = true
+                            
+                            // Add a TapGestureRecognizer
+                            let tgr = UITapGestureRecognizer(target: self, action: #selector(self.sponsoredEventTapped(_:)))
+                            eventLabel.addGestureRecognizer(tgr)
+                            
+                            self.sponsoredStackView.addArrangedSubview(eventLabel)
+                        }
+                        
+                        // Add a bottom border to the Sponsored StackView
+                        self.sponsoredStackView.addBorder(edges: [.Bottom])
+                    }
+                }
+            })
+        }
+    }
+    
+    func sponsoredEventTapped(sender: UITapGestureRecognizer) {
+        if let label = sender.view as? MuliLabel,
+            event = label.data as? SponsoredEvent {
+            print("Event chosen: \(event.name)")
+        }
     }
     
     func addArtist(artist: Artist) {
