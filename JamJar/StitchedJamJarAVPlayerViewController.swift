@@ -37,6 +37,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         // Add Buttons to Bar
         createRewindButton()
         createFastForwardButton()
+        createVideoStackViewAndScrollView()
         
         // swipe gestures
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(StitchedJamJarAVPlayerViewController.respondToSwipeGesture(_:)))
@@ -50,6 +51,13 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StitchedJamJarAVPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player?.currentItem)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        //Update Scroll and Stack view
+        self.updateVideoStackViewAndScrollView()
+    }
+    
     // This controller needs to remove JamJar unique elements
     override func removeObservers() {
         super.removeObservers()
@@ -57,6 +65,8 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         //Remove buttons to avoid duplication if the view is reloading
         self.rewindButton.removeFromSuperview()
         self.fastFowardButton.removeFromSuperview()
+        self.videoStackView.removeFromSuperview()
+        self.videoScrollView.removeFromSuperview()
         
         // Remove observer for checking if video ended
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player?.currentItem)
@@ -93,10 +103,27 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     
     // Stack view for overlapping videos
     func createVideoStackViewAndScrollView() {
-        print("Lets display the overlapping videos")
-        self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize))
+        //createScrollView
+        self.videoScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize))
+        self.view.addSubview(self.videoScrollView)
+        
+        self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.videoScrollView.frame.width, height: uiElementSize))
+        self.videoScrollView.addSubview(self.videoStackView)
+        
+        // When the video changes, the stack view is reset and needs to be repopulated with data
+        for video in self.overlappingVideos {
+            self.addVideoToStackView(video.thumbnailForSize(256))
+        }
         
         //have update function that updates size of scroll and size of contents in scroll
+    }
+    
+    func updateVideoStackViewAndScrollView() {
+        self.videoScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize)
+        
+        let widthOfContent = CGFloat(self.videoStackView.arrangedSubviews.count) * (uiElementSize * (110.0/75.0))
+        self.videoStackView.frame = CGRect(x: 0, y: 0, width: widthOfContent, height: uiElementSize)
+        self.videoScrollView.contentSize.width = widthOfContent
     }
     
     func rewindButtonAction(sender:UIButton!)
@@ -256,22 +283,19 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     }
     
     private func addVideoToStackView(image: UIImage?) {
-        print("addVideoToStackView began")
         self.videoStackView.addArrangedSubview(self.createImageView(image))
-        print("addVideoToStackView ended")
+        self.updateVideoStackViewAndScrollView()
     }
     
     private func pushVideoToStackView(image: UIImage?) {
-        print("pushVideoToStackView began")
         self.videoStackView.insertArrangedSubview(self.createImageView(image), atIndex: 0)
-        print("pushVideoToStackView ended")
+        self.updateVideoStackViewAndScrollView()
     }
     
     private func removeVideoFromStackView(index: Int!) {
-        print("removeVideoFromStackView began")
         let removedVideo = self.videoStackView.arrangedSubviews[index]
         self.videoStackView.removeArrangedSubview(removedVideo)
-        print("removeVideoFromStackView ended")
+        self.updateVideoStackViewAndScrollView()
     }
     
     /*
