@@ -32,7 +32,7 @@ class MuliLabel: UILabel {
                 ]
             )
             attributedText.addAttribute(NSFontAttributeName,
-                                        value: UIFont(name: "Muli-Regular",
+                                        value: UIFont(name: "Muli",
                                             size: size)!,
                                         range: NSRange(location: 0, length: title.characters.count + 1))
             
@@ -42,7 +42,6 @@ class MuliLabel: UILabel {
             self.text = text
             self.font = UIFont(name: "Muli-Light", size: size)
         }
-        
         
         self.numberOfLines = numLines
         self.lineBreakMode = .ByWordWrapping
@@ -59,6 +58,7 @@ class MuliLabel: UILabel {
         
         if let padding = padding {
             self.padding = padding
+            self.drawTextInRect(self.frame)
         }
         
         if data != nil {

@@ -85,7 +85,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
-        datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
         
         
@@ -108,7 +108,8 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                         
                         // Make the label!
                         let label = MuliLabel()
-                        label.setup("Are you at any of the following events?",
+                        label.setup("",
+                            title: "Current Events",
                             size: 19.0,
                             alignment: .Center)
                         self.sponsoredStackView.addArrangedSubview(label)
@@ -120,7 +121,13 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                             let eventLabel = MuliLabel()
                             eventLabel.setup(eventString,
                                 size: 15.0,
+                                alignment: .Center,
+                                padding: 5.0,
                                 data: event)
+                            eventLabel.backgroundColor = UIColor.jjCoralColor().colorWithAlphaComponent(0.4)
+                            eventLabel.roundCorners(5.0)
+                            eventLabel.heightAnchor.constraintEqualToConstant(40.0).active = true
+//                            eventLabel.addCo
                             eventLabel.userInteractionEnabled = true
                             
                             // Add a TapGestureRecognizer
@@ -131,7 +138,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
                         }
                         
                         // Add a bottom border to the Sponsored StackView
-                        self.sponsoredStackView.addBorder(edges: [.Bottom])
+//                        self.sponsoredStackView.addBorder(edges: [.Bottom])
                     }
                 }
             })
@@ -141,11 +148,38 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     func sponsoredEventTapped(sender: UITapGestureRecognizer) {
         if let label = sender.view as? MuliLabel,
             event = label.data as? SponsoredEvent {
-            print("Event chosen: \(event.name)")
+            // Propegate the view with the selected event's info
+            for artist in event.artists {
+                self.addArtist(artist)
+            }
+            
+            self.setConcertData(event.concert)
+            
+            showSuccessView()
         }
     }
     
+    func setConcertData(concert: Concert) {
+        // Update all of the venue info
+        let venue = VenueSearchResult()
+        venue.place_id = concert.venue.place_id
+        venue.name = "\(concert.venue.name), \(concert.venue.formattedAddress)"
+        self.selectedVenue = venue
+        self.venueTextField.text = venue.name
+        
+        // Update the date
+        self.selectedDate = concert.date
+        self.dateTextField.text = self.selectedDate.string(prettyDateFormat)
+    }
+    
     func addArtist(artist: Artist) {
+        // Don't add artists twice
+        let spotifyId = artist.spotifyResponseId != nil ? artist.spotifyResponseId : artist.spotifyId
+        if (self.selectedArtists.filter { $0.spotifyResponseId == spotifyId ||
+            $0.spotifyId == spotifyId }).first != nil {
+            return
+        }
+        
         // Add artist to the selected artist list
         self.selectedArtists.append(artist)
         
@@ -222,7 +256,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
     }
     
-    func dataPickerChanged(sender:UIDatePicker) {
+    func datePickerChanged(sender:UIDatePicker) {
         // Make the date text field human-readable
         dateTextField.text = sender.date.string(prettyDateFormat)
         // Save the selected date

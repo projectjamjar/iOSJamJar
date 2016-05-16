@@ -26,6 +26,11 @@ public extension UIView {
         return self
     }
     
+    func roundCorners(rounding: CGFloat) {
+        self.layer.cornerRadius = rounding
+        self.clipsToBounds = true
+    }
+    
     // Add borders to the provided sides of a UIView
     // view.addBorder([.Top, .Bottom])
     func addBorder(edges edges: UIRectEdge, color: UIColor = UIColor.whiteColor(), thickness: CGFloat = 1) -> [UIView] {

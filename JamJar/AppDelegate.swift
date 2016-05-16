@@ -28,6 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             setupMainStoryboard()
         }
         
+        
+        // Uncomment to print all fonts
+        //        let fontFamilyNames = UIFont.familyNames()
+        //        for familyName in fontFamilyNames {
+        //            print("------------------------------")
+        //            print("Font Family Name = [\(familyName)]")
+        //            let names = UIFont.fontNamesForFamilyName(familyName as! String)
+        //            print("Font Names = [\(names)]")
+        //        }
+        
         return true
     }
     
