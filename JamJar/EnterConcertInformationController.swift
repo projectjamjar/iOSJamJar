@@ -35,6 +35,13 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet weak var sponsoredStackView: UIStackView!
     @IBOutlet weak var artistsStackView: UIStackView!
     
+    
+    /***************************************************************************
+     Loading up a buncha stuff
+        Primarily the callbacks and stuff for the AutoComplete inputs
+        (should definitely be cleaned up eventually at some point maybe perhaps)
+     ***************************************************************************/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -145,6 +152,20 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
     }
     
+    
+    // We need this so the keyboard detects Autocomplete taps correctly
+    override func dismissKeyboard(sender: UITapGestureRecognizer) {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        let touch = sender.locationInView(sender.view)
+        if(!CGRectContainsPoint(artistsAutoCompleteTable.frame, touch) && !CGRectContainsPoint(venuesAutoCompleteTable.frame, touch)) {
+            self.view.endEditing(true)
+        }
+    }
+    
+    /***************************************************************************
+     Stuff to populate the fields (sponsored/current events)
+     ***************************************************************************/
+    
     func sponsoredEventTapped(sender: UITapGestureRecognizer) {
         if let label = sender.view as? MuliLabel,
             event = label.data as? SponsoredEvent {
@@ -171,6 +192,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.selectedDate = concert.date
         self.dateTextField.text = self.selectedDate.string(prettyDateFormat)
     }
+
+    
+    /***************************************************************************
+     Artist Stuff
+     ***************************************************************************/
     
     func addArtist(artist: Artist) {
         // Don't add artists twice
@@ -232,6 +258,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
     }
     
+
+    /***************************************************************************
+     Venue stuff
+     ***************************************************************************/
+    
     //artistsTextFieldChange takes the input string and updates the search results
     private func venueTextFieldChange(inputString: String) {
         
@@ -255,6 +286,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             }
         }
     }
+
+
+    /***************************************************************************
+     Concert Date Stuff
+     ***************************************************************************/
     
     func datePickerChanged(sender:UIDatePicker) {
         // Make the date text field human-readable
@@ -262,6 +298,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         // Save the selected date
         self.selectedDate = sender.date
     }
+    
+
+    /***************************************************************************
+     Segue Stuff
+     ***************************************************************************/
     
     @IBAction func continueButtonPressed(sender: UIButton) {
         // Make sure all the fields are filled out, then segue to the video Chooser
@@ -295,14 +336,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.dateTextField.text = ""
         self.artistsStackView.subviews.forEach({ $0.removeFromSuperview() })
         self.artistsTextField.setColoredPlaceholder("Search Artists...")
-    }
-    
-    override func dismissKeyboard(sender: UITapGestureRecognizer) {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        let touch = sender.locationInView(sender.view)
-        if(!CGRectContainsPoint(artistsAutoCompleteTable.frame, touch) && !CGRectContainsPoint(venuesAutoCompleteTable.frame, touch)) {
-            self.view.endEditing(true)
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
