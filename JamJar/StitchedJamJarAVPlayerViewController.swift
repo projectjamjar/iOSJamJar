@@ -284,16 +284,17 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         
         if let thumbImage = image {
             newVideoImageView.image = thumbImage
-            newVideoImageView.contentMode = .ScaleAspectFit
             newVideoImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
         }
         else {
             newVideoImageView.image = UIImage(named: "logo-transparent")
-            newVideoImageView.contentMode = .ScaleAspectFit
             newVideoImageView.backgroundColor = UIColor.jjCoralColor()
             newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
-            
         }
+        
+        newVideoImageView.heightAnchor.constraintEqualToConstant(uiElementSize).active = true
+        newVideoImageView.widthAnchor.constraintEqualToConstant(uiElementSize * (110.0/75.0)).active = true
+        newVideoImageView.contentMode = .ScaleAspectFill
         
         //create tap gesture recognizer for view
         let changeVideoTap = UITapGestureRecognizer(target: self, action: #selector(StitchedJamJarAVPlayerViewController.jamjarVideoTapped(_:)))
@@ -351,7 +352,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 return index
             }
         }
-        print("Error: getPlayerIndexById")
         return -1
     }
     
