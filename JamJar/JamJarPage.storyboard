@@ -224,6 +224,10 @@
                                 <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="hQN-M5-cH1" id="t1a-Yl-I2l"/>
+                                    <outlet property="delegate" destination="hQN-M5-cH1" id="wT0-dR-6bv"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTH-PC-Gc1">
                                 <rect key="frame" x="12" y="327" width="24" height="15"/>

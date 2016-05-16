@@ -200,14 +200,24 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         self.removeVideoFromStackView(tempVideoIndex + 1)
         
         // Switch AVPlayers
+        // TODO: Handle situation where provided Index is out of bounds
         let tempPlayerIndex = getPlayerIndexById(newVideoId)
-        self.storedAVPlayers.append(self.player as! JamJarAVPlayer)
-        self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex)
+        self.storedAVPlayers.insert(self.player as! JamJarAVPlayer, atIndex: 0)
+        if(tempPlayerIndex == -1) {
+            print("Must Create a new AVPlayer and remove last in list")
+            //remove last AVPlayer
+            self.storedAVPlayers.removeAtIndex(avPlayerListMax)
+            //instantiate new player
+            let newVideo = self.getVideoByIdFromList(newVideoId)
+            self.player = JamJarAVPlayer(URL: NSURL(string: newVideo.hls_src)!, videoId: newVideo.id!)
+        } else {
+            self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex + 1)
+        }
         
         // Now that information has been updated, reload the view and set proper time
         self.jamjarDelegate?.updateVideo(self.currentVideo)
         self.viewDidLoad()
-        self.player!.seekToTime(CMTimeMakeWithSeconds(newTime, 10)) { (completed: Bool) -> Void in
+        self.player!.seekToTime(CMTimeMakeWithSeconds(newTime, 100)) { (completed: Bool) -> Void in
             // Make the player maintain the play/pause status
             if isPlaying {
                 self.player!.play()
@@ -255,11 +265,17 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         }
     }
     
+    // Handle video in StackView being tapped
+    func jamjarVideoTapped(sender: UITapGestureRecognizer) {
+        let indexOfSelectedVideo = self.getIndexInStackView(sender.view as! UIImageView)
+        let selectedVideoId = self.overlappingVideos[indexOfSelectedVideo].id
+        self.changeCurrentVideo(selectedVideoId!)
+    }
+    
     /*
      * Video Stack View Functions
      */
     private func createImageView(image: UIImage?) -> UIImageView {
-        print("createImageView began")
         let newVideoImageView = UIImageView()
         
         //Set Size
@@ -268,6 +284,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         
         if let thumbImage = image {
             newVideoImageView.image = thumbImage
+            newVideoImageView.contentMode = .ScaleAspectFit
             newVideoImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
         }
         else {
@@ -278,7 +295,12 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
             
         }
         
-        print("createImageView ended")
+        //create tap gesture recognizer for view
+        let changeVideoTap = UITapGestureRecognizer(target: self, action: #selector(StitchedJamJarAVPlayerViewController.jamjarVideoTapped(_:)))
+        changeVideoTap.cancelsTouchesInView = false
+        newVideoImageView.userInteractionEnabled = true
+        newVideoImageView.addGestureRecognizer(changeVideoTap)
+        
         return newVideoImageView
     }
     
@@ -344,5 +366,17 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         let edges = jamjar.nodes![String(self.currentVideo.id!)]
         let edge = edges!.filter{ $0.video == videoId }.first
         return edge!
+    }
+    
+    // Get index of UIImageView within StackView
+    private func getIndexInStackView(imageView: UIImageView) -> Int {
+        let views = self.videoStackView.arrangedSubviews
+        for (index,view) in views.enumerate() {
+            if(imageView == view) {
+                return index
+            }
+        }
+        print("Error: getIndexInStackView")
+        return -1
     }
 }

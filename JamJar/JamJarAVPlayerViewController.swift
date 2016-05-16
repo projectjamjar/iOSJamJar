@@ -164,7 +164,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         timePassedLabel.text = "0:00/0:00" //Serves as a default value incase nothing is returned
         timePassedLabel.font = UIFont(name: "Muli", size: 17)
         // Make a better time interval
-        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        let timeInterval: CMTime = CMTimeMakeWithSeconds(0.25, 100)
         timeObserver = self.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) {
             (elapsedTime: CMTime) -> Void in
             self.observeTime(elapsedTime)
@@ -229,7 +229,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         print(seekSlider.value) //prints a float that is between 0 and 1
         updateTimeLabel(elapsedTime, duration: videoDuration)
         
-        self.player!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
+        self.player!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
             if (self.playerRateBeforeSeek > 0) {
                 self.player!.play()
             }
