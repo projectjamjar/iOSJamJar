@@ -29,6 +29,7 @@
             <string>Muli-Light</string>
             <string>Muli-Light</string>
             <string>Muli-Light</string>
+            <string>Muli-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -298,7 +299,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQC-fy-d6q">
-                                <rect key="frame" x="163" y="463" width="49" height="35"/>
+                                <rect key="frame" x="163" y="504" width="49" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6MY-5y-LuG"/>
                                 </constraints>
@@ -311,7 +312,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ybj-9M-t1p">
-                                <rect key="frame" x="46" y="171" width="283" height="272"/>
+                                <rect key="frame" x="46" y="171" width="283" height="313"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKL-4L-J9u">
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
@@ -369,8 +370,26 @@
                                         <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPJ-Ne-YTB">
+                                        <rect key="frame" x="0.0" y="235" width="283" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Aggree to the JamJar End-User License Agreement" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2j-Q9-JtE">
+                                                <rect key="frame" x="0.0" y="0.0" width="233" height="31"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6424989442567568" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="755" verticalHuggingPriority="757" horizontalCompressionResistancePriority="747" verticalCompressionResistancePriority="748" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yoF-Jj-TA4">
+                                                <rect key="frame" x="233" y="0.0" width="52" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="sHW-8F-zfh"/>
+                                                </constraints>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixh-ER-cQd">
-                                        <rect key="frame" x="0.0" y="235" width="283" height="37"/>
+                                        <rect key="frame" x="0.0" y="276" width="283" height="37"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="744-vd-EPD">
                                                 <rect key="frame" x="15" y="0.0" width="253" height="37"/>
@@ -419,7 +438,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="MDi-9F-tB8">
-                                <rect key="frame" x="113" y="508" width="150" height="150"/>
+                                <rect key="frame" x="113" y="549" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MDi-9F-tB8" secondAttribute="height" multiplier="1:1" id="E5o-fh-vFa"/>
                                     <constraint firstAttribute="height" constant="150" id="Odf-aD-bdR"/>
@@ -499,6 +518,8 @@
                         <outlet property="emailTextField" destination="Yjn-Dc-tj3" id="GsB-QL-ZYe"/>
                         <outlet property="firstNameTextField" destination="tRb-6Z-36P" id="vlk-wc-oLS"/>
                         <outlet property="lastNameTextField" destination="jng-GG-iiH" id="37p-Cj-NrQ"/>
+                        <outlet property="licenceLabel" destination="V2j-Q9-JtE" id="qB5-AW-fFu"/>
+                        <outlet property="licenseSwitch" destination="yoF-Jj-TA4" id="HQT-qB-aQa"/>
                         <outlet property="passwordTextField" destination="Y3Y-CM-hFm" id="dwv-QO-alz"/>
                         <outlet property="usernameTextField" destination="DLr-E7-ybO" id="yKs-YV-TUL"/>
                     </connections>

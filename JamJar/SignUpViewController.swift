@@ -17,11 +17,17 @@ class SignUpViewController: BaseViewController{
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmTextField: UITextField!
+    @IBOutlet var licenceLabel: UILabel!
+    @IBOutlet var licenseSwitch: UISwitch!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.endLicenseTapped))
+        self.licenceLabel.addGestureRecognizer(tgr)
+        self.licenceLabel.userInteractionEnabled = true
     }
     
     func returnToLogin() {
@@ -32,6 +38,10 @@ class SignUpViewController: BaseViewController{
         self.returnToLogin()
     }
     
+    func endLicenseTapped() {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://projectjamjar.com/license.pdf")!)
+    }
+    
     @IBAction func signUpButtonPressed(sender: UIButton) {
         let username = usernameTextField.text!
         let email = emailTextField.text!
@@ -39,6 +49,11 @@ class SignUpViewController: BaseViewController{
         let lastName = lastNameTextField.text!
         let password = passwordTextField.text!
         let confirm = confirmTextField.text!
+        
+        if !self.licenseSwitch.on {
+            SCLAlertView().showError("Unable to sign up", subTitle: "Please accept the End-User License Agreement in order to use JamJar", closeButtonTitle: "Got it")
+            return
+        }
         
         //Make sure that all fields are filled in
         if([username, email, firstName,lastName,password,confirm].contains("")) {

@@ -7,6 +7,8 @@
     <customFonts key="customFonts">
         <mutableArray key="Muli-Light.ttf">
             <string>Muli-Light</string>
+            <string>Muli-Light</string>
+            <string>Muli-Light</string>
         </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
             <string>Muli</string>
@@ -25,7 +27,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rIn-Ok-O9S">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rIn-Ok-O9S">
                                 <rect key="frame" x="137" y="563" width="102" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjl-fn-Mnd">
@@ -39,7 +41,7 @@
                                             <action selector="logoutButtonPressed:" destination="WSL-na-ydf" eventType="touchUpInside" id="JIn-1v-sFd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru7-Ri-05d">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ru7-Ri-05d">
                                         <rect key="frame" x="45" y="0.0" width="57" height="35"/>
                                         <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="17"/>
                                         <state key="normal" title="Logout">
@@ -51,35 +53,82 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kx-oV-RpZ">
-                                <rect key="frame" x="167" y="250" width="40" height="87"/>
-                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="70"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsZ-81-Ybq">
+                                <rect key="frame" x="133" y="35" width="109" height="24"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Construction!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTu-sd-RJg">
-                                <rect key="frame" x="110" y="347" width="156" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End-User License Agreement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qe-OY-kSy">
+                                <rect key="frame" x="85" y="74" width="206" height="19"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="15"/>
+                                <color key="textColor" red="0.23026315789999999" green="0.52631578950000002" blue="0.99342105260000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="98w-DD-UP7" appends="YES" id="kzi-63-ioS"/>
+                                </connections>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-J8-W2d">
+                                <rect key="frame" x="20" y="152" width="335" height="0.0"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBk-eh-8Hq">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="VbD-3f-M3w"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocked Users" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDy-OG-WeO">
+                                <rect key="frame" x="124" y="113" width="127" height="24"/>
+                                <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8kx-oV-RpZ" firstAttribute="centerY" secondItem="v2l-EH-gN6" secondAttribute="centerY" constant="-15.5" id="1uA-xI-ykr"/>
+                            <constraint firstItem="6qe-OY-kSy" firstAttribute="top" secondItem="CsZ-81-Ybq" secondAttribute="bottom" constant="15" id="5xU-aZ-ELr"/>
+                            <constraint firstAttribute="trailing" secondItem="uyd-J8-W2d" secondAttribute="trailing" constant="20" id="9sT-vW-fra"/>
                             <constraint firstItem="zlG-NR-chO" firstAttribute="top" secondItem="rIn-Ok-O9S" secondAttribute="bottom" constant="20" id="BZe-gD-Vn2"/>
-                            <constraint firstItem="8kx-oV-RpZ" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="Ipe-su-nRu"/>
-                            <constraint firstItem="FTu-sd-RJg" firstAttribute="top" secondItem="8kx-oV-RpZ" secondAttribute="bottom" constant="10" id="bWI-qz-D0c"/>
-                            <constraint firstItem="FTu-sd-RJg" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="bpi-QA-Y4P"/>
+                            <constraint firstItem="CsZ-81-Ybq" firstAttribute="leading" secondItem="v2l-EH-gN6" secondAttribute="leading" constant="20" id="CDp-VT-fha"/>
+                            <constraint firstItem="lDy-OG-WeO" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="EIP-Kc-2cT"/>
+                            <constraint firstItem="lDy-OG-WeO" firstAttribute="top" secondItem="6qe-OY-kSy" secondAttribute="bottom" constant="20" id="Ea2-P4-LPb"/>
+                            <constraint firstItem="6qe-OY-kSy" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="QU7-92-Zia"/>
+                            <constraint firstItem="CsZ-81-Ybq" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="Wpr-Ya-4km"/>
+                            <constraint firstItem="uyd-J8-W2d" firstAttribute="top" secondItem="lDy-OG-WeO" secondAttribute="bottom" constant="15" id="cLM-I0-2XP"/>
+                            <constraint firstItem="6qe-OY-kSy" firstAttribute="width" secondItem="CsZ-81-Ybq" secondAttribute="width" id="dc9-pG-9cU"/>
+                            <constraint firstItem="uyd-J8-W2d" firstAttribute="leading" secondItem="v2l-EH-gN6" secondAttribute="leading" constant="20" id="hr8-DU-oOF"/>
+                            <constraint firstItem="CsZ-81-Ybq" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="nPQ-YL-2WT"/>
+                            <constraint firstItem="CsZ-81-Ybq" firstAttribute="top" secondItem="QUI-cX-txE" secondAttribute="bottom" constant="15" id="quk-WB-mk9"/>
                             <constraint firstItem="rIn-Ok-O9S" firstAttribute="centerX" secondItem="v2l-EH-gN6" secondAttribute="centerX" id="w4R-U4-Wy0"/>
+                            <constraint firstAttribute="trailing" secondItem="CsZ-81-Ybq" secondAttribute="trailing" constant="20" id="wWD-ax-UOy"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dc9-pG-9cU"/>
+                                <exclude reference="CDp-VT-fha"/>
+                                <exclude reference="nPQ-YL-2WT"/>
+                                <exclude reference="wWD-ax-UOy"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="navbtn-settings" selectedImage="navbtn-settings" id="oaS-8D-k1U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="blockedUsersStackView" destination="uyd-J8-W2d" id="Hxy-gb-mnH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Oi-5I-d4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="98w-DD-UP7">
+                    <connections>
+                        <action selector="endLicenseTapped" destination="WSL-na-ydf" id="RMe-XS-vIk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-8.5" y="538.5"/>
         </scene>

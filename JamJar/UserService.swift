@@ -141,4 +141,48 @@ class UserService: APIService {
         }
     }
     
+    static func getBlockedUsers(completion: (success: Bool, result: [User]?, error: String?) -> Void) {
+        let url = self.buildURL("users/block/")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, result: nil, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and a profile
+                let users = Mapper<User>().mapArray(response.result.value!)
+                
+                completion(success: true, result: users, error: nil)
+                return
+            }
+        }
+    }
+    
+    static func blockUser(userId: Int, block: Bool = true, completion: (success: Bool, result: [User]?, error: String?) -> Void) {
+        let url = self.buildURL("users/block/")
+        
+        let params: [String: AnyObject] = [
+            "user_id": userId,
+            "block": block
+        ]
+        
+        self.post(url, parameters: params).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, result: nil, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and a profile
+                let users = Mapper<User>().mapArray(response.result.value!)
+                
+                completion(success: true, result: users, error: nil)
+                return
+            }
+        }
+    }
 }
