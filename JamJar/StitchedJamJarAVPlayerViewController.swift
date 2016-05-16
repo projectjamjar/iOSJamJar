@@ -19,6 +19,8 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     // UI Elements
     var rewindButton: UIButton!
     var fastFowardButton: UIButton!
+    var videoStackView: UIStackView!
+    var videoScrollView: UIScrollView!
     
     // Video and AVPlayer Storage
     var jamjar: JamJarGraph!
@@ -89,6 +91,14 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         self.bottomBar.addSubview(fastFowardButton)
     }
     
+    // Stack view for overlapping videos
+    func createVideoStackViewAndScrollView() {
+        print("Lets display the overlapping videos")
+        self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize))
+        
+        //have update function that updates size of scroll and size of contents in scroll
+    }
+    
     func rewindButtonAction(sender:UIButton!)
     {
         if !self.overlappingVideos.isEmpty {
@@ -118,6 +128,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 // Make sure this offset and video length is larger than the elapsed time
                 if(elapsedTime < (Double(overlapVideo.length) + edge.offset)) {
                     self.overlappingVideos.append(overlapVideo)
+                    self.addVideoToStackView(overlapVideo.thumbnailForSize(256))
                     // restrict AVPlayer adding if there are too many
                     if(self.storedAVPlayers.count < avPlayerListMax) {
                         self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: overlapVideo.hls_src)!, videoId: overlapVideo.id!))
@@ -128,7 +139,11 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 }
             } else if storedVideoIds.contains(edge.video) && (Double(overlapVideo.length) + edge.offset) < elapsedTime {
                 // Remove video from appropriate lists
-                self.overlappingVideos = self.overlappingVideos.filter() { $0.id! != overlapVideo.id! } // There may be a better way to remove element from array
+                let removedVideo = self.overlappingVideos.filter() { $0.id! == overlapVideo.id! }.first
+                let removedVideoIndex = self.getOverlappingVideoIndexById((removedVideo?.id)!)
+                //remove both video and the element in stack
+                self.overlappingVideos.removeAtIndex(removedVideoIndex)
+                self.removeVideoFromStackView(removedVideoIndex)
                 self.storedAVPlayers = self.storedAVPlayers.filter() { $0.videoId! != overlapVideo.id! }
                 // If we removed a video and a player, and the video list is larger than the avplayer list, add next video to the AVPlayer list
                 if(self.overlappingVideos.count > self.storedAVPlayers.count) {
@@ -153,7 +168,9 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         // Switch videos
         let tempVideoIndex = getOverlappingVideoIndexById(newVideoId)
         self.overlappingVideos.insert(self.currentVideo, atIndex: 0)
+        self.pushVideoToStackView(self.currentVideo.thumbnailForSize(256))
         self.currentVideo = self.overlappingVideos.removeAtIndex(tempVideoIndex + 1)
+        self.removeVideoFromStackView(tempVideoIndex + 1)
         
         // Switch AVPlayers
         let tempPlayerIndex = getPlayerIndexById(newVideoId)
@@ -209,6 +226,52 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
             let newVideoId = self.storedAVPlayers.first?.videoId
             changeCurrentVideo(newVideoId!)
         }
+    }
+    
+    /*
+     * Video Stack View Functions
+     */
+    private func createImageView(image: UIImage?) -> UIImageView {
+        print("createImageView began")
+        let newVideoImageView = UIImageView()
+        
+        //Set Size
+        newVideoImageView.frame.size.height = uiElementSize
+        newVideoImageView.frame.size.width = uiElementSize * (110.0/75.0)
+        
+        if let thumbImage = image {
+            newVideoImageView.image = thumbImage
+            newVideoImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
+        }
+        else {
+            newVideoImageView.image = UIImage(named: "logo-transparent")
+            newVideoImageView.contentMode = .ScaleAspectFit
+            newVideoImageView.backgroundColor = UIColor.jjCoralColor()
+            newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            
+        }
+        
+        print("createImageView ended")
+        return newVideoImageView
+    }
+    
+    private func addVideoToStackView(image: UIImage?) {
+        print("addVideoToStackView began")
+        self.videoStackView.addArrangedSubview(self.createImageView(image))
+        print("addVideoToStackView ended")
+    }
+    
+    private func pushVideoToStackView(image: UIImage?) {
+        print("pushVideoToStackView began")
+        self.videoStackView.insertArrangedSubview(self.createImageView(image), atIndex: 0)
+        print("pushVideoToStackView ended")
+    }
+    
+    private func removeVideoFromStackView(index: Int!) {
+        print("removeVideoFromStackView began")
+        let removedVideo = self.videoStackView.arrangedSubviews[index]
+        self.videoStackView.removeArrangedSubview(removedVideo)
+        print("removeVideoFromStackView ended")
     }
     
     /*
