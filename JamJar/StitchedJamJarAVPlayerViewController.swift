@@ -30,6 +30,11 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
     let avPlayerListMax = 5
     
+    // Temp stored values to keep track of player status
+    var tempNewTime: Double? = nil
+    var tempIsPlaying: Bool? = nil
+    var playerStatusObserverExists: Bool! = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -70,6 +75,12 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         
         // Remove observer for checking if video ended
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player?.currentItem)
+        
+        //remove obeserver for Play Status if it still exists
+        if (self.playerStatusObserverExists == true) {
+            self.player!.removeObserver(self, forKeyPath: "currentItem.status", context: nil)
+            self.playerStatusObserverExists = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -200,16 +211,15 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         self.removeVideoFromStackView(tempVideoIndex + 1)
         
         // Switch AVPlayers
-        // TODO: Handle situation where provided Index is out of bounds
         let tempPlayerIndex = getPlayerIndexById(newVideoId)
         self.storedAVPlayers.insert(self.player as! JamJarAVPlayer, atIndex: 0)
         if(tempPlayerIndex == -1) {
-            print("Must Create a new AVPlayer and remove last in list")
             //remove last AVPlayer
             self.storedAVPlayers.removeAtIndex(avPlayerListMax)
             //instantiate new player
             let newVideo = self.getVideoByIdFromList(newVideoId)
-            self.player = JamJarAVPlayer(URL: NSURL(string: newVideo.hls_src)!, videoId: newVideo.id!)
+            let newPlayer = JamJarAVPlayer(URL: NSURL(string: newVideo.hls_src)!, videoId: newVideo.id!)
+            self.player = newPlayer
         } else {
             self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex + 1)
         }
@@ -217,21 +227,18 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         // Now that information has been updated, reload the view and set proper time
         self.jamjarDelegate?.updateVideo(self.currentVideo)
         self.viewDidLoad()
-        self.player!.seekToTime(CMTimeMakeWithSeconds(newTime, 100)) { (completed: Bool) -> Void in
-            // Make the player maintain the play/pause status
-            if isPlaying {
-                self.player!.play()
-            } else {
-                self.player!.pause()
-            }
-        }
+        self.tempNewTime = newTime
+        self.tempIsPlaying = isPlaying
+        // add observer for when new video is ready to play
+        self.player!.addObserver(self, forKeyPath: "currentItem.status",
+                                 options: NSKeyValueObservingOptions(), context: nil)
+        self.playerStatusObserverExists = true
     }
     
     // Swipe recognition method
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
             
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
@@ -270,6 +277,34 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         let indexOfSelectedVideo = self.getIndexInStackView(sender.view as! UIImageView)
         let selectedVideoId = self.overlappingVideos[indexOfSelectedVideo].id
         self.changeCurrentVideo(selectedVideoId!)
+    }
+    
+    // Handle video ready to play
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        // Still need to call the previous observers
+        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        
+        //We have an update on the play status and the status is ReadyToPlay
+        if keyPath == "currentItem.status" && (object as! JamJarAVPlayer).status == AVPlayerStatus.ReadyToPlay {
+            //Remove the observer
+            if self.playerStatusObserverExists == true {
+                self.player!.removeObserver(self, forKeyPath: "currentItem.status", context: nil)
+                self.playerStatusObserverExists = false
+            }
+            
+            //Now seek to the desired time
+            self.player!.seekToTime(CMTimeMakeWithSeconds(self.tempNewTime!, 100)) { (completed: Bool) -> Void in
+                // Make the player maintain the play/pause status
+                if self.tempIsPlaying! {
+                    self.player!.play()
+                } else {
+                    self.player!.pause()
+                }
+                
+                self.tempNewTime = nil
+                self.tempIsPlaying = nil
+            }
+        }
     }
     
     /*
