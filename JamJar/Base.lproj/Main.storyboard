@@ -373,7 +373,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPJ-Ne-YTB">
                                         <rect key="frame" x="0.0" y="235" width="283" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Aggree to the JamJar End-User License Agreement" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2j-Q9-JtE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Agree to the JamJar End-User License Agreement" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2j-Q9-JtE">
                                                 <rect key="frame" x="0.0" y="0.0" width="233" height="31"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6424989442567568" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="17"/>
