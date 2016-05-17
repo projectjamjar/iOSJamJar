@@ -214,6 +214,7 @@ class UploadVideoViewController: BaseViewController {
             let videoPlayer = AVPlayer(URL: videoPath)
             
             embeddedVideoViewController.showFullScreenButton = false
+            embeddedVideoViewController.uiElementSize = 30
             embeddedVideoViewController.player = videoPlayer
         }
     }

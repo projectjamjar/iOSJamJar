@@ -24,7 +24,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     let playbackLikelyToKeepUpContext: UnsafeMutablePointer<(Void)> = nil
     
     // UIElements work off of this size constant
-    let uiElementSize: CGFloat = 40
+    var uiElementSize: CGFloat = 40
     
     var showFullScreenButton = true
     
