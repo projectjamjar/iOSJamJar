@@ -17,6 +17,7 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var videoCountLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var blockButton: UIButton!
     
     // Always set this!  This is how we get the data for the view
     var username: String?
@@ -43,6 +44,10 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
         // Set the username to the current user if none is specified
         if self.username == nil {
             self.username = UserService.currentUser()?.username
+        }
+        
+        if self.username == UserService.currentUser()?.username {
+            self.blockButton.hidden = true
         }
         
         self.updateUI()
@@ -109,6 +114,28 @@ class ProfileViewController: BaseViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    /***************************************************************************
+     Block User Setup
+     ***************************************************************************/
+    @IBAction func blockUserTapped() {
+        let alertView = SCLAlertView()
+//        alertView.addButton("Cancel") {
+//            // Do nothing
+//        }
+        alertView.addButton("Yes") {
+            // Block the user
+            if let user = self.user {
+                UserService.blockUser(user.id!, completion: { (success, result, error) in
+                    // Send em to the settings view!
+                    // Set up the login storyboard again
+                    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDelegate.setupMainStoryboard()
+                })
+            }
+        }
+        
+        alertView.showWarning("Block User?", subTitle: "Are you sure you want to block \(self.username!)?  This will make all of their videos invisible to you.")
+    }
     
     /***************************************************************************
      TableView Setup

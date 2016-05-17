@@ -57,6 +57,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-rW-NUH">
+                                <rect key="frame" x="325" y="74" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ZbM-XT-2tW"/>
+                                    <constraint firstAttribute="height" constant="30" id="rNo-pR-CmW"/>
+                                </constraints>
+                                <state key="normal" image="block"/>
+                                <connections>
+                                    <action selector="blockUserTapped" destination="Oh9-Z2-9vk" eventType="touchUpInside" id="IJe-g8-uIs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -73,12 +84,14 @@
                             <constraint firstAttribute="trailing" secondItem="c9O-6g-vCN" secondAttribute="trailing" constant="20" id="U5A-yC-wzZ"/>
                             <constraint firstItem="LF7-MN-ssp" firstAttribute="leading" secondItem="c9O-6g-vCN" secondAttribute="leading" id="VW0-4n-cpN"/>
                             <constraint firstItem="dov-jg-9ts" firstAttribute="leading" secondItem="bUU-rr-ee6" secondAttribute="leading" id="VgY-uA-Vel"/>
+                            <constraint firstItem="CrB-rW-NUH" firstAttribute="top" secondItem="5SI-Ge-TM8" secondAttribute="bottom" constant="10" id="WDN-5g-6Nq"/>
                             <constraint firstItem="dov-jg-9ts" firstAttribute="top" secondItem="A9p-r6-jQe" secondAttribute="bottom" constant="6" id="XZC-FI-16z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="c9O-6g-vCN" secondAttribute="trailing" constant="4" id="YrP-FC-2Nv"/>
                             <constraint firstItem="A9p-r6-jQe" firstAttribute="top" secondItem="c9O-6g-vCN" secondAttribute="bottom" constant="11" id="Yrl-Ha-7nK"/>
                             <constraint firstItem="dov-jg-9ts" firstAttribute="top" secondItem="5SI-Ge-TM8" secondAttribute="bottom" constant="85" id="aN2-BE-4Ap"/>
                             <constraint firstItem="c9O-6g-vCN" firstAttribute="leading" secondItem="bUU-rr-ee6" secondAttribute="leading" constant="20" id="bjO-nI-lK7"/>
                             <constraint firstItem="Nxk-aL-QN4" firstAttribute="trailing" secondItem="dov-jg-9ts" secondAttribute="trailing" id="bmk-Wq-nnt"/>
+                            <constraint firstAttribute="trailing" secondItem="CrB-rW-NUH" secondAttribute="trailing" constant="20" id="fA5-AF-Gnw"/>
                             <constraint firstItem="Nxk-aL-QN4" firstAttribute="top" secondItem="bUU-rr-ee6" secondAttribute="topMargin" constant="-63" id="fJ2-oN-lh0"/>
                             <constraint firstItem="A9p-r6-jQe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LF7-MN-ssp" secondAttribute="trailing" constant="10" id="kPt-S3-Nad"/>
                             <constraint firstAttribute="trailing" secondItem="A9p-r6-jQe" secondAttribute="trailing" constant="20" id="kUb-fC-3fj"/>
@@ -106,12 +119,14 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="Nxk-aL-QN4" id="qaq-gN-WpL"/>
+                        <outlet property="blockButton" destination="CrB-rW-NUH" id="rEM-6j-1B9"/>
                         <outlet property="fullNameLabel" destination="LF7-MN-ssp" id="oqu-4y-T9a"/>
                         <outlet property="tableView" destination="dov-jg-9ts" id="68y-Pc-qlP"/>
                         <outlet property="usernameLabel" destination="c9O-6g-vCN" id="0Jd-kU-hSq"/>
                         <outlet property="videoCountLabel" destination="A9p-r6-jQe" id="ApU-oa-EpL"/>
                         <segue destination="GuN-NX-8zE" kind="show" identifier="ToConcert" id="M1R-sp-mOZ"/>
                         <segue destination="e0X-tU-mRm" kind="show" identifier="ToVideo" id="QtU-VB-8kD"/>
+                        <segue destination="xXQ-US-1ri" kind="show" identifier="ToSettings" id="Ch0-ZH-5UT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afX-Kr-k9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,8 +173,17 @@
             </objects>
             <point key="canvasLocation" x="1448.5" y="501"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="Zkn-9b-svP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="xXQ-US-1ri" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VFe-Ey-hgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441.5" y="579"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="block" width="24" height="24"/>
         <image name="concert_bg_1094x729" width="1094" height="729"/>
         <image name="navbtn-profile" width="22" height="22"/>
     </resources>

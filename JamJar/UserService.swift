@@ -141,7 +141,7 @@ class UserService: APIService {
         }
     }
     
-    static func getBlockedUsers(completion: (success: Bool, result: [User]?, error: String?) -> Void) {
+    static func getBlockedUsers(completion: (success: Bool, result: [UserBlock]?, error: String?) -> Void) {
         let url = self.buildURL("users/block/")
         
         self.get(url).responseJSON { response in
@@ -153,23 +153,18 @@ class UserService: APIService {
                 return
             case .Success:
                 // We got a success response code and a profile
-                let users = Mapper<User>().mapArray(response.result.value!)
+                let blocks = Mapper<UserBlock>().mapArray(response.result.value!)
                 
-                completion(success: true, result: users, error: nil)
+                completion(success: true, result: blocks, error: nil)
                 return
             }
         }
     }
     
-    static func blockUser(userId: Int, block: Bool = true, completion: (success: Bool, result: [User]?, error: String?) -> Void) {
-        let url = self.buildURL("users/block/")
+    static func blockUser(userId: Int, completion: (success: Bool, result: UserBlock?, error: String?) -> Void) {
+        let url = self.buildURL("users/block/\(userId)/")
         
-        let params: [String: AnyObject] = [
-            "user_id": userId,
-            "block": block
-        ]
-        
-        self.post(url, parameters: params).responseJSON { response in
+        self.post(url).responseJSON { response in
             switch response.result {
             case .Failure(_):
                 // We got an error response code
@@ -178,9 +173,27 @@ class UserService: APIService {
                 return
             case .Success:
                 // We got a success response code and a profile
-                let users = Mapper<User>().mapArray(response.result.value!)
+                let users = Mapper<UserBlock>().map(response.result.value!)
                 
                 completion(success: true, result: users, error: nil)
+                return
+            }
+        }
+    }
+    
+    static func unblockUser(userId: Int, completion: (success: Bool, error: String?) -> Void) {
+        let url = self.buildURL("users/block/\(userId)/")
+        
+        self.delete(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and message
+                completion(success: true, error: nil)
                 return
             }
         }

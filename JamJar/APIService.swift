@@ -71,4 +71,9 @@ class APIService {
         return Alamofire.request(.PUT, url, parameters: parameters, encoding: .JSON, headers: headers).validate()
     }
     
+    static func delete(url: String, parameters: [String: AnyObject]? = nil) -> Request {
+        let headers = self.getRequestHeaders()
+        return Alamofire.request(.DELETE, url, parameters: parameters, encoding: .JSON, headers: headers).validate()
+    }
+    
 }
