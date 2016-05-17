@@ -62,6 +62,7 @@ class SettingsViewController: BaseViewController{
                 // Remove that kid
                 self.blockedUsersStackView.removeArrangedSubview(label)
                 label.removeFromSuperview()
+                showSuccessView()
             })
         }
     }
