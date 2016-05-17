@@ -100,7 +100,8 @@ class VideoService: APIService {
                 }
                 
                 for artist in artists {
-                    multipartFormData.appendBodyPart(data: artist.spotifyResponseId!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "artists")
+                    let spotifyId = artist.spotifyResponseId != nil ? artist.spotifyResponseId! : artist.spotifyId!
+                    multipartFormData.appendBodyPart(data: spotifyId.dataUsingEncoding(NSUTF8StringEncoding)!, name: "artists")
                 }
             },
             encodingCompletion: { encodingResult in

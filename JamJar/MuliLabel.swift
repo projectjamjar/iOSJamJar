@@ -11,7 +11,17 @@ import UIKit
 class MuliLabel: UILabel {
     var padding: CGFloat = 0.0
     
-    func setup(text: String, size: CGFloat = 16.0, title: String? = nil, numLines: Int = 0, color: UIColor = UIColor.whiteColor(), frameSize: CGSize? = nil, alignment: NSTextAlignment = .Natural, padding: CGFloat? = nil) {
+    var data: AnyObject?
+    
+    func setup(text: String,
+               size: CGFloat = 16.0,
+               title: String? = nil,
+               numLines: Int = 0,
+               color: UIColor = UIColor.whiteColor(),
+               frameSize: CGSize? = nil,
+               alignment: NSTextAlignment = .Natural,
+               padding: CGFloat? = nil,
+               data: AnyObject? = nil) {
         
         if let title = title {
             let attributedText = NSMutableAttributedString(
@@ -22,7 +32,7 @@ class MuliLabel: UILabel {
                 ]
             )
             attributedText.addAttribute(NSFontAttributeName,
-                                        value: UIFont(name: "Muli-Regular",
+                                        value: UIFont(name: "Muli",
                                             size: size)!,
                                         range: NSRange(location: 0, length: title.characters.count + 1))
             
@@ -32,7 +42,6 @@ class MuliLabel: UILabel {
             self.text = text
             self.font = UIFont(name: "Muli-Light", size: size)
         }
-        
         
         self.numberOfLines = numLines
         self.lineBreakMode = .ByWordWrapping
@@ -49,6 +58,11 @@ class MuliLabel: UILabel {
         
         if let padding = padding {
             self.padding = padding
+            self.drawTextInRect(self.frame)
+        }
+        
+        if data != nil {
+            self.data = data
         }
     }
     

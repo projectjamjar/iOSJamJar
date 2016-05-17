@@ -16,6 +16,7 @@ class VenueSearchResult: NSObject, Mappable {
      The constructor required by ObjectMapper
      */
     required init?(_ map: Map) {}
+    override init() {}
     
     /**
      The mapping function for ObjectMapper.  This function relates model

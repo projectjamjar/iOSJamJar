@@ -32,7 +32,16 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet var venuesAutoCompleteTable: UITableView!
     @IBOutlet var venuesAutoCompleteTableHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var sponsoredStackView: UIStackView!
     @IBOutlet weak var artistsStackView: UIStackView!
+    
+    @IBOutlet weak var concertScrollView: UIScrollView!
+    
+    /***************************************************************************
+     Loading up a buncha stuff
+        Primarily the callbacks and stuff for the AutoComplete inputs
+        (should definitely be cleaned up eventually at some point maybe perhaps)
+     ***************************************************************************/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,12 +93,122 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
-        datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.dataPickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(EnterConcertInformationViewController.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.inputView = datePickerView
         
+        
+        // Hit the API to get suggested events!
+        self.getSponsoredEvents()
     }
     
+    func getSponsoredEvents() {
+        // Asynchronously fetch the thumbnail
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // Background - get thumbnail
+            ConcertService.getSponsoredEvents({ (success, events, result) in
+                // Manipulate the UI in the main thread
+                dispatch_async(dispatch_get_main_queue()) {
+                    if !success || events!.count == 0 {
+                        // Don't do anything I guess?
+                    }
+                    else {
+                        // If we're here, we know that we have at least one event
+                        
+                        // Make the label!
+                        let label = MuliLabel()
+                        label.setup("",
+                            title: "Current Events",
+                            size: 19.0,
+                            alignment: .Center)
+                        self.sponsoredStackView.addArrangedSubview(label)
+                        
+                        // Make a jawn for each event
+                        for event in events! {
+                            let eventString = "\(event.name) @ \(event.concert.venue.name)"
+                            
+                            let eventLabel = MuliLabel()
+                            eventLabel.setup(eventString,
+                                size: 15.0,
+                                alignment: .Center,
+                                padding: 5.0,
+                                data: event)
+                            eventLabel.backgroundColor = UIColor.jjCoralColor().colorWithAlphaComponent(0.4)
+                            eventLabel.roundCorners(5.0)
+                            eventLabel.heightAnchor.constraintEqualToConstant(40.0).active = true
+//                            eventLabel.addCo
+                            eventLabel.userInteractionEnabled = true
+                            
+                            // Add a TapGestureRecognizer
+                            let tgr = UITapGestureRecognizer(target: self, action: #selector(self.sponsoredEventTapped(_:)))
+                            eventLabel.addGestureRecognizer(tgr)
+                            
+                            self.sponsoredStackView.addArrangedSubview(eventLabel)
+                        }
+                        
+                        // Add a bottom border to the Sponsored StackView
+//                        self.sponsoredStackView.addBorder(edges: [.Bottom])
+                    }
+                }
+            })
+        }
+    }
+    
+    
+    // We need this so the keyboard detects Autocomplete taps correctly
+    override func dismissKeyboard(sender: UITapGestureRecognizer) {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        var touch = sender.locationInView(sender.view)
+        //Adjust the touch value so it matches with the scroll view
+        touch.y += self.concertScrollView.contentOffset.y
+        if(!CGRectContainsPoint(artistsAutoCompleteTable.frame, touch) && !CGRectContainsPoint(venuesAutoCompleteTable.frame, touch)) {
+            self.view.endEditing(true)
+        }
+    }
+    
+    /***************************************************************************
+     Stuff to populate the fields (sponsored/current events)
+     ***************************************************************************/
+    
+    func sponsoredEventTapped(sender: UITapGestureRecognizer) {
+        if let label = sender.view as? MuliLabel,
+            event = label.data as? SponsoredEvent {
+            // Propegate the view with the selected event's info
+            for artist in event.artists {
+                self.addArtist(artist)
+            }
+            
+            self.setConcertData(event.concert)
+            
+            showSuccessView()
+        }
+    }
+    
+    func setConcertData(concert: Concert) {
+        // Update all of the venue info
+        let venue = VenueSearchResult()
+        venue.place_id = concert.venue.place_id
+        venue.name = "\(concert.venue.name), \(concert.venue.formattedAddress)"
+        self.selectedVenue = venue
+        self.venueTextField.text = venue.name
+        
+        // Update the date
+        self.selectedDate = concert.date
+        self.dateTextField.text = self.selectedDate.string(prettyDateFormat)
+    }
+
+    
+    /***************************************************************************
+     Artist Stuff
+     ***************************************************************************/
+    
     func addArtist(artist: Artist) {
+        // Don't add artists twice
+        let spotifyId = artist.spotifyResponseId != nil ? artist.spotifyResponseId : artist.spotifyId
+        if (self.selectedArtists.filter { $0.spotifyResponseId == spotifyId ||
+            $0.spotifyId == spotifyId }).first != nil {
+            return
+        }
+        
         // Add artist to the selected artist list
         self.selectedArtists.append(artist)
         
@@ -142,6 +261,11 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         }
     }
     
+
+    /***************************************************************************
+     Venue stuff
+     ***************************************************************************/
+    
     //artistsTextFieldChange takes the input string and updates the search results
     private func venueTextFieldChange(inputString: String) {
         
@@ -165,13 +289,23 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
             }
         }
     }
+
+
+    /***************************************************************************
+     Concert Date Stuff
+     ***************************************************************************/
     
-    func dataPickerChanged(sender:UIDatePicker) {
+    func datePickerChanged(sender:UIDatePicker) {
         // Make the date text field human-readable
         dateTextField.text = sender.date.string(prettyDateFormat)
         // Save the selected date
         self.selectedDate = sender.date
     }
+    
+
+    /***************************************************************************
+     Segue Stuff
+     ***************************************************************************/
     
     @IBAction func continueButtonPressed(sender: UIButton) {
         // Make sure all the fields are filled out, then segue to the video Chooser
@@ -205,14 +339,6 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
         self.dateTextField.text = ""
         self.artistsStackView.subviews.forEach({ $0.removeFromSuperview() })
         self.artistsTextField.setColoredPlaceholder("Search Artists...")
-    }
-    
-    override func dismissKeyboard(sender: UITapGestureRecognizer) {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        let touch = sender.locationInView(sender.view)
-        if(!CGRectContainsPoint(artistsAutoCompleteTable.frame, touch) && !CGRectContainsPoint(venuesAutoCompleteTable.frame, touch)) {
-            self.view.endEditing(true)
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
