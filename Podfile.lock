@@ -5,10 +5,10 @@ PODS:
     - DKImagePickerController/ImageManager (= 3.2.0)
   - DKImagePickerController/Camera (3.2.0)
   - DKImagePickerController/ImageManager (3.2.0)
-  - GoogleMaps (1.13.1)
-  - KTCenterFlowLayout (1.1.1)
+  - GoogleMaps (1.13.2)
+  - KTCenterFlowLayout (1.2)
   - Locksmith (2.0.8)
-  - ObjectMapper (1.2.0)
+  - ObjectMapper (1.3.0)
   - PKHUD (3.1.0)
   - SCLAlertView (0.5.6)
   - SwiftyJSON (2.3.2)
@@ -27,10 +27,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   DKImagePickerController: fe26175578a740283320c392e950532abc6db3ea
-  GoogleMaps: 8935220056a6cc8e9ca298b4da4ae530620aa71b
-  KTCenterFlowLayout: eded079c349450dea12f7cf94b424d1bc3205519
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  KTCenterFlowLayout: 4dcbc3449df83a101ef5e8cf48d82faa208a3b93
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
-  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SCLAlertView: c2b916952520d96cf5e886a38053f1b8c3da502e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

@@ -202,6 +202,7 @@
                         <outlet property="artistsAutoCompleteTableHeight" destination="FJ6-e8-Esu" id="Z09-ch-rzM"/>
                         <outlet property="artistsStackView" destination="q9p-dH-gZz" id="QvQ-qC-WWD"/>
                         <outlet property="artistsTextField" destination="Zml-K6-4yb" id="pHK-SR-ZlY"/>
+                        <outlet property="concertScrollView" destination="Kab-lo-myX" id="eZb-Ge-ts2"/>
                         <outlet property="dateTextField" destination="YoL-QC-TMv" id="DHU-IB-K5U"/>
                         <outlet property="sponsoredStackView" destination="xJt-KZ-EQL" id="tfC-ZO-9Fe"/>
                         <outlet property="venueTextField" destination="I66-hi-QZq" id="szw-ko-yIS"/>
