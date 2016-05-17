@@ -29,6 +29,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var overlappingVideos: [Video]! = [Video]()
     var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
     let avPlayerListMax = 5
+    var videoStackViewSize: CGFloat!
     
     // Temp stored values to keep track of player status
     var tempNewTime: Double? = nil
@@ -114,12 +115,15 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     
     // Stack view for overlapping videos
     func createVideoStackViewAndScrollView() {
+        //set up size
+        self.videoStackViewSize = uiElementSize + 10.0
+        
         //createScrollView
-        self.videoScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize))
+        self.videoScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: videoStackViewSize))
         self.videoScrollView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         self.view.addSubview(self.videoScrollView)
         
-        self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.videoScrollView.frame.width, height: uiElementSize))
+        self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.videoScrollView.frame.width, height: videoStackViewSize))
         self.videoScrollView.addSubview(self.videoStackView)
         
         // When the video changes, the stack view is reset and needs to be repopulated with data
@@ -131,10 +135,10 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     }
     
     func updateVideoStackViewAndScrollView() {
-        self.videoScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize)
+        self.videoScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: videoStackViewSize)
         
-        let widthOfContent = CGFloat(self.videoStackView.arrangedSubviews.count) * (uiElementSize * (110.0/75.0))
-        self.videoStackView.frame = CGRect(x: 0, y: 0, width: widthOfContent, height: uiElementSize)
+        let widthOfContent = CGFloat(self.videoStackView.arrangedSubviews.count) * (videoStackViewSize * (110.0/75.0))
+        self.videoStackView.frame = CGRect(x: 0, y: 0, width: widthOfContent, height: videoStackViewSize)
         self.videoScrollView.contentSize.width = widthOfContent
     }
     
@@ -315,8 +319,8 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         let newVideoImageView = UIImageView()
         
         //Set Size
-        newVideoImageView.frame.size.height = uiElementSize
-        newVideoImageView.frame.size.width = uiElementSize * (110.0/75.0)
+        newVideoImageView.frame.size.height = videoStackViewSize
+        newVideoImageView.frame.size.width = videoStackViewSize * (110.0/75.0)
         
         if let thumbImage = image {
             newVideoImageView.image = thumbImage
@@ -326,13 +330,14 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
             newVideoImageView.backgroundColor = UIColor.jjCoralColor()
         }
         
-        newVideoImageView.heightAnchor.constraintEqualToConstant(uiElementSize).active = true
-        newVideoImageView.widthAnchor.constraintEqualToConstant(uiElementSize * (110.0/75.0)).active = true
+        newVideoImageView.heightAnchor.constraintEqualToConstant(videoStackViewSize).active = true
+        newVideoImageView.widthAnchor.constraintEqualToConstant(videoStackViewSize * (110.0/75.0)).active = true
         newVideoImageView.contentMode = .ScaleAspectFill
         
         //set border
-        newVideoImageView.layer.borderWidth = 1.0
-        newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        newVideoImageView.addBorder(edges: [.Left,.Bottom,.Right])
+        //newVideoImageView.layer.borderWidth = 1.0
+        //newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
         newVideoImageView.clipsToBounds = true
         
         //create tap gesture recognizer for view
