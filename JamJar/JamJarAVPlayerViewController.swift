@@ -27,6 +27,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     var uiElementSize: CGFloat = 40
     
     var showFullScreenButton = true
+    var autoPlay = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,10 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         
         // start video
         loadingIndicatorView.startAnimating()
-        self.player!.play() // Start the playback
+        
+        if autoPlay {
+            self.playPause() // Start the playback
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -137,7 +141,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.playButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
         playButton.frame = CGRectMake(20 + uiElementSize, 0, uiElementSize, uiElementSize)
         playButton.tintColor = UIColor(red: 241, green: 95, blue: 78)
-        playButton.setImage(UIImage(named: "ic_pause"), forState: .Normal)
+        playButton.setImage(UIImage(named: "right-arrow"), forState: .Normal)
         playButton.addTarget(self, action: #selector(JamJarAVPlayerViewController.playButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(playButton)

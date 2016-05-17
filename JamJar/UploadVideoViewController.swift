@@ -95,6 +95,7 @@ class UploadVideoViewController: BaseViewController {
         let videoPath = self.videosToUpload[currentVideoSelected]
         embeddedVideoViewController.removeObservers()
         embeddedVideoViewController.player = AVPlayer(URL: videoPath)
+        embeddedVideoViewController.autoPlay = false
         embeddedVideoViewController.viewDidLoad()
         
         //update videoNameTextField
@@ -213,9 +214,10 @@ class UploadVideoViewController: BaseViewController {
             let videoPath = self.videosToUpload[currentVideoSelected]
             let videoPlayer = AVPlayer(URL: videoPath)
             
-            embeddedVideoViewController.showFullScreenButton = false
             embeddedVideoViewController.uiElementSize = 30
             embeddedVideoViewController.player = videoPlayer
+            embeddedVideoViewController.showFullScreenButton = false
+            embeddedVideoViewController.autoPlay = false
         }
     }
 }
