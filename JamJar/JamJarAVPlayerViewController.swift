@@ -45,7 +45,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         createBufferIndicator()
         
         // Create bottom bar
-        let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+        let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         self.bottomBar.backgroundColor = bottomBarColor
         self.view.addSubview(self.bottomBar)
         

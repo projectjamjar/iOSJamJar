@@ -116,6 +116,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     func createVideoStackViewAndScrollView() {
         //createScrollView
         self.videoScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: uiElementSize))
+        self.videoScrollView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         self.view.addSubview(self.videoScrollView)
         
         self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.videoScrollView.frame.width, height: uiElementSize))
@@ -319,17 +320,20 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         
         if let thumbImage = image {
             newVideoImageView.image = thumbImage
-            newVideoImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
         }
         else {
             newVideoImageView.image = UIImage(named: "logo-transparent")
             newVideoImageView.backgroundColor = UIColor.jjCoralColor()
-            newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
         }
         
         newVideoImageView.heightAnchor.constraintEqualToConstant(uiElementSize).active = true
         newVideoImageView.widthAnchor.constraintEqualToConstant(uiElementSize * (110.0/75.0)).active = true
         newVideoImageView.contentMode = .ScaleAspectFill
+        
+        //set border
+        newVideoImageView.layer.borderWidth = 1.0
+        newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        newVideoImageView.clipsToBounds = true
         
         //create tap gesture recognizer for view
         let changeVideoTap = UITapGestureRecognizer(target: self, action: #selector(StitchedJamJarAVPlayerViewController.jamjarVideoTapped(_:)))
@@ -354,6 +358,16 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         let removedVideo = self.videoStackView.arrangedSubviews[index]
         self.videoStackView.removeArrangedSubview(removedVideo)
         self.updateVideoStackViewAndScrollView()
+    }
+    
+    // override fadeUIElements to include scroll view
+    override func fadeUIElements(value: CGFloat, completion: () -> Void) {
+        UIView.animateWithDuration(0.5) {
+            self.videoScrollView.alpha = value;
+        }
+        super.fadeUIElements(value) {
+            completion()
+        }
     }
     
     /*
