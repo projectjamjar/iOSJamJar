@@ -41,7 +41,7 @@ class VideoCell: UITableViewCell {
         }
         
         // Round the edges of the imageview
-        thumbnailImageView.layer.borderWidth = 2
+        thumbnailImageView.layer.borderWidth = 1
         thumbnailImageView.layer.cornerRadius = 5.0
         thumbnailImageView.clipsToBounds = true
         
@@ -71,11 +71,11 @@ class VideoCell: UITableViewCell {
     func setThumbnail(image: UIImage?) {
         if let thumbImage = image {
             thumbnailImageView.image = thumbImage
-            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
+            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
         }
         else {
             thumbnailImageView.image = UIImage(named: "logo-transparent")
-            thumbnailImageView.contentMode = .ScaleAspectFit
+            thumbnailImageView.contentMode = .ScaleAspectFill
             thumbnailImageView.backgroundColor = UIColor.jjCoralColor()
             thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
             

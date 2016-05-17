@@ -31,7 +31,7 @@ class ConcertCell: UITableViewCell {
         }
         
         // Round the edges of the imageview
-        thumbnailImageView.layer.borderWidth = 2
+        thumbnailImageView.layer.borderWidth = 1
         thumbnailImageView.layer.cornerRadius = 5.0
         thumbnailImageView.clipsToBounds = true
         
@@ -42,7 +42,7 @@ class ConcertCell: UITableViewCell {
         // Get and format the date and venue
         let dateString = self.concert.date.string("MM-d-YYYY")
         let venueString = self.concert.venue.name
-        dateVenueLabel.text = "\(dateString) | \(venueString)"
+        dateVenueLabel.text = "\(dateString)  |  \(venueString)"
         
         // Number of videos
         let numVideos = self.concert.videos_count
@@ -52,7 +52,7 @@ class ConcertCell: UITableViewCell {
     func setThumbnail(image: UIImage?) {
         if let thumbImage = image {
             thumbnailImageView.image = thumbImage
-            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
+            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
         }
         else {
             thumbnailImageView.image = UIImage(named: "logo-transparent")

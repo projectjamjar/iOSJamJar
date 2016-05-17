@@ -24,7 +24,7 @@ class JamJarCell: UITableViewCell {
         // Set the thumbnail to the first video with the target thumbnail size
         if let thumbImage = startVideo.thumbnailForSize(256) {
             thumbnailImageView.image = thumbImage
-            thumbnailImageView.layer.borderColor = UIColor.jjCoralColor().CGColor
+            thumbnailImageView.layer.borderColor = UIColor.whiteColor().CGColor
         }
         else {
             thumbnailImageView.image = UIImage(named: "logo-transparent")
@@ -35,7 +35,7 @@ class JamJarCell: UITableViewCell {
         }
         
         // Round the edges of the imageview
-        thumbnailImageView.layer.borderWidth = 2
+        thumbnailImageView.layer.borderWidth = 1
         thumbnailImageView.layer.cornerRadius = 5.0
         thumbnailImageView.clipsToBounds = true
     }
