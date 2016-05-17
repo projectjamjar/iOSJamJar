@@ -200,44 +200,44 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     
     // Switch current AVPlayer
     func changeCurrentVideo(newVideoId: Int) {
-        let isPlaying = self.player?.rate == 1.0
-        self.player?.pause()
-        self.removeObservers()
-        
-        let timePassed = CMTimeGetSeconds(self.player!.currentItem!.currentTime())
-        let edge = getEdgeFromJamJar(newVideoId)
-        let newTime = Double(timePassed) - edge.offset
-        
-        // Switch videos
-        let tempVideoIndex = getOverlappingVideoIndexById(newVideoId)
-        self.overlappingVideos.insert(self.currentVideo, atIndex: 0)
-        self.pushVideoToStackView(self.currentVideo.thumbnailForSize(256))
-        self.currentVideo = self.overlappingVideos.removeAtIndex(tempVideoIndex + 1)
-        self.removeVideoFromStackView(tempVideoIndex + 1)
-        
-        // Switch AVPlayers
-        let tempPlayerIndex = getPlayerIndexById(newVideoId)
-        self.storedAVPlayers.insert(self.player as! JamJarAVPlayer, atIndex: 0)
-        if(tempPlayerIndex == -1) {
-            //remove last AVPlayer
-            self.storedAVPlayers.removeAtIndex(avPlayerListMax)
-            //instantiate new player
-            let newVideo = self.getVideoByIdFromList(newVideoId)
-            let newPlayer = JamJarAVPlayer(URL: NSURL(string: newVideo.hls_src)!, videoId: newVideo.id!)
-            self.player = newPlayer
-        } else {
-            self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex + 1)
+        if let edge = getEdgeFromJamJar(newVideoId) {
+            let isPlaying = self.player?.rate == 1.0
+            let timePassed = CMTimeGetSeconds(self.player!.currentItem!.currentTime())
+            self.player?.pause()
+            self.removeObservers()
+            let newTime = Double(timePassed) - edge.offset
+            
+            // Switch videos
+            let tempVideoIndex = getOverlappingVideoIndexById(newVideoId)
+            self.overlappingVideos.insert(self.currentVideo, atIndex: 0)
+            self.pushVideoToStackView(self.currentVideo.thumbnailForSize(256))
+            self.currentVideo = self.overlappingVideos.removeAtIndex(tempVideoIndex + 1)
+            self.removeVideoFromStackView(tempVideoIndex + 1)
+            
+            // Switch AVPlayers
+            let tempPlayerIndex = getPlayerIndexById(newVideoId)
+            self.storedAVPlayers.insert(self.player as! JamJarAVPlayer, atIndex: 0)
+            if(tempPlayerIndex == -1) {
+                //remove last AVPlayer
+                self.storedAVPlayers.removeAtIndex(avPlayerListMax)
+                //instantiate new player
+                let newVideo = self.getVideoByIdFromList(newVideoId)
+                let newPlayer = JamJarAVPlayer(URL: NSURL(string: newVideo.hls_src)!, videoId: newVideo.id!)
+                self.player = newPlayer
+            } else {
+                self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex + 1)
+            }
+            
+            // Now that information has been updated, reload the view and set proper time
+            self.jamjarDelegate?.updateVideo(self.currentVideo)
+            self.viewDidLoad()
+            self.tempNewTime = newTime
+            self.tempIsPlaying = isPlaying
+            // add observer for when new video is ready to play
+            self.player!.addObserver(self, forKeyPath: "currentItem.status",
+                                     options: NSKeyValueObservingOptions(), context: nil)
+            self.playerStatusObserverExists = true
         }
-        
-        // Now that information has been updated, reload the view and set proper time
-        self.jamjarDelegate?.updateVideo(self.currentVideo)
-        self.viewDidLoad()
-        self.tempNewTime = newTime
-        self.tempIsPlaying = isPlaying
-        // add observer for when new video is ready to play
-        self.player!.addObserver(self, forKeyPath: "currentItem.status",
-                                 options: NSKeyValueObservingOptions(), context: nil)
-        self.playerStatusObserverExists = true
     }
     
     // Swipe recognition method
@@ -416,10 +416,10 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     }
     
     // Get edge from jamjar based on current video id and input id
-    private func getEdgeFromJamJar(videoId: Int) -> JamJarEdge {
+    private func getEdgeFromJamJar(videoId: Int) -> JamJarEdge? {
         let edges = jamjar.nodes![String(self.currentVideo.id!)]
         let edge = edges!.filter{ $0.video == videoId }.first
-        return edge!
+        return edge
     }
     
     // Get index of UIImageView within StackView
