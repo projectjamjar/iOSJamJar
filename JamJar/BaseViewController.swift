@@ -15,7 +15,10 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Disable navigation swipe action
-        self.navigationController!.interactivePopGestureRecognizer!.enabled = false
+        if let nc = self.navigationController,
+            pgr = nc.interactivePopGestureRecognizer {
+            pgr.enabled = false
+        }
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard(_:)))

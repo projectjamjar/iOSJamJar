@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		30783FED1CE4F619007D82CB /* JamJarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30783FEC1CE4F619007D82CB /* JamJarButton.swift */; };
+		30783FF11CE9215D007D82CB /* SponsoredEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30783FF01CE9215C007D82CB /* SponsoredEvent.swift */; };
+		30783FF31CE92C64007D82CB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30783FF21CE92C64007D82CB /* UIView.swift */; };
 		308AB85B1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */; };
 		308AB85D1CE2F11400731B4B /* ChooseVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */; };
 		30AA73DC1C84E13200CD05F2 /* JamJarTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */; };
@@ -92,6 +94,8 @@
 
 /* Begin PBXFileReference section */
 		30783FEC1CE4F619007D82CB /* JamJarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JamJarButton.swift; path = JamJar/JamJarButton.swift; sourceTree = SOURCE_ROOT; };
+		30783FF01CE9215C007D82CB /* SponsoredEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsoredEvent.swift; sourceTree = "<group>"; };
+		30783FF21CE92C64007D82CB /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarVideoCameraDelegate.swift; sourceTree = "<group>"; };
 		308AB85C1CE2F11400731B4B /* ChooseVideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVideosViewController.swift; sourceTree = "<group>"; };
 		30AA73DB1C84E13200CD05F2 /* JamJarTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JamJarTabBarController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				AA6B32FF1CDFB409003595BA /* Protocol.swift */,
 				AA6B33051CDFDDEA003595BA /* UIButton.swift */,
 				308AB85A1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift */,
+				30783FF21CE92C64007D82CB /* UIView.swift */,
 			);
 			name = "Extensions and Utils";
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				AA1310041C78F86500851AD4 /* Venue.swift */,
 				AAD1E4891C912B56007A1DB6 /* Concert.swift */,
 				30CA638D1CD847FA00A17CE3 /* SearchResult.swift */,
+				30783FF01CE9215C007D82CB /* SponsoredEvent.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				AAD1E48A1C912B56007A1DB6 /* Concert.swift in Sources */,
 				308AB85B1CE2E26600731B4B /* JamJarVideoCameraDelegate.swift in Sources */,
 				AAEB3E661BE0478900601B14 /* AppDelegate.swift in Sources */,
+				30783FF11CE9215D007D82CB /* SponsoredEvent.swift in Sources */,
 				30783FED1CE4F619007D82CB /* JamJarButton.swift in Sources */,
 				AA6FC3AF1CBC446C007C56AA /* VideoPageViewController.swift in Sources */,
 				30F8E6B81C8E187400A65D99 /* UIImageView.swift in Sources */,
@@ -637,6 +644,7 @@
 				30AD45581C95223B00F999E7 /* VideoCell.swift in Sources */,
 				AA59C8191CD859B700457CFD /* JamJarAVPlayer.swift in Sources */,
 				AA6B33061CDFDDEB003595BA /* UIButton.swift in Sources */,
+				30783FF31CE92C64007D82CB /* UIView.swift in Sources */,
 				AA6DE96D1C6FADF9007A64B7 /* SettingsViewController.swift in Sources */,
 				30EE7A151C91606D00293685 /* Colors.swift in Sources */,
 				30F05C251CDADCDA00FD179F /* ProfileViewController.swift in Sources */,
