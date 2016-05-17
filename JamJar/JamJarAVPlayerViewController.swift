@@ -27,6 +27,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
     var uiElementSize: CGFloat = 40
     
     var showFullScreenButton = true
+    var autoPlay = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +46,16 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         createBufferIndicator()
         
         // Create bottom bar
-        let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+        let bottomBarColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         self.bottomBar.backgroundColor = bottomBarColor
         self.view.addSubview(self.bottomBar)
         
         // start video
         loadingIndicatorView.startAnimating()
-        self.player!.play() // Start the playback
+        
+        if autoPlay {
+            self.playPause() // Start the playback
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -137,7 +141,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         self.playButton = UIButton(type: UIButtonType.RoundedRect) as UIButton
         playButton.frame = CGRectMake(20 + uiElementSize, 0, uiElementSize, uiElementSize)
         playButton.tintColor = UIColor(red: 241, green: 95, blue: 78)
-        playButton.setImage(UIImage(named: "ic_pause"), forState: .Normal)
+        playButton.setImage(UIImage(named: "right-arrow"), forState: .Normal)
         playButton.addTarget(self, action: #selector(JamJarAVPlayerViewController.playButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.bottomBar.addSubview(playButton)
@@ -164,7 +168,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         timePassedLabel.text = "0:00/0:00" //Serves as a default value incase nothing is returned
         timePassedLabel.font = UIFont(name: "Muli", size: 17)
         // Make a better time interval
-        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        let timeInterval: CMTime = CMTimeMakeWithSeconds(0.25, 100)
         timeObserver = self.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) {
             (elapsedTime: CMTime) -> Void in
             self.observeTime(elapsedTime)
@@ -229,7 +233,7 @@ class JamJarAVPlayerViewController: AVPlayerViewController {
         print(seekSlider.value) //prints a float that is between 0 and 1
         updateTimeLabel(elapsedTime, duration: videoDuration)
         
-        self.player!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
+        self.player!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
             if (self.playerRateBeforeSeek > 0) {
                 self.player!.play()
             }

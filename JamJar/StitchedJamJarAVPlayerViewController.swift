@@ -19,6 +19,8 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     // UI Elements
     var rewindButton: UIButton!
     var fastFowardButton: UIButton!
+    var videoStackView: UIStackView!
+    var videoScrollView: UIScrollView!
     
     // Video and AVPlayer Storage
     var jamjar: JamJarGraph!
@@ -27,6 +29,12 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     var overlappingVideos: [Video]! = [Video]()
     var storedAVPlayers: [JamJarAVPlayer]! = [JamJarAVPlayer]()
     let avPlayerListMax = 5
+    var videoStackViewSize: CGFloat!
+    
+    // Temp stored values to keep track of player status
+    var tempNewTime: Double? = nil
+    var tempIsPlaying: Bool? = nil
+    var playerStatusObserverExists: Bool! = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +43,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         // Add Buttons to Bar
         createRewindButton()
         createFastForwardButton()
+        createVideoStackViewAndScrollView()
         
         // swipe gestures
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(StitchedJamJarAVPlayerViewController.respondToSwipeGesture(_:)))
@@ -48,6 +57,13 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StitchedJamJarAVPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player?.currentItem)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        //Update Scroll and Stack view
+        self.updateVideoStackViewAndScrollView()
+    }
+    
     // This controller needs to remove JamJar unique elements
     override func removeObservers() {
         super.removeObservers()
@@ -55,9 +71,17 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         //Remove buttons to avoid duplication if the view is reloading
         self.rewindButton.removeFromSuperview()
         self.fastFowardButton.removeFromSuperview()
+        self.videoStackView.removeFromSuperview()
+        self.videoScrollView.removeFromSuperview()
         
         // Remove observer for checking if video ended
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player?.currentItem)
+        
+        //remove obeserver for Play Status if it still exists
+        if (self.playerStatusObserverExists == true) {
+            self.player!.removeObserver(self, forKeyPath: "currentItem.status", context: nil)
+            self.playerStatusObserverExists = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,6 +113,35 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         self.bottomBar.addSubview(fastFowardButton)
     }
     
+    // Stack view for overlapping videos
+    func createVideoStackViewAndScrollView() {
+        //set up size
+        self.videoStackViewSize = uiElementSize + 10.0
+        
+        //createScrollView
+        self.videoScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: videoStackViewSize))
+        self.videoScrollView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        self.view.addSubview(self.videoScrollView)
+        
+        self.videoStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.videoScrollView.frame.width, height: videoStackViewSize))
+        self.videoScrollView.addSubview(self.videoStackView)
+        
+        // When the video changes, the stack view is reset and needs to be repopulated with data
+        for video in self.overlappingVideos {
+            self.addVideoToStackView(video.thumbnailForSize(256))
+        }
+        
+        //have update function that updates size of scroll and size of contents in scroll
+    }
+    
+    func updateVideoStackViewAndScrollView() {
+        self.videoScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: videoStackViewSize)
+        
+        let widthOfContent = CGFloat(self.videoStackView.arrangedSubviews.count) * (videoStackViewSize * (110.0/75.0))
+        self.videoStackView.frame = CGRect(x: 0, y: 0, width: widthOfContent, height: videoStackViewSize)
+        self.videoScrollView.contentSize.width = widthOfContent
+    }
+    
     func rewindButtonAction(sender:UIButton!)
     {
         if !self.overlappingVideos.isEmpty {
@@ -118,6 +171,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 // Make sure this offset and video length is larger than the elapsed time
                 if(elapsedTime < (Double(overlapVideo.length) + edge.offset)) {
                     self.overlappingVideos.append(overlapVideo)
+                    self.addVideoToStackView(overlapVideo.thumbnailForSize(256))
                     // restrict AVPlayer adding if there are too many
                     if(self.storedAVPlayers.count < avPlayerListMax) {
                         self.storedAVPlayers.append(JamJarAVPlayer(URL: NSURL(string: overlapVideo.hls_src)!, videoId: overlapVideo.id!))
@@ -128,7 +182,11 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 }
             } else if storedVideoIds.contains(edge.video) && (Double(overlapVideo.length) + edge.offset) < elapsedTime {
                 // Remove video from appropriate lists
-                self.overlappingVideos = self.overlappingVideos.filter() { $0.id! != overlapVideo.id! } // There may be a better way to remove element from array
+                let removedVideo = self.overlappingVideos.filter() { $0.id! == overlapVideo.id! }.first
+                let removedVideoIndex = self.getOverlappingVideoIndexById((removedVideo?.id)!)
+                //remove both video and the element in stack
+                self.overlappingVideos.removeAtIndex(removedVideoIndex)
+                self.removeVideoFromStackView(removedVideoIndex)
                 self.storedAVPlayers = self.storedAVPlayers.filter() { $0.videoId! != overlapVideo.id! }
                 // If we removed a video and a player, and the video list is larger than the avplayer list, add next video to the AVPlayer list
                 if(self.overlappingVideos.count > self.storedAVPlayers.count) {
@@ -153,31 +211,39 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         // Switch videos
         let tempVideoIndex = getOverlappingVideoIndexById(newVideoId)
         self.overlappingVideos.insert(self.currentVideo, atIndex: 0)
+        self.pushVideoToStackView(self.currentVideo.thumbnailForSize(256))
         self.currentVideo = self.overlappingVideos.removeAtIndex(tempVideoIndex + 1)
+        self.removeVideoFromStackView(tempVideoIndex + 1)
         
         // Switch AVPlayers
         let tempPlayerIndex = getPlayerIndexById(newVideoId)
-        self.storedAVPlayers.append(self.player as! JamJarAVPlayer)
-        self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex)
+        self.storedAVPlayers.insert(self.player as! JamJarAVPlayer, atIndex: 0)
+        if(tempPlayerIndex == -1) {
+            //remove last AVPlayer
+            self.storedAVPlayers.removeAtIndex(avPlayerListMax)
+            //instantiate new player
+            let newVideo = self.getVideoByIdFromList(newVideoId)
+            let newPlayer = JamJarAVPlayer(URL: NSURL(string: newVideo.hls_src)!, videoId: newVideo.id!)
+            self.player = newPlayer
+        } else {
+            self.player = self.storedAVPlayers.removeAtIndex(tempPlayerIndex + 1)
+        }
         
         // Now that information has been updated, reload the view and set proper time
         self.jamjarDelegate?.updateVideo(self.currentVideo)
         self.viewDidLoad()
-        self.player!.seekToTime(CMTimeMakeWithSeconds(newTime, 10)) { (completed: Bool) -> Void in
-            // Make the player maintain the play/pause status
-            if isPlaying {
-                self.player!.play()
-            } else {
-                self.player!.pause()
-            }
-        }
+        self.tempNewTime = newTime
+        self.tempIsPlaying = isPlaying
+        // add observer for when new video is ready to play
+        self.player!.addObserver(self, forKeyPath: "currentItem.status",
+                                 options: NSKeyValueObservingOptions(), context: nil)
+        self.playerStatusObserverExists = true
     }
     
     // Swipe recognition method
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
             
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
@@ -208,6 +274,104 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         if !self.overlappingVideos.isEmpty {
             let newVideoId = self.storedAVPlayers.first?.videoId
             changeCurrentVideo(newVideoId!)
+        }
+    }
+    
+    // Handle video in StackView being tapped
+    func jamjarVideoTapped(sender: UITapGestureRecognizer) {
+        let indexOfSelectedVideo = self.getIndexInStackView(sender.view as! UIImageView)
+        let selectedVideoId = self.overlappingVideos[indexOfSelectedVideo].id
+        self.changeCurrentVideo(selectedVideoId!)
+    }
+    
+    // Handle video ready to play
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        // Still need to call the previous observers
+        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        
+        //We have an update on the play status and the status is ReadyToPlay
+        if keyPath == "currentItem.status" && (object as! JamJarAVPlayer).status == AVPlayerStatus.ReadyToPlay {
+            //Remove the observer
+            if self.playerStatusObserverExists == true {
+                self.player!.removeObserver(self, forKeyPath: "currentItem.status", context: nil)
+                self.playerStatusObserverExists = false
+            }
+            
+            //Now seek to the desired time
+            self.player!.seekToTime(CMTimeMakeWithSeconds(self.tempNewTime!, 100)) { (completed: Bool) -> Void in
+                // Make the player maintain the play/pause status
+                if self.tempIsPlaying! {
+                    self.player!.play()
+                } else {
+                    self.player!.pause()
+                }
+                
+                self.tempNewTime = nil
+                self.tempIsPlaying = nil
+            }
+        }
+    }
+    
+    /*
+     * Video Stack View Functions
+     */
+    private func createImageView(image: UIImage?) -> UIImageView {
+        let newVideoImageView = UIImageView()
+        
+        //Set Size
+        newVideoImageView.frame.size.height = videoStackViewSize
+        newVideoImageView.frame.size.width = videoStackViewSize * (110.0/75.0)
+        
+        if let thumbImage = image {
+            newVideoImageView.image = thumbImage
+        }
+        else {
+            newVideoImageView.image = UIImage(named: "logo-transparent")
+            newVideoImageView.backgroundColor = UIColor.jjCoralColor()
+        }
+        
+        newVideoImageView.heightAnchor.constraintEqualToConstant(videoStackViewSize).active = true
+        newVideoImageView.widthAnchor.constraintEqualToConstant(videoStackViewSize * (110.0/75.0)).active = true
+        newVideoImageView.contentMode = .ScaleAspectFill
+        
+        //set border
+        newVideoImageView.addBorder(edges: [.Left,.Bottom,.Right])
+        //newVideoImageView.layer.borderWidth = 1.0
+        //newVideoImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        newVideoImageView.clipsToBounds = true
+        
+        //create tap gesture recognizer for view
+        let changeVideoTap = UITapGestureRecognizer(target: self, action: #selector(StitchedJamJarAVPlayerViewController.jamjarVideoTapped(_:)))
+        changeVideoTap.cancelsTouchesInView = false
+        newVideoImageView.userInteractionEnabled = true
+        newVideoImageView.addGestureRecognizer(changeVideoTap)
+        
+        return newVideoImageView
+    }
+    
+    private func addVideoToStackView(image: UIImage?) {
+        self.videoStackView.addArrangedSubview(self.createImageView(image))
+        self.updateVideoStackViewAndScrollView()
+    }
+    
+    private func pushVideoToStackView(image: UIImage?) {
+        self.videoStackView.insertArrangedSubview(self.createImageView(image), atIndex: 0)
+        self.updateVideoStackViewAndScrollView()
+    }
+    
+    private func removeVideoFromStackView(index: Int!) {
+        let removedVideo = self.videoStackView.arrangedSubviews[index]
+        removedVideo.removeFromSuperview()
+        self.updateVideoStackViewAndScrollView()
+    }
+    
+    // override fadeUIElements to include scroll view
+    override func fadeUIElements(value: CGFloat, completion: () -> Void) {
+        UIView.animateWithDuration(0.5) {
+            self.videoScrollView.alpha = value;
+        }
+        super.fadeUIElements(value) {
+            completion()
         }
     }
     
@@ -242,7 +406,6 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
                 return index
             }
         }
-        print("Error: getPlayerIndexById")
         return -1
     }
     
@@ -257,5 +420,17 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
         let edges = jamjar.nodes![String(self.currentVideo.id!)]
         let edge = edges!.filter{ $0.video == videoId }.first
         return edge!
+    }
+    
+    // Get index of UIImageView within StackView
+    private func getIndexInStackView(imageView: UIImageView) -> Int {
+        let views = self.videoStackView.arrangedSubviews
+        for (index,view) in views.enumerate() {
+            if(imageView == view) {
+                return index
+            }
+        }
+        print("Error: getIndexInStackView")
+        return -1
     }
 }
