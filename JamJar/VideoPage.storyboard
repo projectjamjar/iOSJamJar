@@ -157,10 +157,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="15"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UploaderName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b02-QJ-OMw">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UploaderName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b02-QJ-OMw">
                                 <rect key="frame" x="12" y="342" width="87" height="15"/>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.23026315789473673" green="0.52631578947368385" blue="0.99342105263157898" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="87" height="15"/>
@@ -364,7 +364,7 @@
                 <viewControllerPlaceholder storyboardName="ConcertPage" referencedIdentifier="ConcertPage" id="rcj-i2-Sw1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1D-aa-LtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841.5" y="-214"/>
+            <point key="canvasLocation" x="841.5" y="-297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wvZ-sH-R9a">

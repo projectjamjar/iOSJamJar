@@ -112,6 +112,10 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         self.video = video
         titleLabel.text = video.name
         uploaderLabel.text = video.user.username
+        self.uploaderLabel.text = "@\(self.video.user.username)"
+        // When clicked, bring up the profile for that user
+        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.uploaderLabelTapped))
+        self.uploaderLabel.addGestureRecognizer(tgr)
         viewCountLabel.text = String(video.views) + " Views"
         artistsLabel.text = video.getArtistsString()
         venueLabel.text = concert.venue.name
@@ -119,6 +123,18 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         likesCountLabel.text = String((video.videoVotes.filter{$0.vote == 1}.first?.total)!)
         dislikesCountLabel.text = String((video.videoVotes.filter{$0.vote == 0}.first?.total)!)
         self.updateLikeDislikeButtons()
+    }
+    
+    func uploaderLabelTapped() {
+        
+        // Initialize the ProfileViewController for the uploader
+        let vc = UIStoryboard(name: "Profile",bundle: nil).instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
+        vc.username = self.video.user.username
+        vc.user = self.video.user
+        
+        // Push it onto the navcontroller of our parent viewcontroller
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func updateLikeDislikeButtons() {
