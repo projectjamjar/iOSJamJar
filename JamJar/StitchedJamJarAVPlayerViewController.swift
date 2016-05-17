@@ -361,7 +361,7 @@ class StitchedJamJarAVPlayerViewController: JamJarAVPlayerViewController {
     
     private func removeVideoFromStackView(index: Int!) {
         let removedVideo = self.videoStackView.arrangedSubviews[index]
-        self.videoStackView.removeArrangedSubview(removedVideo)
+        removedVideo.removeFromSuperview()
         self.updateVideoStackViewAndScrollView()
     }
     
