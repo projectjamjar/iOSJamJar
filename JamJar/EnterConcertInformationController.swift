@@ -35,6 +35,7 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     @IBOutlet weak var sponsoredStackView: UIStackView!
     @IBOutlet weak var artistsStackView: UIStackView!
     
+    @IBOutlet weak var concertScrollView: UIScrollView!
     
     /***************************************************************************
      Loading up a buncha stuff
@@ -156,7 +157,9 @@ class EnterConcertInformationViewController: BaseViewController, UITextFieldDele
     // We need this so the keyboard detects Autocomplete taps correctly
     override func dismissKeyboard(sender: UITapGestureRecognizer) {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        let touch = sender.locationInView(sender.view)
+        var touch = sender.locationInView(sender.view)
+        //Adjust the touch value so it matches with the scroll view
+        touch.y += self.concertScrollView.contentOffset.y
         if(!CGRectContainsPoint(artistsAutoCompleteTable.frame, touch) && !CGRectContainsPoint(venuesAutoCompleteTable.frame, touch)) {
             self.view.endEditing(true)
         }

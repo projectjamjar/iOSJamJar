@@ -23,11 +23,19 @@ class VideoItem: UICollectionViewCell {
     func setup(videoUrl: NSURL, deleteCallback: ((videoURL: NSURL) -> Void)) {
         self.videoUrl = videoUrl
         self.deleteCallback = deleteCallback
-        
 
         // Get the thumbnail for the video
         let asset = AVAsset(URL: videoUrl)
+        
+        //get orientation of thumbnail and flip if it is upside down
+        let assetTransform = asset.tracks.first!.preferredTransform
+        let assetAngle = Double(atan2(assetTransform.b, assetTransform.a)) * 180 / M_PI
+        
+        //asset.preferredTransform
         let imageGenerator = AVAssetImageGenerator(asset: asset)
+        if(assetAngle == 0.0 || assetAngle == 180.0) {
+            imageGenerator.appliesPreferredTrackTransform = true
+        }
         let time = CMTime(seconds: 1, preferredTimescale: 1)
         
         do {
