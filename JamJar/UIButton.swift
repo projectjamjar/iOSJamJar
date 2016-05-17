@@ -25,3 +25,14 @@ extension UIButton {
         }
     }
 }
+
+class PaddedButton: UIButton {
+    var padding: CGFloat = 0
+    
+    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+        let relativeFrame = self.bounds
+        let hitTestEdgeInsets = UIEdgeInsetsMake(-padding, -padding, -padding, -padding)
+        let hitFrame = UIEdgeInsetsInsetRect(relativeFrame, hitTestEdgeInsets)
+        return CGRectContainsPoint(hitFrame, point)
+    }
+}

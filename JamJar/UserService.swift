@@ -141,4 +141,61 @@ class UserService: APIService {
         }
     }
     
+    static func getBlockedUsers(completion: (success: Bool, result: [UserBlock]?, error: String?) -> Void) {
+        let url = self.buildURL("users/block/")
+        
+        self.get(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, result: nil, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and a profile
+                let blocks = Mapper<UserBlock>().mapArray(response.result.value!)
+                
+                completion(success: true, result: blocks, error: nil)
+                return
+            }
+        }
+    }
+    
+    static func blockUser(userId: Int, completion: (success: Bool, result: UserBlock?, error: String?) -> Void) {
+        let url = self.buildURL("users/block/\(userId)/")
+        
+        self.post(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, result: nil, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and a profile
+                let users = Mapper<UserBlock>().map(response.result.value!)
+                
+                completion(success: true, result: users, error: nil)
+                return
+            }
+        }
+    }
+    
+    static func unblockUser(userId: Int, completion: (success: Bool, error: String?) -> Void) {
+        let url = self.buildURL("users/block/\(userId)/")
+        
+        self.delete(url).responseJSON { response in
+            switch response.result {
+            case .Failure(_):
+                // We got an error response code
+                let errorString = JSON(data: response.data!)["error"].rawString()
+                completion(success: false, error: errorString)
+                return
+            case .Success:
+                // We got a success response code and message
+                completion(success: true, error: nil)
+                return
+            }
+        }
+    }
 }

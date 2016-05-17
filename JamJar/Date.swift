@@ -6,6 +6,8 @@
 //  Copyright © 2016 JamJar. All rights reserved.
 //
 
+import Foundation
+
 let standardDateFormat = "yyyy-MM-dd HH:mm:ss"
 let formattedDateFormat = "MMMM d hh:mm a"
 let prettyDateFormat = "MMMM d, yyyy"
