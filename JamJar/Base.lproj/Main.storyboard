@@ -518,7 +518,7 @@
                         <outlet property="emailTextField" destination="Yjn-Dc-tj3" id="GsB-QL-ZYe"/>
                         <outlet property="firstNameTextField" destination="tRb-6Z-36P" id="vlk-wc-oLS"/>
                         <outlet property="lastNameTextField" destination="jng-GG-iiH" id="37p-Cj-NrQ"/>
-                        <outlet property="licenceLabel" destination="V2j-Q9-JtE" id="qB5-AW-fFu"/>
+                        <outlet property="licenseLabel" destination="V2j-Q9-JtE" id="ZOC-fB-NRV"/>
                         <outlet property="licenseSwitch" destination="yoF-Jj-TA4" id="HQT-qB-aQa"/>
                         <outlet property="passwordTextField" destination="Y3Y-CM-hFm" id="dwv-QO-alz"/>
                         <outlet property="usernameTextField" destination="DLr-E7-ybO" id="yKs-YV-TUL"/>

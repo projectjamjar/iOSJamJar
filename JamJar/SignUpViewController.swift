@@ -17,7 +17,7 @@ class SignUpViewController: BaseViewController{
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmTextField: UITextField!
-    @IBOutlet var licenceLabel: UILabel!
+    @IBOutlet var licenseLabel: UILabel!
     @IBOutlet var licenseSwitch: UISwitch!
     
 
@@ -26,8 +26,8 @@ class SignUpViewController: BaseViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
         let tgr = UITapGestureRecognizer(target: self, action: #selector(self.endLicenseTapped))
-        self.licenceLabel.addGestureRecognizer(tgr)
-        self.licenceLabel.userInteractionEnabled = true
+        self.licenseLabel.addGestureRecognizer(tgr)
+        self.licenseLabel.userInteractionEnabled = true
     }
     
     func returnToLogin() {
