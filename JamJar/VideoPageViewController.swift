@@ -37,12 +37,6 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // PROTECT YO SELF
-        // If the video is still processin, pop that shit from the navcontroller
-        if !self.video.uploaded {
-            self.navigationController?.popViewControllerAnimated(false)
-        }
-        
         //Add action for concert tapped
         let concertTap = UITapGestureRecognizer(target: self, action: #selector(VideoPageViewController.concertTapped(_:)))
         self.concertInfoView.addGestureRecognizer(concertTap)
@@ -257,6 +251,18 @@ class VideoPageViewController: BaseViewController, UITableViewDelegate, UITableV
         default:
             fullScreenVideo()
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        // If the video has not been fully processed by the server, warn the user
+        if identifier == "playVideo" {
+            if !self.video.uploaded {
+                self.navigationController?.popViewControllerAnimated(false)
+                SCLAlertView().showError("Video Processing", subTitle: "This video is fresh outta the oven! Please wait for it to cool before consuming :)", closeButtonTitle: "Got it")
+                return false
+            }
+        }
+        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
