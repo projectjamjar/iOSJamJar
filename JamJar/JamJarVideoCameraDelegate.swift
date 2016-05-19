@@ -32,7 +32,7 @@ public class JamJarVideoCameraDelegate: DKImagePickerControllerDefaultUIDelegate
         picker.cameraCaptureMode = .Video
         picker.cameraFlashMode = .Off
         picker.showsCameraControls = true
-        picker.videoQuality = .TypeMedium
+        picker.videoQuality = .TypeIFrame960x540
         
         return picker
     }
